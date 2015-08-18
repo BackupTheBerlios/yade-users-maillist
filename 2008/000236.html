@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How Can install the wildmagic311 in the Kubuntu?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20Can%20install%20the%20wildmagic311%20in%20the%20Kubuntu%3F&In-Reply-To=%3C482E7C5C.5030801%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000235.html">
+   <LINK REL="Next"  HREF="000241.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How Can install the wildmagic311 in the Kubuntu?</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20Can%20install%20the%20wildmagic311%20in%20the%20Kubuntu%3F&In-Reply-To=%3C482E7C5C.5030801%40arcig.cz%3E"
+       TITLE="[Yade-users] How Can install the wildmagic311 in the Kubuntu?">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sat May 17 08:34:04 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000235.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+        <LI>Next message: <A HREF="000241.html">[Yade-users] I'm using Debian 4.0r3 Now!Is the installation process the same as the ubuntu 8.04(Hardy)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#236">[ date ]</a>
+              <a href="thread.html#236">[ thread ]</a>
+              <a href="subject.html#236">[ subject ]</a>
+              <a href="author.html#236">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Just read debian/rules in the debian package:
+
+	# installation - manualy, because upstream's make does not provide
+	# install target
+	#mkdir $(CURDIR)/debian/wildmagic-dev/usr/lib $(CURDIR)/debian/wildmagic-dev/usr/include
+	cp $(SOURCE_DIR)/GeometricTools/WildMagic3/Library/Release/lib*.a $(CURDIR)/debian/wildmagic-dev/usr/lib
+	cp -r $(SOURCE_DIR)/GeometricTools/WildMagic3/Include $(CURDIR)/debian/wildmagic-dev/usr/include/wm3
+
+You have to install files manually.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000235.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+	<LI>Next message: <A HREF="000241.html">[Yade-users] I'm using Debian 4.0r3 Now!Is the installation process the same as the ubuntu 8.04(Hardy)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#236">[ date ]</a>
+              <a href="thread.html#236">[ thread ]</a>
+              <a href="subject.html#236">[ subject ]</a>
+              <a href="author.html#236">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

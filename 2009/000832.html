@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Some questions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Some%20questions&In-Reply-To=%3C4A4B09D5.5050007%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000829.html">
+   <LINK REL="Next"  HREF="000831.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Some questions</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Some%20questions&In-Reply-To=%3C4A4B09D5.5050007%40univ-nantes.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Some questions">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Wed Jul  1 09:01:41 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000829.html">[deprecated list] [Yade-users] Some questions
+</A></li>
+        <LI>Next message: <A HREF="000831.html">[deprecated list] [Yade-users] Some questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+V&#225;clav &#352;milauer a &#233;crit :
+&gt;&gt;<i> 1) Is it possible to have a hertz mindlin contact law instead of a
+</I>&gt;&gt;<i> hooke's contact law between granular particles?
+</I>&gt;<i> 
+</I>&gt;<i> If you mean the law described e.g. in 
+</I>&gt;<i> <A HREF="http://geology.msu.edu/pdf/Poisons_S_vel.pdf">http://geology.msu.edu/pdf/Poisons_S_vel.pdf</A> (2), it means computing
+</I>&gt;<i> contact stiffnesses from bodies' rigidities differently and updating
+</I>&gt;<i> them based on the (varying) confining force. Quite easy to do, and
+</I>&gt;<i> certainly a welcome addition to yade (we are here to help you with
+</I>&gt;<i> that).
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 2) Is it possible to compact an assembly under a prescribed
+</I>&gt;&gt;<i> anisotropic stress state?
+</I>&gt;<i> 
+</I>&gt;<i> There is ThreeDTriaxialEngine by Luc Sibille; Bruno/Luc will tell you
+</I>&gt;<i> how to use it.
+</I>
+As said Vaclav, you can use the ThreeDTriaxialEngine for that.
+With the ThreeDTriaxialEngine you can choose for each of the three space 
+directions a control in strain or in stress. Thus, with respect to your 
+question about an anisotropic stress state you can prescribe for 
+instance a full control in stress to load the granular assembly from 
+sigma_1 = sigma_2 = sigma_3 = 0 to sigma_1 = 100 kPa, sigma_2 = 75 kPa 
+and sigma_3 = 250 kPa.
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i> 3) Is it possible to grow the size of a particle gradually?
+</I>&gt;<i> 
+</I>&gt;<i> TriaxialTest can use particle growth for compaction, you can certainly
+</I>&gt;<i> do the same.
+</I>
+You can have a look at the particle growth implemented in the 
+&quot;TriaxialCompressionEngine&quot; and mainly in the engine 
+&quot;TriaxialStressController&quot;, it works very well.
+
+Luc
+
+&gt;<i> 
+</I>&gt;<i> V.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i> 
+</I>
+-- 
+Luc Sibille
+
+Universit&#233; de Nantes - Laboratoire GeM UMR CNRS
+
+IUT de Saint Nazaire
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex, France
+
+Tel: +33 (0)2 40 17 81 78
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000829.html">[deprecated list] [Yade-users] Some questions
+</A></li>
+	<LI>Next message: <A HREF="000831.html">[deprecated list] [Yade-users] Some questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

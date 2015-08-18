@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to communicate between two independent Engines
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20communicate%20between%20two%20independent%20Engines&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09185105%40kstud7.utk.tennessee.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000213.html">
+   <LINK REL="Next"  HREF="000215.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to communicate between two independent Engines</H1>
+    <B>Chen, Feng</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20communicate%20between%20two%20independent%20Engines&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09185105%40kstud7.utk.tennessee.edu%3E"
+       TITLE="[Yade-users] How to communicate between two independent Engines">fchen3 at utk.edu
+       </A><BR>
+    <I>Wed May  7 04:22:04 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000213.html">[Yade-users] yade install help
+</A></li>
+        <LI>Next message: <A HREF="000215.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, all:
+ 
+I am recently having such kind of problem, I have two costomized engines, one is  called &quot;ConvergenceEstimator&quot;, which is used to evaluate some maximumUnBalanceForce over the contactForce ratio (this will return a CCValue to evaluate whether the whole particle system is close to equilibrium), then I have another engine &quot;DampingAdjustment&quot; designed to change the initial simulation parameter, in my case, the damping coefficient, for example, from 0.3 to 0.4.
+ 
+I have one piece of code in the preprocessor (similar to SDECSpheresPlane) which looks like this:
+ 
+///--------------------
+...
+rootBody-&gt;engines.push_back(ConvergenceEstimator);
+rootBody-&gt;engines.push_back(DampingAdjustment);
+///--------------------
+ 
+This means my DampingAdjustment Engine needs the return values of the previous engine, I need to have something in DampingAdjustment like(I think should be in DampingAdjustment::applyCondition(Body* body)):
+ 
+if (convergenceEstimator-&gt;getCCVaue() &lt;=eps)
+     dampingCoefficient = 0.3;
+else
+     dampingCoefficient =0.5;
+ 
+I think this is purely a programming problem, how to access the ConvergenceEstimator which is the other engine?
+ 
+I hope I have made my problem clear. Thank you very much!
+ 
+Feng Chen
+ 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080506/241ade96/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080506/241ade96/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000213.html">[Yade-users] yade install help
+</A></li>
+	<LI>Next message: <A HREF="000215.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#214">[ date ]</a>
+              <a href="thread.html#214">[ thread ]</a>
+              <a href="subject.html#214">[ subject ]</a>
+              <a href="author.html#214">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

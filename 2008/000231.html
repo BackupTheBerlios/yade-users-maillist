@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Problem with r1351
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problem%20with%20r1351&In-Reply-To=%3C482DA57C.8090509%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000230.html">
+   <LINK REL="Next"  HREF="000234.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Problem with r1351</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problem%20with%20r1351&In-Reply-To=%3C482DA57C.8090509%40arcig.cz%3E"
+       TITLE="[Yade-users] Problem with r1351">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri May 16 17:17:16 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000230.html">[Yade-users] Problem with r1351
+</A></li>
+        <LI>Next message: <A HREF="000234.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#231">[ date ]</a>
+              <a href="thread.html#231">[ thread ]</a>
+              <a href="subject.html#231">[ subject ]</a>
+              <a href="author.html#231">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+that is expected and it changed in 1344, see changelog.
+
+Short answer: You can copy your old scons.config to
+scons.profile-default and you will get old behavior.
+
+Long answer: scons.config is replaced by scons.profile-*, where * is any
+name you select with &quot;scons profile=...&quot; ('default' if you say just
+profile= ) and allows you to switch between complete independent sets of
+build options.
+
+There are 2 profiles predefined: default (or empty name), which is
+debugging build. And 'opt', which is optimizing build (by default). You
+can create any new profile by using profile=something and then
+specifying other params. The current profile that will be used is stored
+in scons.current-profile.
+
+The point was to quickly switch different build options without writing
+them all down. So now I can say &quot;scons profile=default&quot; and have the
+debugged build and &quot;scons profile=opt&quot; and get the optimized build.
+Otherwise, I would have to do thusly:
+
+ scons optimize=false debug=true variant=''
+
+and then
+
+ scons optimize=true debug=false variant=-opt
+
+Hope it is clear.
+
+Vaclav
+&gt;<i> Hello,
+</I>&gt;<i>  
+</I>&gt;<i>    This is just to say with the r1351, the parameters within the 
+</I>&gt;<i> scons.config are not taken into account during the building.
+</I>&gt;<i>
+</I>&gt;<i> scons:***[/usr/local/include/yade-svn1351] 
+</I>&gt;<i> /usr/local/include/yade-svn1351: Permission denied
+</I>&gt;<i>
+</I>&gt;<i> Have you the same problem?
+</I>&gt;<i>
+</I>&gt;<i> JF
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000230.html">[Yade-users] Problem with r1351
+</A></li>
+	<LI>Next message: <A HREF="000234.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#231">[ date ]</a>
+              <a href="thread.html#231">[ thread ]</a>
+              <a href="subject.html#231">[ subject ]</a>
+              <a href="author.html#231">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,378 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20%3D%3Fgb2312%3Fb%3Fu9i4tKO6IFJlOiAgUHJvYmxlbSBvZiBpbnN0YWxs%3F%3D%0A%20%3D%3Fgb2312%3Fb%3FaXRpb24gb24ga3VidW50dTguMDQ%3D%3F%3D&In-Reply-To=%3C686752.41082.qm%40web15806.mail.cnb.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000332.html">
+   <LINK REL="Next"  HREF="000335.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04</H1>
+    <B>Perfect Sailing</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20%3D%3Fgb2312%3Fb%3Fu9i4tKO6IFJlOiAgUHJvYmxlbSBvZiBpbnN0YWxs%3F%3D%0A%20%3D%3Fgb2312%3Fb%3FaXRpb24gb24ga3VidW50dTguMDQ%3D%3F%3D&In-Reply-To=%3C686752.41082.qm%40web15806.mail.cnb.yahoo.com%3E"
+       TITLE="[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04">xtss_0002 at yahoo.com.cn
+       </A><BR>
+    <I>Mon Jun 16 07:43:45 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000332.html">[Yade-users] Problem of installition on kubuntu8.04
+</A></li>
+        <LI>Next message: <A HREF="000335.html">[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#334">[ date ]</a>
+              <a href="thread.html#334">[ thread ]</a>
+              <a href="subject.html#334">[ subject ]</a>
+              <a href="author.html#334">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've installed libboost-date-time-dev and
+libboost-date-time1.34.1 by &quot;sudo apt-get install
+libboost-date-time-dev libboost-date-time1.34.1&quot; ,and
+in the K menu-&gt;system-&gt;adept manager ,the status of
+libboost-date-time-dev and libboost-date-time1.34.1
+are installed.In fact all the packages in the result
+list searched for libboost were all installed.
+Below is the whole text of
+/home/beautykiller/build-svn1387/config.log
+----------------------------------------------
+file /home/beautykiller/trunk/SConstruct,line 256:
+	Configure(confdir =
+/home/beautykiller/build-svn1387/.sconf_temp)
+scons: Configure: Checking whether c++ compiler &quot;g++&quot;
+works...
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_0.cpp
+&lt;-
+  |#include&lt;iostream&gt;
+  |int main(int argc,
+char**argv){std::cerr&lt;&lt;std::endl;return 0;}
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_0.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_0.cpp
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_0
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_0.o
+scons: Configure: yes
+
+scons: Configure: Checking for pthread_exit(NULL) in C
+library pthread... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_1.c
+&lt;-
+  |
+  |
+  |#include &quot;pthread.h&quot;
+  |
+  |int
+  |main() {
+  |  pthread_exit(NULL);
+  |return 0;
+  |}
+  |
+gcc -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_1.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_1.c
+gcc -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_1
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_1.o
+-lpthread
+scons: Configure: yes
+
+scons: Configure: Checking for glutGetModifiers() in C
+library glut... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_2.c
+&lt;-
+  |
+  |
+  |#include &quot;GL/glut.h&quot;
+  |
+  |int
+  |main() {
+  |  glutGetModifiers();
+  |return 0;
+  |}
+  |
+gcc -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_2.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_2.c
+gcc -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_2
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_2.o
+-lpthread -lglut
+scons: Configure: yes
+
+scons: Configure: Checking for
+boost::posix_time::time_duration::time_duration() in
+C++ library boost_date_time-mt... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_3.cpp
+&lt;-
+  |
+  |
+  |#include
+&quot;boost/date_time/posix_time/posix_time.hpp&quot;
+  |
+  |int
+  |main() {
+  | 
+boost::posix_time::time_duration::time_duration();
+  |return 0;
+  |}
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_3.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_3.cpp
+In file included from
+/usr/include/boost/date_time/gregorian/gregorian_io.hpp:12,
+                 from
+/usr/include/boost/date_time/gregorian/conversion.hpp:23,
+                 from
+/usr/include/boost/date_time/gregorian/gregorian.hpp:21,
+                 from
+/usr/include/boost/date_time/posix_time/time_formatters.hpp:12,
+                 from
+/usr/include/boost/date_time/posix_time/posix_time.hpp:24,
+                 from
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_3.cpp:3:
+/usr/include/boost/date_time/date_facet.hpp:560:
+error: declaration of 'void
+boost::date_time::date_input_facet&lt;date_type, CharT,
+InItrT&gt;::special_values_parser(boost::date_time::special_values_parser&lt;date_type,
+charT&gt;)'
+/usr/include/boost/date_time/special_values_parser.hpp:34:
+error: changes meaning of 'special_values_parser' from
+'class
+boost::date_time::special_values_parser&lt;date_type,
+charT&gt;'
+scons: Configure: no
+
+scons: Configure: Checking for
+boost::posix_time::time_duration::time_duration() in
+C++ library boost_date_time... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_4.cpp
+&lt;-
+  |
+  |
+  |#include
+&quot;boost/date_time/posix_time/posix_time.hpp&quot;
+  |
+  |int
+  |main() {
+  | 
+boost::posix_time::time_duration::time_duration();
+  |return 0;
+  |}
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_4.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_4.cpp
+In file included from
+/usr/include/boost/date_time/gregorian/gregorian_io.hpp:12,
+                 from
+/usr/include/boost/date_time/gregorian/conversion.hpp:23,
+                 from
+/usr/include/boost/date_time/gregorian/gregorian.hpp:21,
+                 from
+/usr/include/boost/date_time/posix_time/time_formatters.hpp:12,
+                 from
+/usr/include/boost/date_time/posix_time/posix_time.hpp:24,
+                 from
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_4.cpp:3:
+/usr/include/boost/date_time/date_facet.hpp:560:
+error: declaration of 'void
+boost::date_time::date_input_facet&lt;date_type, CharT,
+InItrT&gt;::special_values_parser(boost::date_time::special_values_parser&lt;date_type,
+charT&gt;)'
+/usr/include/boost/date_time/special_values_parser.hpp:34:
+error: changes meaning of 'special_values_parser' from
+'class
+boost::date_time::special_values_parser&lt;date_type,
+charT&gt;'
+scons: Configure: no
+
+scons: Configure: Checking for boost::thread::thread()
+in C++ library boost_thread-mt... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_5.cpp
+&lt;-
+  |
+  |
+  |#include &quot;boost/thread/thread.hpp&quot;
+  |
+  |int
+  |main() {
+  |  boost::thread::thread();
+  |return 0;
+  |}
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_5.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_5.cpp
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_5
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_5.o
+-lpthread -lglut -lboost_thread-mt
+scons: Configure: yes
+
+scons: Configure: Checking for
+boost::filesystem::path() in C++ library
+boost_filesystem-mt... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_6.cpp
+&lt;-
+  |
+  |
+  |#include &quot;boost/filesystem/path.hpp&quot;
+  |
+  |int
+  |main() {
+  |  boost::filesystem::path();
+  |return 0;
+  |}
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_6.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_6.cpp
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_6
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_6.o
+-lpthread -lglut -lboost_thread-mt
+-lboost_filesystem-mt
+scons: Configure: yes
+
+scons: Configure: Checking for
+boost::iostreams::file_sink(&quot;&quot;) in C++ library
+boost_iostreams-mt... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_7.cpp
+&lt;-
+  |
+  |
+  |#include &quot;boost/iostreams/device/file.hpp&quot;
+  |
+  |int
+  |main() {
+  |  boost::iostreams::file_sink(&quot;&quot;);
+  |return 0;
+  |}
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_7.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_7.cpp
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_7
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_7.o
+-lpthread -lglut -lboost_thread-mt
+-lboost_filesystem-mt -lboost_iostreams-mt
+scons: Configure: yes
+
+scons: Configure: Checking for C++ header file
+boost/foreach.hpp... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_8.cpp
+&lt;-
+  |
+  |#include &lt;boost/foreach.hpp&gt;
+  |
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_8.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_8.cpp
+scons: Configure: yes
+
+scons: Configure: Checking for qt-mt in
+/usr/share/qt3... 
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_9.cpp
+&lt;-
+  |#include&lt;qapplication.h&gt;
+  |int main(int argc, char **argv){QApplication
+qapp(argc, argv);return 0;}
+  |
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_9.o
+-c
+-I/home/beautykiller/build-svn1387/include/yade-svn1387
+-I/home/beautykiller/build-svn1387/include/yade-svn1387/yade/lib-miniWm3
+-I/usr/share/qt3/include
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_9.cpp
+g++ -o
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_9
+/home/beautykiller/build-svn1387/.sconf_temp/conftest_9.o
+-L/usr/share/qt3/lib -lpthread -lglut
+-lboost_thread-mt -lboost_filesystem-mt
+-lboost_iostreams-mt -lqt-mt
+scons: Configure: yes
+--------------------------------------------------------
+Ps:
+&gt;<i> NameError: name 'true' is not defined:
+</I>&gt;<i>   File &quot;/home/beautykiller/trunk/SConstruct&quot;, line
+</I>&gt;<i> 287:
+</I>&gt;<i>     ok=true
+</I>
+The statement &quot;ok=true&quot; is added into sconstruct by
+myself.I thought libboost were installed already so I
+changed the flag &quot;ok&quot; to check whether scons can carry
+on ignoring the errors on libboost-date-time.
+
+Regards
+Zhang Lin
+
+
+      ___________________________________________________________ 
+ &#38597;&#34382;&#37038;&#31665;&#65292;&#24744;&#30340;&#32456;&#29983;&#37038;&#31665;&#65281; 
+<A HREF="http://cn.mail.yahoo.com/">http://cn.mail.yahoo.com/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000332.html">[Yade-users] Problem of installition on kubuntu8.04
+</A></li>
+	<LI>Next message: <A HREF="000335.html">[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#334">[ date ]</a>
+              <a href="thread.html#334">[ thread ]</a>
+              <a href="subject.html#334">[ subject ]</a>
+              <a href="author.html#334">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

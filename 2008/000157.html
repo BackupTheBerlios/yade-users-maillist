@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] The critical time step?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20The%20critical%20time%20step%3F&In-Reply-To=%3C47F77862.2040705%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000156.html">
+   <LINK REL="Next"  HREF="000160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] The critical time step?</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20The%20critical%20time%20step%3F&In-Reply-To=%3C47F77862.2040705%40arcig.cz%3E"
+       TITLE="[Yade-users] The critical time step?">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sat Apr  5 15:02:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000156.html">[Yade-users] The critical time step?
+</A></li>
+        <LI>Next message: <A HREF="000160.html">[Yade-users] The critical time step?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>kan napsal(a):
+&gt;<i> Hey, guys,
+</I>&gt;<i>  
+</I>&gt;<i> I have a problem to get the critical timestep, could you please give
+</I>&gt;<i> me hand?
+</I>&gt;<i> if I need to calculate the critical time step for each time steps, how
+</I>&gt;<i> can I calculate it?
+</I>&gt;<i> From papers, I found that equation is:
+</I>&gt;<i> critical_time_step=2*sqrt(mass/k),
+</I>Bruno, how does this value compare to critical timestep calculated from
+elastic wave propagation speed along the particle calculated for
+cotinuum, i.e. , which is 2*particle diameter / sqrt(Young's modulus /
+density)? I would assume it underestimates the timestep, but may have
+the advantage that it has to be evaluated only once, since contact
+stiffnesses are derived (for purely linear elastic contacts) from the
+same values.
+
+I use this formula for preliminary estimation of computation time for a
+simulation.
+
+Regards, Vaclav
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000156.html">[Yade-users] The critical time step?
+</A></li>
+	<LI>Next message: <A HREF="000160.html">[Yade-users] The critical time step?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

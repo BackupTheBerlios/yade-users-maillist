@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Error in YADE installation,Ubuntu 8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20in%20YADE%20installation%2CUbuntu%208.04&In-Reply-To=%3C20080830131413.53ab1ffe%40szpak%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000430.html">
+   <LINK REL="Next"  HREF="000433.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Error in YADE installation,Ubuntu 8.04</H1>
+    <B>Janek Kozicki</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20in%20YADE%20installation%2CUbuntu%208.04&In-Reply-To=%3C20080830131413.53ab1ffe%40szpak%3E"
+       TITLE="[Yade-users] Error in YADE installation,Ubuntu 8.04">janek_listy at wp.pl
+       </A><BR>
+    <I>Sat Aug 30 13:14:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000430.html">[Yade-users] Error in YADE installation,Ubuntu 8.04
+</A></li>
+        <LI>Next message: <A HREF="000433.html">[Yade-users] download problem?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#432">[ date ]</a>
+              <a href="thread.html#432">[ thread ]</a>
+              <a href="subject.html#432">[ subject ]</a>
+              <a href="author.html#432">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Better if you send posts to mailing list, not to me directly. I might
+had not time to reply. On mailing list others can reply also.
+
+
+mohammad islam said:     (by the date of Sat, 30 Aug 2008 03:02:30 -0700 (PDT))
+
+&gt;<i> Hi,
+</I>&gt;<i> I have tried for several times for yade-0.12.0
+</I>&gt;<i> 
+</I>&gt;<i> wget <A HREF="http://prdownload.berlios.de/yade/yade-0.12.0.tar.bz2">http://prdownload.berlios.de/yade/yade-0.12.0.tar.bz2</A>
+</I>
+yeah, thats a link to a webpage, unfortunately. You downloaded
+a .html not a bzip2 file. I updated the link, I hope that this one
+will work.
+
+<A HREF="http://download.berlios.de/yade/yade-0.12.0.tar.bz2">http://download.berlios.de/yade/yade-0.12.0.tar.bz2</A>
+
+the fix for actual problem that you reported is to change line 46 of SConstruct into:
+
+   tgzParams=(&quot;<A HREF="http://heanet.dl.sourceforge.net/sourceforge/scons/scons-local-1.0.0.tar.gz">http://heanet.dl.sourceforge.net/sourceforge/scons/scons-local-1.0.0.tar.gz</A>&quot;,&quot;/scons-local-1.0.0&quot;)
+
+It's fixed in trunk. I hope to release this fix soon as 0.12.1
+
+
+&gt;<i> tar xvzj yade-0.12.0.tar.bz2
+</I>&gt;<i> 
+</I>&gt;<i> but having message like to extract
+</I>&gt;<i> 
+</I>&gt;<i> gzip: stdin: not in gzip format
+</I>&gt;<i> tar: Child returned status 1
+</I>&gt;<i> tar: Error exit delayed from previous errors
+</I>&gt;<i> 
+</I>&gt;<i> I have also tried by 
+</I>&gt;<i> tar -jxvf yade-0.12.0.tar.bz2
+</I>&gt;<i> and
+</I>&gt;<i> right click extract here and some other options also.
+</I>&gt;<i> 
+</I>&gt;<i> I have checked bzip2 installed.bz2 and gz not same I know.IN case of yade.012rc1 
+</I>&gt;<i> it is going to build scons and compilation starts...but after 2 days I found 
+</I>&gt;<i> error message.
+</I>&gt;<i> 
+</I>&gt;<i> I want to try once more to solve the problem for yade.012rc1,but for 
+</I>&gt;<i> yade-0.12.0 can any body tell what will be the exact terminal command
+</I>&gt;<i> to extract?I am sure it is a bigginer question?but sorry to ask.
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> Nurul Islam
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>       
+</I>
+-- 
+Janek Kozicki                                                         |
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000430.html">[Yade-users] Error in YADE installation,Ubuntu 8.04
+</A></li>
+	<LI>Next message: <A HREF="000433.html">[Yade-users] download problem?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#432">[ date ]</a>
+              <a href="thread.html#432">[ thread ]</a>
+              <a href="subject.html#432">[ subject ]</a>
+              <a href="author.html#432">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

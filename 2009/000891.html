@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] all yade users,	please introduce yourself!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09A2A3C0%40kstud7.utk.tennessee.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000885.html">
+   <LINK REL="Next"  HREF="000894.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] all yade users,	please introduce yourself!</H1>
+    <B>Chen, Feng</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09A2A3C0%40kstud7.utk.tennessee.edu%3E"
+       TITLE="[deprecated list] [Yade-users] all yade users,	please introduce yourself!">fchen3 at utk.edu
+       </A><BR>
+    <I>Wed Jul  8 19:33:48 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000885.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+        <LI>Next message: <A HREF="000894.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#891">[ date ]</a>
+              <a href="thread.html#891">[ thread ]</a>
+              <a href="subject.html#891">[ subject ]</a>
+              <a href="author.html#891">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, Vaclav:
+ 
+Please understand that you would have so many things to do when you graduate, and I am relocating from one state to another and the new job here takes most of my time, I even do not have time to revise a submitted manuscript :-|, and it is quite bit awkward that I do not even have a chance to learn the commands for uploading the code to the SVN, sorry for being so lazy :-) I never complain that there is no document in YADE, because I understand it is very common for many open source codes (e.g. for OpenFOAM there is even less), especially for research codes, I am still using the yade.0.11.1 (the version that require compile QGLViewer separately), because I never have time to keep up with the SVN with so many daily changes, especially changing class names or function names, as a PhD candidate, the most important thing for me is to get a correct solution for a specific problem and I am very reluctant to spend time on re-compiling of the code because another slight change in the SVN, not to mention those naming conventions, class names, etc.......
+ 
+To be more detail, the code for exporting YADE's data to paraView is only within the revised OpenFOAM solver, as I have mentioned before, there is still a problem with the Navier-Stokes equation solution so I really think it improper to release the code which will confuse most people. Finally, the code for exporting YADE's data to paraView is very simple (no more than 100 lines), and I just used OpenFOAM's &quot;foamToVTK&quot; command to convert only the particle data (no walls) to .vtk files, it would take me a while to clean up the codes and comments even if I just release the current version. The proposed releasing time might be on August or September.
+ 
+Anyway, I think YADE is really a nice code and I appreciate those original authors (especially Vaclav and Janek) for their great work, even if I do not work on research about DEM currently I am still reading the mailing list everyday but most of the time I just look at what other people are doing, if there is any problems that I can answer I will help, and I know one student in my previous department is working on the clump, and I am pretty sure he is also looking at this mailing list:-)
+ 
+Please allow me one or two weeks to learn the SVN, trunk, etc, it would be difficult for me to find a time to read basic SVN tutorials, especially I need to find those tutorials myself first :-D
+ 
+Feng Chen
+Geotechnical Engineer
+HNTB Federal
+9100 Bluebonnet Centre Blvd Suite 301
+Baton Rouge, LA 70809
+<A HREF="http://fchen3.googlepages.com/home">http://fchen3.googlepages.com/home</A>
+
+________________________________
+
+From: yade-users-bounces+fchen3=<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">utk.edu at lists.launchpad.net</A> on behalf of V&#225;clav Smilauer
+Sent: Wed 7/8/2009 10:14 AM
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Subject: Re: [Yade-users] all yade users, please introduce yourself!
+
+
+
+
+&gt;<i> I can honestly tell you what I have at this moment, the OpenFOAM
+</I>&gt;<i> solver and YADE are working well with each other, the function Sergei
+</I>&gt;<i> mentioned about exporting YADE's data to paraView is also available
+</I>&gt;<i> and working well (also one to FeatPost),
+</I>
+WHAT?? You have export to paraView on which I almost started working and
+that code is not in trunk? Come on, man! ;-) It is OK if the code is not
+perfect (that's what trunk is for), but duplicating other's work feels,
+to say the least, unconfortable.
+
+(BTW, you have many interesting things on the webpage)
+
+V.
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090708/2f668b1f/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090708/2f668b1f/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000885.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+	<LI>Next message: <A HREF="000894.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#891">[ date ]</a>
+              <a href="thread.html#891">[ thread ]</a>
+              <a href="subject.html#891">[ subject ]</a>
+              <a href="author.html#891">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

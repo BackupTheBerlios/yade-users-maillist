@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] crash in lattice model
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20crash%20in%20lattice%20model&In-Reply-To=%3C20090627145845.23415.17412.launchpad%40gangotri.canonical.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000820.html">
+   <LINK REL="Next"  HREF="000849.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] crash in lattice model</H1>
+    <B>Jingsong Chen</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20crash%20in%20lattice%20model&In-Reply-To=%3C20090627145845.23415.17412.launchpad%40gangotri.canonical.com%3E"
+       TITLE="[deprecated list] [Yade-users] crash in lattice model">chenjs923 at hotmail.com
+       </A><BR>
+    <I>Sat Jun 27 16:58:45 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000820.html">[deprecated list] [Yade-users] question about lattice model
+</A></li>
+        <LI>Next message: <A HREF="000849.html">[deprecated list] [Yade-users] crash in lattice model
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#823">[ date ]</a>
+              <a href="thread.html#823">[ thread ]</a>
+              <a href="subject.html#823">[ subject ]</a>
+              <a href="author.html#823">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Janek Kozicki:
+
+thank you for your suggestion, and i tried your method, but it still
+crashed as before.
+
+i also tried the simple FileGenerator examples in the code in latest
+trunk. I should made some change in the code to let it through when i
+compiled it (delete  latticeLaw-&gt;tension_compression_different_stiffness
+= true;  add &quot;false&quot; in REGISTER_SERIALIZABLE(LatticeExampleSimple); ).
+Then the compilation succeed.
+
+For the simple example, once after I started the simulation, the four
+control button in the Simulation tab of the Simulation Controller turn
+grey, I can not stop or pause the simulation by myself. The simulation
+will not stop, and there is no items in the OpenGL display (before i
+started the simulation, i can see some node in the display).
+
+I also found this in terminal.
+&quot;/home/daisy/build-0.12rc1/include/yade-0.12rc1/yade/core/MetaEngine2D.hpp:61
+WARNING! dynamic cast of engine unit LatticeSet2LatticeBeams failed,
+will use static_cast. Go figure why.&quot;
+
+I think there may exist problems in version. some code can work in old
+version (like version yade-0.11.1), but may not work in new version
+(like version yade-0.12rc1). the version yade-0.12rc1 is also different
+with the latest svn version.
+
+I think this may be the reason for the crash.
+-- 
+This message was sent from Launchpad by the user
+Jingsong Chen (<A HREF="https://launchpad.net/~chenjs923">https://launchpad.net/~chenjs923</A>)
+using the &quot;Contact this team&quot; link on the yade-users team page.
+For more information see
+<A HREF="https://help.launchpad.net/YourAccount/ContactingPeople">https://help.launchpad.net/YourAccount/ContactingPeople</A>
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000820.html">[deprecated list] [Yade-users] question about lattice model
+</A></li>
+	<LI>Next message: <A HREF="000849.html">[deprecated list] [Yade-users] crash in lattice model
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#823">[ date ]</a>
+              <a href="thread.html#823">[ thread ]</a>
+              <a href="subject.html#823">[ subject ]</a>
+              <a href="author.html#823">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

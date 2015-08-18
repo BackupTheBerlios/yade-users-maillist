@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] LeapFrog integrators
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20LeapFrog%20integrators&In-Reply-To=%3C48513271.3050507%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000311.html">
+   <LINK REL="Next"  HREF="000315.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] LeapFrog integrators</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20LeapFrog%20integrators&In-Reply-To=%3C48513271.3050507%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] LeapFrog integrators">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Thu Jun 12 16:28:01 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000311.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+        <LI>Next message: <A HREF="000315.html">[Yade-users] Doubts on Yade
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#314">[ date ]</a>
+              <a href="thread.html#314">[ thread ]</a>
+              <a href="subject.html#314">[ subject ]</a>
+              <a href="author.html#314">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hello all,
+
+I commited new versions of NewtonsDampedLaw and LeapFrog engines to SVN 
+today.
+Using the new versions is highly recommended as the maximum timestep you 
+can use is at least 4 times larger and convergence is faster.
+I could actually run simulations with dt up to 2*criticalTimeStep, i.e. 
+with globalStiffnessTimeStepper-&gt;safetyFactor = 2, correponding to dt 8 
+times larger than before (safetyFactor couldn't exceed 0.25 with the old 
+leapFrog algorithm). The default safetyFactor is now equal to 1.
+
+Please report any problem.
+
+Bruno
+
+p.s. If you don't want to update the full yade code, you can always 
+download NewtonsDampedLaw.cpp alone and paste it into your sources.
+p.s.(2) if you don't know what I'm speaking about, read comments in 
+NewtonsDampedLaw.hpp + discussion on &quot;How to reset a body's velocity?&quot; 
+in yade-users list.
+
+
+
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000311.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+	<LI>Next message: <A HREF="000315.html">[Yade-users] Doubts on Yade
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#314">[ date ]</a>
+              <a href="thread.html#314">[ thread ]</a>
+              <a href="subject.html#314">[ subject ]</a>
+              <a href="author.html#314">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

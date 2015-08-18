@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] question about clump?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20question%20about%20clump%3F&In-Reply-To=%3C20090605153302.4294.75461.launchpad%40gangotri.canonical.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000763.html">
+   <LINK REL="Next"  HREF="000766.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] question about clump?</H1>
+    <B>Jingsong Chen</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20question%20about%20clump%3F&In-Reply-To=%3C20090605153302.4294.75461.launchpad%40gangotri.canonical.com%3E"
+       TITLE="[deprecated list] [Yade-users] question about clump?">chenjs923 at hotmail.com
+       </A><BR>
+    <I>Fri Jun  5 17:33:06 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000763.html">[deprecated list] [Yade-users] YADE &amp; 64-bit
+</A></li>
+        <LI>Next message: <A HREF="000766.html">[deprecated list] [Yade-users] question about clump?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#809">[ date ]</a>
+              <a href="thread.html#809">[ thread ]</a>
+              <a href="subject.html#809">[ subject ]</a>
+              <a href="author.html#809">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>   Hello, everyone, sorry to bother you again!
+   First thank Vaclav for the reply about box interaction. Vaclav
+suggested me &quot;replacing box by a few clumped spheres would be good
+enough for your purposes.&quot;
+   These days I try to learn how to use clump as the example in
+yade(ClumpTestGen), but i noticed there seems exist some unreasonable
+movement in the shear direction when I generated more some clumps in the
+example(ClumpTestGen). is it because of the interaction between clumps?
+
+I just make the plane bigger and add two more clumps as follow:
+
+        shared_ptr&lt;Body&gt;
+ground=Shop::box(Vector3r(0,0,-1),Vector3r(10,10,.2));
+
+        // three-sphere clump
+        clumpPos=Vector3r(0.5,2.5,2);
+        relPos.push_back(Vector3r(0,-.5,.5)); radii.push_back(.5);
+        relPos.push_back(Vector3r(0,.5,0)); radii.push_back(.5);
+        relPos.push_back(Vector3r(.5,0,0)); radii.push_back(.5);
+        createOneClump(rootBody,clumpPos,relPos,radii);
+        relPos.clear(); radii.clear();
+
+        // four-sphere clump (this one seems have abnormal movement,
+horizontal translation in a curve (not a line) on the plane after
+interaction)
+        clumpPos=Vector3r(0.5,-2.5,2);
+        relPos.push_back(Vector3r(0,0,0)); radii.push_back(.5);
+        relPos.push_back(Vector3r(.5,0,0)); radii.push_back(.5);
+        relPos.push_back(Vector3r(0,.5,0)); radii.push_back(.5);
+        relPos.push_back(Vector3r(0,0,.5)); radii.push_back(.5);
+        createOneClump(rootBody,clumpPos,relPos,radii);
+        relPos.clear(); radii.clear();
+
+        setDefault(&quot;param_damping&quot;,.8); //(made changes in shop)
+
+        I set up time step=10e-5 on control panel.
+
+   thank you very much!
+-- 
+This message was sent from Launchpad by the user
+Jingsong Chen (<A HREF="https://launchpad.net/~chenjs923">https://launchpad.net/~chenjs923</A>)
+using the &quot;Contact this team&quot; link on the yade-users team page.
+For more information see
+<A HREF="https://help.launchpad.net/YourAccount/ContactingPeople">https://help.launchpad.net/YourAccount/ContactingPeople</A>
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000763.html">[deprecated list] [Yade-users] YADE &amp; 64-bit
+</A></li>
+	<LI>Next message: <A HREF="000766.html">[deprecated list] [Yade-users] question about clump?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#809">[ date ]</a>
+              <a href="thread.html#809">[ thread ]</a>
+              <a href="subject.html#809">[ subject ]</a>
+              <a href="author.html#809">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

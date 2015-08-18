@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] What is the contact detecting method used in YADE?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20What%20is%20the%20contact%20detecting%20method%20used%20in%20YADE%3F&In-Reply-To=%3C45213f870802122356p1803adb4pf3396fe659094f17%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000088.html">
+   <LINK REL="Next"  HREF="000089.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] What is the contact detecting method used in YADE?</H1>
+    <B>kan</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20What%20is%20the%20contact%20detecting%20method%20used%20in%20YADE%3F&In-Reply-To=%3C45213f870802122356p1803adb4pf3396fe659094f17%40mail.gmail.com%3E"
+       TITLE="[Yade-users] What is the contact detecting method used in YADE?">nicessgg at gmail.com
+       </A><BR>
+    <I>Wed Feb 13 08:56:46 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000088.html">[Yade-users] About RotationEngine ?
+</A></li>
+        <LI>Next message: <A HREF="000089.html">[Yade-users] What is the contact detecting method used in YADE?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, Dear All,
+
+I am just losting myself in understanding the contact detecting method in a
+DEM.
+could you please give me some instruction or explaination about what is the
+contact detecting method used in YADE?
+It is easy to detect if two contacted particles becomes non-contacted again
+by check the distance between their center with their radius
+sum(radius1+radius2, assume both of them are sphere) because they know each
+other when they are in contact an have stored their neighbors relationship
+for each other. But, how do you know whether two will change from
+non-contacted conditions to contancted condition----because they do not know
+each other before then come to contact, do not tell me that you check each
+pair in all of the particle---it works but the time cost is toooooo
+expensive .
+
+Thanks.
+Regards.
+
+Kan
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080213/5e132a40/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080213/5e132a40/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000088.html">[Yade-users] About RotationEngine ?
+</A></li>
+	<LI>Next message: <A HREF="000089.html">[Yade-users] What is the contact detecting method used in YADE?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

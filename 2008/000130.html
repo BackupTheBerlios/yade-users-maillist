@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] staticity quantification
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20staticity%20quantification&In-Reply-To=%3C47E8BCCE.2020606%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000129.html">
+   <LINK REL="Next"  HREF="000132.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] staticity quantification</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20staticity%20quantification&In-Reply-To=%3C47E8BCCE.2020606%40univ-nantes.fr%3E"
+       TITLE="[Yade-users] staticity quantification">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Tue Mar 25 09:50:22 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000129.html">[Yade-users] staticity quantification
+</A></li>
+        <LI>Next message: <A HREF="000132.html">[Yade-users] staticity quantification
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#130">[ date ]</a>
+              <a href="thread.html#130">[ thread ]</a>
+              <a href="subject.html#130">[ subject ]</a>
+              <a href="author.html#130">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Vaclav,
+
+   The simplest way is to check the kinetic energy of the whole granular 
+assembly and stop the simulation when the kinetic energy is low enough 
+(a given percentage in addition of the lowest kinetic energy computed 
+after a long time of simulation without evolution of the loading 
+parameters).
+
+   Otherwise something is already implemented for the triaxial test and 
+based on the unbalanced force of the particles. But Bruno will speak 
+about that better than me!
+
+   Best,
+
+   Luc
+
+V&#225;clav &#352;milauer a &#233;crit :
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I would like to quantify how much has a simulation approached static
+</I>&gt;<i> state (provided such state exists). Has someone done that? I thought of
+</I>&gt;<i> summing velocity norms (but what should be the threshold here?) or
+</I>&gt;<i> perhaps observing whether global stiffness is almost-constant. (Bruno,
+</I>&gt;<i> you're expert on that, how would you do that?)
+</I>&gt;<i> 
+</I>&gt;<i> The reson for that is to programatically stop simulation once desired
+</I>&gt;<i> state is reached, without user interaction, so that I cun say: run that
+</I>&gt;<i> until it is done.
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> 
+</I>&gt;<i> Vaclav
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> 
+</I>
+-- 
+Luc Sibille, Universit&#233; de Nantes - Laboratoire GeM, ma&#238;tre de conf&#233;rence
+
+Adresse/address:
+IUT de Saint Nazaire - D&#233;partement de G&#233;nie-Civil
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex   France
+
+Tel: +33 2 40 17 81 78     Fax: +33 2 40 17 81 60
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000129.html">[Yade-users] staticity quantification
+</A></li>
+	<LI>Next message: <A HREF="000132.html">[Yade-users] staticity quantification
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#130">[ date ]</a>
+              <a href="thread.html#130">[ thread ]</a>
+              <a href="subject.html#130">[ subject ]</a>
+              <a href="author.html#130">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

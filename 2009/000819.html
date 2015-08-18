@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users]   question about lattice model
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%20%20question%20about%20lattice%20model&In-Reply-To=%3C20090627004754.5066599c%40atak.bl.pg.gda.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000818.html">
+   <LINK REL="Next"  HREF="000820.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users]   question about lattice model</H1>
+    <B>Janek Kozicki</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%20%20question%20about%20lattice%20model&In-Reply-To=%3C20090627004754.5066599c%40atak.bl.pg.gda.pl%3E"
+       TITLE="[deprecated list] [Yade-users]   question about lattice model">janek_listy at wp.pl
+       </A><BR>
+    <I>Sat Jun 27 00:47:54 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000818.html">[deprecated list] [Yade-users] question about lattice model
+</A></li>
+        <LI>Next message: <A HREF="000820.html">[deprecated list] [Yade-users] question about lattice model
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#819">[ date ]</a>
+              <a href="thread.html#819">[ thread ]</a>
+              <a href="subject.html#819">[ subject ]</a>
+              <a href="author.html#819">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jingsong Chen said:     (by the date of Fri, 26 Jun 2009 22:22:56 -0000)
+
+&gt;<i> Hello, everyone!
+</I>&gt;<i> 
+</I>&gt;<i> First, thank you all for the effort on Yade reference document. I think
+</I>&gt;<i> it is very important for the new user (like me) to learn Yade.
+</I>&gt;<i> 
+</I>&gt;<i> Recently I tried to learn how to use lattice model and I tried the
+</I>&gt;<i> latticeExample in Yade (version 0.12rc1), but I found Yade automatically
+</I>&gt;<i> quited after I started the simulation for some time and some contents
+</I>&gt;<i> (like [New Thread 0xb5fc56e0 (LWP 8331)]) were showed in the terminal.
+</I>&gt;<i> Four data files also were generated, but only file (strains) has data.
+</I>&gt;<i> So I want to know what's the problem with it and how can I fix it?
+</I>
+if it crashed right after you started calculation, then it's a bug
+that I don't know. 
+
+if it crashed after the sample broke, then it is a known bug. It is
+related to drawing in OpenGL a rod that is being deleted at the same
+time (because it breaks). This does not occur when you close the
+OpenGL window.
+
+I never got around to fix this bug, beucase synchronising threads
+(display &lt;-&gt; calculation) is so complex. But also, this bug never
+bothered me too much, because when some serious calculations are
+being run, the OpenGL display is always off (no point to draw
+calculations that takes few days, better to look at it after it's
+finished).
+
+There are few more simple FileGenerator examples in the code in
+latest trunk, you might want to try the svn version and see it.
+
+-- 
+Janek Kozicki                                                         |
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000818.html">[deprecated list] [Yade-users] question about lattice model
+</A></li>
+	<LI>Next message: <A HREF="000820.html">[deprecated list] [Yade-users] question about lattice model
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#819">[ date ]</a>
+              <a href="thread.html#819">[ thread ]</a>
+              <a href="subject.html#819">[ subject ]</a>
+              <a href="author.html#819">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

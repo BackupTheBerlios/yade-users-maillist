@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] How to use	ConstitutiveLawDispatcher in pithon
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20How%20to%20use%0A%09ConstitutiveLawDispatcher%20in%20pithon&In-Reply-To=%3C200902182244.01032.sj2001%40yandex.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000634.html">
+   <LINK REL="Next"  HREF="000635.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] How to use	ConstitutiveLawDispatcher in pithon</H1>
+    <B>sega</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20How%20to%20use%0A%09ConstitutiveLawDispatcher%20in%20pithon&In-Reply-To=%3C200902182244.01032.sj2001%40yandex.ru%3E"
+       TITLE="[deprecated list] [Yade-users] How to use	ConstitutiveLawDispatcher in pithon">sj2001 at yandex.ru
+       </A><BR>
+    <I>Wed Feb 18 20:44:00 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000634.html">[deprecated list] [Yade-users] How to use	ConstitutiveLawDispatcher in pithon
+</A></li>
+        <LI>Next message: <A HREF="000635.html">[deprecated list] [Yade-users] ConstitutiveLawDispatcher and	ElasticContactLaw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#647">[ date ]</a>
+              <a href="thread.html#647">[ thread ]</a>
+              <a href="subject.html#647">[ subject ]</a>
+              <a href="author.html#647">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 18 &#1092;&#1077;&#1074;&#1088;&#1072;&#1083;&#1103; 2009, you wrote:
+ On 18 &#1092;&#1077;&#1074;&#1088;&#1072;&#1083;&#1103; 2009, MarcoDottor wrote:
+ &gt; Hallo, what code I have to use if I want to try
+ &gt; ConstitutiveLawDispatcher in python.
+ 
+ for example, see examples/dynamic_simulation_tests/ringSimpleViscoelastic.py, line 71
+ Be careful for the contact model. It should be in agreement with simulation conditions.
+ (compare results for ringSimpleViscoelastic and ringCundallDamping, for example).
+ 
+ &gt; I've got other 2 questions: setting Young modulus low to 10^3 what
+ &gt; implies, it act on Kn right? 
+ 
+ yes
+ 
+ &gt; That forces are transimmed softly? 
+ 
+ The bodies are more soft.
+ 
+ &gt; If I saved a simulation in a sqlite dbase can I use filters in
+ &gt; postprocessing with player or should I include them before starting a
+ &gt; simulation, how can I do that?
+ 
+ With the player. Run the player, load a results dbase, print in console:
+ 
+ f=utils.ColorizedVelocityFilter()
+ (this function is defined in gui/py/utils.py)
+ 
+ then, check &quot;Allow filtration&quot; and click the refresh button on the Filters tab. 
+ Then, click on play and all dynamic bodies will be colorized with their velocity magnitude.
+ 
+ &gt; 
+ &gt; Thank you very much, you are very helpful to me due to lack of
+ &gt; documentation and I'm sorry to bother you so much.
+ 
+ fell free for asking, don`t hesitate. 
+
+-- 
+Best regards, Sergei D.
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000634.html">[deprecated list] [Yade-users] How to use	ConstitutiveLawDispatcher in pithon
+</A></li>
+	<LI>Next message: <A HREF="000635.html">[deprecated list] [Yade-users] ConstitutiveLawDispatcher and	ElasticContactLaw
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#647">[ date ]</a>
+              <a href="thread.html#647">[ thread ]</a>
+              <a href="subject.html#647">[ subject ]</a>
+              <a href="author.html#647">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] all yade users,	please introduce yourself!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C4A5591FE.5090801%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000883.html">
+   <LINK REL="Next"  HREF="000903.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] all yade users,	please introduce yourself!</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C4A5591FE.5090801%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] all yade users,	please introduce yourself!">eudoxos at arcig.cz
+       </A><BR>
+    <I>Thu Jul  9 08:45:18 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000883.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+        <LI>Next message: <A HREF="000903.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#895">[ date ]</a>
+              <a href="thread.html#895">[ thread ]</a>
+              <a href="subject.html#895">[ subject ]</a>
+              <a href="author.html#895">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Written? Yes, any of the colliders we have would do the job. Just set 
+</I>&gt;<i> an interval for e.g. insertionSortCollider, and run it periodically 
+</I>&gt;<i> with detectionFactor = 1.5.
+</I>&gt;<i> During N timesteps, use the same list of interactions (some will go 
+</I>&gt;<i> from virtual to real, or real to virtual, no problem with that as long 
+</I>&gt;<i> as they can change many times).
+</I>&gt;<i> I experimented that before with the triangulation collider, it worked 
+</I>&gt;<i> well, but it was not faster than SAPcollider for a stupid reason (*), 
+</I>&gt;<i> and I realised the same thing could be achieved with SAPcollider with 
+</I>&gt;<i> intDetectionFactor=1.5.
+</I>&gt;<i> It needs a few adjustments in other classes now, perhaps, perhaps not. 
+</I>&gt;<i> For instance, i'm not sure requestDeletion(i) will let &quot;i&quot; become real 
+</I>&gt;<i> again, but this would be minimal changes.
+</I>&gt;<i> The problem with CGAL::triangulation is its not parallel.
+</I>We would need to define some measure of maximum velocity and adjust 
+collider's interval so that we wouldn't miss interactions. I am not sure 
+how much it would help, as number of AABB overlaps is proportional to 
+detectionFactor^3, whereas time savings are linear to the stride of 
+collider wakeups. As we have ABB overlaps in the same container as real 
+interactions, it will also slow down loop over interactions (shouldn't 
+we split that in 2  containers?). I will try to experiment with that; I 
+created <A HREF="https://blueprints.launchpad.net/yade/+spec/collider-stride">https://blueprints.launchpad.net/yade/+spec/collider-stride</A> to 
+track the idea.
+
+&quot;Written?&quot;=triangulation collider. I am still not sure about legal 
+status of CGAL, if we may use it or not. They have something about using 
+it in GPL programs on their license page, but it is not very clear. 
+They're killing their product by those restrictions, at least for me 
+(too bad they have python wrappers for their lib, also).
+&gt;<i>
+</I>&gt;<i> We will experiment, thank you for the tip. I'm not so sure a lot of 
+</I>&gt;<i> algebra libraries with parallel features are available.
+</I>There is PLENTY! At least those oofem uses are 
+<A HREF="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview">http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview</A> and 
+<A HREF="http://www.mcs.anl.gov/petsc/petsc-2/,">http://www.mcs.anl.gov/petsc/petsc-2/,</A> which are damn good as far as I 
+know (see also 
+<A HREF="http://www.mcs.anl.gov/petsc/petsc-2/miscellaneous/external.html">http://www.mcs.anl.gov/petsc/petsc-2/miscellaneous/external.html</A>).
+&gt;<i>
+</I>&gt;&gt;<i> Oh, BTW, is there agreement on having useShear by default and
+</I>&gt;&gt;<i> progressively remove prevNormal from various InteractionPhysics classes?
+</I>&gt;<i> I'd prefer to keep the traditional (Cundall) incremental form for now. 
+</I>&gt;<i> The equations are simpler, especially in 3D, so it is easier to 
+</I>&gt;<i> understand what happens and implement different laws. I will change my 
+</I>&gt;<i> mind one day perhaps, but for now I feel like the incremental form is 
+</I>&gt;<i> good enough for dry friction. :)
+</I>Ah, nay, there is still misunderstanding here. Read 
+SpheresContactGeometry::updateShear and compare it to updateShearForce. 
+It is the _same_ incremental formulation, but it increments shear 
+_displacement_ (rather than _force_), which is, I think, what most 
+constitutive laws need (even if they are non-linear) and therefore can 
+use. I would like to have that incremental formulas at one place only. 
+(The non-incremental algo is in Dem3Dof* classes and I am quite happy 
+with it.)
+
+V.
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000883.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+	<LI>Next message: <A HREF="000903.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#895">[ date ]</a>
+              <a href="thread.html#895">[ thread ]</a>
+              <a href="subject.html#895">[ subject ]</a>
+              <a href="author.html#895">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

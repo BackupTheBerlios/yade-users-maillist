@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Subversion checkout/update issue	under Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Subversion%20checkout/update%20issue%0A%09under%20Windows&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09A2A271%40kstud7.utk.tennessee.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000568.html">
+   <LINK REL="Next"  HREF="000570.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Subversion checkout/update issue	under Windows</H1>
+    <B>Chen, Feng</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Subversion%20checkout/update%20issue%0A%09under%20Windows&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09A2A271%40kstud7.utk.tennessee.edu%3E"
+       TITLE="[deprecated list] [Yade-users] Subversion checkout/update issue	under Windows">fchen3 at utk.edu
+       </A><BR>
+    <I>Sun Jan 18 22:26:58 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000568.html">[deprecated list] [Yade-users] Subversion checkout/update issue	under Windows
+</A></li>
+        <LI>Next message: <A HREF="000570.html">[deprecated list] [Yade-users] Relative Density
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, Vaclav:
+
+I agree that one don't know how to type command and debug source code might not be good to use YADE:-), however, is there a way that we can first compile a pure null-gui interface on windows (I think it can either on cygwin or use mingw), so we can avoid any platform related GUI issues like qt, xlib, etc?
+
+Feng 
+
+
+-----Original Message-----
+From: yade-users-bounces+fchen3=<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">utk.edu at lists.launchpad.net</A> on behalf of V&#225;clav S(milauer
+Sent: Sun 1/18/2009 4:14 PM
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Subject: Re: [Yade-users] Subversion checkout/update issue under Windows
+ 
+
+&gt;<i> Personally I anticipate very much a windows version of YADE, although
+</I>&gt;<i> I myself currently have no time to do this. Since we should aware the
+</I>&gt;<i> potential users of YADE, a large percent of the users would be from
+</I>&gt;<i> Civil Engineering, Mechanical Engineering community. If we keep
+</I>&gt;<i> compile YADE purely on Linux, I am afraid we might lose some potential
+</I>&gt;<i> users: the learning curve for Linux and YADE is way much longer than
+</I>&gt;<i> windows, although we can argue Linux is a good, free, open source
+</I>&gt;<i> system, but I did see some people gave up and turned to sth like PFC,
+</I>&gt;<i> typing command and debugging source codes is not a mandatory training
+</I>&gt;<i> for most Civil Engineers. In a word, can we make things easier? :-)
+</I>&gt;<i>
+</I>I don't have any windows machine by hand where I could test things. But
+it there are people creating (and maintaining) the port, I don't see
+problem with that. Let me add, though, that I don't have time to
+actively support that at this moment, nor do I think it is that
+important for yade: it is not mature enough (e.g. compared to pfc) to be
+used by people who don't know how to type a command and debug source code.
+
+There are a few problems that will be faced for sure when working on
+pure-windows port (no cygwin):
+1. scons works under windows, but SConstruct file contains a few
+UNIX-isms, like / for path separator and default directories.
+2. the plugin loader may have issues (not sure).
+3. at a few places, POSIX (but not standard libc) functions are used.
+The qt gui has a few calls to xlib functions as well.
+4. some gcc extensions are being used (like __attribute__), they will
+not work with other compilers.
+(5. If windows-specific things begin to complicate source code, the
+advantage of relatively homogeneous development platform will be lost
+and many devs will grumble about that (me inclusive).)
+
+Regards, Vaclav
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090118/403ecda9/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090118/403ecda9/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000568.html">[deprecated list] [Yade-users] Subversion checkout/update issue	under Windows
+</A></li>
+	<LI>Next message: <A HREF="000570.html">[deprecated list] [Yade-users] Relative Density
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#569">[ date ]</a>
+              <a href="thread.html#569">[ thread ]</a>
+              <a href="subject.html#569">[ subject ]</a>
+              <a href="author.html#569">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

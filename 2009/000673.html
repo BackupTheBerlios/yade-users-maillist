@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Time Series Forcing	implementation in python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C1237745187.4291.48.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000700.html">
+   <LINK REL="Next"  HREF="000675.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Time Series Forcing	implementation in python</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C1237745187.4291.48.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Time Series Forcing	implementation in python">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sun Mar 22 19:06:27 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000700.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+        <LI>Next message: <A HREF="000675.html">[deprecated list] [Yade-users] Yade on AIX cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#673">[ date ]</a>
+              <a href="thread.html#673">[ thread ]</a>
+              <a href="subject.html#673">[ subject ]</a>
+              <a href="author.html#673">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> There will be about 50 dynamic particles in the simulation, and at each
+</I>&gt;<i> time step, each particle should have a different force from the times
+</I>&gt;<i> series applied to it.  There is only one component of the force.  I have
+</I>&gt;<i> been working only with python so far, and I would prefer to use it
+</I>&gt;<i> instead of C++.  What is the maximum number of data points that could be
+</I>&gt;<i> used with python?
+</I>&gt;<i> 
+</I>&gt;<i> It would be helpful if you could tell me the syntax for using the
+</I>&gt;<i> InterpolatingSpiralEngine in python.
+</I>
+You can try in python first and then see if it is fast enough. One of
+your engines will be 
+
+
+StandAloneEngine('PeriodicPythonRunner',{'iterPeriod':1,'command':'applyForces()'})
+
+(note that this engine must be before NewtonsDampedLaw) and you do all
+the rest in applyForces that you define somewhere before you call
+O.run():
+
+def applyForces():
+	bex=BexContainer()
+	for b in O.bodies:
+		f=... # your stuff
+		bex.addForce(b.id,f)
+
+
+To see the performance impact, go
+<A HREF="http://yade.wikia.com/wiki/Speed_profiling_using_TimingInfo_and_TimingDeltas_classes">http://yade.wikia.com/wiki/Speed_profiling_using_TimingInfo_and_TimingDeltas_classes</A> ; basically you say O.timingEnabled=True before running the simulation and
+
+ import yade.timing
+ timing.stats()
+
+when finished.
+
+----
+
+For InterpolatingSpiralEngine, the syntax is like this:
+
+velocities=[10.1,10.2,10.7,9.1,8.2,7.5,6.1] # velocities
+times=[0.1,.3,.4,.6,.8,1.0,1.2] # t at which the velocities were measures
+assert(len(velocities)==len(times))
+subscribers=[0,1,2,3,4,5,6]
+O.engines=[
+ #...
+ DeusExMachina('InterpolatingSpiralEngine',{'times':times,'angularVelocities':velocities,'wrap':True,'slope':thrAxRad,'subscribedBodies':subscribers,'axisPt':[0,0,0],'axis':[0,0,-1],'label':'driver'}),
+ #...
+]
+
+In your case, you would have to pass to your hypothetical engine a list
+of readings for each body, probably as list of lists (but that is not
+supported at this moment from python to yade, unless you play dirty
+tricks that I can show you), and the time points. Reading the data from
+file to memory at the point of engine construction would be another
+option.
+
+Vaclav
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000700.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+	<LI>Next message: <A HREF="000675.html">[deprecated list] [Yade-users] Yade on AIX cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#673">[ date ]</a>
+              <a href="thread.html#673">[ thread ]</a>
+              <a href="subject.html#673">[ subject ]</a>
+              <a href="author.html#673">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

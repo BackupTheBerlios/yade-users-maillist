@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] yade install help
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20yade%20install%20help&In-Reply-To=%3C4820B350.7050209%40columbia.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000211.html">
+   <LINK REL="Next"  HREF="000213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] yade install help</H1>
+    <B>Benjamin Fragneaud</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20yade%20install%20help&In-Reply-To=%3C4820B350.7050209%40columbia.edu%3E"
+       TITLE="[Yade-users] yade install help">bf2204 at columbia.edu
+       </A><BR>
+    <I>Tue May  6 21:36:48 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000211.html">[Yade-users] yade install help
+</A></li>
+        <LI>Next message: <A HREF="000213.html">[Yade-users] yade install help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Vaclav,
+I am running with the debug option on. It says that it doesn't detect 
+foreach.hpp in the boost library:
+
+/&quot;In file included from core/BodyContainer.hpp:16,
+                 from core/BodyContainer.cpp:11:
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp:15:29: 
+error: boost/foreach.hpp: No such file or directory
+&quot; etc...
+/
+but I found it in boost/test/util. So to see that it was just a problem 
+of library location, I copy paste it in boost/ and then it says. This 
+first problem diseapear, but now it says:
+
+/&quot;usr/include/features.h:150:1: warning: this is the location of the 
+previous definition
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp: 
+In member function 'void Serializable::registerAttribute(const 
+std::string&amp;, Type&amp;)':
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp:75: 
+error: expected primary-expression before 'a'
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp:75: 
+error: there are no arguments to 'BOOST_FOREACH' that depend on a 
+template parameter, so a declaration of 'BOOST_FOREACH' must be available
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp:75: 
+error: (if you use '-fpermissive', G++ will accept your code, but 
+allowing the use of an undeclared name is deprecated)
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp:75: 
+error: expected `;' before '{' token
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp: 
+In member function 'void Serializable::registerAttribute(const 
+std::string&amp;, Type&amp;)':
+/home/benjamin/Desktop/yade/build-svn1342/include/yade-svn1342/yade/lib-serialization/Serializable.hpp:75: 
+error: expected primary-expression before 'a'
+&quot; etc...etc...
+/
+And then it fails...
+Do you have any idea of what is happening?
+Sincerely,
+Ben
+
+
+V&#225;clav S wrote:
+&gt;&gt;<i> I also tried to install a newer version from svn folders but I didn't find
+</I>&gt;&gt;<i> out how to install it. Every time I run the latest version there is errors
+</I>&gt;&gt;<i> during the building process.
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> More precisely? You can improve Yade by telling us what kind of problems
+</I>&gt;<i> do you have and I will fix wiki so that other people don't face the same
+</I>&gt;<i> problem again.
+</I>&gt;<i>
+</I>&gt;<i> For the original problem: make sure you have the &quot;gdb&quot; (debugger)
+</I>&gt;<i> package installed and that you build with debug=1 (implicit value). If
+</I>&gt;<i> you run yade from terminal, it will output backtrace when it crashes,
+</I>&gt;<i> which helps to find out what happened very quickly.
+</I>&gt;<i>
+</I>&gt;<i> Regards, Vaclav
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000211.html">[Yade-users] yade install help
+</A></li>
+	<LI>Next message: <A HREF="000213.html">[Yade-users] yade install help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

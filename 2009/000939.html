@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Peak results
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Peak%20results&In-Reply-To=%3C1249631543.16687.6.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000938.html">
+   <LINK REL="Next"  HREF="000940.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Peak results</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Peak%20results&In-Reply-To=%3C1249631543.16687.6.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Peak results">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri Aug  7 09:52:23 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000938.html">[deprecated list] [Yade-users] Peak results
+</A></li>
+        <LI>Next message: <A HREF="000940.html">[deprecated list] [Yade-users] Peak results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#939">[ date ]</a>
+              <a href="thread.html#939">[ thread ]</a>
+              <a href="subject.html#939">[ subject ]</a>
+              <a href="author.html#939">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Has anybody the problem with &quot;peak results&quot;?
+</I>&gt;<i> I mean, when you record the data from anything, for example force
+</I>&gt;<i> affecting on facet or sphere, 
+</I>&gt;<i> sometimes you get &quot;pick results&quot; which are twice or more larger than
+</I>&gt;<i> normal result.
+</I>&gt;<i> It happens just for a short period, like a noise.
+</I>
+Eh, probably everybody has had that problem. 
+
+Taking force on 1 particle makes no sense, you have to average it
+somehow. DEM doesn't solve for equilibrium, therefore you can either let
+the simulation stabilize somehow (dissipate all the kinetic energy), or
+average somehow what you see over larger area (or both). You can compute
+forces on a specimen cross-section or some meaningfully defined set of
+particles; if you have a facet that touches many spheres, that could be
+a good candidate as well, as long as the sphere move independently.
+
+You can try taking force from 1 single particle and smooth it using
+moving average or similar techniques (they are available in the numpy
+package), but that is just &quot;graph aesthetics&quot;.
+
+e.g. examples/concrete/uniaxial sums forces (in UniaxialStrainer) on all
+particles that are considered supports and lower and higher supports are
+then averaged. There are still some osciallations (as there are waves
+going back and forth in the specimen), but that is not so marked unless
+you go to very high loading rates. The same example also plots
+cross-section forces (i.e. forces in interactions that cross that plane)
+and you can see that they differ. 
+
+Vaclav
+
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000938.html">[deprecated list] [Yade-users] Peak results
+</A></li>
+	<LI>Next message: <A HREF="000940.html">[deprecated list] [Yade-users] Peak results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#939">[ date ]</a>
+              <a href="thread.html#939">[ thread ]</a>
+              <a href="subject.html#939">[ subject ]</a>
+              <a href="author.html#939">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

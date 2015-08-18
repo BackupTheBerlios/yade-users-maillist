@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Problems with save/load
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problems%20with%20save/load&In-Reply-To=%3C47C69F2A.1060606%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000104.html">
+   <LINK REL="Next"  HREF="000106.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Problems with save/load</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problems%20with%20save/load&In-Reply-To=%3C47C69F2A.1060606%40arcig.cz%3E"
+       TITLE="[Yade-users] Problems with save/load">eudoxos at arcig.cz
+       </A><BR>
+    <I>Thu Feb 28 12:46:50 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000104.html">[Yade-users] Problems with save/load
+</A></li>
+        <LI>Next message: <A HREF="000106.html">[Yade-users] Simulation with 100,000 sphere (Bruno Chareyre)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> The solution has just been given to me by an other PhD of my lab. I
+</I>&gt;<i> afford me to make a new mail for everyone :
+</I>&gt;<i> - the problem was that the save gave wrong values (which correspond to
+</I>&gt;<i> nothing) to some attributes of engines : for exemple here in my case I
+</I>&gt;<i> had in the save file
+</I>&gt;<i> &quot;&lt;engines _className_=&quot;ElasticCriterionTimeStepper&quot;  active=&quot;/ *3* /&quot;/&gt;&quot;
+</I>&gt;<i> / whereas this attribute is a boolean... and was equal to 1 at the
+</I>&gt;<i> beginning of the calculation.
+</I>It must be a serializer bug, since a boolean attribute has values only 0
+or 1.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000104.html">[Yade-users] Problems with save/load
+</A></li>
+	<LI>Next message: <A HREF="000106.html">[Yade-users] Simulation with 100,000 sphere (Bruno Chareyre)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

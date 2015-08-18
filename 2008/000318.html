@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Compiling during a calculation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Compiling%20during%20a%20calculation&In-Reply-To=%3C48526B15.4030802%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000316.html">
+   <LINK REL="Next"  HREF="000319.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Compiling during a calculation</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Compiling%20during%20a%20calculation&In-Reply-To=%3C48526B15.4030802%40arcig.cz%3E"
+       TITLE="[Yade-users] Compiling during a calculation">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri Jun 13 14:41:57 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000316.html">[Yade-users] Compiling during a calculation
+</A></li>
+        <LI>Next message: <A HREF="000319.html">[Yade-users] Compiling during a calculation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#318">[ date ]</a>
+              <a href="thread.html#318">[ thread ]</a>
+              <a href="subject.html#318">[ subject ]</a>
+              <a href="author.html#318">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Hello everybody. I wonder what would happen if I would compile changes 
+</I>&gt;<i> in source files while some calculations are running. Does this affect 
+</I>&gt;<i> the current calculations or not ?
+</I>&gt;<i>   
+</I>It will not. Plugins are already loaded (in kernel speak, they are
+mmap'ed) and if you overwrite the file with new version, Linux is smart
+enough to keep the overwritten version in memory, because it is mmap'ed
+into the memory space of a program running. When you run yade again,
+however, it will use plugins as they are on disk, i.e. the new ones.
+
+For the same reason you can upgrade your packages while the system is
+running.
+
+Vaclav
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000316.html">[Yade-users] Compiling during a calculation
+</A></li>
+	<LI>Next message: <A HREF="000319.html">[Yade-users] Compiling during a calculation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#318">[ date ]</a>
+              <a href="thread.html#318">[ thread ]</a>
+              <a href="subject.html#318">[ subject ]</a>
+              <a href="author.html#318">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

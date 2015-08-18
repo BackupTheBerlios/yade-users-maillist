@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Weight of non dynamic bodies
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Weight%20of%20non%20dynamic%20bodies&In-Reply-To=%3C48FCC198.2060607%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000505.html">
+   <LINK REL="Next"  HREF="000506.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Weight of non dynamic bodies</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Weight%20of%20non%20dynamic%20bodies&In-Reply-To=%3C48FCC198.2060607%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] Weight of non dynamic bodies">eudoxos at arcig.cz
+       </A><BR>
+    <I>Mon Oct 20 19:36:24 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000505.html">[deprecated list] [Yade-users] Characteristics of the program
+</A></li>
+        <LI>Next message: <A HREF="000506.html">[deprecated list] [Yade-users] Getting back lost files - .os - .so	files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#496">[ date ]</a>
+              <a href="thread.html#496">[ thread ]</a>
+              <a href="subject.html#496">[ subject ]</a>
+              <a href="author.html#496">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jerome Duriez wrote:
+&gt;<i> Hello Vaclav, I thought that this mail won't interess many people of
+</I>&gt;<i> the mailing list so I send it to you directly. I remember that you
+</I>&gt;<i> told me in Aussois that, for non dynamic bodies, gravity engines do
+</I>&gt;<i> not add the weight of the body to the acting forces. I did not find in
+</I>&gt;<i> the code (in &quot;GravityEngines&quot;) where this could be, and a test showed
+</I>&gt;<i> me that it is indeed not the case (in my case non dynamic bodies have
+</I>&gt;<i> a weight). It is a detail but I wanted to know if I dreamed of this
+</I>&gt;<i> phrase or if I miss something ? Thanks, see you.
+</I>Hi, I was a bit confused sure at that point of talk, but it was a first
+&quot;reasonable&quot; explanation as to why forces on top and bottom bodies
+didn't match... Finally I think that the conclusion was different (and
+in accord with what you say): the top dynamic body had gravity force
+downwards and reaction from the bottom body upwards (so the overall
+force was almost like 1e-6) and the bottom body had gravity and the
+reaction from the top body added, both in the downwards direction.
+
+Regards, Vaclav
+
+PS. I think everybody on the list would be interested, as it is always
+nice to see people (me, in this case) saying stupid things, right?
+Cc'ing there.
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000505.html">[deprecated list] [Yade-users] Characteristics of the program
+</A></li>
+	<LI>Next message: <A HREF="000506.html">[deprecated list] [Yade-users] Getting back lost files - .os - .so	files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#496">[ date ]</a>
+              <a href="thread.html#496">[ thread ]</a>
+              <a href="subject.html#496">[ subject ]</a>
+              <a href="author.html#496">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

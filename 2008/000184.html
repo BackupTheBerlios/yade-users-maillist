@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] &quot;Arbitrary parameter&quot; in	CohesiveFrictionalRelationships (or SimpleElasticRelationships)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20%22Arbitrary%20parameter%22%0A%20in%09CohesiveFrictionalRelationships%20%28or%20SimpleElasticRelationships%29&In-Reply-To=%3C4804DBDE.9070204%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000183.html">
+   <LINK REL="Next"  HREF="000187.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] &quot;Arbitrary parameter&quot; in	CohesiveFrictionalRelationships (or SimpleElasticRelationships)</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20%22Arbitrary%20parameter%22%0A%20in%09CohesiveFrictionalRelationships%20%28or%20SimpleElasticRelationships%29&In-Reply-To=%3C4804DBDE.9070204%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] &quot;Arbitrary parameter&quot; in	CohesiveFrictionalRelationships (or SimpleElasticRelationships)">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Tue Apr 15 18:46:22 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000183.html">[Yade-users] &quot;Arbitrary parameter&quot; in	CohesiveFrictionalRelationships (or SimpleElasticRelationships)
+</A></li>
+        <LI>Next message: <A HREF="000187.html">[Yade-users] &quot;Arbitrary parameter&quot; in	CohesiveFrictionalRelationships (or SimpleElasticRelationships)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#184">[ date ]</a>
+              <a href="thread.html#184">[ thread ]</a>
+              <a href="subject.html#184">[ subject ]</a>
+              <a href="author.html#184">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jerome Duriez a &#233;crit :
+&gt;<i>
+</I>&gt;<i> - first of all are Da and Db the radii of the spheres in contact ?
+</I>Yes.
+
+&gt;<i> - then it is written that the &quot;2.0&quot; that appears in the calculations 
+</I>&gt;<i> of the various rigidities are &quot;arbitrary parameters&quot;. Why introducing 
+</I>&gt;<i> &quot;arbitrary parameters&quot; ?
+</I>Two different answers :
+
+For lines 88/89 : I am the author of the &quot;2.0&quot; factor. I can tell it is 
+not arbitrary, it is because I define kn as E*diameter (why not 
+E*radius? well... this is arbitrary ;)).
+
+For line 94 : This equation is from Jean-Patrick Plassiard and was 
+implemented by Janek. I really don't know if it is arbitrary or not (and 
+perhaps the comment refers unadequatly to &quot;arbitrary&quot; factors of lines 
+88/89 because Janek asked me &quot;why two?&quot;, and I answered &quot;arbitrary&quot; 
+without thinking twice).
+
+Anyway, elastic behaviour at contacts is somewhat &quot;arbitrary&quot; isn't it? 
+So having arbitrary parameters is not a problem in itself, you just need 
+to know how things are defined.
+&gt;<i>
+</I>&gt;<i> I ask this question because I want to use the results (the values of 
+</I>&gt;<i> parameters calibrated) of the paper mentionned in the class 
+</I>&gt;<i> (&quot;Plassiard &amp; al&quot;) and the comparison would be immediate without this 
+</I>&gt;<i> 2.0 coefficient (even if I should recognize that with it, it is not so 
+</I>&gt;<i> much more complicated...)
+</I>It is strange that the factor is not in the paper too as the equations 
+are supposed to be the same. Perhaps you are interpretating some values 
+the wrong way. Remember that the stiffness of a contact is half of the 
+stiffness of one body?
+
+Bruno
+
+
+&gt;<i>
+</I>&gt;<i> Jerome
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000183.html">[Yade-users] &quot;Arbitrary parameter&quot; in	CohesiveFrictionalRelationships (or SimpleElasticRelationships)
+</A></li>
+	<LI>Next message: <A HREF="000187.html">[Yade-users] &quot;Arbitrary parameter&quot; in	CohesiveFrictionalRelationships (or SimpleElasticRelationships)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#184">[ date ]</a>
+              <a href="thread.html#184">[ thread ]</a>
+              <a href="subject.html#184">[ subject ]</a>
+              <a href="author.html#184">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

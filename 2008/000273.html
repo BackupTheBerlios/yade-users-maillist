@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How is the cohesion treated in YADE?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20is%20the%20cohesion%20treated%20in%20YADE%3F&In-Reply-To=%3C4847D8E1.4010202%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000272.html">
+   <LINK REL="Next"  HREF="000274.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How is the cohesion treated in YADE?</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20is%20the%20cohesion%20treated%20in%20YADE%3F&In-Reply-To=%3C4847D8E1.4010202%40arcig.cz%3E"
+       TITLE="[Yade-users] How is the cohesion treated in YADE?">eudoxos at arcig.cz
+       </A><BR>
+    <I>Thu Jun  5 14:15:29 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000272.html">[Yade-users] How is the cohesion treated in YADE?
+</A></li>
+        <LI>Next message: <A HREF="000274.html">[Yade-users] How is the cohesion treated in YADE?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#273">[ date ]</a>
+              <a href="thread.html#273">[ thread ]</a>
+              <a href="subject.html#273">[ subject ]</a>
+              <a href="author.html#273">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>There is the brefcom model (in extra) that is supposed to do just that
+(cohesion) and is formulated using continuum mechanics (strain/stress)
+rather than particles and there is code to make the transition from
+displacements/positions etc to normal strain, shear strain and back from
+stresses to forces. The material model itself cannot be disclosed, but
+you can easily add your own. It is pretty much work in progress now,
+however.
+
+For cohesion, make sure you use enable distant contacts in
+PersistentSAPCollider and
+InteractingSphere2InteractingSphere4SpheresContactGeometry. The old
+approach would use persistentContacts, but there are (by general
+consensus) deprecated and will be removed.
+
+Vaclav
+&gt;<i> Hi,
+</I>&gt;<i>  
+</I>&gt;<i> is the cohesion property of some kind of material (like rock) treated
+</I>&gt;<i> in YADE?
+</I>&gt;<i> if so, how it is modeled? bonded model?
+</I>&gt;<i>  
+</I>&gt;<i> Thanks.
+</I>&gt;<i> Kan
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000272.html">[Yade-users] How is the cohesion treated in YADE?
+</A></li>
+	<LI>Next message: <A HREF="000274.html">[Yade-users] How is the cohesion treated in YADE?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#273">[ date ]</a>
+              <a href="thread.html#273">[ thread ]</a>
+              <a href="subject.html#273">[ subject ]</a>
+              <a href="author.html#273">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

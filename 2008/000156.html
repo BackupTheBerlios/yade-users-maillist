@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] The critical time step?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20The%20critical%20time%20step%3F&In-Reply-To=%3C47F6598F.9030604%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000154.html">
+   <LINK REL="Next"  HREF="000157.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] The critical time step?</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20The%20critical%20time%20step%3F&In-Reply-To=%3C47F6598F.9030604%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] The critical time step?">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Fri Apr  4 18:38:39 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000154.html">[Yade-users] The critical time step?
+</A></li>
+        <LI>Next message: <A HREF="000157.html">[Yade-users] The critical time step?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>kan a &#233;crit :
+&gt;<i> Hey, guys,
+</I>&gt;<i>  
+</I>&gt;<i> I have a problem to get the critical timestep, could you please give 
+</I>&gt;<i> me hand?
+</I>&gt;<i> if I need to calculate the critical time step for each time steps, how 
+</I>&gt;<i> can I calculate it?
+</I>&gt;<i> From papers, I found that equation is:
+</I>&gt;<i> critical_time_step=2*sqrt(mass/k),
+</I>&gt;<i>  
+</I>&gt;<i> my questions are:
+</I>&gt;<i> 1. is the mass the particle mass?
+</I>Its the generalized mass. i.e. one mass for each degree of liberty : 
+actual mass for 3 translation axis, and inertia matrix for the 3 
+rotation axis. Its a bit difficult to uncouple rotational degrees of 
+liberty because corresponding &quot;mass&quot; is a matrix...
+Cundall proposed to use diagonal terms as an approximation, its what I 
+did in GlobalStiffnessTimestepper.
+
+&gt;<i> 2. k here is kn or ks or some other value else?
+</I>
+Again generalized stiffness : a matrix including translational and 
+rotational stiffnesses (taking into account all contacts on bodies). And 
+again I used the diagonal terms to associate a scalar stiffness to each 
+degree of liberty.
+
+&gt;<i> 3. I need to calculate all the critical_time_step for each particle, 
+</I>&gt;<i> and then use the mininum one, right?
+</I>yes
+&gt;<i>  
+</I>&gt;<i> and I hear that in the past, the critical_time_step need to calculated 
+</I>&gt;<i> at each timestep, then why and how?
+</I>Contact created/deleted = stiffness changed.
+
+&gt;<i> if I do it at the beginning and get the mininum critical_time_step, 
+</I>&gt;<i> and then keep it as the critical time step for the overall simulation, 
+</I>&gt;<i> will it work?
+</I>No, unless you set big security margin, which would mean a waste of time.
+
+Bruno
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000154.html">[Yade-users] The critical time step?
+</A></li>
+	<LI>Next message: <A HREF="000157.html">[Yade-users] The critical time step?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

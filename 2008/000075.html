@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] NBS algorithm
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20NBS%20algorithm&In-Reply-To=%3CBE1A3E6D6B8F8047B1C72C2F4F3FFC8A49AD1D%40EXCHANGE2VS4.campus.mcgill.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000080.html">
+   <LINK REL="Next"  HREF="000076.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] NBS algorithm</H1>
+    <B>Kien Dang, Mr</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20NBS%20algorithm&In-Reply-To=%3CBE1A3E6D6B8F8047B1C72C2F4F3FFC8A49AD1D%40EXCHANGE2VS4.campus.mcgill.ca%3E"
+       TITLE="[Yade-users] NBS algorithm">kien.dang at mail.mcgill.ca
+       </A><BR>
+    <I>Sat Feb  9 21:01:41 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000080.html">[Yade-users] simulation main loop
+</A></li>
+        <LI>Next message: <A HREF="000076.html">[Yade-users] NBS algorithm, SAP (sweep and prune) collider
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+I am currently implementing the NBS and MR contact detection algorithms, since the cell should be big enough for the largest element. I intent to divide all the bodies into 2 group: spheres and boxes. Then, the contact detection is performed over the spheres. The problem arise when I need to detect contact between box and sphere. Is there any other way than to loop over all the spheres and boxes?
+
+Btw, I dont know exactly what algorithm is used in PersistentSAPCollider and is it faster than the NBS when I look at the code, it seems that the sorting algorithm was employed (not sure yet)
+THank you so much,
+
+Kien Dang,
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000080.html">[Yade-users] simulation main loop
+</A></li>
+	<LI>Next message: <A HREF="000076.html">[Yade-users] NBS algorithm, SAP (sweep and prune) collider
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#75">[ date ]</a>
+              <a href="thread.html#75">[ thread ]</a>
+              <a href="subject.html#75">[ subject ]</a>
+              <a href="author.html#75">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

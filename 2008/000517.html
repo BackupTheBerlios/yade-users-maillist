@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Probleme avec un mur &#224; d&#233;placer sous Python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%0A%20%3D%3Fwindows-1252%3Fq%3F%3D5BYade-users%3D5D_Probleme_avec%3F%3D%0A%20%3D%3Fwindows-1252%3Fq%3F_un_mur_%3DE0_d%3DE9placer_sous_Python%3F%3D&In-Reply-To=%3C4908ACC2.5050104%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000502.html">
+   <LINK REL="Next"  HREF="000520.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Probleme avec un mur &#224; d&#233;placer sous Python</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%0A%20%3D%3Fwindows-1252%3Fq%3F%3D5BYade-users%3D5D_Probleme_avec%3F%3D%0A%20%3D%3Fwindows-1252%3Fq%3F_un_mur_%3DE0_d%3DE9placer_sous_Python%3F%3D&In-Reply-To=%3C4908ACC2.5050104%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] Probleme avec un mur &#224; d&#233;placer sous Python">eudoxos at arcig.cz
+       </A><BR>
+    <I>Wed Oct 29 19:34:42 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000502.html">[deprecated list] [Yade-users] parametric studies &quot;framework&quot;
+</A></li>
+        <LI>Next message: <A HREF="000520.html">[deprecated list] [Yade-users] problem with SDEClinkedSpheres
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#517">[ date ]</a>
+              <a href="thread.html#517">[ thread ]</a>
+              <a href="subject.html#517">[ subject ]</a>
+              <a href="author.html#517">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Je ne comprends pas pourquoi mon mur du dessus qui a une vitesse nulle
+</I>&gt;<i> se deplace &#224; l'infini.
+</I>&gt;<i> Pourtant dans mon fichier j'ai bien mis:
+</I>&gt;<i>
+</I>&gt;<i> o.bodies[41]['isDynamic']=True;   #Premiere facette
+</I>&gt;<i> o.bodies[41].phys['velocity']=[0,0,0];  #Deuxi&#232;me facette
+</I>&gt;<i> o.bodies[42]['isDynamic']=True;    #Premiere facette
+</I>&gt;<i> o.bodies[42].phys['velocity']=[0,0,0]   #Deuxi&#232;me facette
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;<i> DeusExMachina('TranslationEngine',{'subscribedBodies':[41],'velocity':0,'translationAxis':[0,0,-1]}), 
+</I>&gt;<i> #Premiere facette
+</I>&gt;<i>   
+</I>&gt;<i> DeusExMachina('TranslationEngine',{'subscribedBodies':[42],'velocity':0,'translationAxis':[0,0,-1]}), 
+</I>&gt;<i> #Deuxi&#232;me facette
+</I>&lt;footnote&gt;
+You can do this in a more efficient way:
+
+ DeusExMachina('TranslationEngine',{'subscribedBodies':[41,42],'velocity':0,'translationAxis':[0,0,-1]}),
+&lt;/footnote&gt;
+
+Well, it actually doesn't make much sense to have the body dynamic and
+prescribe translation at the same time, does it? The problem of
+displacement being infinity is that facets have zero mass (see
+o.bodies[41].phys['mass']) and that doesn't do any good to the integrator.
+
+I think that for the wall that does the compression, it would be perhaps
+better to use regular box instead of facets; if you have it with
+wire=True, you will even still see what is goig on down there.
+
+I am not sure what you're trying to achieve? A box compressing spheres
+from above, ok, but if it has contact speed, it will explode at one
+point, since no force will stop that box. Wouldn't it be better to
+actually prescribe force? But force will be constant, if you want to
+change at runtime, you would need something more sophisticated, like
+TriaxialTest, but only 1d.
+
+HTH, Vaclav
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000502.html">[deprecated list] [Yade-users] parametric studies &quot;framework&quot;
+</A></li>
+	<LI>Next message: <A HREF="000520.html">[deprecated list] [Yade-users] problem with SDEClinkedSpheres
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#517">[ date ]</a>
+              <a href="thread.html#517">[ thread ]</a>
+              <a href="subject.html#517">[ subject ]</a>
+              <a href="author.html#517">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

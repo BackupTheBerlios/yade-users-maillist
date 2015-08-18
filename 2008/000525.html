@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20problem&In-Reply-To=%3C4912FECF.4020602%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000524.html">
+   <LINK REL="Next"  HREF="000526.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] problem</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20problem&In-Reply-To=%3C4912FECF.4020602%40geo.hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] problem">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Thu Nov  6 15:27:27 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000524.html">[deprecated list] [Yade-users] problem
+</A></li>
+        <LI>Next message: <A HREF="000526.html">[deprecated list] [Yade-users] problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#525">[ date ]</a>
+              <a href="thread.html#525">[ thread ]</a>
+              <a href="subject.html#525">[ subject ]</a>
+              <a href="author.html#525">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+ricardo garrido a &#233;crit :
+&gt;<i> we have a problem showing the results of each example ( force,
+</I>&gt;<i> velocity, etc), we are using 0.12rc1 version. if you can tell us if
+</I>&gt;<i> exist any command to generate the files with the results. we are very
+</I>&gt;<i> grateful
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>   The running of a Yade simulation is based on &quot;Engines&quot; that act on 
+the sample at each time step. That are these Engines that detect the 
+contacts, compute the contact forces, update positions and velocities, 
+and so on...
+   I say you that to let you understand that you have also to use some 
+of these Engines if you want to record anything during a simulation. You 
+have so to define them (if they are not yet) in the source files of your 
+Preprocessor - or directly in the .xml issued from the generation of 
+your preprocessor. Give a look to files like &quot;PositionRecorder&quot; (in 
+pkg/dem/Engine/StandAloneEngine) or in the preprocessors where such 
+Recorders are used.
+
+Jerome
+
+NB : you could have found a more explicit title, there are a lot of 
+different problem you can face with Yade...
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000524.html">[deprecated list] [Yade-users] problem
+</A></li>
+	<LI>Next message: <A HREF="000526.html">[deprecated list] [Yade-users] problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#525">[ date ]</a>
+              <a href="thread.html#525">[ thread ]</a>
+              <a href="subject.html#525">[ subject ]</a>
+              <a href="author.html#525">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

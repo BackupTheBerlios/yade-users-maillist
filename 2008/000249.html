@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Velocities of non dynamic bodies, for contact laws ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Velocities%20of%20non%20dynamic%20bodies%2C%0A%20for%20contact%20laws%20%3F&In-Reply-To=%3C4832CC00.9070801%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000248.html">
+   <LINK REL="Next"  HREF="000256.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Velocities of non dynamic bodies, for contact laws ?</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Velocities%20of%20non%20dynamic%20bodies%2C%0A%20for%20contact%20laws%20%3F&In-Reply-To=%3C4832CC00.9070801%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Velocities of non dynamic bodies, for contact laws ?">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Tue May 20 15:02:56 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000248.html">[Yade-users] Velocities of non dynamic bodies,	for contact laws ?
+</A></li>
+        <LI>Next message: <A HREF="000256.html">[Yade-users] Velocities of non dynamic bodies, for contact laws ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#249">[ date ]</a>
+              <a href="thread.html#249">[ thread ]</a>
+              <a href="subject.html#249">[ subject ]</a>
+              <a href="author.html#249">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Wall's velocity is need if
+</I>&gt;<i> 1. there is the shear contact =&gt; the velocity is need for incremental shear displacement (=&gt;the shear force, friction)
+</I>&gt;<i> 2. there is the viscous dissipation =&gt; the  velocity is need for dumping force.
+</I>&gt;<i> For normal elastic contact without viscous the velocity isn't need (the normal displacement is nonincremental but instantaneous)
+</I>&gt;<i> In you example, as seems, the wall's shear movement will be not influence on the sphere... 
+</I>&gt;<i> Is that a bug or a feature is dependent on TriaxialTest purposes. :)
+</I>&gt;<i>   
+</I>
+Ok, thank you for this summary, now I think I see quite clear.
+    In fact unfortunately for me I make simulations of direct shear box 
+(with DirectShearCis preprocessor), I took the example of TriaxialTest 
+only because I think a lot of Yade-users know it. So I think I will now 
+pay attention to the velocities I set...
+Thanks
+
+Jerome
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000248.html">[Yade-users] Velocities of non dynamic bodies,	for contact laws ?
+</A></li>
+	<LI>Next message: <A HREF="000256.html">[Yade-users] Velocities of non dynamic bodies, for contact laws ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#249">[ date ]</a>
+              <a href="thread.html#249">[ thread ]</a>
+              <a href="subject.html#249">[ subject ]</a>
+              <a href="author.html#249">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

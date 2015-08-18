@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] yade install help
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20yade%20install%20help&In-Reply-To=%3C4820C15C.4030607%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000212.html">
+   <LINK REL="Next"  HREF="000214.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] yade install help</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20yade%20install%20help&In-Reply-To=%3C4820C15C.4030607%40arcig.cz%3E"
+       TITLE="[Yade-users] yade install help">eudoxos at arcig.cz
+       </A><BR>
+    <I>Tue May  6 22:36:44 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000212.html">[Yade-users] yade install help
+</A></li>
+        <LI>Next message: <A HREF="000214.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#213">[ date ]</a>
+              <a href="thread.html#213">[ thread ]</a>
+              <a href="subject.html#213">[ subject ]</a>
+              <a href="author.html#213">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> &quot;usr/include/features.h:150:1: warning: this is the location of the 
+</I>&gt;<i> previous definition
+</I>&gt;<i>   
+</I>I am sure it says something _berfore_ this line, that a macro was
+redefined. Knowing which macro it is is important. What distro are you
+on? foreach.hpp was integrated into boost for the 1.34 version IIRC, you
+can either upgrade or copy foreach.hpp from 1.34, which is what I would
+advise. Janek posted that file to the mailing list recently
+(<A HREF="http://article.gmane.org/gmane.science.physics.yade.devel/367">http://article.gmane.org/gmane.science.physics.yade.devel/367</A>).
+
+(Your version from test/util/foreach.hpp seems to not define
+BOOST_FOREACH, since otherwise it would not get to the compiler but
+would be replaced by the preprocessor.)
+
+Vaclav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000212.html">[Yade-users] yade install help
+</A></li>
+	<LI>Next message: <A HREF="000214.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#213">[ date ]</a>
+              <a href="thread.html#213">[ thread ]</a>
+              <a href="subject.html#213">[ subject ]</a>
+              <a href="author.html#213">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Python%20scripting%20for%20create%0A%20links%2C%20change%20player%20config%20and%20model%20scale%20question&In-Reply-To=%3C498DCBE2.80308%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000617.html">
+   <LINK REL="Next"  HREF="000620.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Python%20scripting%20for%20create%0A%20links%2C%20change%20player%20config%20and%20model%20scale%20question&In-Reply-To=%3C498DCBE2.80308%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sat Feb  7 18:58:58 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000617.html">[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+</A></li>
+        <LI>Next message: <A HREF="000620.html">[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#619">[ date ]</a>
+              <a href="thread.html#619">[ thread ]</a>
+              <a href="subject.html#619">[ subject ]</a>
+              <a href="author.html#619">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> The mean radius of the debris is about 0.0004 m, in this case the
+</I>&gt;<i> critical timestep is 10^-6 and with many particles it takes too much
+</I>&gt;<i> time to have a one or two minutes simulation, in Your opinion could I
+</I>&gt;<i> use a scaled model to have a bigger radius ad a bigger timestep, how
+</I>&gt;<i> should I modify set up parameters like Gravity, should I leave 9.81
+</I>&gt;<i> cause the mass is auto calculated from dimensions?
+</I>&gt;<i>   
+</I>I am not sure if I understand what are you going to scale. If you will
+simulate only smaller part of the problem, you don't really scale
+anything, just use smaller domain. You can have more rough particles and
+see if you get realistic results. You will never have 1 minute
+simulation, just forget that, with 10^-6 timestep (unless you have 10
+particles or something).
+
+I've been working with (and smaller) .3mm particles now. To quickly
+guess the simulation time, you can use this formula:
+
+ number_of_particles*number_of_timesteps*computer_constant=computation
+time [s]
+
+where computer_constant is time/particle_and_timestep, given that number
+of interactions scales roughly with number of particles. The
+computer_constant is, in my case, about 3e-5 (2.4GHz Opteron), so you
+get the idea how much you can simulate. For 1 minute simulation of 1e3
+particles with 1e-6 timestep (i.e. 6e7 steps) you get 21 days.
+&gt;<i> I read a lot of posts of the mailing list but I have not found anything
+</I>&gt;<i> about commanding the Yade player with Python, for example i saved a
+</I>&gt;<i> simulation in SQLite, but the clipping plane make scene cut, How can I
+</I>&gt;<i> change clipping plane?
+</I>&gt;<i>   
+</I>See gui/qt3/GLViewer.hpp, it has a comment at the beginning that
+explains the keystrokes. F1,F2,F3 to select the plane, space to
+(de)activate it, Escape to return to scene manipulation.
+&gt;<i> How can I set particle links with python script, there is a function
+</I>&gt;<i> that at a certain level of force breack the links?
+</I>&gt;<i>   
+</I>During the simulation, this is done by the constitutive law, which is
+written in c++ (since it is very computationally intensive; in can be,
+in principle, in Python, but it would be too slow to be usable). There
+is quite a few of them, depending on the material you need. Some of them
+have friction, cohesion, ..., etc, others can comment better on that. If
+you have special law for your case, your best bet is to write a new
+constitutive law from scratch. Have a look at ElasticContactLaw2 for a
+quite simple example.
+
+Regards, Vaclav
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000617.html">[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+</A></li>
+	<LI>Next message: <A HREF="000620.html">[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#619">[ date ]</a>
+              <a href="thread.html#619">[ thread ]</a>
+              <a href="subject.html#619">[ subject ]</a>
+              <a href="author.html#619">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

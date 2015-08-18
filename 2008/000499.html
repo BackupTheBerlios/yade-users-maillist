@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] compiling problem with	yade-0.12.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20compiling%20problem%20with%0A%09yade-0.12.0&In-Reply-To=%3C4900B471.6040100%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000498.html">
+   <LINK REL="Next"  HREF="000511.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] compiling problem with	yade-0.12.0</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20compiling%20problem%20with%0A%09yade-0.12.0&In-Reply-To=%3C4900B471.6040100%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] compiling problem with	yade-0.12.0">eudoxos at arcig.cz
+       </A><BR>
+    <I>Thu Oct 23 19:29:21 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000498.html">[deprecated list] [Yade-users] DynLibDispatcher: ambigious	dispatch ??
+</A></li>
+        <LI>Next message: <A HREF="000511.html">[deprecated list] [Yade-users] compiling problem with	yade-0.12.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#499">[ date ]</a>
+              <a href="thread.html#499">[ thread ]</a>
+              <a href="subject.html#499">[ subject ]</a>
+              <a href="author.html#499">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Hello Luc. If I remember well, compiling with &quot;openmp=0&quot; will let
+</I>&gt;<i> disappear the first type of error. For the two others, it is because
+</I>&gt;<i> you don't use the good compiler : you need g++ with version &gt;= 4.3.
+</I>&gt;<i> But for that you will surely need to update your Linux distribution
+</I>&gt;<i> (to Intrepid). Very sincerely GOOD LUCK
+</I>Luc, I switched to 4.3 because its optimizations are far superior to
+what 4.2 has to offer and I had speedups of about 30% just with that. If
+you don't want to upgrade (leaving aside the fact, that you can upgrade
+only your compiler, using this archive:
+<A HREF="https://launchpad.net/~ubuntu-toolchain/+archive">https://launchpad.net/~ubuntu-toolchain/+archive</A> - I suggest that you do
+that), you can edit SConstruct file and change &quot;native&quot; to your
+architecture for which you want to optimize -- see &quot;man gcc&quot; for the
+list of those.
+
+If you upgrade to intrepid, I think you should have no problems. I did
+that on two machines, it went smoothly.
+
+Vaclav
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000498.html">[deprecated list] [Yade-users] DynLibDispatcher: ambigious	dispatch ??
+</A></li>
+	<LI>Next message: <A HREF="000511.html">[deprecated list] [Yade-users] compiling problem with	yade-0.12.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#499">[ date ]</a>
+              <a href="thread.html#499">[ thread ]</a>
+              <a href="subject.html#499">[ subject ]</a>
+              <a href="author.html#499">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Contact Model and Contact	Stiffness
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Contact%20Model%20and%20Contact%0A%09Stiffness&In-Reply-To=%3C48F8BC7F.50506%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000503.html">
+   <LINK REL="Next"  HREF="000505.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Contact Model and Contact	Stiffness</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Contact%20Model%20and%20Contact%0A%09Stiffness&In-Reply-To=%3C48F8BC7F.50506%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Contact Model and Contact	Stiffness">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Fri Oct 17 18:25:35 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000503.html">[deprecated list] [Yade-users] Contact Model and Contact Stiffness
+</A></li>
+        <LI>Next message: <A HREF="000505.html">[deprecated list] [Yade-users] Characteristics of the program
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#504">[ date ]</a>
+              <a href="thread.html#504">[ thread ]</a>
+              <a href="subject.html#504">[ subject ]</a>
+              <a href="author.html#504">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>mohammad islam a &#233;crit :
+&gt;<i>  Dear All,
+</I>&gt;<i> I am losing myself a little to understand the contact model and 
+</I>&gt;<i> contact stiffness used in YADE._Is it Linear Contact Model at 
+</I>&gt;<i> present_? I am trying to explain my question more details as 
+</I>&gt;<i> follows,first explanation then my question.
+</I>&gt;<i>
+</I>Hello Mohammad.
+
+A linear contact model is anything like F = k*U, provided that k is a 
+constant.
+All equations you mentionned only differ (or not) in the definition of 
+k, so _they are all linked with a linear contact model._
+I'll try to explain the very few ideas on which most equations below are 
+based.
+
+Starting from ref. (03) :
+
+Kn=(kn(A)*kn(B))/(kn(A)+kn(B)))   (eq. 1)
+
+You see here that the stiffness of the contact is in fact the equivalent 
+stiffness of two springs A and B, where ka and kb are the stiffnesses 
+assigned to each individual grains.
+
+Now the question is : how to define ka and kb?
+It is in fact convenient to define them as ki = E*ri, with E a constant. 
+The reason is, if you do that, the stiffness of the packing will be 
+independant on the size of particles (you can proove that with 
+dimensional analysis).
+
+Which writes, based on  eq. 1 :
+
+kn = (E.ra*E.rb)/(E.ra+E.rb) = E*ra*rb / (ra+rb)
+
+This is the equation you have in ref. (02) (with &quot;E&quot; named &quot;K&quot;, and 
+ra/rb replaced by the mean radius).
+If you assigned different values of E to different spheres (a mix of 
+hard and soft spheres), it gives the equation in  ref. (04) (except the 
+factor 2 that I will comment later, the key point here is just the 
+proportionnality between k and the scaling factor r).
+
+ks, is usually defined as a fraction of kn. Say, for grain i, 
+ks(i)=Vi*kn(i).
+
+ From equation 1 again, the equivalent tangential stiffness of the 
+contact will be :
+
+ks = ksa*ksb/(ksa+ksb) , which is, in a condensed form, the equation for 
+ks in ref. (04).
+
+About factor &quot;2&quot; in ref (04) : I added it in the equation so that the 
+Young Modulus Ey of the packing was very close to E in one special case, 
+but this is not something general. Denser/looser packings will have a 
+different proportionality between E and Ey.
+
+If you really want a constant proportionality, you need to replace &quot;2&quot; 
+by a function taking into account the properties of the microstructure. 
+One method for that, based on the coordination number, has been partly 
+implemented in Yade. I can't comment in depth because I did not work on 
+this method, but I know it gave this code with coefficients alpha, beta, 
+gamma, that you can see in MacroMicroElasticRelationship (and not in 
+ref(05) where this is just commented junk code).
+So, just take ref (06) as a more sophisticated form of ref (04).
+
+The only expression which - apparently - doesn't fit in this framework, 
+is the one in ref (01). I probably miss some details to understand why. 
+This equation is not used in Yade. But still, the equation in ref (01) 
+defines a constant, so it is relevant for a &quot;linear contact model&quot;.
+
+There is nothing fundamental, in fact, in the definition of k. If you 
+want k=10000 N/m at all contacts in your simulations, just write a 
+ExtremellySimpleElasticRelationship engine that will take values of kn 
+and ks as parameters and will assign them to all contacts. There would 
+be nothing wrong in doing that.
+
+Last remark, to prevent some confusion :
+I just removed this comment in SimpleElasticRelationships.cpp, because 
+it was just wrong (it was typed by some guys never using PFC apparently 
+;-)) :
+
+//This is the formula used in PFC-3D
+   //
+   //Real Kn = 4 * ((Ea+Eb)*0.5) * ((Da+Db)*0.5);
+   //Real Ks = Kn/2.0;
+
+I hope it helps.
+
+Bruno
+
+
+&gt;<i> Reference:
+</I>&gt;<i>  
+</I>&gt;<i> 01) Belheine.N et.al &quot;Numerical simulation of drained triaxial test 
+</I>&gt;<i> using 3D discrete element modeling&quot;Computers and Geotechnics,2008
+</I>&gt;<i>  
+</I>&gt;<i> Kn=(kn(A)*kn(B))/(kn(A)+kn(B)))/r   page number 03 (Article in press)
+</I>&gt;<i>  
+</I>&gt;<i> 02) Kozicki.J et.al.&quot;A new open-source software developed for 
+</I>&gt;<i> numerical simulations using discrete modeling methods&quot;
+</I>&gt;<i>  
+</I>&gt;<i> kn=r*(Kn(A)*Kn(B))/(Kn(A)+Kn(B)))  page number 04
+</I>&gt;<i>  
+</I>&gt;<i> 03) PFC3D,Theory and Background,Page Number 2-2,Article 2.1.1
+</I>&gt;<i>  
+</I>&gt;<i> Kn=(kn(A)*kn(B))/(kn(A)+kn(B)))
+</I>&gt;<i>  
+</I>&gt;<i> kn, normal secant stiffness=Kn,normal tangent stiffness
+</I>&gt;<i>  
+</I>&gt;<i> &gt;&gt;My question: what is the significance of &quot;r&quot; average radius,what are 
+</I>&gt;<i> the difference among reference 01,02,03.
+</I>&gt;<i>  
+</I>&gt;<i> Now inside of YADE (12.rc1)
+</I>&gt;<i>  
+</I>&gt;<i> 04) _pkg&gt;dem&gt;engine&gt;engineunit&gt;SimpleElasticRelationships.cpp_
+</I>&gt;<i>  
+</I>&gt;<i>           //Real Eab      = 2*Ea*Eb/(Ea+Eb);
+</I>&gt;<i>           //Real Vab      = 2*Va*Vb/(Va+Vb);
+</I>&gt;<i>             Real Dinit      = Da+Db;                                  
+</I>&gt;<i> //Real Sinit    = Mathr::PI * std::pow( std::min(Da,Db) , 2);
+</I>&gt;<i>
+</I>&gt;<i>              Real Kn = 2*Ea*Da*Eb*Db/(Ea*Da+Eb*Db);//harmonic average 
+</I>&gt;<i> of two stiffnesses                                     Real Ks = 
+</I>&gt;<i> 2*Ea*Da*Va*Eb*Db*Vb/(Ea*Da*Va+Eb*Db*Va);//harmonic average of two 
+</I>&gt;<i> stiffnesses with ks=V*kn for each sphere
+</I>&gt;<i> 05)_pkg&gt;dem&gt;engine&gt;standaloneengine&gt;GlobalStiffnessTimestepper.cpp_
+</I>&gt;<i>  
+</I>&gt;<i>   //    Real alpha      = sdecContactModel-&gt;alpha;
+</I>&gt;<i>  //     Real beta       = sdecContactModel-&gt;beta;
+</I>&gt;<i> //      Real gamma      = sdecContactModel-&gt;gamma;
+</I>&gt;<i> // //      Real Kn         = abs((Eab*Sinit/Dinit)*( 
+</I>&gt;<i> (1+alpha)/(beta*(1+Vab) + gamma*(1-alpha*Dab) ) ));
+</I>&gt;<i> //      Real Ks         = abs(Kn*(1-alpha*Vab)/(1+Vab));
+</I>&gt;<i>  
+</I>&gt;<i> 06&gt;pkg&gt;dem&gt;engine&gt;engineunit&gt;MacroMicroElasticRelationships.cpp
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i> &gt;&gt;In 04 and 05 the equation is different,can anybody explain a little 
+</I>&gt;<i> the difference and significance of 04 and 05.
+</I>&gt;<i>  
+</I>&gt;<i> Thanks in advance.
+</I>&gt;<i>  
+</I>&gt;<i> Regards,
+</I>&gt;<i> Mohammad Nurul Islam
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do You Yahoo!?
+</I>&gt;<i> Tired of spam? Yahoo! Mail has the best spam protection around
+</I>&gt;<i> <A HREF="http://mail.yahoo.com">http://mail.yahoo.com</A>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>   
+</I>
+
+
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000503.html">[deprecated list] [Yade-users] Contact Model and Contact Stiffness
+</A></li>
+	<LI>Next message: <A HREF="000505.html">[deprecated list] [Yade-users] Characteristics of the program
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#504">[ date ]</a>
+              <a href="thread.html#504">[ thread ]</a>
+              <a href="subject.html#504">[ subject ]</a>
+              <a href="author.html#504">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

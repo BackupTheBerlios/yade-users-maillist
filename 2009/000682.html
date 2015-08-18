@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Time Series Forcing	implementation in python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C1238390126.13355.2.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000706.html">
+   <LINK REL="Next"  HREF="000707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Time Series Forcing	implementation in python</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C1238390126.13355.2.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Time Series Forcing	implementation in python">eudoxos at arcig.cz
+       </A><BR>
+    <I>Mon Mar 30 07:15:26 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000706.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+        <LI>Next message: <A HREF="000707.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#682">[ date ]</a>
+              <a href="thread.html#682">[ thread ]</a>
+              <a href="subject.html#682">[ subject ]</a>
+              <a href="author.html#682">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>         
+</I>&gt;<i>         forces,times=[],[]
+</I>&gt;<i>         for line in
+</I>&gt;<i>         file('your.text.file.with.2.numbers.per.line.separated.by.whitespace')
+</I>&gt;<i>            if len(line.split())&lt;2: continue # skip empty lines
+</I>&gt;<i>            f,t=[float(s) for s in line.split()]
+</I>&gt;<i>            forces.append(f)
+</I>&gt;<i>            times.append(t)
+</I>&gt;<i>         
+</I>&gt;<i>         def applyForce():
+</I>&gt;<i>            # find index of the time we are at or just after now in the
+</I>&gt;<i>         series
+</I>&gt;<i>            # this is quite suboptimal, since it traverses the array
+</I>&gt;<i>         every time
+</I>&gt;<i>            i=0;
+</I>&gt;<i>            while times[i]&lt;O.time: i+=1
+</I>&gt;<i>            # and use force at that index
+</I>&gt;<i>            f=force[i]
+</I>&gt;<i> 
+</I>&gt;<i> Using the method above, yade will read my force data from file, but it
+</I>&gt;<i> will not apply it to the particles.  (I know that it is reading the
+</I>&gt;<i> force data properly because I have it print the force data from the
+</I>&gt;<i> file).  I do not get an error when I run the simulation, but the
+</I>&gt;<i> particles do not move.  I have tried larger magnitudes of forces to be
+</I>&gt;<i> sure that the particles would move if exposed to the applied force.
+</I>&gt;<i> Also, I am now running revision 1732.
+</I>well, you have to apply the force after f=force[i] in applyForce(), like
+we had that before! Something like
+
+for id in bodiesIWantToApplyForceTo:
+	O.actions.addF(id,f)
+
+&gt;<i> Second, when I use InterpolatingSpiralEngine, I get the following
+</I>&gt;<i> error: &quot;RuntimeError: Number sequence argument required.&quot;  The
+</I>&gt;<i> arguements for this engine include an angular velocity time series,
+</I>&gt;<i> but I have no knowledge of this data.  Therefore I do not understand
+</I>&gt;<i> why I need this engine.  Perhaps I should use a different
+</I>&gt;<i> interpolating engine?
+</I>I meant it as an example of interpolating engine. Of course it serves
+you for nothing as you don't need spiral motion. As said, once you're
+clear about what you need, no problem to write an engine LIKE that for
+your case.
+
+Vaclav
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000706.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+	<LI>Next message: <A HREF="000707.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#682">[ date ]</a>
+              <a href="thread.html#682">[ thread ]</a>
+              <a href="subject.html#682">[ subject ]</a>
+              <a href="author.html#682">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] all yade users,	please introduce yourself!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C1246993318.32158.13.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000866.html">
+   <LINK REL="Next"  HREF="000877.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] all yade users,	please introduce yourself!</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C1246993318.32158.13.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] all yade users,	please introduce yourself!">eudoxos at arcig.cz
+       </A><BR>
+    <I>Tue Jul  7 21:01:58 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000866.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+        <LI>Next message: <A HREF="000877.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#869">[ date ]</a>
+              <a href="thread.html#869">[ thread ]</a>
+              <a href="subject.html#869">[ subject ]</a>
+              <a href="author.html#869">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> &gt; Bruno: &quot;The time gain with &quot;parallel&quot; option is still very low&quot;. What
+</I>&gt;<i> &gt; speedups you get? For TriaxialTest(fast=True,numberOfGrains=10000), I
+</I>&gt;<i> &gt; have 48 vs. 28 iter/sec by setting OMP_NUM_THREADS to 4 and 1
+</I>&gt;<i> &gt; respectively. If you have some ideas for improvements, they will be very
+</I>&gt;<i> &gt; welcome.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> Oh!! I still have to try this. I was only looking at this yesterday : 
+</I>&gt;<i> <A HREF="http://yade.wikia.com/wiki/Triaxial_Test_Parallel">http://yade.wikia.com/wiki/Triaxial_Test_Parallel</A>
+</I>&gt;<i> 
+</I>&gt;<i> Suggesting a max of 25% speedup. Has it change?
+</I>&gt;<i> 
+</I>&gt;<i> I had a few ideas, like merging geomEngineUnit and physEngineUnit (less 
+</I>&gt;<i> loops and less sync), or at least don't dispatch interactions when 
+</I>&gt;<i> i-&gt;physics exists . I tried that, it gives 3% speedup just moving 
+</I>&gt;<i> if(!interaction-&gt;interactionPhysics) from the engine unit to the dispatcher.
+</I>&gt;<i> However, I saw you already merged geom+physics+contact law, so I gave 
+</I>&gt;<i> up... Is this merged version in the current SVN?
+</I>
+Yes, since perhaps more than a month. it is the InteractionDispatchers
+that is activated for TriaxialTest::fast. If you have some other ideas
+for speed, add them somewhere at the bottom of
+<A HREF="http://yade.wikia.com/wiki/Performance_Tuning">http://yade.wikia.com/wiki/Performance_Tuning</A>
+
+&gt;<i> Btw, the scripts/test/triax-perf.py you refer to in this page in not in 
+</I>&gt;<i> the trunk.
+</I>Sorry, I fixed that page. It should be examples/triax-perf/triax-perf.py
+(see comments in it)
+
+&gt;<i> I don't see any parallel command in the triaxialTest or in 
+</I>&gt;<i> ElasticContactLaw. How can it work?
+</I>Dispatchers handle that (either the triplet
+InteractionGeometryEngineUnit, InteractionPhysicsEngineUnit,
+ConstitutiveLawDispatcher; or InteractionDispatchers in one loop) with a
+few openmp #pragma statemenets. The number of threads is set by the
+OMP_NUM_THREADS env var in the shell.
+
+&gt;<i> Do you still have those big cpu time for the collider with 50k spheres? 
+</I>&gt;<i> I could have a few ideas for this.
+</I>
+I didn't run that with InsertionSortCollider (it didn't exist back
+then), but as seen from <A HREF="http://yade.wikia.com/wiki/Colliders_performace,">http://yade.wikia.com/wiki/Colliders_performace,</A>
+the collider should be about 2x faster. But it scales the same, so you
+will get 80% of time in collider once you use 100k spheres again.
+(BTW is it OK if I use InsertionSortCollider in TriaxialTest by default,
+even without &quot;fast&quot;?)
+
+&gt;<i> Regarding paralelization, we are working on solid-fluid coupling and we 
+</I>&gt;<i> will use a solver that support parallelization for solving large linear 
+</I>&gt;<i> systems (an open source library called &quot;taucs&quot;, used for sparse system 
+</I>&gt;<i> in mathematica, matlab, comsol and various good commercial codes). I 
+</I>&gt;<i> think it will be the good time to start using our multiproc server with 
+</I>&gt;<i> paralel Yade (I admit I did not really use this server yet...).
+</I>
+(taucs has been last released in 2003, does that give you great deal of
+confidence in its future?). How often are you going to solve the sparse
+system? If at every step, most time will be spent there probably (unless
+you have 100k+ particles). If taucs runs multi-threaded (it seems it
+does), it may interact badly with openMP threads which will be allocated
+independently. You will see.
+
+&gt;<i> &gt; Anton: &quot;Good to have YADE deb-package in repositories.&quot;. The
+</I>&gt;<i> &gt; infrastructure is there, <A HREF="https://launchpad.net/~yade-users/+archive/ppa">https://launchpad.net/~yade-users/+archive/ppa</A>
+</I>&gt;<i> &gt; has (one) package, but given the speed how yade evolves and until
+</I>&gt;<i> &gt; recently, you couldn't practically use it without writing c++ code, it
+</I>&gt;<i> &gt; didn't make much sense to distribute binaries.
+</I>&gt;<i> &gt;   
+</I>&gt;<i> You can still run triaxial tests with various number of grains, 
+</I>&gt;<i> friction, granulometry, compacity, etc. Not a negligeable thing as the 
+</I>&gt;<i> triaxial test is the first simulation for more than 50% of the dem users 
+</I>&gt;<i> I think.
+</I>
+Hm, good point. I would like to release yade at  some near future point,
+just for such purposes. Please add bugs and attach them to the 0.20-0
+milestone so that we can track what rests to be done. It looks more or
+less stabilized now.
+
+Vaclav
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000866.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+	<LI>Next message: <A HREF="000877.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#869">[ date ]</a>
+              <a href="thread.html#869">[ thread ]</a>
+              <a href="subject.html#869">[ subject ]</a>
+              <a href="author.html#869">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

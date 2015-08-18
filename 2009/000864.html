@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] crash in lattice model
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20crash%20in%20lattice%20model&In-Reply-To=%3C20090707150304.2a627940%40atak.bl.pg.gda.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000865.html">
+   <LINK REL="Next"  HREF="000874.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] crash in lattice model</H1>
+    <B>Janek Kozicki</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20crash%20in%20lattice%20model&In-Reply-To=%3C20090707150304.2a627940%40atak.bl.pg.gda.pl%3E"
+       TITLE="[deprecated list] [Yade-users] crash in lattice model">janek_listy at wp.pl
+       </A><BR>
+    <I>Tue Jul  7 15:03:04 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000865.html">[deprecated list] [Yade-users] FAQ on YADE
+</A></li>
+        <LI>Next message: <A HREF="000874.html">[deprecated list] [Yade-users] physParamsAttr -&gt; **physParamsAttr	(?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&#38472;&#25964;&#26494; said:     (by the date of Sun, 5 Jul 2009 05:50:42 +0800)
+
+&gt;<i> For the lattice model, I closed the primary view and then run the simulation just as you suggested, but after about 3-4 seconds (iteration #304)  the simulation still crashed. I don't know what's the problem.
+</I>
+first things first. Please make sure the we don't have any version
+conflicts here.
+
+Please delete your ~/.yade-* directories
+Then please delete your ~/YADE/ (backup anything you might need later)
+Then download again latest svn, compile it and run.
+
+It is a common error that yade uses some old plugins from previous
+versions, than are incompatibile, perhaps we would need some kind of
+binary lib* versioning to prevent that. It became my habit to delete
+config files and old binary files in case of some inexplicable
+problems.
+
+PS: please reply to the mailing list (not in private), it's better to
+keep the discussion public.
+
+best regards
+-- 
+Janek Kozicki                                                         |
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000865.html">[deprecated list] [Yade-users] FAQ on YADE
+</A></li>
+	<LI>Next message: <A HREF="000874.html">[deprecated list] [Yade-users] physParamsAttr -&gt; **physParamsAttr	(?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Quaternion question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Quaternion%20question&In-Reply-To=%3C930069bf0905060748m42d7a84bu2dcc12204126722e%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000726.html">
+   <LINK REL="Next"  HREF="000725.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Quaternion question</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Quaternion%20question&In-Reply-To=%3C930069bf0905060748m42d7a84bu2dcc12204126722e%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] Quaternion question">gladky.anton at gmail.com
+       </A><BR>
+    <I>Wed May  6 16:48:43 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000726.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+        <LI>Next message: <A HREF="000725.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#727">[ date ]</a>
+              <a href="thread.html#727">[ thread ]</a>
+              <a href="subject.html#727">[ subject ]</a>
+              <a href="author.html#727">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you, Sergei!
+
+I have also tried this way but with no success. Maybe I do not completely
+understand quaternions.
+I have attached the small XML file, what I generate. Yellow boxes are ok,
+but blue ones needs to be rotated a little bit around its long axis.
+
+Could you not give me an advice?
+
+Best Regards / Mit freundlichen Gr&#252;&#223;en /  &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+2009/5/6 Sergei D. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">sj2001 at yandex.ru</A>&gt;
+
+&gt;<i> Anton Gladky &#1087;&#1080;&#1096;&#1077;&#1090;:
+</I>&gt;<i> &gt; Hello all!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I have a quaternion question.
+</I>&gt;<i> &gt; I have two of them:
+</I>&gt;<i> &gt;   Q1 (0, 0, 1, PI/4) (around axis OZ)
+</I>&gt;<i> &gt;   Q1 (0, 1, 0, PI/6) (around axis OY)
+</I>&gt;<i> &gt; My box should be rotated using first quaternion, and the a second one. It
+</I>&gt;<i> is
+</I>&gt;<i> &gt; a new topic for me. Can anybody advice me, what should I do to solve this
+</I>&gt;<i> &gt; task?
+</I>&gt;<i> You can product them:
+</I>&gt;<i> if M - first rotation and Q - second rotation, then final rotation R is
+</I>&gt;<i> R = Q*M = (q0+q)*(m0+m) = q0 m0 - q Dot m + q0 m + m0 q + q Cross m,
+</I>&gt;<i> where q and m is the vector part of quaternions; q0 and m0 is the its
+</I>&gt;<i> scalar part.
+</I>&gt;<i>
+</I>&gt;<i> I don't know if there is quaternion product from python in YADE
+</I>&gt;<i> (Vaclav?), but from c++ it is simply as:
+</I>&gt;<i>
+</I>&gt;<i> Quaternion3r Q,M,R;
+</I>&gt;<i> R = Q*M;
+</I>&gt;<i>
+</I>&gt;<i> ps. Also you can see formulas and references in Appendix of my PhD
+</I>&gt;<i> thesis (in russian): <A HREF="http://dl.getdropbox.com/u/714488/DorofeenkoPhD.pdf">http://dl.getdropbox.com/u/714488/DorofeenkoPhD.pdf</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090506/45496b13/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090506/45496b13/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: scene.xml
+Type: text/xml
+Size: 7033 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090506/45496b13/attachment.xml">https://lists.berlios.de/pipermail/yade-users/attachments/20090506/45496b13/attachment.xml</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000726.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+	<LI>Next message: <A HREF="000725.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#727">[ date ]</a>
+              <a href="thread.html#727">[ thread ]</a>
+              <a href="subject.html#727">[ subject ]</a>
+              <a href="author.html#727">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

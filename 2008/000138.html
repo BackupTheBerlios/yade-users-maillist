@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] staticity quantification
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20staticity%20quantification&In-Reply-To=%3C47EA1AC7.9070409%40uni-bremen.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000137.html">
+   <LINK REL="Next"  HREF="000136.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] staticity quantification</H1>
+    <B>Stefan Kreiter</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20staticity%20quantification&In-Reply-To=%3C47EA1AC7.9070409%40uni-bremen.de%3E"
+       TITLE="[Yade-users] staticity quantification">skreiter at uni-bremen.de
+       </A><BR>
+    <I>Wed Mar 26 10:43:35 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000137.html">[Yade-users] staticity quantification
+</A></li>
+        <LI>Next message: <A HREF="000136.html">[Yade-users] get SVN access - give us your code!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#138">[ date ]</a>
+              <a href="thread.html#138">[ thread ]</a>
+              <a href="subject.html#138">[ subject ]</a>
+              <a href="author.html#138">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Yade Users,
+
+PFC works quite fine with the unbalanced force approach, which might 
+fail when you have a very loose assembly with no gravity.
+
+I think looking at energies is always a good idea, but you should always 
+look at the kinetic and the potential energy in the system. If the sum 
+goes down you approach equilibrium.
+
+   my two cents
+               Stefan
+
+Chen, Feng schrieb:
+&gt;<i>
+</I>&gt;<i> Hi, V&#225;clav:
+</I>&gt;<i>
+</I>&gt;<i> Currently I think using unbalanced force is the best way to know 
+</I>&gt;<i> whether your system is close to equilibrium.
+</I>&gt;<i>
+</I>&gt;<i> Using the &quot;velocity norm&quot; appears to be a direct quantity, however, 
+</I>&gt;<i> the &quot;velocities goes to zero, or kinetic energy goes to zero&quot; does not 
+</I>&gt;<i> equal to the equilibrium state. Consider a mass-spring vibration case, 
+</I>&gt;<i> when the velocity is zero for the mass, the acceleration for the mass 
+</I>&gt;<i> is the maximum.
+</I>&gt;<i>
+</I>&gt;<i> It might be similar to the simple problem when we study basic physics 
+</I>&gt;<i> in high school. How to define an object is &quot;static or equilibrium&quot; 
+</I>&gt;<i> (Newton's first law)?  Then you would think delta(vel_norm)/t_p = 0, 
+</I>&gt;<i> where t_p = a period of time, but it might be difficult to determine 
+</I>&gt;<i> your t_p in DEM?
+</I>&gt;<i>
+</I>&gt;<i> Feng Chen
+</I>&gt;<i> Graduate Student
+</I>&gt;<i> Department of Civil and Environmental Engineering
+</I>&gt;<i> 223 Perkins Hall
+</I>&gt;<i> University of Tennessee, Knoxville, 37996
+</I>&gt;<i> <A HREF="http://fchen3.googlepages.com/home">http://fchen3.googlepages.com/home</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-bounces at lists.berlios.de</A> on behalf of Bruno Chareyre
+</I>&gt;<i> Sent: Tue 3/25/2008 5:44 AM
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Subject: Re: [Yade-users] staticity quantification
+</I>&gt;<i>
+</I>&gt;<i> Hehehe.
+</I>&gt;<i> You don't like the &quot;UnbalancedForce&quot; parameter? ;-)
+</I>&gt;<i>
+</I>&gt;<i> It is exactly what you are looking for, and its already used the way you
+</I>&gt;<i> want to use it (switch between isotropic and axial compression)
+</I>&gt;<i>
+</I>&gt;<i> TriaxialCompressionEngine :
+</I>&gt;<i>
+</I>&gt;<i> if ( UnbalancedForce&lt;=StabilityCriterion &amp;&amp;
+</I>&gt;<i> abs((meanStress-sigma_iso)/sigma_iso)&lt;0.005 ) {
+</I>&gt;<i> if(currentState==STATE_ISO_COMPACTION &amp;&amp; autoCompressionActivation){
+</I>&gt;<i> doStateTransition(STATE_ISO_UNLOADING);
+</I>&gt;<i>
+</I>&gt;<i> &quot;UnbalancedForce&quot; is a normalized sum of forces on all bodies.
+</I>&gt;<i> It can be a bit higher than 1 when the system is really far from
+</I>&gt;<i> equilibrium (e.g. at the begining of the isotropic compression when only
+</I>&gt;<i> peripheral spheres are pushed by boxes), but it is generally between 0
+</I>&gt;<i> and 1.
+</I>&gt;<i> At static equilibrium, it is exactly equal to 0, which of course never
+</I>&gt;<i> happen. A reasonable value to consider something is stabilised could be
+</I>&gt;<i> between 1% and 0.1%.
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> V&#225;clav Smilauer a &#233;crit :
+</I>&gt;<i> &gt; Hello,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I would like to quantify how much has a simulation approached static
+</I>&gt;<i> &gt; state (provided such state exists). Has someone done that? I thought of
+</I>&gt;<i> &gt; summing velocity norms (but what should be the threshold here?) or
+</I>&gt;<i> &gt; perhaps observing whether global stiffness is almost-constant. (Bruno,
+</I>&gt;<i> &gt; you're expert on that, how would you do that?)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The reson for that is to programatically stop simulation once desired
+</I>&gt;<i> &gt; state is reached, without user interaction, so that I cun say: run that
+</I>&gt;<i> &gt; until it is done.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Vaclav
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Yade-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;  
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> _______________
+</I>&gt;<i> Chareyre Bruno
+</I>&gt;<i> Maitre de conference
+</I>&gt;<i>
+</I>&gt;<i> Institut National Polytechnique de Grenoble
+</I>&gt;<i> Laboratoire 3S (Soils Solids Structures) - bureau E145
+</I>&gt;<i> BP 53 - 38041, Grenoble cedex 9 - France
+</I>&gt;<i> T&#233;l : 33 4 56 52 86 21
+</I>&gt;<i> Fax : 33 4 76 82 70 43
+</I>&gt;<i> ________________
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000137.html">[Yade-users] staticity quantification
+</A></li>
+	<LI>Next message: <A HREF="000136.html">[Yade-users] get SVN access - give us your code!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#138">[ date ]</a>
+              <a href="thread.html#138">[ thread ]</a>
+              <a href="subject.html#138">[ subject ]</a>
+              <a href="author.html#138">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

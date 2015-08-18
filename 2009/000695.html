@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Compilation problem on Power5	AIX cluster
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Compilation%20problem%20on%20Power5%0A%09AIX%20cluster&In-Reply-To=%3C1239013843.18214.17.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000694.html">
+   <LINK REL="Next"  HREF="000709.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Compilation problem on Power5	AIX cluster</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Compilation%20problem%20on%20Power5%0A%09AIX%20cluster&In-Reply-To=%3C1239013843.18214.17.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Compilation problem on Power5	AIX cluster">eudoxos at arcig.cz
+       </A><BR>
+    <I>Mon Apr  6 12:30:43 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000694.html">[deprecated list] [Yade-users] Compilation problem on Power5 AIX	cluster
+</A></li>
+        <LI>Next message: <A HREF="000709.html">[deprecated list] [Yade-users] depreceated mailing list update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#695">[ date ]</a>
+              <a href="thread.html#695">[ thread ]</a>
+              <a href="subject.html#695">[ subject ]</a>
+              <a href="author.html#695">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> AttributeError: 'NoneType' object has no attribute 'split':
+</I>&gt;<i>   File &quot;/opt/yade/SConstruct&quot;, line 331:
+</I>&gt;<i>     ok=(conf.CheckPython() and conf.CheckIPython() and
+</I>&gt;<i> CheckLib_maybeMT(conf,'boost_python','boost/python.hpp','c++','boost::python::scope();')
+</I>&gt;<i> and conf.CheckCXXHeader(['Python.h','numpy/ndarrayobject.h'],'&lt;&gt;'))
+</I>&gt;<i>   File &quot;/opt/freeware/lib/scons-1.2.0/SCons/SConf.py&quot;, line 636:
+</I>&gt;<i>     ret = apply(self.test, (context,) +  args, kw)
+</I>&gt;<i>   File &quot;/opt/yade/SConstruct&quot;, line 255:
+</I>&gt;<i> context.env.Append(CPPPATH=ds.get_python_inc(),LIBS=ds.get_config_var('LIBS').split())
+</I>&gt;<i> Checking for Python development files...
+</I>&gt;<i> 
+</I>&gt;<i> If you could tell me something I'll be very thankful.
+</I>
+OK, it seems that your python installation is weird... can you run this
+in the shell, please
+
+python -c 'import distutils.sysconfig,pprint; pprint.pprint(distutils.sysconfig.get_config_vars())' &gt; /tmp/somefile
+
+and send the /tmp/somefile as attachment?
+
+In r1746, we handle empty LIBS now, but I am not sure whether other
+distutils attributes can be affected as well. Maybe it will fix your
+problem and maybe not.
+
+HTH, Vaclav
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000694.html">[deprecated list] [Yade-users] Compilation problem on Power5 AIX	cluster
+</A></li>
+	<LI>Next message: <A HREF="000709.html">[deprecated list] [Yade-users] depreceated mailing list update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#695">[ date ]</a>
+              <a href="thread.html#695">[ thread ]</a>
+              <a href="subject.html#695">[ subject ]</a>
+              <a href="author.html#695">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

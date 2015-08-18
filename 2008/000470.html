@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Successive slightly different simulations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D79FAD.6010209%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000469.html">
+   <LINK REL="Next"  HREF="000471.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Successive slightly different simulations</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D79FAD.6010209%40arcig.cz%3E"
+       TITLE="[Yade-users] Successive slightly different simulations">eudoxos at arcig.cz
+       </A><BR>
+    <I>Mon Sep 22 15:37:49 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000469.html">[Yade-users] Successive slightly different simulations
+</A></li>
+        <LI>Next message: <A HREF="000471.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#470">[ date ]</a>
+              <a href="thread.html#470">[ thread ]</a>
+              <a href="subject.html#470">[ subject ]</a>
+              <a href="author.html#470">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Hello everybody. I made at last my first attempt today : I have
+</I>&gt;<i> defined my script &quot;script.py&quot; (attached), put it in the same folder as
+</I>&gt;<i> my executable &quot;yade-trunk&quot; where is already located the .xml that the
+</I>&gt;<i> script will use.
+</I>Well, fix your yade instalation ;-)
+&gt;<i> FATAL core/Omega.cpp:251 scanPlugins: Undefined symbol `typeinfo for
+</I>&gt;<i> GlobalStiffness'
+</I>&gt;<i> (/home/jerome/YADE/lib/yade-trunk/extra/libBrefcom.so: undefined
+</I>&gt;<i> symbol: _ZTI15GlobalStiffness).
+</I>&gt;<i> WARN  core/Omega.cpp:266 scanPlugins: Couldn't load everything, some
+</I>&gt;<i> stuff may work incorrectly.
+</I>You must be using some older version, recent ones will abort if there is
+problem with plugins. You have to link Brefcom with GlobalStiffness (in
+extra/SConstruct: LIBS=...) and recompile. Do a &quot;svn update&quot; if you can,
+that's the safest way to run up-to-date code, this doens't happen in
+trunk since, as I just checked, Brefcom links against Shop, which in
+turns links agains GlobalStiffness.
+
+Otherwise, your script looks fine, although you will also have to save
+data from your simulation you want to get somewhere, before you reload.
+
+Vaclav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000469.html">[Yade-users] Successive slightly different simulations
+</A></li>
+	<LI>Next message: <A HREF="000471.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#470">[ date ]</a>
+              <a href="thread.html#470">[ thread ]</a>
+              <a href="subject.html#470">[ subject ]</a>
+              <a href="author.html#470">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

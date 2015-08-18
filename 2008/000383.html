@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] svn-bzr alternative / Live CD/DVD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20svn-bzr%20alternative%20/%20Live%20CD/DVD&In-Reply-To=%3C225efd590807211128o3e0439dcr43fbfce28711270f%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000381.html">
+   <LINK REL="Next"  HREF="000384.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] svn-bzr alternative / Live CD/DVD</H1>
+    <B>Daryl Begaye</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20svn-bzr%20alternative%20/%20Live%20CD/DVD&In-Reply-To=%3C225efd590807211128o3e0439dcr43fbfce28711270f%40mail.gmail.com%3E"
+       TITLE="[Yade-users] svn-bzr alternative / Live CD/DVD">dcbegaye at gmail.com
+       </A><BR>
+    <I>Mon Jul 21 20:28:24 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000381.html">[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+</A></li>
+        <LI>Next message: <A HREF="000384.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#383">[ date ]</a>
+              <a href="thread.html#383">[ thread ]</a>
+              <a href="subject.html#383">[ subject ]</a>
+              <a href="author.html#383">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok, so I'm very close to finishing the Live Yade CD/DVD but there seems to
+be an issue between bzr and python, and it seems that the svn checkouts
+don't work for me.
+Heres the error I get when using *bzr branch lp:yade*
+
+bzr: ERROR: socket.error: (110, 'Connection timed out')
+
+Traceback (most recent call last):
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/commands.py&quot;, line 834, in
+run_bzr_catch_errors
+    return run_bzr(argv)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/commands.py&quot;, line 790, in
+run_bzr
+    ret = run(*run_argv)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/commands.py&quot;, line 492, in
+run_argv_aliases
+    return self.run(**all_cmd_args)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/builtins.py&quot;, line 897, in
+run
+    from_location)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/bzrdir.py&quot;, line 773, in
+open_tree_or_branch
+    bzrdir = klass.open(location)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/bzrdir.py&quot;, line 650, in
+open
+    t = get_transport(base, possible_transports=possible_transports)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/lazy_import.py&quot;, line 125,
+in __call__
+    return obj(*args, **kwargs)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/transport/__init__.py&quot;, line
+1576, in get_transport
+    base = directories.dereference(base)
+  File &quot;/usr/lib/python2.5/site-packages/bzrlib/directory_service.py&quot;, line
+52, in dereference
+    return service().look_up(name, url)
+  File
+&quot;/usr/lib/python2.5/site-packages/bzrlib/plugins/launchpad/lp_directory.py&quot;,
+line 60, in look_up
+    return self._resolve(url)
+  File
+&quot;/usr/lib/python2.5/site-packages/bzrlib/plugins/launchpad/lp_directory.py&quot;,
+line 76, in _resolve
+    result = resolve.submit(service)
+  File
+&quot;/usr/lib/python2.5/site-packages/bzrlib/plugins/launchpad/lp_registration.py&quot;,
+line 180, in submit
+    self._authenticated)
+  File
+&quot;/usr/lib/python2.5/site-packages/bzrlib/plugins/launchpad/lp_registration.py&quot;,
+line 145, in send_request
+    result = method(*method_params)
+  File &quot;/usr/lib/python2.5/xmlrpclib.py&quot;, line 1147, in __call__
+    return self.__send(self.__name, args)
+  File &quot;/usr/lib/python2.5/xmlrpclib.py&quot;, line 1437, in __request
+    verbose=self.__verbose
+  File &quot;/usr/lib/python2.5/xmlrpclib.py&quot;, line 1183, in request
+    self.send_content(h, request_body)
+  File &quot;/usr/lib/python2.5/xmlrpclib.py&quot;, line 1297, in send_content
+    connection.endheaders()
+  File &quot;/usr/lib/python2.5/httplib.py&quot;, line 860, in endheaders
+    self._send_output()
+  File &quot;/usr/lib/python2.5/httplib.py&quot;, line 732, in _send_output
+    self.send(msg)
+  File &quot;/usr/lib/python2.5/httplib.py&quot;, line 699, in send
+    self.connect()
+  File &quot;/usr/lib/python2.5/httplib.py&quot;, line 1134, in connect
+    sock.connect((self.host, self.port))
+  File &quot;&lt;string&gt;&quot;, line 1, in connect
+error: (110, 'Connection timed out')
+
+bzr 1.3.1 on python 2.5.2.final.0 (linux2)
+arguments: ['/usr/bin/bzr', 'branch', 'lp:yade']
+encoding: 'ANSI_X3.4-1968', fsenc: 'ANSI_X3.4-1968', lang: 'en_US.UTF-8'
+plugins:
+  launchpad
+/usr/lib/python2.5/site-packages/bzrlib/plugins/launchpad [unknown]
+*** Bazaar has encountered an internal error.
+    Please report a bug at <A HREF="https://bugs.launchpad.net/bzr/+filebug">https://bugs.launchpad.net/bzr/+filebug</A>
+    including this traceback, and a description of what you
+    were doing when the error occurred.
+
+is there an alternative way to download the snapshots of yade?
+
+regards Daryl
+
+-- 
+Daryl Begaye
+Din&#233; College
+<A HREF="http://www.dinecollege.edu">http://www.dinecollege.edu</A>
+Major(s): Computer Science and Fine Arts
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080721/89c8a8b8/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080721/89c8a8b8/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000381.html">[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+</A></li>
+	<LI>Next message: <A HREF="000384.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#383">[ date ]</a>
+              <a href="thread.html#383">[ thread ]</a>
+              <a href="subject.html#383">[ subject ]</a>
+              <a href="author.html#383">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] The critical time step?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20The%20critical%20time%20step%3F&In-Reply-To=%3C47FCEAA7.5050509%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000172.html">
+   <LINK REL="Next"  HREF="000158.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] The critical time step?</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20The%20critical%20time%20step%3F&In-Reply-To=%3C47FCEAA7.5050509%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] The critical time step?">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Apr  9 18:11:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000172.html">[Yade-users] The critical time step?
+</A></li>
+        <LI>Next message: <A HREF="000158.html">[Yade-users] Error message in installing YADE in Ubuntu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>V
+&gt;&gt;&gt;<i> Bruno, how does this value compare to critical timestep calculated from
+</I>&gt;&gt;&gt;<i> elastic wave propagation speed along the particle calculated for
+</I>&gt;&gt;&gt;<i> cotinuum, i.e. , which is 2*particle diameter / sqrt(Young's modulus /
+</I>&gt;&gt;&gt;<i> density)?
+</I>&gt;&gt;&gt;<i>       
+</I>I see how it compares now, with global stiffness approach we have :
+
+- The stiffness of one contact is proportional to D*E  (D : particle 
+diameter, E elastic modulus)
+- The mass of one particle is proportional to density*pow(D,3)
+
+So, if a particle has only one contact, its critical timestep (with 
+global stiffness approach) will be :
+sqrt(mass/stiffness) = D*sqrt(density/E) = your equation.
+
+Advantage :
+The underlying physics is the same but your equation is faster.
+
+Potential problems :
+-As soon as a particle has two contacts it will explode.
+-If shear stiffness is high compared to normal stiffness (unusual 
+situation in fact), it will explode.
+
+Conclusion : you need to find a reasonable value for a security 
+coefficient to include in your expression.
+
+Bruno
+
+
+
+
+
+
+
+
+
+
+&gt;&gt;&gt;<i>     
+</I>O
+
+
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000172.html">[Yade-users] The critical time step?
+</A></li>
+	<LI>Next message: <A HREF="000158.html">[Yade-users] Error message in installing YADE in Ubuntu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Trouble with installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Trouble%20with%20installation&In-Reply-To=%3C380-22008712813203573%40M2W009.mail2web.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000395.html">
+   <LINK REL="Next"  HREF="000398.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Trouble with installation</H1>
+    <B>jpvassal at mail.insa-lyon.fr</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Trouble%20with%20installation&In-Reply-To=%3C380-22008712813203573%40M2W009.mail2web.com%3E"
+       TITLE="[Yade-users] Trouble with installation">jpvassal at mail.insa-lyon.fr
+       </A><BR>
+    <I>Mon Jul 28 15:20:03 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000395.html">[Yade-users] Trouble with installation
+</A></li>
+        <LI>Next message: <A HREF="000398.html">[Yade-users] Trouble with installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#396">[ date ]</a>
+              <a href="thread.html#396">[ thread ]</a>
+              <a href="subject.html#396">[ subject ]</a>
+              <a href="author.html#396">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for helping me;
+Unfortunatly, i already tried to follow this instructions and the message I
+get are :
+
+Pas de version candidate trouv&#233;e pour libboost-date-time-dev
+Pas de version candidate trouv&#233;e pour libboost-filesystem-dev
+Pas de version candidate trouv&#233;e pour libboost-thread-dev
+Pas de version candidate trouv&#233;e pour libboost-regex-dev
+Pas de version candidate trouv&#233;e pour libboost-iostreams-dev
+Impossible de trouver un paquet dont le nom ou la description correspond &#224;
+&#171;&#160;liblog4cxx9-dev&#160;&#187;
+Impossible de trouver un paquet dont le nom ou la description correspond &#224;
+&#171;&#160;ipython&#160;&#187;
+Impossible de trouver un paquet dont le nom ou la description correspond &#224;
+&#171;&#160;python-matplotlib&#160;&#187;
+
+(No candidate version found... Impossible to find the package... And so on)
+And then when I try to install Yade, so libraries are not found :
+
+Yade version is `0.12rc1', installed files will be suffixed with `-0.12rc1'.
+All intermediary files will be in `/home/jpvassal/build-0.12rc1'.
+Checking whether c++ compiler &quot;g++&quot; works...yes
+Checking for pthread_exit(NULL) in C library pthread... yes
+Checking for glutGetModifiers() in C library glut... yes
+Checking for boost::posix_time::time_duration::time_duration() in C++
+library boost_date_time-mt... no
+Checking for boost::posix_time::time_duration::time_duration() in C++
+library boost_date_time... no
+Checking for boost::thread::thread() in C++ library boost_thread-mt... no
+Checking for boost::thread::thread() in C++ library boost_thread... no
+Checking for boost::filesystem::path() in C++ library
+boost_filesystem-mt... no
+Checking for boost::filesystem::path() in C++ library boost_filesystem... no
+Checking for boost::iostreams::file_sink(&quot;&quot;) in C++ library
+boost_iostreams-mt... no
+Checking for boost::iostreams::file_sink(&quot;&quot;) in C++ library
+boost_iostreams... no
+Checking for boost::regex(&quot;&quot;) in C++ library boost_regex-mt... no
+Checking for boost::regex(&quot;&quot;) in C++ library boost_regex... no
+Checking for C++ header file boost/foreach.hpp... yes
+Checking for sqlite3_close(0L) in C++ library sqlite3... no
+Checking for qt-mt in /usr/share/qt3... yes
+
+One of the essential libraries above was not found, unable to continue.
+
+And when i look to my package manager, it seems that all libboost package
+are there. So there's something i don't understand.
+If you have any ideas, thank you for helping me.
+Regards
+
+Jean-Pierre Vassal
+
+Message Original:
+-----------------
+A partir de: V&#225;clav S(milauer <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>
+Date: Mon, 28 Jul 2008 14:21:54 +0200
+A: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>, <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">jpvassal at dsi04.insa-lyon.fr</A>
+Sujet: Re: [Yade-users] Trouble with installation
+
+
+(Please don't write to me directly, keep the discussion on the list -
+cc'ing)
+&gt;<i> are there but names libbost**** instead of boost****
+</I>&gt;<i>   
+</I>That's normal, all libs are prefixed with lib.
+&gt;<i> So in a second time i tried to go on boost web site to download
+</I>boost_1_35_0
+&gt;<i> I untar the file in usr/share/ directory and i tried to install this.
+</I>&gt;<i> Sorry i'm very beginner in linux so i probably did stupid things.
+</I>Yes, you did. How can you untar to /usr/share - with sudo? Don't do
+that. Keep /usr for package-installed things, use /usr/local/ for things
+you install by hand. Boost is packaged, run this to install all
+necessary  packages:
+
+sudo apt-get install scons libqt3-mt-dev qt3-dev-tools freeglut3-dev
+libboost-date-time-dev libboost-filesystem-dev libboost-thread-dev
+libboost-regex-dev fakeroot dpkg-dev build-essential g++
+libboost-iostreams-dev liblog4cxx9-dev python-dev libboost-python-dev
+ipython python-matplotlib
+
+(from <A HREF="http://yade.wikia.com/wiki/Installation_of_yade_on_debian_/_ubuntu">http://yade.wikia.com/wiki/Installation_of_yade_on_debian_/_ubuntu</A>)
+
+The running scons will work.
+
+Read some decent tutorial on UNIX/Linux command-line, filesystem layout
+and so on, you will need that further way down.
+
+Regards, Vaclav
+_______________________________________________
+Yade-users mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+
+
+--------------------------------------------------------------------
+mail2web - V&#233;rifiez votre courrier &#233;lectronique depuis le web sur
+<A HREF="http://mail2web.com/">http://mail2web.com/</A> .
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000395.html">[Yade-users] Trouble with installation
+</A></li>
+	<LI>Next message: <A HREF="000398.html">[Yade-users] Trouble with installation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#396">[ date ]</a>
+              <a href="thread.html#396">[ thread ]</a>
+              <a href="subject.html#396">[ subject ]</a>
+              <a href="author.html#396">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] simulation main loop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20main%20loop&In-Reply-To=%3C47B00A34.5070808%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000081.html">
+   <LINK REL="Next"  HREF="000075.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] simulation main loop</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20main%20loop&In-Reply-To=%3C47B00A34.5070808%40univ-nantes.fr%3E"
+       TITLE="[Yade-users] simulation main loop">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Mon Feb 11 09:41:24 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000081.html">[Yade-users] simulation main loop
+</A></li>
+        <LI>Next message: <A HREF="000075.html">[Yade-users] NBS algorithm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+Bruno Chareyre a &#233;crit :
+&gt;&gt;<i> My question: is there a way, with the current code, to avoid that?
+</I>&gt;&gt;<i> For instance am I allowed to create an engine doing a loop over all the 
+</I>&gt;&gt;<i> bodies and calling inside the loop, for each body, the engines 
+</I>&gt;&gt;<i> MagnetEngine and GravityEngine.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;<i> What you suggest would work (some would call it a &quot;hack&quot; though...), 
+</I>&gt;<i> except that you need at least two engines : one for loops on bodies and 
+</I>&gt;<i> one for loops on interactions.
+</I>&gt;<i> Not sure how much time it would save, I'm really wondering too.
+</I>
+In fact, I think about that because it is what is done in SDEC. For the
+bodies you need at least two engines: one to apply perturbations in
+forces (called before the application of the Newton's law) another one
+to apply perturbations in positions (called after the leap frog 
+integration).
+If you want to apply perturbation in body velocities you also need an 
+engine called between the two steps of the leap frog integration.
+
+I didn't think about interaction so far.
+
+But maybe a loop over 10,000 bodies is very fast and it would be 
+useless. I remember, we spoke about that with Janek in the first time of 
+Yade and he was not very worried by this multiplication of loop.
+
+Please, do not think that I am saying that it's bad, and that you have 
+to change something. It is just to be sure to really understand how Yade 
+works and what I can do with ;-)
+
+   Luc
+
+
+&gt;<i> 
+</I>&gt;<i> Bruno
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Thanks for your answers,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    Luc
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+-- 
+Luc Sibille, Universit&#233; de Nantes - Laboratoire GeM, ma&#238;tre de conf&#233;rence
+
+Adresse/address:
+IUT de Saint Nazaire - D&#233;partement de G&#233;nie-Civil
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex   France
+
+Tel: +33 2 40 17 81 78     Fax: +33 2 40 17 81 60
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000081.html">[Yade-users] simulation main loop
+</A></li>
+	<LI>Next message: <A HREF="000075.html">[Yade-users] NBS algorithm
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

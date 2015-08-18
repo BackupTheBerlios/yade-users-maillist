@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Compile problem or my computer problem?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Compile%20problem%20or%20my%20computer%20problem%3F&In-Reply-To=%3C45213f870807062111m363f7a5fte6efe3cbc8e588d7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000370.html">
+   <LINK REL="Next"  HREF="000364.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Compile problem or my computer problem?</H1>
+    <B>kan</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Compile%20problem%20or%20my%20computer%20problem%3F&In-Reply-To=%3C45213f870807062111m363f7a5fte6efe3cbc8e588d7%40mail.gmail.com%3E"
+       TITLE="[Yade-users] Compile problem or my computer problem?">nicessgg at gmail.com
+       </A><BR>
+    <I>Mon Jul  7 06:11:14 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000370.html">[Yade-users] An idea about YADE livecd
+</A></li>
+        <LI>Next message: <A HREF="000364.html">[Yade-users] Compile problem or my computer problem?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, YADE Guys,
+
+Sorry for disturbing.
+wen I compile the latest YADE use: scons PREFIX=/home/kan/datafile/yd jobs=6
+optimize=1
+I meet problem as the following information:
+
+&#8658; /home/kan/datafile/yd/lib/yade-svn1413/lib/libyade-QGLViewer.so
+C lib/opengl/GLWindow.cpp
+C lib/opengl/GLWindowsManager.cpp
+C lib/serialization-qt/QtGUIGenerator.cpp
+/usr/share/qt3/bin/moc -o
+/home/kan/datafile/yade/build-svn1413/lib/serialization-qt/moc_QtGUIGenerator.cc
+lib/serialization-qt/QtGUIGenerator.hpp
+C
+/home/kan/datafile/yade/build-svn1413/lib/serialization-qt/moc_QtGUIGenerator.cc
+C pkg/common/DataClass/BoundingVolume/AABB.cpp
+L libyade-opengl.so
+scons: *** [/home/kan/datafile/yade/build-svn1413/core/yade.o] Error
+1                  *[&lt;----------------HERE]*
+scons: building terminated because of errors.
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">kan at kang-laptop</A>:~/datafile/yade/trunk-svn1413$
+
+I have tried several times, and when it stop I just re-run &quot;scons
+PREFIX=/home/kan/datafile/yd jobs=6 optimize=1&quot; and it will move on, but
+still stop at this error information:
+&quot;scons: *** [/home/kan/datafile/yade/build-svn1413/core/yade.o] Error
+1        &quot;
+
+I do not know what lead to this problem, my computer configuration(Laptop
+which is AMD Turion 2 x core, Kubuntu 8.04 and GForce video card), or some
+dependent packages are not installed (but the checking at the beginning of
+compiling are ok except the C++ library log4cxx, boost_python-mt, and
+boost_python are &quot;no&quot;.)
+
+do you know what is the problem from and any suggestion?
+
+Thanks very much.
+
+kan
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080706/1bacbf9b/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080706/1bacbf9b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000370.html">[Yade-users] An idea about YADE livecd
+</A></li>
+	<LI>Next message: <A HREF="000364.html">[Yade-users] Compile problem or my computer problem?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

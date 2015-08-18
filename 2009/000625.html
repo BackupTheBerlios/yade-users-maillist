@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Monitoring of tangential stress ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Monitoring%20of%20tangential%20stress%20%3F&In-Reply-To=%3C4990B8B9.7000202%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000624.html">
+   <LINK REL="Next"  HREF="000627.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Monitoring of tangential stress ?</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Monitoring%20of%20tangential%20stress%20%3F&In-Reply-To=%3C4990B8B9.7000202%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] Monitoring of tangential stress ?">eudoxos at arcig.cz
+       </A><BR>
+    <I>Tue Feb 10 00:14:01 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000624.html">[deprecated list] [Yade-users] Monitoring of tangential stress ?
+</A></li>
+        <LI>Next message: <A HREF="000627.html">[deprecated list] [Yade-users] Monitoring of tangential stress ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Hello everybody.
+</I>&gt;<i> Short question : Considering a box containing my numerical sample I'ld
+</I>&gt;<i> want to monitor the tangential stress acting on one plate of the box
+</I>&gt;<i> and I wonder if someone has already made it ?
+</I>Hi, there is utils.sumBexForces for mutliple bodies to get sum of forces
+on those.
+
+If it is just one body that is of interest for you, you use engine like
+
+ StandAloneEngine('PeriodicPythonRunner',{'iterPeriod':1000,'command':'print
+O.actions.f(plateId)'})
+
+in your simulation (O.actions.f(id) means force from physicalActions on
+body #id).
+
+Vaclav
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000624.html">[deprecated list] [Yade-users] Monitoring of tangential stress ?
+</A></li>
+	<LI>Next message: <A HREF="000627.html">[deprecated list] [Yade-users] Monitoring of tangential stress ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

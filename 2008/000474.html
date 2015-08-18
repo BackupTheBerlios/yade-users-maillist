@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Successive slightly different simulations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D7C149.7060301%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000473.html">
+   <LINK REL="Next"  HREF="000475.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Successive slightly different simulations</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D7C149.7060301%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Successive slightly different simulations">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Mon Sep 22 18:01:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000473.html">[Yade-users] Successive slightly different simulations
+</A></li>
+        <LI>Next message: <A HREF="000475.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#474">[ date ]</a>
+              <a href="thread.html#474">[ thread ]</a>
+              <a href="subject.html#474">[ subject ]</a>
+              <a href="author.html#474">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> (try running
+</I>&gt;<i> &quot;yade-trunk -N PythonUI&quot;, you should get to plain yade console)
+</I>In fact this doesn't work too :
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">jerome at c1solimara-l</A>:~/YADE/bin$ ./yade-trunk -N PythonUI
+Constructing ClassFactory  (if multiple times - check '-rdynamic' flag!).
+Constructing SerializableSingleton  (if multiple times - check 
+'-rdynamic' flag!
+).
+INFO  core/Omega.cpp:33 Omega: Constructing Omega  (if multiple times - 
+check 
+'-                                                                                                   
+rdynamic' flag!).
+INFO  core/yade.cpp:225 main: Loading configuration file: 
+/home/jerome/.yade-tru                                                                                                   
+nk/preferences.xml
+INFO  core/yade.cpp:227 main: Loading plugins...
+WARN  extra/Brefcom.hpp:175 BrefcomMakeContact: 
+calibratedEpsFracture=0.00040722                                                                                                   
+7 &lt; epsCrackOnset=0.0001, Gf=500, E=3e+10, expBending=4
+WARNING: cannot open file used for capillary law, in TriaxalTestWater
+INFO  core/yade.cpp:227 main: Plugins loaded.
+terminate called after throwing an instance of 'FactoryCantCreate'
+  what():  ClassFactory::create - cannot create class named: PythonUI
+SIGSEGV/SIGABRT handler called; gdb batch file is 
+`/home/jerome/.yade-trunk/gdb_                                                                                                   
+crash_batch-pid21127'
+GNU gdb 6.6-debian
+Copyright (C) 2006 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain 
+conditions.
+Type &quot;show copying&quot; to see the conditions.
+There is absolutely no warranty for GDB.  Type &quot;show warranty&quot; for details.
+This GDB was configured as &quot;i486-linux-gnu&quot;.
+Using host libthread_db library &quot;/lib/tls/i686/cmov/libthread_db.so.1&quot;.
+[Thread debugging using libthread_db enabled]
+[New Thread -1234602272 (LWP 21127)]
+0xffffe410 in __kernel_vsyscall ()
+No symbol &quot;info&quot; in current context.
+
+Thread 1 (Thread -1234602272 (LWP 21127)):
+#0  0xffffe410 in __kernel_vsyscall ()
+#1  0xb73ab6b3 in waitpid () from /lib/tls/i686/cmov/libc.so.6
+#2  0xb7350b8b in ?? () from /lib/tls/i686/cmov/libc.so.6
+#3  0xb7e875dd in system () from /lib/tls/i686/cmov/libpthread.so.0
+#4  0x081005ac in sigHandler (sig=6) at core/yade.cpp:57
+#5  &lt;signal handler called&gt;
+#6  0xffffe410 in __kernel_vsyscall ()
+#7  0xb7343875 in raise () from /lib/tls/i686/cmov/libc.so.6
+#8  0xb7345201 in abort () from /lib/tls/i686/cmov/libc.so.6
+#9  0xb754e6e0 in __gnu_cxx::__verbose_terminate_handler () from 
+/usr/lib/libstdc++.so.6
+#10 0xb754bf65 in ?? () from /usr/lib/libstdc++.so.6
+#11 0xb754bfa2 in std::terminate () from /usr/lib/libstdc++.so.6
+#12 0xb754c0ca in __cxa_throw () from /usr/lib/libstdc++.so.6
+#13 0xb7590ad4 in ClassFactory::createShared (this=0x8139ad8, 
+name=@0xbfc7c300) at lib/factory/ClassFactory.cpp:68
+#14 0x08102dfd in main (argc=3, argv=0xbfc7c3f4) at core/yade.cpp:247
+#0  0xffffe410 in __kernel_vsyscall ()
+Abandon (core dumped)
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">jerome at c1solimara-l</A>:~/YADE/bin$
+
+I attached my scons.config to be sure that the compilation itselve is 
+not to blame. But I guess I will have to update..., isn't it ?
+
+Jerome
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000473.html">[Yade-users] Successive slightly different simulations
+</A></li>
+	<LI>Next message: <A HREF="000475.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#474">[ date ]</a>
+              <a href="thread.html#474">[ thread ]</a>
+              <a href="subject.html#474">[ subject ]</a>
+              <a href="author.html#474">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

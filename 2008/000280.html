@@ -1,0 +1,453 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Yade-users Digest, Vol 24, Issue 4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Yade-users%20Digest%2C%20Vol%2024%2C%20Issue%204&In-Reply-To=%3C45213f870806070007jd8e372dw6d57add0215879d2%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000274.html">
+   <LINK REL="Next"  HREF="000285.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Yade-users Digest, Vol 24, Issue 4</H1>
+    <B>kan</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Yade-users%20Digest%2C%20Vol%2024%2C%20Issue%204&In-Reply-To=%3C45213f870806070007jd8e372dw6d57add0215879d2%40mail.gmail.com%3E"
+       TITLE="[Yade-users] Yade-users Digest, Vol 24, Issue 4">nicessgg at gmail.com
+       </A><BR>
+    <I>Sat Jun  7 09:07:24 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000274.html">[Yade-users] How is the cohesion treated in YADE?
+</A></li>
+        <LI>Next message: <A HREF="000285.html">[Yade-users] Is it necesarry for me to be familiar with C++ to build my own discrete model?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#280">[ date ]</a>
+              <a href="thread.html#280">[ thread ]</a>
+              <a href="subject.html#280">[ subject ]</a>
+              <a href="author.html#280">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you all.
+I appreciate it.
+
+Kan
+
+On Fri, Jun 6, 2008 at 4:01 AM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt; wrote:
+
+&gt;<i> Send Yade-users mailing list submissions to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Yade-users digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>   1. Re: How is the cohesion treated in YADE? (Bruno Chareyre)
+</I>&gt;<i>   2. Re: How is the cohesion treated in YADE? (V?clav ?milauer)
+</I>&gt;<i>   3. Re: How is the cohesion treated in YADE? (kan)
+</I>&gt;<i>   4. How to reset a body's velocity? (sega)
+</I>&gt;<i>   5. Re: How to reset a body's velocity? (Lionel Favier)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Thu, 05 Jun 2008 12:14:03 +0200
+</I>&gt;<i> From: Bruno Chareyre &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">bruno.chareyre at hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] How is the cohesion treated in YADE?
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4847BC6B.60705 at hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=UTF-8; format=flowed
+</I>&gt;<i>
+</I>&gt;<i> CohesiveFrictionalContactLaw is indeed the law you need, Kan.
+</I>&gt;<i> Janek added bending/twisting moments to this contact law recently.
+</I>&gt;<i> Moments are only elastic for now, but implementing plasticity for
+</I>&gt;<i> moments would be just few lines as you have all kinematic variables
+</I>&gt;<i> defined already (like the relative bending/twisting rotations between
+</I>&gt;<i> bodies).
+</I>&gt;<i> 2 Remarks :
+</I>&gt;<i> -you need to set collider-&gt;haveDistantPersistent=true if you want
+</I>&gt;<i> interactions with tensile forces (overlap&lt;0)
+</I>&gt;<i> -you will have to set interaction-&gt;isReal=true in the contact law if you
+</I>&gt;<i> want the collider to delete lost interactions (loss of contact means
+</I>&gt;<i> adhesive properties are lost and overlap&lt;0, this is equivalent to
+</I>&gt;<i> contactForce=0).
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Jerome Duriez a ?crit :
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; is the cohesion property of some kind of material (like rock) treated
+</I>&gt;<i> &gt;&gt; in YADE?
+</I>&gt;<i> &gt;&gt; if so, how it is modeled? bonded model?
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;     Hello. It depends on the contact law you use...
+</I>&gt;<i> &gt;     For example you could have cohesion in
+</I>&gt;<i> &gt; CohesiveFrictionalContactLaw (see the files in
+</I>&gt;<i> &gt; pkg/dem/Engine/StandAloneEngine/). For each interaction a value of
+</I>&gt;<i> &gt; cohesion &quot;c&quot;  named in fact &quot;shearAdhesion&quot; is computed depending on a
+</I>&gt;<i> &gt; caracteristic &quot;shearCohesion&quot; (member of the class
+</I>&gt;<i> &gt; &quot;CohesiveFrictionalRelationships) and on the radii of the bodies in
+</I>&gt;<i> &gt; contact.
+</I>&gt;<i> &gt; This value of cohesion will then be used for computing a maximum value
+</I>&gt;<i> &gt; of tangential contact force : Ftmax = c + Fn * tan(phi).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Jerome
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Yade-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> _______________
+</I>&gt;<i> Chareyre Bruno
+</I>&gt;<i> Maitre de conference
+</I>&gt;<i>
+</I>&gt;<i> Institut National Polytechnique de Grenoble
+</I>&gt;<i> Laboratoire 3S (Soils Solids Structures) - bureau E145
+</I>&gt;<i> BP 53 - 38041, Grenoble cedex 9 - France
+</I>&gt;<i> T?l : 33 4 56 52 86 21
+</I>&gt;<i> Fax : 33 4 76 82 70 43
+</I>&gt;<i> ________________
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Thu, 05 Jun 2008 14:15:29 +0200
+</I>&gt;<i> From: V?clav ?milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] How is the cohesion treated in YADE?
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4847D8E1.4010202 at arcig.cz</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=UTF-8
+</I>&gt;<i>
+</I>&gt;<i> There is the brefcom model (in extra) that is supposed to do just that
+</I>&gt;<i> (cohesion) and is formulated using continuum mechanics (strain/stress)
+</I>&gt;<i> rather than particles and there is code to make the transition from
+</I>&gt;<i> displacements/positions etc to normal strain, shear strain and back from
+</I>&gt;<i> stresses to forces. The material model itself cannot be disclosed, but
+</I>&gt;<i> you can easily add your own. It is pretty much work in progress now,
+</I>&gt;<i> however.
+</I>&gt;<i>
+</I>&gt;<i> For cohesion, make sure you use enable distant contacts in
+</I>&gt;<i> PersistentSAPCollider and
+</I>&gt;<i> InteractingSphere2InteractingSphere4SpheresContactGeometry. The old
+</I>&gt;<i> approach would use persistentContacts, but there are (by general
+</I>&gt;<i> consensus) deprecated and will be removed.
+</I>&gt;<i>
+</I>&gt;<i> Vaclav
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; is the cohesion property of some kind of material (like rock) treated
+</I>&gt;<i> &gt; in YADE?
+</I>&gt;<i> &gt; if so, how it is modeled? bonded model?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks.
+</I>&gt;<i> &gt; Kan
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Yade-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 3
+</I>&gt;<i> Date: Thu, 5 Jun 2008 09:26:57 -0500
+</I>&gt;<i> From: kan &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">nicessgg at gmail.com</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] How is the cohesion treated in YADE?
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID:
+</I>&gt;<i>        &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">45213f870806050726m1a4b293am4851fa35823034f2 at mail.gmail.com</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=&quot;utf-8&quot;
+</I>&gt;<i>
+</I>&gt;<i> Hi, Dear Jerome,
+</I>&gt;<i>
+</I>&gt;<i> Thank you for your instruction.
+</I>&gt;<i> In my contact model, I use the bonded-particle model, so I just assume the
+</I>&gt;<i> cohension force is modeled in the bond. In that case, the parameter of
+</I>&gt;<i> cohension c is not explicit shown in the model. maybe it is the problem of
+</I>&gt;<i> my code.
+</I>&gt;<i> I will read the code and study how it is modeled in YADE.
+</I>&gt;<i>
+</I>&gt;<i> Thanks a lot.
+</I>&gt;<i> kan
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 6/5/08, <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A> &lt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt; wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Send Yade-users mailing list submissions to
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt; or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; You can reach the person managing the list at
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> &gt; than &quot;Re: Contents of Yade-users digest...&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Today's Topics:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   1. How is the cohesion treated in YADE? (kan)
+</I>&gt;<i> &gt;   2. Re: How is the cohesion treated in YADE? (Jerome Duriez)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ----------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Message: 1
+</I>&gt;<i> &gt; Date: Wed, 4 Jun 2008 14:56:28 -0500
+</I>&gt;<i> &gt; From: kan &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">nicessgg at gmail.com</A>&gt;
+</I>&gt;<i> &gt; Subject: [Yade-users] How is the cohesion treated in YADE?
+</I>&gt;<i> &gt; To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; Message-ID:
+</I>&gt;<i> &gt;        &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">45213f870806041256y5d8b36e0oba36e625340746e5 at mail.gmail.com</A>&gt;
+</I>&gt;<i> &gt; Content-Type: text/plain; charset=&quot;utf-8&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; is the cohesion property of some kind of material (like rock) treated in
+</I>&gt;<i> &gt; YADE?
+</I>&gt;<i> &gt; if so, how it is modeled? bonded model?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks.
+</I>&gt;<i> &gt; Kan
+</I>&gt;<i> &gt; -------------- next part --------------
+</I>&gt;<i> &gt; An HTML attachment was scrubbed...
+</I>&gt;<i> &gt; URL:
+</I>&gt;<i> &gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080604/2009b6ab/attachment-0001.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080604/2009b6ab/attachment-0001.html</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Message: 2
+</I>&gt;<i> &gt; Date: Thu, 05 Jun 2008 10:21:44 +0200
+</I>&gt;<i> &gt; From: Jerome Duriez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">duriez at geo.hmg.inpg.fr</A>&gt;
+</I>&gt;<i> &gt; Subject: Re: [Yade-users] How is the cohesion treated in YADE?
+</I>&gt;<i> &gt; To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4847A218.8040504 at geo.hmg.inpg.fr</A>&gt;
+</I>&gt;<i> &gt; Content-Type: text/plain; charset=&quot;utf-8&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; is the cohesion property of some kind of material (like rock) treated
+</I>&gt;<i> &gt; &gt; in YADE?
+</I>&gt;<i> &gt; &gt; if so, how it is modeled? bonded model?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt;    Hello. It depends on the contact law you use...
+</I>&gt;<i> &gt;    For example you could have cohesion in CohesiveFrictionalContactLaw
+</I>&gt;<i> &gt; (see the files in pkg/dem/Engine/StandAloneEngine/). For each
+</I>&gt;<i> &gt; interaction a value of cohesion &quot;c&quot;  named in fact &quot;shearAdhesion&quot; is
+</I>&gt;<i> &gt; computed depending on a caracteristic &quot;shearCohesion&quot; (member of the
+</I>&gt;<i> &gt; class &quot;CohesiveFrictionalRelationships) and on the radii of the bodies
+</I>&gt;<i> &gt; in contact.
+</I>&gt;<i> &gt; This value of cohesion will then be used for computing a maximum value
+</I>&gt;<i> &gt; of tangential contact force : Ftmax = c + Fn * tan(phi).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Jerome
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; -------------- next part --------------
+</I>&gt;<i> &gt; An HTML attachment was scrubbed...
+</I>&gt;<i> &gt; URL:
+</I>&gt;<i> &gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080605/2829f7c9/attachment-0001.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080605/2829f7c9/attachment-0001.html</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Yade-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; End of Yade-users Digest, Vol 24, Issue 3
+</I>&gt;<i> &gt; *****************************************
+</I>&gt;<i> &gt;
+</I>&gt;<i> -------------- next part --------------
+</I>&gt;<i> An HTML attachment was scrubbed...
+</I>&gt;<i> URL:
+</I>&gt;<i> <A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080605/aa86a611/attachment-0001.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080605/aa86a611/attachment-0001.html</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 4
+</I>&gt;<i> Date: Fri, 6 Jun 2008 12:31:35 +0400
+</I>&gt;<i> From: sega &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">dorofeenko at icp.ac.ru</A>&gt;
+</I>&gt;<i> Subject: [Yade-users] How to reset a body's velocity?
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">200806061231.35876.dorofeenko at icp.ac.ru</A>&gt;
+</I>&gt;<i> Content-Type: text/plain;  charset=&quot;iso-8859-1&quot;
+</I>&gt;<i>
+</I>&gt;<i> Hi!
+</I>&gt;<i> I need to reset a body's velocity to zero when this body is reloaded into a
+</I>&gt;<i> simulation.
+</I>&gt;<i> Now can I do it?
+</I>&gt;<i> As me seems, a velocity of body is sets _only_ by
+</I>&gt;<i> LeapFrogPositionIntegrator or NewtonsDampedLaw.
+</I>&gt;<i> Both have a firsts vector but different parents...
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Best regards, Sergei D.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 5
+</I>&gt;<i> Date: Fri, 06 Jun 2008 13:15:26 +0200
+</I>&gt;<i> From: Lionel Favier &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lfavier at geo.hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] How to reset a body's velocity?
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">48491C4E.3060306 at geo.hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=ISO-8859-1; format=flowed
+</I>&gt;<i>
+</I>&gt;<i> sega a ?crit :
+</I>&gt;<i> &gt; Hi!
+</I>&gt;<i> &gt; I need to reset a body's velocity to zero when this body is reloaded into
+</I>&gt;<i> a simulation.
+</I>&gt;<i> &gt; Now can I do it?
+</I>&gt;<i> &gt; As me seems, a velocity of body is sets _only_ by
+</I>&gt;<i> LeapFrogPositionIntegrator or NewtonsDampedLaw.
+</I>&gt;<i> &gt; Both have a firsts vector but different parents...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> Hi Sega,
+</I>&gt;<i>
+</I>&gt;<i> If you need to do that during the simulation with a body which has a
+</I>&gt;<i> current velocity, acceleration .. Maybe you could add these lines in
+</I>&gt;<i> &quot;LeapFrogPositionIntegrator&quot; (additions in italics)
+</I>&gt;<i>
+</I>&gt;<i>    Real dt = Omega::instance().getTimeStep();
+</I>&gt;<i>
+</I>&gt;<i>    /ParticleParameters * p = YADE_CAST&lt;ParticleParameters*&gt;(b.get());/
+</I>&gt;<i>
+</I>&gt;<i> /    if (p-&gt;vel_nulle)
+</I>&gt;<i>    {
+</I>&gt;<i>        p-&gt;acceleration = Vector3r(0,0,0);
+</I>&gt;<i>        prevVelocities[id] = Vector3r(0,0,0):
+</I>&gt;<i>    }/
+</I>&gt;<i>
+</I>&gt;<i>    if (!firsts[id])
+</I>&gt;<i>        p-&gt;velocity = prevVelocities[id]+((Real)0.5)*dt*p-&gt;acceleration;
+</I>&gt;<i>
+</I>&gt;<i> You have also to declare the parameter /vel_nulle/ as a boolean in
+</I>&gt;<i> &quot;ParticleParameter&quot;
+</I>&gt;<i>
+</I>&gt;<i> finally you can initialise your velocity by adding a line, for example
+</I>&gt;<i> in &quot;VelocityRecorder.cpp&quot; (additions in italics)
+</I>&gt;<i>
+</I>&gt;<i>    for(  ; bi!=biEnd ; ++bi )
+</I>&gt;<i>    {
+</I>&gt;<i>        shared_ptr&lt;Body&gt; body = *bi;
+</I>&gt;<i>        if( body-&gt;isDynamic )
+</I>&gt;<i>        {
+</I>&gt;<i>            size+=1.0;
+</I>&gt;<i>            ParticleParameters* pp =
+</I>&gt;<i> YADE_CAST&lt;ParticleParameters*&gt;(body-&gt;physicalParameters.get());
+</I>&gt;<i>
+</I>&gt;<i>           /pp-&gt;vel_nulle = true;/
+</I>&gt;<i>
+</I>&gt;<i>            x+=pp-&gt;velocity[0];
+</I>&gt;<i>            y+=pp-&gt;velocity[1];
+</I>&gt;<i>            z+=pp-&gt;velocity[2];
+</I>&gt;<i>        }
+</I>&gt;<i>    }
+</I>&gt;<i>
+</I>&gt;<i> Normally it works, I just don't know if that is really fits YADE
+</I>&gt;<i> philosophy, maybe the YADE's big boss could comment.
+</I>&gt;<i>
+</I>&gt;<i> good luck
+</I>&gt;<i>
+</I>&gt;<i> Lionel
+</I>&gt;<i>
+</I>&gt;<i> //
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Lionel FAVIER
+</I>&gt;<i> Doctorant
+</I>&gt;<i> Laboratoire Sols Solides Structures, Risques (3S-R)
+</I>&gt;<i> Equipe Risques et Vuln?rabilit? (RV)
+</I>&gt;<i>
+</I>&gt;<i> Domaine Universitaire - BP 53
+</I>&gt;<i> 38041 Grenoble Cedex 9
+</I>&gt;<i> France
+</I>&gt;<i>
+</I>&gt;<i> T?l: +33 (0)4 56 52 86 36
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lionel.favier at hmg.inpg.fr</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Yade-users Digest, Vol 24, Issue 4
+</I>&gt;<i> *****************************************
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080607/47a2cbce/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080607/47a2cbce/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000274.html">[Yade-users] How is the cohesion treated in YADE?
+</A></li>
+	<LI>Next message: <A HREF="000285.html">[Yade-users] Is it necesarry for me to be familiar with C++ to build my own discrete model?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#280">[ date ]</a>
+              <a href="thread.html#280">[ thread ]</a>
+              <a href="subject.html#280">[ subject ]</a>
+              <a href="author.html#280">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

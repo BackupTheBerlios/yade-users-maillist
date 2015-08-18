@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] DynLibDispatcher: ambigious dispatch	??
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20DynLibDispatcher%3A%20ambigious%20dispatch%0A%09%3F%3F&In-Reply-To=%3C49003D13.30204%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000529.html">
+   <LINK REL="Next"  HREF="000510.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] DynLibDispatcher: ambigious dispatch	??</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20DynLibDispatcher%3A%20ambigious%20dispatch%0A%09%3F%3F&In-Reply-To=%3C49003D13.30204%40geo.hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] DynLibDispatcher: ambigious dispatch	??">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Thu Oct 23 11:00:03 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000529.html">[deprecated list] [Yade-users] compiling problem with	yade-0.12.0
+</A></li>
+        <LI>Next message: <A HREF="000510.html">[deprecated list] [Yade-users] DynLibDispatcher: ambigious	dispatch ??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello. I now become this message during a simulation :
+
+&quot;DynLibDispatcher: ambigious dispatch, could not determine which 
+multivirtual function should be called&quot;
+
+In fact the simulation runs but with this message written a lot of times 
+per iteration, leading to a very slow rate of iterations per second 
+(plus the unpleasant feeling that something is wrong...). I've found 
+that this is because of this particular paragraph of the .xml :
+
+&lt;engines _className_=&quot;InteractionPhysicsMetaEngine&quot;  label=&quot;&quot; 
+functorNames=&quot;[[CohesiveFrictionalBodyParameters 
+CohesiveFrictionalBodyParameters CL1Relationships]]&quot;&gt;
+                &lt;functorArguments size=&quot;1&quot;&gt;
+                    &lt;functorArguments _className_=&quot;CL1Relationships&quot;  
+betaR=&quot;0.12&quot; setCohesionNow=&quot;0&quot; setCohesionOnNewContacts=&quot;1&quot; /&gt;
+                &lt;/functorArguments&gt;
+&lt;/engines&gt;
+
+
+And more precisely it seems to be due to the use of &quot;my&quot; 
+CL1Relationships (simulations with CohesiveFrictionalRelationships for 
+example run well) but I didn't find the mistake (moreover before my 
+updates I could use these Relationships).
+
+    Does someone could explain me more precisely the sense of the output 
+message to help me to find what is wrong ? Thanks
+
+Jerome
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000529.html">[deprecated list] [Yade-users] compiling problem with	yade-0.12.0
+</A></li>
+	<LI>Next message: <A HREF="000510.html">[deprecated list] [Yade-users] DynLibDispatcher: ambigious	dispatch ??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] [Yade-dev] dissipating all	energy in a packing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BYade-dev%5D%20dissipating%20all%0A%09energy%20in%20a%20packing&In-Reply-To=%3C49512C09.8010407%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000539.html">
+   <LINK REL="Next"  HREF="000546.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] [Yade-dev] dissipating all	energy in a packing</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BYade-dev%5D%20dissipating%20all%0A%09energy%20in%20a%20packing&In-Reply-To=%3C49512C09.8010407%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] [Yade-dev] dissipating all	energy in a packing">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Tue Dec 23 19:20:57 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000539.html">[deprecated list] [Yade-users] Problems with Rotation Blacked
+</A></li>
+        <LI>Next message: <A HREF="000546.html">[deprecated list] [Yade-users] How to join the SVN??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#541">[ date ]</a>
+              <a href="thread.html#541">[ thread ]</a>
+              <a href="subject.html#541">[ subject ]</a>
+              <a href="author.html#541">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>V&#225;clav &#352;milauer a &#233;crit :
+&gt;&gt;<i> Whatever the method you use to damp particle movements I suspect the
+</I>&gt;&gt;<i> system to reach a vanishing value of kinetic energy asymptotically.
+</I>&gt;&gt;<i> Thus, if it the case, you can wait a very long time to obtain values
+</I>&gt;&gt;<i> of kinetic energy as small as you want...
+</I>&gt;<i> Sorry to be unclear: the kinetic energy doesn't decrease from the point
+</I>&gt;<i> where it hits some bottom line (around 1e-9 in this case), and
+</I>&gt;<i> oscillates around this value. I suspect the way Cundall damps motion to
+</I>&gt;<i> be blamed. Well, I will try and see. Best, Vaclav
+</I>The critical question : is 1e-9 more than what you would get from 
+rounding errors?
+Come on, you need to compare this 1e-9 with another value!
+
+Another possible normalisation, provided you have a speed defined 
+somewhere (like triaxial test at constant strain) : divide by the 
+kinetic energy of the homogeneous-continuum-like velocity field.
+If your configuration is purely static, I have no other idea than 
+elastic energy.
+
+And about Cundall's damping being &quot;the best&quot; (in my previous message), 
+note that it only applies to confined packings in quasi-static 
+conditions. As suggested by Feng, non-viscous damping gives unrealistic 
+motions in some dynamic problems.
+
+Bruno
+
+
+
+
+
+
+
+&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-dev">https://launchpad.net/~yade-dev</A>
+</I>&gt;<i> Post to : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-dev at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-dev">https://launchpad.net/~yade-dev</A>
+</I>&gt;<i> More help : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>
+
+-- 
+
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000539.html">[deprecated list] [Yade-users] Problems with Rotation Blacked
+</A></li>
+	<LI>Next message: <A HREF="000546.html">[deprecated list] [Yade-users] How to join the SVN??
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#541">[ date ]</a>
+              <a href="thread.html#541">[ thread ]</a>
+              <a href="subject.html#541">[ subject ]</a>
+              <a href="author.html#541">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] compiling problem - cannot find	lminiWm3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20compiling%20problem%20-%20cannot%20find%0A%09lminiWm3&In-Reply-To=%3C498A100C.90805%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000623.html">
+   <LINK REL="Next"  HREF="000612.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] compiling problem - cannot find	lminiWm3</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20compiling%20problem%20-%20cannot%20find%0A%09lminiWm3&In-Reply-To=%3C498A100C.90805%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] compiling problem - cannot find	lminiWm3">eudoxos at arcig.cz
+       </A><BR>
+    <I>Wed Feb  4 23:00:44 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000623.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+        <LI>Next message: <A HREF="000612.html">[deprecated list] [Yade-users] [Yade-dev] Be carefull with	&quot;normalize&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#609">[ date ]</a>
+              <a href="thread.html#609">[ thread ]</a>
+              <a href="subject.html#609">[ subject ]</a>
+              <a href="author.html#609">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> here joined the build.log associated with my problem.
+</I>Hi Luc, I am doing alright :-)
+
+For your problem, you are using quite new scons (post-1.0, I think). I
+fixed that hopefully in SVN, to get your change to .12.1, edit
+pkg/common/SConscript, and change lines approx 25-27 like this:
+
+    env.SharedLibrary('BodyRedirectionVector',[],LIBS=[]),
+    env.SharedLibrary('InteractionVecSet',[],LIBS=[]),
+    env.SharedLibrary('PhysicalActionVectorVector',[],LIBS=[]),
+
+(add the LIBS=[] after each of them).
+
+The reason is that new scons thinks that empty files are plain c (not
+c++), links with gcc (not g++), but doesn't add some paths to other libs
+that are normally needed. Since these plugins are just empty, you can
+safely declare it needs no libs and your error should be gone.
+
+HTH, Vaclav
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000623.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+	<LI>Next message: <A HREF="000612.html">[deprecated list] [Yade-users] [Yade-dev] Be carefull with	&quot;normalize&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#609">[ date ]</a>
+              <a href="thread.html#609">[ thread ]</a>
+              <a href="subject.html#609">[ subject ]</a>
+              <a href="author.html#609">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

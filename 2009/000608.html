@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Be%20carefull%20with%20%22normalize%22&In-Reply-To=%3C4989EDD4.7040807%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000607.html">
+   <LINK REL="Next"  HREF="000610.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Be%20carefull%20with%20%22normalize%22&In-Reply-To=%3C4989EDD4.7040807%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Feb  4 20:34:44 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000607.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+        <LI>Next message: <A HREF="000610.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Luc Sibille a &#233;crit :
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i>  Is the &quot;normalize&quot; function from wm3 used currently in Yade?
+</I>Vectors in Yade are vectors from wm3, and - if I'm not wrong - 
+&quot;normalize&quot; is a member of this class.
+So yes, unless you find an exception, any &quot;normalize&quot; in Yade is the one 
+i was speaking about.
+I know how you feel...
+
+
+&gt;<i>
+</I>&gt;<i> Bruno have you got an idea of the default value of the &quot;tolerance&quot; 
+</I>&gt;<i> value?  The reason for this check could be to avoid a division by zero 
+</I>&gt;<i> or &quot;something&quot; to close to zero.
+</I>&gt;<i>
+</I>Well... there is no reason to avoid division by zero, and even less 
+reasons to return a null vector instead of (1,0,0) or something like this.
+If a division by zero makes the program crash, so should do the 
+normalization of a null vector. But this is still not the problem here : 
+vectors are not null at all, they are just &quot;something small&quot; with 
+respect to what the developper of wm3 considered &quot;small&quot;, arbitrarily.
+In my understanding of number representations (someone will correct me 
+perhaps), there is no less precision when computing the norm of (2e-20, 
+1e-20, 0) compared to the norm of (2e+20, 1e+20, 0). That is why this 
+tolerance makes no sense.
+
+Think to it as a matter of units, like in previous Janek mail. If one 
+wants to define the simulation with lengths in gigakilometers, and get 
+coordinates in the range 10e-30 - 10e-32, no &quot;tolerance&quot; should prevent it.
+
+Bruno
+
+&gt;<i> Luc
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Bruno Chareyre a &#233;crit :
+</I>&gt;&gt;<i> Hello
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Be aware that if you use the &quot;normalize&quot; function from wm3, it might 
+</I>&gt;&gt;<i> give the result (0,0,0) if the norm of the vector is smaller than a 
+</I>&gt;&gt;<i> &quot;tolerance&quot; value.
+</I>&gt;&gt;<i> It sounds very strange to me, as I see no reason for this check, and 
+</I>&gt;&gt;<i> I was wondering if it could not cause problems in some cases, when a 
+</I>&gt;&gt;<i> &quot;normalized&quot; vector has length 0...
+</I>&gt;&gt;<i> Janek had this problem when defining the normal of some triangular 
+</I>&gt;&gt;<i> facets (of small size) by normalizing the cross product of edges 
+</I>&gt;&gt;<i> vectors.
+</I>&gt;&gt;<i> I prefer not to be the only one thinking about this potential 
+</I>&gt;&gt;<i> problem, which probably needs a fix.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> A few ideas from a discussion with Janek :
+</I>&gt;&gt;<i> 1- possibly fix minWm3 so that the test vs. tolerance is removed
+</I>&gt;&gt;<i> 2- display a warning to the user when the tolerance is hit and the 
+</I>&gt;&gt;<i> vector is &quot;rounded&quot; to (0,0,0)
+</I>&gt;&gt;<i> 3-  run batch tests with/without the tolerance test
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Bruno
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000607.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+	<LI>Next message: <A HREF="000610.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

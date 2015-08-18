@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] compiling problem with yade-0.12.0
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20compiling%20problem%20with%20yade-0.12.0&In-Reply-To=%3C49003CDA.7020807%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000497.html">
+   <LINK REL="Next"  HREF="000509.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] compiling problem with yade-0.12.0</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20compiling%20problem%20with%20yade-0.12.0&In-Reply-To=%3C49003CDA.7020807%40univ-nantes.fr%3E"
+       TITLE="[deprecated list] [Yade-users] compiling problem with yade-0.12.0">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Thu Oct 23 10:59:06 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000497.html">[deprecated list] [Yade-users] Getting back lost files - .os -	.so files
+</A></li>
+        <LI>Next message: <A HREF="000509.html">[deprecated list] [Yade-users] compiling problem with	yade-0.12.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#507">[ date ]</a>
+              <a href="thread.html#507">[ thread ]</a>
+              <a href="subject.html#507">[ subject ]</a>
+              <a href="author.html#507">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+  I am switching to yade-0.12.0 a little bite late.
+
+When I want to compile Yade-0.12.0 I obtain the following error (I've 
+got Boost 1.34.1 installed):
+
+scons: done reading SConscript files.
+scons: Building targets ...
+C core/Body.cpp
+cc1plus: error: unrecognized command line option &quot;-fopenmp&quot;
+core/Body.cpp:1: error: bad value (native) for -march= switch
+core/Body.cpp:1: error: bad value (native) for -mtune= switch
+C core/BodyContainer.cpp
+cc1plus: error: unrecognized command line option &quot;-fopenmp&quot;
+core/BodyContainer.cpp:1: error: bad value (native) for -march= switch
+core/BodyContainer.cpp:1: error: bad value (native) for -mtune= switch
+C core/BoundingVolume.cpp
+cc1plus: error: unrecognized command line option &quot;-fopenmp&quot;
+core/BoundingVolume.cpp:1: error: bad value (native) for -march= switch
+core/BoundingVolume.cpp:1: error: bad value (native) for -mtune= switch
+scons: *** [/home/luc/build-0.12.0/core/Body.o] Error 1
+C core/DeusExMachina.cpp
+scons: *** [/home/luc/build-0.12.0/core/BodyContainer.o] Error 1
+scons: *** [/home/luc/build-0.12.0/core/BoundingVolume.o] Error 1
+cc1plus: error: unrecognized command line option &quot;-fopenmp&quot;
+core/DeusExMachina.cpp:1: error: bad value (native) for -march= switch
+core/DeusExMachina.cpp:1: error: bad value (native) for -mtune= switch
+scons: *** [/home/luc/build-0.12.0/core/DeusExMachina.o] Error 1
+scons: building terminated because of errors.
+
+
+Any idea?
+
+   Thanks for your help!
+
+   Luc
+
+
+-- 
+Luc Sibille
+
+Universit&#233; de Nantes - Laboratoire GeM UMR CNRS
+
+IUT de Saint Nazaire
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex, France
+
+Tel: +33 (0)2 40 17 81 78
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000497.html">[deprecated list] [Yade-users] Getting back lost files - .os -	.so files
+</A></li>
+	<LI>Next message: <A HREF="000509.html">[deprecated list] [Yade-users] compiling problem with	yade-0.12.0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#507">[ date ]</a>
+              <a href="thread.html#507">[ thread ]</a>
+              <a href="subject.html#507">[ subject ]</a>
+              <a href="author.html#507">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

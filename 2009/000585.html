@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Applying%20constant%20force%20on%20a%0A%09wall%20and%20snapshot%09engine&In-Reply-To=%3C3d45525b7bddb7077f20ad698ade5995%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000584.html">
+   <LINK REL="Next"  HREF="000589.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine</H1>
+    <B>eudoxos</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Applying%20constant%20force%20on%20a%0A%09wall%20and%20snapshot%09engine&In-Reply-To=%3C3d45525b7bddb7077f20ad698ade5995%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri Jan 30 12:35:25 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000584.html">[deprecated list] [Yade-users] Applying constant force on a wall	and snapshot engine
+</A></li>
+        <LI>Next message: <A HREF="000589.html">[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#585">[ date ]</a>
+              <a href="thread.html#585">[ thread ]</a>
+              <a href="subject.html#585">[ subject ]</a>
+              <a href="author.html#585">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> I followed the advices that Mr Vaclav gave me and the code is below, but
+</I>&gt;<i> my box is still falling with spheres, there is again something wrong? It
+</I>&gt;<i> seems that only gravity is affecting bodyes.
+</I>Is not the force you use too small, given dimensions and mass of the box?
+Try something much larger and you will see.
+
+&gt;<i> Another point is that if I activate the snapshot engine it results in
+</I>&gt;<i> blank images, there's a reason or a wrong setting?
+</I>
+Well, SnapshotEngine seems to work depending on the graphics card you have.
+In any case, the 3d view window must be in foreground.
+
+If you want something that work reliably, save simulation state (positions
+and colors only) to database and then run it through player,
+scripts/simple-scene-player.py show how to do that.
+
+For the last line, you can skip 'qglviewerState.xml' parameter and say
+instead startWait=True. It will wait until you set the scene view with
+mouse, then press backspace and it starts. Again, keep the window in
+foreground.
+
+Another, perhaps simpler options, is to use some desktop-recording app,
+like <A HREF="http://live.gnome.org/Istanbul">http://live.gnome.org/Istanbul</A> or
+<A HREF="http://recordmydesktop.sourceforge.net/about.php,">http://recordmydesktop.sourceforge.net/about.php,</A> which are also packaged
+for some linux distributions.
+
+HTH, Vaclav
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000584.html">[deprecated list] [Yade-users] Applying constant force on a wall	and snapshot engine
+</A></li>
+	<LI>Next message: <A HREF="000589.html">[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#585">[ date ]</a>
+              <a href="thread.html#585">[ thread ]</a>
+              <a href="subject.html#585">[ subject ]</a>
+              <a href="author.html#585">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

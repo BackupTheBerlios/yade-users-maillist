@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Compilation of SVN using scons	always re-compiles	everything
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Compilation%20of%20SVN%20using%20scons%0A%09always%20re-compiles%09everything&In-Reply-To=%3C930069bf0908132148se0c7e55l700f487f6d8f32d3%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000949.html">
+   <LINK REL="Next"  HREF="000953.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Compilation of SVN using scons	always re-compiles	everything</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Compilation%20of%20SVN%20using%20scons%0A%09always%20re-compiles%09everything&In-Reply-To=%3C930069bf0908132148se0c7e55l700f487f6d8f32d3%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] Compilation of SVN using scons	always re-compiles	everything">gladky.anton at gmail.com
+       </A><BR>
+    <I>Fri Aug 14 06:48:19 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000949.html">[deprecated list] [Yade-users] Compilation of SVN using scons	always re-compiles	everything
+</A></li>
+        <LI>Next message: <A HREF="000953.html">[deprecated list] [Yade-users] Compilation of SVN using scons	always re-compiles	everything
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#950">[ date ]</a>
+              <a href="thread.html#950">[ thread ]</a>
+              <a href="subject.html#950">[ subject ]</a>
+              <a href="author.html#950">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2009/8/14 Chen, Feng &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">fchen3 at utk.edu</A>&gt;
+
+&gt;<i>  Hi, Anton Gladky:
+</I>&gt;<i>
+</I>&gt;<i> Thanks for the reply, but it does not seem to work, it still re-compiles
+</I>&gt;<i> everything. What I did is add a line
+</I>&gt;<i>
+</I>&gt;<i> version='something_to_add' //is this correct???
+</I>&gt;<i>
+</I>&gt;<i> to the file: trunk/scons.current-profile //this file is empty when I first
+</I>&gt;<i> download
+</I>&gt;<i>
+</I>scons.profile-default
+This file should contain the string:
+         version='something_to_add'
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> or I should change the &quot;something_to_add&quot; to the version number like
+</I>&gt;<i> version='svn1940'?
+</I>&gt;<i>
+</I>You can give any name. I use, for example,
+   version = 'current'
+or
+   version = 'new_build'
+
+It does not really matter
+
+&gt;<i> or I should pass this parameter direct to scons?
+</I>&gt;<i>
+</I>You can pass this parameter directly to scons. in this case you dont need to
+edit  scons.profile-default: it will be automatically added there.
+
+______________________________
+[ENG] Best Regards
+[GER] Mit freundlichen Gr&#252;&#223;en
+[RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+[UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+
+
+&gt;<i> Thanks in advance!
+</I>&gt;<i>
+</I>&gt;<i> Feng Chen
+</I>&gt;<i> Geotechnical Engineer
+</I>&gt;<i> HNTB Federal
+</I>&gt;<i> 9100 Bluebonnet Centre Blvd Suite 301
+</I>&gt;<i> Baton Rouge, LA 70809
+</I>&gt;<i> <A HREF="http://fchen3.googlepages.com/home">http://fchen3.googlepages.com/home</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Anton Gladky [mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">gladky.anton at gmail.com</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">gladky.anton at gmail.com</A>&gt;
+</I>&gt;<i> ]
+</I>&gt;<i> Sent: Thu 8/13/2009 6:29 PM
+</I>&gt;<i> To: Chen, Feng
+</I>&gt;<i> Cc: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Subject: Re: [Yade-users] Compilation of SVN using scons always re-compiles
+</I>&gt;<i> everything
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://yade.wikia.com/wiki/FAQ#I_would_like_to_update_my_YADE_to_latest_at_SVN._Do_I_need_do_build_the_YADE_again.3F">http://yade.wikia.com/wiki/FAQ#I_would_like_to_update_my_YADE_to_latest_at_SVN._Do_I_need_do_build_the_YADE_again.3F</A>
+</I>&gt;<i>
+</I>&gt;<i> use version='something_to_add'
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ______________________________
+</I>&gt;<i> [ENG] Best Regards
+</I>&gt;<i> [GER] Mit freundlichen Gr&#252;&#223;en
+</I>&gt;<i> [RUS] ? ?????????? ???????????
+</I>&gt;<i> [UKR] ? ?????????? ???????????
+</I>&gt;<i>
+</I>&gt;<i> Anton Gladkyy
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2009/8/14 Chen, Feng &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">fchen3 at utk.edu</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt;  Hi, all:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I am trying to use the latest svn recently, after checked with svn, and
+</I>&gt;<i> &gt; then typed the command:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; scons PREFIX=/home/fchen/YADE1937 optimize=1
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The scons compiled everything well.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; However, if I modified a file: Preprofessor/DEM/ClumpTestGen.cpp
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; and the scons started to compile everything again, no matter I use the
+</I>&gt;<i> same
+</I>&gt;<i> &gt; command, or just type &quot;scons&quot;, it will first delete the intermediate
+</I>&gt;<i> file,
+</I>&gt;<i> &gt; like core.o, and then re-compile a new one.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Then I did a test by first re-check with svn, do a clean, new build and
+</I>&gt;<i> &gt; then without modifying anything, type the same build command, &quot;scons&quot;,
+</I>&gt;<i> and
+</I>&gt;<i> &gt; scons still started to re-build everything again.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Can anyone tell if I did something wrong?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks a lot!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Feng Chen
+</I>&gt;<i> &gt; Geotechnical Engineer
+</I>&gt;<i> &gt; HNTB Federal
+</I>&gt;<i> &gt; 9100 Bluebonnet Centre Blvd Suite 301
+</I>&gt;<i> &gt; Baton Rouge, LA 70809
+</I>&gt;<i> &gt; <A HREF="http://fchen3.googlepages.com/home">http://fchen3.googlepages.com/home</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> &lt;<A HREF="https://launchpad.net/%7Eyade-users">https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> &gt; Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> &gt; Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> &lt;<A HREF="https://launchpad.net/%7Eyade-users">https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> &gt; More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090814/843ac193/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090814/843ac193/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000949.html">[deprecated list] [Yade-users] Compilation of SVN using scons	always re-compiles	everything
+</A></li>
+	<LI>Next message: <A HREF="000953.html">[deprecated list] [Yade-users] Compilation of SVN using scons	always re-compiles	everything
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#950">[ date ]</a>
+              <a href="thread.html#950">[ thread ]</a>
+              <a href="subject.html#950">[ subject ]</a>
+              <a href="author.html#950">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

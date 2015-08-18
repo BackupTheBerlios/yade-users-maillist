@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Triaxial statetransition and code	submission
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Triaxial%20statetransition%20and%20code%0A%09submission&In-Reply-To=%3C499182CC.1090605%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000626.html">
+   <LINK REL="Next"  HREF="000629.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Triaxial statetransition and code	submission</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Triaxial%20statetransition%20and%20code%0A%09submission&In-Reply-To=%3C499182CC.1090605%40univ-nantes.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Triaxial statetransition and code	submission">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Tue Feb 10 14:36:12 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000626.html">[deprecated list] [Yade-users] Monitoring of tangential stress ?
+</A></li>
+        <LI>Next message: <A HREF="000629.html">[deprecated list] [Yade-users] Triaxial statetransition and	code submission
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#628">[ date ]</a>
+              <a href="thread.html#628">[ thread ]</a>
+              <a href="subject.html#628">[ subject ]</a>
+              <a href="author.html#628">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I will be a little bit boring...
+
+Question about submission of code to svn:
+
+I modified 2 or 3 lines in TriaxialCompressionEngine in order to update 
+the friction angle from compactionFrictionDeg to FrictionDeg when the 
+state transition is performed manually (by editing the .xml file) from 
+Iso_compaction to Triax_loading. (but I am not sure to respect the idea 
+of the person who written this part of the code)
+
+In addition, during the state transition, I would like to update the 
+tangent of friction angle for all interaction and not only &quot;real&quot; 
+interaction
+(from a discussion between Jerome and Bruno I understood that the 
+transition (isReal = 0 and isNew = 0) =&gt; (isReal = 1 and isNew = 0) will 
+not happen, but I would prefer to have several &quot;protections&quot; than only one).
+
+My question: I may want to submit code modifications in opposition with 
+previous developments. Thus, what is the philosophy? submit directly 
+these modifications to svn, or via a yade developer who will filter the 
+modifications?
+
+   Best,
+
+    Luc
+
+-- 
+Luc Sibille
+
+Universit&#233; de Nantes - Laboratoire GeM UMR CNRS
+
+IUT de Saint Nazaire
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex, France
+
+Tel: +33 (0)2 40 17 81 78
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000626.html">[deprecated list] [Yade-users] Monitoring of tangential stress ?
+</A></li>
+	<LI>Next message: <A HREF="000629.html">[deprecated list] [Yade-users] Triaxial statetransition and	code submission
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#628">[ date ]</a>
+              <a href="thread.html#628">[ thread ]</a>
+              <a href="subject.html#628">[ subject ]</a>
+              <a href="author.html#628">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

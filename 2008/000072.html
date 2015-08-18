@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] simulation main loop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20main%20loop&In-Reply-To=%3C47AC9576.9090506%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000071.html">
+   <LINK REL="Next"  HREF="000073.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] simulation main loop</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20main%20loop&In-Reply-To=%3C47AC9576.9090506%40univ-nantes.fr%3E"
+       TITLE="[Yade-users] simulation main loop">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Fri Feb  8 18:46:30 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000071.html">[Yade-users] TriaxialTest::generate wall thickness
+</A></li>
+        <LI>Next message: <A HREF="000073.html">[Yade-users] simulation main loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+  From MetaBody::moveToNextTimeStep I understand that during a 
+simulation Yade loops over all the engines stored in the vector engine.
+Then, if I consider two engines, for instance the GravityEngine and 
+another one, that we can call MagnetEngine (we imagine that grains are 
+influenced by a magnet field!), each of these engines loops over all the 
+bodies. So for one time step I loop twice (in this case) over the body 
+assembly.
+
+My question: is there a way, with the current code, to avoid that?
+For instance am I allowed to create an engine doing a loop over all the 
+bodies and calling inside the loop, for each body, the engines 
+MagnetEngine and GravityEngine.
+
+Thanks for your answers,
+
+   Luc
+
+
+-- 
+Luc Sibille, Universit&#233; de Nantes - Laboratoire GeM, ma&#238;tre de conf&#233;rence
+
+Adresse/address:
+IUT de Saint Nazaire - D&#233;partement de G&#233;nie-Civil
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex   France
+
+Tel: +33 2 40 17 81 78     Fax: +33 2 40 17 81 60
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000071.html">[Yade-users] TriaxialTest::generate wall thickness
+</A></li>
+	<LI>Next message: <A HREF="000073.html">[Yade-users] simulation main loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

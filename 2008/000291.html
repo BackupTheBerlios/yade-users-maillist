@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to reset a body's velocity?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20reset%20a%20body%27s%20velocity%3F&In-Reply-To=%3C484D6B23.90804%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000290.html">
+   <LINK REL="Next"  HREF="000292.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to reset a body's velocity?</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20reset%20a%20body%27s%20velocity%3F&In-Reply-To=%3C484D6B23.90804%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] How to reset a body's velocity?">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Mon Jun  9 19:40:51 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000290.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+        <LI>Next message: <A HREF="000292.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#291">[ date ]</a>
+              <a href="thread.html#291">[ thread ]</a>
+              <a href="subject.html#291">[ subject ]</a>
+              <a href="author.html#291">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> 
+</I>&gt;<i> Hmm... As me seems, prevVelocities is specific for leapfrog method.
+</I>&gt;<i> For another integrator may be another implementation (Gear predictor-corrector as example...)
+</I>&gt;<i> 
+</I>
+Given that the kinematics (pos,vel) at time t depends on previous 
+kinematics. I don't see how an integrator could compute the motion 
+without previous velocity (the result would be independant on e.g. 
+initial velocities!).
+Yes, different schemes could need vel(t-2dt) instead of vel(t-dt) (or 
+both of them), but you always need a &quot;previous&quot; velocity.
+
+Bruno
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000290.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+	<LI>Next message: <A HREF="000292.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#291">[ date ]</a>
+              <a href="thread.html#291">[ thread ]</a>
+              <a href="subject.html#291">[ subject ]</a>
+              <a href="author.html#291">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] simulation main loop
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20main%20loop&In-Reply-To=%3C47AC9BF1.2000003%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000072.html">
+   <LINK REL="Next"  HREF="000074.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] simulation main loop</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20main%20loop&In-Reply-To=%3C47AC9BF1.2000003%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] simulation main loop">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Fri Feb  8 19:14:09 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000072.html">[Yade-users] simulation main loop
+</A></li>
+        <LI>Next message: <A HREF="000074.html">[Yade-users] simulation main loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>
+</I>&gt;<i> My question: is there a way, with the current code, to avoid that?
+</I>&gt;<i> For instance am I allowed to create an engine doing a loop over all the 
+</I>&gt;<i> bodies and calling inside the loop, for each body, the engines 
+</I>&gt;<i> MagnetEngine and GravityEngine.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>What you suggest would work (some would call it a &quot;hack&quot; though...), 
+except that you need at least two engines : one for loops on bodies and 
+one for loops on interactions.
+Not sure how much time it would save, I'm really wondering too.
+
+Bruno
+
+
+
+
+&gt;<i> Thanks for your answers,
+</I>&gt;<i>
+</I>&gt;<i>    Luc
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000072.html">[Yade-users] simulation main loop
+</A></li>
+	<LI>Next message: <A HREF="000074.html">[Yade-users] simulation main loop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

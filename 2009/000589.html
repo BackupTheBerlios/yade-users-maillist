@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Applying%20constant%20force%20on%20a%0A%09wall%20and%20snapshot%09engine&In-Reply-To=%3C49833665.7040101%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000585.html">
+   <LINK REL="Next"  HREF="000586.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Applying%20constant%20force%20on%20a%0A%09wall%20and%20snapshot%09engine&In-Reply-To=%3C49833665.7040101%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Fri Jan 30 18:18:29 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000585.html">[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+</A></li>
+        <LI>Next message: <A HREF="000586.html">[deprecated list] [Yade-users] Some Questions about YADE!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'll try to read replies first, next time, to avoid replying when Mr. 
+Va&#231;lav already did.
+
+Again Marco, you need to be more precise when commenting what happens in 
+the simulations.
+By doing so, you will find the cause of most problems on your own, actually.
+
+Why is the box falling? What is the total force on it? Is it an upward 
+force? So you discovered a terrible bug in Yade.
+Is it a downward force? So there is nothing wrong here, you need to look 
+elsewhere.
+
+About this :
+
+&quot;if you
+want strain-controlled test; it is suitable for sphere packings. For
+stress-control, you are on your own probably. Vaclav&quot;
+
+I think Mohammad Islam is working on this at the moment and should be 
+quite advanced on this point (just browse the mailing list archives). So 
+you are perhaps not totally alone on the matter.
+
+Bruno
+
+
+MarcoDottor a &#233;crit :
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> I followed the advices that Mr Vaclav gave me and the code is below, but
+</I>&gt;<i> my box is still falling with spheres, there is again something wrong? It
+</I>&gt;<i> seems that only gravity is affecting bodyes.
+</I>&gt;<i> Another point is that if I activate the snapshot engine it results in
+</I>&gt;<i> blank images, there's a reason or a wrong setting?
+</I>&gt;<i>
+</I>&gt;<i> Thank you
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> #!/usr/local/bin/yade-trunk -x
+</I>&gt;<i> # -*- encoding=utf-8 -*-
+</I>&gt;<i>
+</I>&gt;<i> from yade import utils
+</I>&gt;<i> from math import *
+</I>&gt;<i> from numpy import arange
+</I>&gt;<i> import random
+</I>&gt;<i>
+</I>&gt;<i> ## Paametri fisici geometrie importate
+</I>&gt;<i> Young = 15e6
+</I>&gt;<i> Poisson = 0.2
+</I>&gt;<i>
+</I>&gt;<i> #Parametri cilindro
+</I>&gt;<i> rCyl=40   ##Raggio superiore tronco cono
+</I>&gt;<i> rCyl2=40  ##Raggio inferiore tronco cono
+</I>&gt;<i> hCyl=39   ##altezza base inferiore cono
+</I>&gt;<i> hCyl2=10 ##altezza base superiore cono
+</I>&gt;<i> nPoly=20  ##Poligoni di cui &#195;&#168; composto il contenitore
+</I>&gt;<i> hBox=hCyl/5
+</I>&gt;<i> phiStep=2*pi/nPoly
+</I>&gt;<i>
+</I>&gt;<i> #tolleranza contatti
+</I>&gt;<i> toll = 0.005
+</I>&gt;<i>
+</I>&gt;<i> ## Omega
+</I>&gt;<i> o=Omega()
+</I>&gt;<i>
+</I>&gt;<i> ## Importa geometria testa
+</I>&gt;<i> head =
+</I>&gt;<i> utils.import_stl_geometry('TC3T4.stl',young=Young,poisson=Poisson,
+</I>&gt;<i> color=[0,1,0],wire=True)
+</I>&gt;<i>
+</I>&gt;<i> for n in range(nPoly):
+</I>&gt;<i>         phi1,phi2=n*phiStep,(n+1)*phiStep
+</I>&gt;<i>         def pt(angle,radius,z):
+</I>&gt;<i>                 return radius*sin(angle),radius*cos(angle),z
+</I>&gt;<i> a,b,c,d=pt(phi1,rCyl,hCyl2),pt(phi2,rCyl,hCyl2),pt(phi1,rCyl2,hCyl),pt(phi2,rCyl2,hCyl)
+</I>&gt;<i>         o.bodies.append([
+</I>&gt;<i>                 utils.facet([a,b,c]),
+</I>&gt;<i>                 utils.facet([b,c,d])])
+</I>&gt;<i>
+</I>&gt;<i> for b in o.bodies: b['isDynamic']=False
+</I>&gt;<i>
+</I>&gt;<i> box =
+</I>&gt;<i> utils.box([0,0,hCyl+hBox/2],[rCyl,rCyl,hBox/2],density=200,wire=True)
+</I>&gt;<i> boxId=o.bodies.append(box)
+</I>&gt;<i>
+</I>&gt;<i> #for b in o.bodies: b['isDynamic']=False
+</I>&gt;<i>
+</I>&gt;<i> ## Sfere
+</I>&gt;<i> sphereRadius = 0.6
+</I>&gt;<i> nbSpheres = (10,10,3)
+</I>&gt;<i> for i in xrange(nbSpheres[0]):
+</I>&gt;<i>    for j in xrange(nbSpheres[1]):
+</I>&gt;<i>         for k in xrange(nbSpheres[2]):
+</I>&gt;<i>             x = (i*2 - nbSpheres[0])*sphereRadius*1.2
+</I>&gt;<i>             y = (j*2 - nbSpheres[1])*sphereRadius*1.2
+</I>&gt;<i>             z = 31 + (k*2 - nbSpheres[2])*sphereRadius*1.2
+</I>&gt;<i> o.bodies.append(utils.sphere([x,y,z],sphereRadius*(1-.3*(random.random())),young=Young,poisson=Poisson,density=2400))
+</I>&gt;<i> utils.randomizeColors(onlyDynamic=True)
+</I>&gt;<i>
+</I>&gt;<i> ## Timestep
+</I>&gt;<i> o.dt=utils.PWaveTimeStep()
+</I>&gt;<i>
+</I>&gt;<i> ## Initializers
+</I>&gt;<i> o.initializers=[
+</I>&gt;<i>         ## Create and reset to zero container of all PhysicalActions
+</I>&gt;<i> that will be used
+</I>&gt;<i>         StandAloneEngine('PhysicalActionContainerInitializer'),
+</I>&gt;<i>         ## Create bounding boxes. They are needed to zoom the 3d view
+</I>&gt;<i> properly before we start the simulation.
+</I>&gt;<i> MetaEngine('BoundingVolumeMetaEngine',[EngineUnit('InteractingSphere2AABB'),EngineUnit('InteractingFacet2AABB'),EngineUnit('InteractingBox2AABB'),EngineUnit('MetaInteractingGeometry2AABB')])
+</I>&gt;<i> ]
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ## Engines
+</I>&gt;<i> o.engines=[
+</I>&gt;<i>
+</I>&gt;<i>         ## Resets forces and momenta the act on bodies
+</I>&gt;<i>         StandAloneEngine('PhysicalActionContainerReseter'),
+</I>&gt;<i>
+</I>&gt;<i>         ## Associates bounding volume to each body.
+</I>&gt;<i>         MetaEngine('BoundingVolumeMetaEngine',[
+</I>&gt;<i>                 EngineUnit('InteractingSphere2AABB'),
+</I>&gt;<i>                 EngineUnit('InteractingFacet2AABB'),
+</I>&gt;<i>                 EngineUnit('InteractingBox2AABB'),
+</I>&gt;<i>                 EngineUnit('MetaInteractingGeometry2AABB')
+</I>&gt;<i>         ]),
+</I>&gt;<i>         ## Using bounding boxes find possible body collisions.
+</I>&gt;<i>         ##StandAloneEngine('SpatialQuickSortCollider'),
+</I>&gt;<i>         StandAloneEngine('SAPCollider'),
+</I>&gt;<i>         ## Create geometry information about each potential collision.
+</I>&gt;<i>         MetaEngine('InteractionGeometryMetaEngine',[
+</I>&gt;<i> EngineUnit('InteractingSphere2InteractingSphere4SpheresContactGeometry'),
+</I>&gt;<i> EngineUnit('InteractingFacet2InteractingSphere4SpheresContactGeometry',{'shrinkFactor':toll}),
+</I>&gt;<i> EngineUnit('InteractingBox2InteractingSphere4SpheresContactGeometry')
+</I>&gt;<i>         ]),
+</I>&gt;<i>         ## Crea informazioni fisiche sui contatti.
+</I>&gt;<i> MetaEngine('InteractionPhysicsMetaEngine',[EngineUnit('MacroMicroElasticRelationships')]),
+</I>&gt;<i>         ## &quot;Solver&quot; of the contact
+</I>&gt;<i>         StandAloneEngine('ElasticContactLaw'),
+</I>&gt;<i>
+</I>&gt;<i>         ## Applica forza alla base
+</I>&gt;<i>         DeusExMachina('ForceEngine',{'subscribedBodies':[boxId],
+</I>&gt;<i> 'force':[0,0,-100]}),
+</I>&gt;<i>         ## Sostituisce i motori di applicazione forze ai corpi,
+</I>&gt;<i> smorzamento ed integrazione temporale
+</I>&gt;<i>         DeusExMachina('NewtonsDampedLaw',{'damping':0.3}),
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         ## Applica rotazione alla testa 1 giro/min = 0,1047 rad/s
+</I>&gt;<i>         DeusExMachina('RotationEngine',{'subscribedBodies':head,
+</I>&gt;<i> 'rotationAxis':[0,0,1],'rotateAroundZero':True,'angularVelocity':0.1047}),
+</I>&gt;<i>
+</I>&gt;<i> #StandAloneEngine('SnapshotEngine',{'virtPeriod':1,'fileBase':'aaa','viewNo':0,'ignoreErrors':True})
+</I>&gt;<i>
+</I>&gt;<i> ]
+</I>&gt;<i>
+</I>&gt;<i> ## Salva la scena da simulare
+</I>&gt;<i> o.save('/tmp/a.xml');
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000585.html">[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+</A></li>
+	<LI>Next message: <A HREF="000586.html">[deprecated list] [Yade-users] Some Questions about YADE!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#589">[ date ]</a>
+              <a href="thread.html#589">[ thread ]</a>
+              <a href="subject.html#589">[ subject ]</a>
+              <a href="author.html#589">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

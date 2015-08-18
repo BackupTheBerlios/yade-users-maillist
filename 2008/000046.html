@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] how to get the force on particle from the boundary?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20how%20to%20get%20the%20force%20on%20particle%20from%20the%20boundary%3F&In-Reply-To=%3C479D9DD5.7020505%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000044.html">
+   <LINK REL="Next"  HREF="000047.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] how to get the force on particle from the boundary?</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20how%20to%20get%20the%20force%20on%20particle%20from%20the%20boundary%3F&In-Reply-To=%3C479D9DD5.7020505%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] how to get the force on particle from the boundary?">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Mon Jan 28 10:18:13 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000044.html">[Yade-users] how to get the force on particle from the boundary?
+</A></li>
+        <LI>Next message: <A HREF="000047.html">[Yade-users] Comparison with PFC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You will not convert anything, you could (1) apply 1000N on the top 
+plate, the top plate would then converge to the equilibrium position 
+which will correspond to a force of 1000N exerted on spheres, or (2) 
+load the sample at constant strain rate until the force on top plate 
+reach 1000kN.
+
+Remember that the total force on a body is already defined somewhere. 
+Here, the total force on a plate is simply the sum of contact forces 
+exerted by spheres. You don't need to compute anything if all you need 
+is to get this quantity. You should check what is done in 
+TriaxialStressController perhaps.
+
+Or perhaps I still don't understand, and what you need is analysing 
+forces one by one, in that case you'd have to traverse all contacts in 
+the simulation and check which of them are sphere-plate contacts.
+
+Bruno
+
+kan a &#233;crit :
+&gt;<i> Thanks, Bruno,
+</I>&gt;<i>  
+</I>&gt;<i> I think I did not describe the question clearly.
+</I>&gt;<i> my question is how to get the force from the force boundary. for 
+</I>&gt;<i> example, we use a rock sample to do the compress test. so we have to 
+</I>&gt;<i> force boundary from the upper face and the the lower face. then how to 
+</I>&gt;<i> get the foce on each grain from the boundary? we will say the force 
+</I>&gt;<i> applied on the surface is 1000N, and the area is around 5 square cm, 
+</I>&gt;<i> then how to convert the 1000N to the particle which contacting with 
+</I>&gt;<i> the boundary (like a steel surface)?
+</I>&gt;<i>  
+</I>&gt;<i> Regards.
+</I>&gt;<i>  
+</I>&gt;<i> Kan
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Fri, 25 Jan 2008 10:53:29 +0100
+</I>&gt;<i> From: Bruno Chareyre &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">bruno.chareyre at hmg.inpg.fr</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">bruno.chareyre at hmg.inpg.fr</A>&gt;&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] Yade-users Digest, Vol 19, Issue 15
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>&gt;
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4799B199.7060704 at hmg.inpg.fr</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4799B199.7060704 at hmg.inpg.fr</A>&gt;&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=UTF-8; format=flowed
+</I>&gt;<i>
+</I>&gt;<i> I don't really understand your question. There is no conversion from
+</I>&gt;<i> stresses to forces, the conversion goes from forces to stress.
+</I>&gt;<i> If you find a way to explicitely convert stresses into forces in a
+</I>&gt;<i> sphere packing with friction, well... you should apply for the Nobel
+</I>&gt;<i> Prize ;-).
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> kan a ?crit :
+</I>&gt;<i> &gt; Vaclav, Bruno
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks to both of you very much.
+</I>&gt;<i> &gt; Then how about the convertion from the stress to the force on each
+</I>&gt;<i> &gt; particle, where the stresses are from the boundary ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; kan
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> _______________
+</I>&gt;<i> Chareyre Bruno
+</I>&gt;<i> Maitre de conference
+</I>&gt;<i>
+</I>&gt;<i> Institut National Polytechnique de Grenoble
+</I>&gt;<i> Laboratoire 3S (Soils Solids Structures) - bureau E145
+</I>&gt;<i> BP 53 - 38041, Grenoble cedex 9 - France
+</I>&gt;<i> T?l : 33 4 56 52 86 21
+</I>&gt;<i> Fax : 33 4 76 82 70 43
+</I>&gt;<i> ________________
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>&gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Yade-users Digest, Vol 19, Issue 17
+</I>&gt;<i> ******************************************
+</I>&gt;<i>  
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000044.html">[Yade-users] how to get the force on particle from the boundary?
+</A></li>
+	<LI>Next message: <A HREF="000047.html">[Yade-users] Comparison with PFC
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

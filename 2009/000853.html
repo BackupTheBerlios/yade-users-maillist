@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Problem in ElasticContact law +	needs clarification
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Problem%20in%20ElasticContact%20law%20%2B%0A%09needs%20clarification&In-Reply-To=%3C1246571689.7738.18.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000852.html">
+   <LINK REL="Next"  HREF="000855.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Problem in ElasticContact law +	needs clarification</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Problem%20in%20ElasticContact%20law%20%2B%0A%09needs%20clarification&In-Reply-To=%3C1246571689.7738.18.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Problem in ElasticContact law +	needs clarification">eudoxos at arcig.cz
+       </A><BR>
+    <I>Thu Jul  2 23:54:49 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000852.html">[deprecated list] [Yade-users] Problem in ElasticContact law +	needs clarification
+</A></li>
+        <LI>Next message: <A HREF="000855.html">[deprecated list] [Yade-users] Problem in ElasticContact law +	needs clarification
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#853">[ date ]</a>
+              <a href="thread.html#853">[ thread ]</a>
+              <a href="subject.html#853">[ subject ]</a>
+              <a href="author.html#853">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Elastic contact law is broken in the default TriaxialTest. I guess it is 
+</I>&gt;<i> linked with r1822.
+</I>
+I think not related, that was only renaming things. You can get
+modifications here:
+<A HREF="http://bazaar.launchpad.net/~vcs-imports/yade/trunk/annotate/head%">http://bazaar.launchpad.net/~vcs-imports/yade/trunk/annotate/head%</A>
+3A/pkg/dem/Engine/StandAloneEngine/ElasticContactLaw.cpp
+.
+
+&gt;<i> It looks like friction is almost inactive (&quot;almost&quot; because shearForce 
+</I>&gt;<i> is not null when I look into a xml, but the sample still has a 
+</I>&gt;<i> negligible shear strength).
+</I>
+&gt;<i> -What is the result of &quot;#ifdef SCG_SHEAR&quot; by default?
+</I>
+SpheresContactGeometry stores current shear and prevNormal (which, as is
+the current practice, what various InteractionPhysics' do).
+
+However, it is used by the ElasticContactLaw only if useShear==True. In
+that case, there is SpheresContactGeometry::updateShear, which uses the
+incremental formulation to update displacement (not force), which is
+then used to compute the force.
+
+Without useShear, it uses the old algorithm that was there since ages,
+the incremental one updating force, which I moved (a few months back) to
+SpheresContactGeometry::updateShearForce to make it usable from
+different constitutive laws, since that code was duplicated at least 5x.
+But the code itself did not change, and IIRC (not sure 100%) I verified
+that by running TriaxialTest with both versions (inline shear update vs.
+updateShearForce) with exacly same results.
+
+&gt;<i> -TriaxialTest generates a contact law with useShear=0 by default, is 
+</I>&gt;<i> that correct? When I put useShear=1, the result looks better.
+</I>
+I know there was some difference for triaxial with and without useShear,
+and thought that perhaps I didn't write updateShear correctly (as
+updateShearForce didn't have influence on the results). I didn't have
+time (and interest) to solve that back then, so I disabled useShear by
+default in triaxial. You can compare SpheresContactGeometry::updateShear
+and ::updateShearForce, they are almost the smae from the top down.
+
+&gt;<i> -momentRotationLaw=&quot;1&quot; by default, is that correct? (it has always been 
+</I>&gt;<i> that way perhaps, if nobody opposes, i'll set it false by default)
+</I>
+It must have been like that since ages, as it is the default (in
+ElasticContactLaw's ctor) and nothing sets that in TriaxialTest.
+
+&gt;<i> -Could we please keep the old version of this contact law by default?
+</I>
+Which one is it? I had the same results for useShear==False as for the
+original contact law, but to you the results don't seem correct; does
+that mean that the old results were incorrect as well? Confusing stuff.
+
+Vaclav
+
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000852.html">[deprecated list] [Yade-users] Problem in ElasticContact law +	needs clarification
+</A></li>
+	<LI>Next message: <A HREF="000855.html">[deprecated list] [Yade-users] Problem in ElasticContact law +	needs clarification
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#853">[ date ]</a>
+              <a href="thread.html#853">[ thread ]</a>
+              <a href="subject.html#853">[ subject ]</a>
+              <a href="author.html#853">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

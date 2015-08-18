@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] OSError: [Errno 17] while compiling
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20OSError%3A%20%5BErrno%2017%5D%20while%20compiling&In-Reply-To=%3C4906030D.4080508%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000500.html">
+   <LINK REL="Next"  HREF="000501.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] OSError: [Errno 17] while compiling</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20OSError%3A%20%5BErrno%2017%5D%20while%20compiling&In-Reply-To=%3C4906030D.4080508%40geo.hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] OSError: [Errno 17] while compiling">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Mon Oct 27 19:06:05 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000500.html">[deprecated list] [Yade-users] SphereContactGeometry with (or without) hasShear :	&quot;nan&quot; attributes
+</A></li>
+        <LI>Next message: <A HREF="000501.html">[deprecated list] [Yade-users] OSError: [Errno 17] while	compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#515">[ date ]</a>
+              <a href="thread.html#515">[ thread ]</a>
+              <a href="subject.html#515">[ subject ]</a>
+              <a href="author.html#515">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>(NB : No, my email account is not pirated by a spam robot...)
+
+After some work in the source code, and, so, an attempt to recompile I 
+get this error message at the very beginning :
+
+Checking for boost::python::scope() in C++ library boost_python-mt... 
+(cached) yes (all the former checkings are also to yes)
+OSError: [Errno 17] File exists:
+  File &quot;/home/jerome/MyTrunk/SConstruct&quot;, line 524:
+    installHeaders() # install to buildDir always
+  File &quot;/home/jerome/MyTrunk/SConstruct&quot;, line 491:
+    if not exists(linkName): os.symlink(linkTarget,linkName)
+
+I tried again after a scons -c, and also after having commented the 
+(two) paragraphs in the &quot;Sconscript&quot; files corresponding to the modified 
+source files but it changes nothing...
+It seems to me that I already faced this error but I didn't remember 
+when (and how to solve it)... I didn't find anything on the mailing list 
+and the only thing I understand from the web is that this error could 
+occur at every installation of something. Finally and unfortunately I 
+understand the &quot;Sconstruct&quot; very very too few to see exactly what goes 
+wrong...
+
+
+Thanks again
+
+Jerome
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000500.html">[deprecated list] [Yade-users] SphereContactGeometry with (or without) hasShear :	&quot;nan&quot; attributes
+</A></li>
+	<LI>Next message: <A HREF="000501.html">[deprecated list] [Yade-users] OSError: [Errno 17] while	compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#515">[ date ]</a>
+              <a href="thread.html#515">[ thread ]</a>
+              <a href="subject.html#515">[ subject ]</a>
+              <a href="author.html#515">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

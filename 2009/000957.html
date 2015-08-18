@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Problem about old boost version on cluster (scientific linux) when compiling YADE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Problem%20about%20old%20boost%20version%0A%20on%20cluster%20%28scientific%20linux%29%20when%20compiling%20YADE&In-Reply-To=%3C1250319218.9444.195.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000956.html">
+   <LINK REL="Next"  HREF="000958.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Problem about old boost version on cluster (scientific linux) when compiling YADE</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Problem%20about%20old%20boost%20version%0A%20on%20cluster%20%28scientific%20linux%29%20when%20compiling%20YADE&In-Reply-To=%3C1250319218.9444.195.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Problem about old boost version on cluster (scientific linux) when compiling YADE">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sat Aug 15 08:53:38 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000956.html">[deprecated list] [Yade-users] Problem about old boost version on	cluster (scientific	linux) when compiling YADE
+</A></li>
+        <LI>Next message: <A HREF="000958.html">[deprecated list] [Yade-users] BZR Stacked Branches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#957">[ date ]</a>
+              <a href="thread.html#957">[ thread ]</a>
+              <a href="subject.html#957">[ subject ]</a>
+              <a href="author.html#957">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> I tried using the CPPPATH='/fchen/DEM_CFD/boost_1_39_0' and
+</I>&gt;<i> LIBPATH='/fchen/DEM_CFD/boost_1_39_0/lib'
+</I>&gt;<i> and even tried CXX='/fchen/DEM_CFD/gcc-4.1.2/bin/g++',
+</I>&gt;<i> it does not help, is there a way to force scons to look for boost
+</I>&gt;<i> headers and libs in my specified folder?
+</I>
+Boost are not handled in any special way compared to other libs. Setting
+CPPPATH and LIBPATH is enough, provided the libs are called the same.
+Have a look $buildDir/config.log, that has all the commands and what
+failed (compiler messages, linker messages etc).
+
+V.
+
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000956.html">[deprecated list] [Yade-users] Problem about old boost version on	cluster (scientific	linux) when compiling YADE
+</A></li>
+	<LI>Next message: <A HREF="000958.html">[deprecated list] [Yade-users] BZR Stacked Branches
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#957">[ date ]</a>
+              <a href="thread.html#957">[ thread ]</a>
+              <a href="subject.html#957">[ subject ]</a>
+              <a href="author.html#957">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Facet position
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Facet%20position&In-Reply-To=%3C1247644015.24977.7.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000912.html">
+   <LINK REL="Next"  HREF="000914.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Facet position</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Facet%20position&In-Reply-To=%3C1247644015.24977.7.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Facet position">eudoxos at arcig.cz
+       </A><BR>
+    <I>Wed Jul 15 09:46:55 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000912.html">[deprecated list] [Yade-users] Facet position
+</A></li>
+        <LI>Next message: <A HREF="000914.html">[deprecated list] [Yade-users] Facet position
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#913">[ date ]</a>
+              <a href="thread.html#913">[ thread ]</a>
+              <a href="subject.html#913">[ subject ]</a>
+              <a href="author.html#913">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> One more small question. If I want 2 diagrams to be appeared:
+</I>&gt;<i>        yade.plot.plots={'t':('Z_pr',),'F':('t')}
+</I>&gt;<i> It works,
+</I>&gt;<i> 
+</I>&gt;<i> but when I change F and t:
+</I>&gt;<i>       yade.plot.plots={'t':('Z_pr',),'t':('F')}
+</I>&gt;<i> I receive only 't':('F') diagram, first one does not appears...
+</I>
+That's normal,  python dicts have only one value per key; try this:
+
+ a={'a':1,'a':2}
+ print a # {'a': 2}
+
+since 'a':1 was overwritten. What you have to do is to create
+differently-named t axis:
+
+yade.plot.plots={'t':('Z_pr',),'t_':('F',)}
+
+(you can name it as you want, I just appended the &quot;_&quot; (and do not forget
+the comma after 'F' again)) and in addPlotData, you will have
+
+ 't':O.time,'t_':O.time,...
+
+HTH, Vaclav
+
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000912.html">[deprecated list] [Yade-users] Facet position
+</A></li>
+	<LI>Next message: <A HREF="000914.html">[deprecated list] [Yade-users] Facet position
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#913">[ date ]</a>
+              <a href="thread.html#913">[ thread ]</a>
+              <a href="subject.html#913">[ subject ]</a>
+              <a href="author.html#913">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

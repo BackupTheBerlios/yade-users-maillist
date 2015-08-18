@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Applying constant force on a wall	and snapshot engine
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Applying%20constant%20force%20on%20a%20wall%0A%09and%20snapshot%20engine&In-Reply-To=%3C20090130103544.26560.9218.launchpad%40gandwana.canonical.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000588.html">
+   <LINK REL="Next"  HREF="000585.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Applying constant force on a wall	and snapshot engine</H1>
+    <B>MarcoDottor</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Applying%20constant%20force%20on%20a%20wall%0A%09and%20snapshot%20engine&In-Reply-To=%3C20090130103544.26560.9218.launchpad%40gandwana.canonical.com%3E"
+       TITLE="[deprecated list] [Yade-users] Applying constant force on a wall	and snapshot engine">marcodottor at libero.it
+       </A><BR>
+    <I>Fri Jan 30 11:35:44 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000588.html">[deprecated list] [Yade-users] R: Applying constant force on a wall
+</A></li>
+        <LI>Next message: <A HREF="000585.html">[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#584">[ date ]</a>
+              <a href="thread.html#584">[ thread ]</a>
+              <a href="subject.html#584">[ subject ]</a>
+              <a href="author.html#584">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I followed the advices that Mr Vaclav gave me and the code is below, but
+my box is still falling with spheres, there is again something wrong? It
+seems that only gravity is affecting bodyes.
+Another point is that if I activate the snapshot engine it results in
+blank images, there's a reason or a wrong setting?
+
+Thank you
+
+
+#!/usr/local/bin/yade-trunk -x
+# -*- encoding=utf-8 -*-
+
+from yade import utils
+from math import *
+from numpy import arange
+import random
+
+## Paametri fisici geometrie importate
+Young = 15e6
+Poisson = 0.2
+
+#Parametri cilindro
+rCyl=40   ##Raggio superiore tronco cono
+rCyl2=40  ##Raggio inferiore tronco cono
+hCyl=39   ##altezza base inferiore cono
+hCyl2=10 ##altezza base superiore cono
+nPoly=20  ##Poligoni di cui &#195;&#168; composto il contenitore
+hBox=hCyl/5
+phiStep=2*pi/nPoly
+
+#tolleranza contatti
+toll = 0.005
+
+## Omega
+o=Omega()
+
+## Importa geometria testa
+head =
+utils.import_stl_geometry('TC3T4.stl',young=Young,poisson=Poisson,
+color=[0,1,0],wire=True)
+
+for n in range(nPoly):
+        phi1,phi2=n*phiStep,(n+1)*phiStep
+        def pt(angle,radius,z):
+                return radius*sin(angle),radius*cos(angle),z
+a,b,c,d=pt(phi1,rCyl,hCyl2),pt(phi2,rCyl,hCyl2),pt(phi1,rCyl2,hCyl),pt(phi2,rCyl2,hCyl)
+        o.bodies.append([
+                utils.facet([a,b,c]),
+                utils.facet([b,c,d])])
+
+for b in o.bodies: b['isDynamic']=False
+
+box =
+utils.box([0,0,hCyl+hBox/2],[rCyl,rCyl,hBox/2],density=200,wire=True)
+boxId=o.bodies.append(box)
+
+#for b in o.bodies: b['isDynamic']=False
+
+## Sfere
+sphereRadius = 0.6
+nbSpheres = (10,10,3)
+for i in xrange(nbSpheres[0]):
+   for j in xrange(nbSpheres[1]):
+        for k in xrange(nbSpheres[2]):
+            x = (i*2 - nbSpheres[0])*sphereRadius*1.2
+            y = (j*2 - nbSpheres[1])*sphereRadius*1.2
+            z = 31 + (k*2 - nbSpheres[2])*sphereRadius*1.2
+o.bodies.append(utils.sphere([x,y,z],sphereRadius*(1-.3*(random.random())),young=Young,poisson=Poisson,density=2400))
+utils.randomizeColors(onlyDynamic=True)
+
+## Timestep
+o.dt=utils.PWaveTimeStep()
+
+## Initializers
+o.initializers=[
+        ## Create and reset to zero container of all PhysicalActions
+that will be used
+        StandAloneEngine('PhysicalActionContainerInitializer'),
+        ## Create bounding boxes. They are needed to zoom the 3d view
+properly before we start the simulation.
+MetaEngine('BoundingVolumeMetaEngine',[EngineUnit('InteractingSphere2AABB'),EngineUnit('InteractingFacet2AABB'),EngineUnit('InteractingBox2AABB'),EngineUnit('MetaInteractingGeometry2AABB')])
+]
+
+
+## Engines
+o.engines=[
+
+        ## Resets forces and momenta the act on bodies
+        StandAloneEngine('PhysicalActionContainerReseter'),
+
+        ## Associates bounding volume to each body.
+        MetaEngine('BoundingVolumeMetaEngine',[
+                EngineUnit('InteractingSphere2AABB'),
+                EngineUnit('InteractingFacet2AABB'),
+                EngineUnit('InteractingBox2AABB'),
+                EngineUnit('MetaInteractingGeometry2AABB')
+        ]),
+        ## Using bounding boxes find possible body collisions.
+        ##StandAloneEngine('SpatialQuickSortCollider'),
+        StandAloneEngine('SAPCollider'),
+        ## Create geometry information about each potential collision.
+        MetaEngine('InteractionGeometryMetaEngine',[
+EngineUnit('InteractingSphere2InteractingSphere4SpheresContactGeometry'),
+EngineUnit('InteractingFacet2InteractingSphere4SpheresContactGeometry',{'shrinkFactor':toll}),
+EngineUnit('InteractingBox2InteractingSphere4SpheresContactGeometry')
+        ]),
+        ## Crea informazioni fisiche sui contatti.
+MetaEngine('InteractionPhysicsMetaEngine',[EngineUnit('MacroMicroElasticRelationships')]),
+        ## &quot;Solver&quot; of the contact
+        StandAloneEngine('ElasticContactLaw'),
+
+        ## Applica forza alla base
+        DeusExMachina('ForceEngine',{'subscribedBodies':[boxId],
+'force':[0,0,-100]}),
+        ## Sostituisce i motori di applicazione forze ai corpi,
+smorzamento ed integrazione temporale
+        DeusExMachina('NewtonsDampedLaw',{'damping':0.3}),
+
+
+        ## Applica rotazione alla testa 1 giro/min = 0,1047 rad/s
+        DeusExMachina('RotationEngine',{'subscribedBodies':head,
+'rotationAxis':[0,0,1],'rotateAroundZero':True,'angularVelocity':0.1047}),
+
+#StandAloneEngine('SnapshotEngine',{'virtPeriod':1,'fileBase':'aaa','viewNo':0,'ignoreErrors':True})
+
+]
+
+## Salva la scena da simulare
+o.save('/tmp/a.xml');
+-- 
+This message was sent from Launchpad by the user
+MarcoDottor (<A HREF="https://launchpad.net/~marcodottor">https://launchpad.net/~marcodottor</A>)
+using the &quot;Contact this team&quot; link on the yade-users team page.
+For more information see
+<A HREF="https://help.launchpad.net/YourAccount/ContactingPeople">https://help.launchpad.net/YourAccount/ContactingPeople</A>
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000588.html">[deprecated list] [Yade-users] R: Applying constant force on a wall
+</A></li>
+	<LI>Next message: <A HREF="000585.html">[deprecated list] [Yade-users] Applying constant force on a	wall and snapshot	engine
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#584">[ date ]</a>
+              <a href="thread.html#584">[ thread ]</a>
+              <a href="subject.html#584">[ subject ]</a>
+              <a href="author.html#584">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

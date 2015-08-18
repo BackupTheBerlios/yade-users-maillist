@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Triaxial Test
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Triaxial%20Test&In-Reply-To=%3C4786339F.9080605%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Triaxial Test</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Triaxial%20Test&In-Reply-To=%3C4786339F.9080605%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Triaxial Test">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Thu Jan 10 16:02:55 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[Yade-users] Triaxial Test
+</A></li>
+        <LI>Next message: <A HREF="000017.html">[Yade-users] &quot;Primary view&quot; window empty
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You need to edit TriaxialTest.h and TriaxialTest.cpp, then do the same 
+as,  for instance, parameter &quot;sphereFrictionDeg&quot;. Namely : declare new 
+user variables in TriaxialTest.h, define them (default value) in the 
+constructor (TriaxialTest::TriaxialTest(...) ), and register them in 
+TriaxialTest::registerAttributes().
+Just search all ocurences of &quot;sphereFrictionDeg&quot; in both files and you 
+will see.
+
+The result of that will be :
+1- new parameters will appear in the interface
+2- they will aslo be printed in the *.xml file that you get when you 
+save a simulation.
+
+Bruno
+
+
+Add a MaxRad and MinRad as member data
+
+
+Jos&#233; Cunha a &#233;crit :
+&gt;<i> I' ve been reading about yade architecture in order to understand it. If 
+</I>&gt;<i> I want to change the triaxial test to let the user decide if he wants to 
+</I>&gt;<i> have various ball radious and the number of balls with radious 1, number 
+</I>&gt;<i> of balls with radious 2 etc. What should i edit and recompile? I'm not 
+</I>&gt;<i> requesting the actual code to do that, just what files should be edited 
+</I>&gt;<i> and how do i recompile them etc.
+</I>&gt;<i> Best Regards.
+</I>&gt;<i> Jos&#233; Pedro Cunha
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[Yade-users] Triaxial Test
+</A></li>
+	<LI>Next message: <A HREF="000017.html">[Yade-users] &quot;Primary view&quot; window empty
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

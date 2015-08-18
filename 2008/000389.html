@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] svn-bzr alternative / Live CD/DVD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20svn-bzr%20alternative%20/%20Live%20CD/DVD&In-Reply-To=%3C225efd590807250850x44a6a65aj6c3d9518710c77f8%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000388.html">
+   <LINK REL="Next"  HREF="000402.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] svn-bzr alternative / Live CD/DVD</H1>
+    <B>Daryl Begaye</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20svn-bzr%20alternative%20/%20Live%20CD/DVD&In-Reply-To=%3C225efd590807250850x44a6a65aj6c3d9518710c77f8%40mail.gmail.com%3E"
+       TITLE="[Yade-users] svn-bzr alternative / Live CD/DVD">dcbegaye at gmail.com
+       </A><BR>
+    <I>Fri Jul 25 17:50:43 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000388.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+        <LI>Next message: <A HREF="000402.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#389">[ date ]</a>
+              <a href="thread.html#389">[ thread ]</a>
+              <a href="subject.html#389">[ subject ]</a>
+              <a href="author.html#389">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>EDIT:
+
+Just to be sure, I tested the Live DVD on another laptop and it runs
+perfectly, no crashes.  The first laptop that Yade crashed on is a:
+
+Dell Latitude D830
+Intel Centrino Dual Core
+2Gig of Mem
+Nvidia Quadro Video/Graphics card (I'm not sure)
+
+the second laptop which Yade runs perfectly on is a:
+
+Acer Extensa 5420
+AMD Turion 64 x2
+2Gig of Mem
+ATI Radeon Xpress 1250 Video card
+
+I would like to test the Live DVD on some other machines and hopefully
+shrink it down some to fit on a CD.
+
+Regards,
+Daryl
+
+On Fri, Jul 25, 2008 at 11:07 AM, Daryl Begaye &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">dcbegaye at gmail.com</A>&gt; wrote:
+
+&gt;<i> GOOD NEWS!!!
+</I>&gt;<i>
+</I>&gt;<i> I was successfully able to create a Live CD with yade on it.
+</I>&gt;<i>
+</I>&gt;<i> BAD NEWS!!!
+</I>&gt;<i>
+</I>&gt;<i> Yade crashes every time an example is generated and ran, here is the error
+</I>&gt;<i> message:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">ubuntu at ubuntu</A>:/build-unknown/core$ ./yade
+</I>&gt;<i> Constructing ClassFactory  (if multiple times - check '-rdynamic' flag!).
+</I>&gt;<i> Constructing SerializableSingleton  (if multiple times - check '-rdynamic'
+</I>&gt;<i> flag!).
+</I>&gt;<i> WARNING: cannot open file used for capillary law, in TriaxalTestWater
+</I>&gt;<i> __   __    ____          ____                      _
+</I>&gt;<i> \ \ / /_ _|  _ \  ___   / ___|___  _ __  ___  ___ | | ___
+</I>&gt;<i>  \ V / _` | | | |/ _ \ | |   / _ \| '_ \/ __|/ _ \| |/ _ \
+</I>&gt;<i>   | | (_| | |_| |  __/ | |__| (_) | | | \__ \ (_) | |  __/
+</I>&gt;<i>   |_|\__,_|____/ \___|  \____\___/|_| |_|___/\___/|_|\___|
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> In [1]: QtFileGenerator
+</I>&gt;<i> Attribute is not defined : outputFileName
+</I>&gt;<i> Attribute is not defined : serializationDynlib
+</I>&gt;<i> Attribute is not defined : outputFileName
+</I>&gt;<i> Attribute is not defined : serializationDynlib
+</I>&gt;<i> Attribute is not defined : outputFileName
+</I>&gt;<i> Attribute is not defined : serializationDynlib
+</I>&gt;<i> Attribute is not defined : outputFileName
+</I>&gt;<i> Attribute is not defined : serializationDynlib
+</I>&gt;<i> Omega::instance().getSimulationFileName()=
+</I>&gt;<i> yade: gui/qt3/SimulationController.cpp:104: void
+</I>&gt;<i> SimulationController::loadSimulationFromFileName(const std::string&amp;, bool,
+</I>&gt;<i> bool): Assertion `filesystem::exists(fileName)' failed.
+</I>&gt;<i> SIGSEGV/SIGABRT handler called; gdb batch file is
+</I>&gt;<i> `/home/ubuntu/.yade-unknown/gdb_crash_batch-pid10993'
+</I>&gt;<i> GNU gdb 6.8-debian
+</I>&gt;<i> Copyright (C) 2008 Free Software Foundation, Inc.
+</I>&gt;<i> License GPLv3+: GNU GPL version 3 or later &lt;
+</I>&gt;<i> <A HREF="http://gnu.org/licenses/gpl.html">http://gnu.org/licenses/gpl.html</A>&gt;
+</I>&gt;<i> This is free software: you are free to change and redistribute it.
+</I>&gt;<i> There is NO WARRANTY, to the extent permitted by law.  Type &quot;show copying&quot;
+</I>&gt;<i> and &quot;show warranty&quot; for details.
+</I>&gt;<i> This GDB was configured as &quot;i486-linux-gnu&quot;.
+</I>&gt;<i> [Thread debugging using libthread_db enabled]
+</I>&gt;<i> [New Thread 0xb6c8a6c0 (LWP 10993)]
+</I>&gt;<i> [New Thread 0xb26b6b90 (LWP 10997)]
+</I>&gt;<i> 0xb7fc6410 in __kernel_vsyscall ()
+</I>&gt;<i> No symbol &quot;info&quot; in current context.
+</I>&gt;<i>
+</I>&gt;<i> Thread 2 (Thread 0xb26b6b90 (LWP 10997)):
+</I>&gt;<i> #0  0xb7fc6410 in __kernel_vsyscall ()
+</I>&gt;<i> #1  0xb727b881 in select () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i> #2  0xb186faa9 in ?? () from /usr/lib/python2.5/lib-dynload/readline.so
+</I>&gt;<i> #3  0xb7e9bbc8 in PyOS_Readline () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #4  0xb7f191b7 in ?? () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #5  0xb7ed550a in PyCFunction_Call () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #6  0xb7f23bd6 in PyEval_EvalFrameEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #7  0xb7f25368 in PyEval_EvalCodeEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #8  0xb7f238bc in PyEval_EvalFrameEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #9  0xb7f25368 in PyEval_EvalCodeEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #10 0xb7f238bc in PyEval_EvalFrameEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #11 0xb7f25368 in PyEval_EvalCodeEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #12 0xb7f238bc in PyEval_EvalFrameEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #13 0xb7f25368 in PyEval_EvalCodeEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #14 0xb7ec167f in ?? () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #15 0xb7e9e8d7 in PyObject_Call () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #16 0xb7ea60ac in ?? () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #17 0xb7e9e8d7 in PyObject_Call () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #18 0xb7ea6676 in ?? () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #19 0xb7e9e8d7 in PyObject_Call () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #20 0xb7f20c70 in PyEval_EvalFrameEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #21 0xb7f25368 in PyEval_EvalCodeEx () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #22 0xb7f254c3 in PyEval_EvalCode () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #23 0xb7f486ea in PyRun_FileExFlags () from /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #24 0xb7f489ea in PyRun_SimpleFileExFlags () from
+</I>&gt;<i> /usr/lib/libpython2.5.so.1.0
+</I>&gt;<i> #25 0xb58dde5a in PythonUI::execScript (script=@0xb26b62c0) at
+</I>&gt;<i> gui/py/PythonUI.cpp:39
+</I>&gt;<i> #26 0xb58deb96 in PythonUI::pythonSession () at gui/py/PythonUI.cpp:88
+</I>&gt;<i> #27 0xb5845881 in boost::detail::function::void_function_invoker0&lt;void
+</I>&gt;<i> (*)(), void&gt;::invoke (function_ptr=@0xb26b63b0) at
+</I>&gt;<i> /usr/include/boost/function/function_template.hpp:114
+</I>&gt;<i> #28 0xb7e1c01b in boost::function0&lt;void,
+</I>&gt;<i> std::allocator&lt;boost::function_base&gt; &gt;::operator() () from
+</I>&gt;<i> /usr/lib/libboost_thread-gcc42-mt-1_34_1.so.1.34.1
+</I>&gt;<i> #29 0xb7e1bc27 in ?? () from
+</I>&gt;<i> /usr/lib/libboost_thread-gcc42-mt-1_34_1.so.1.34.1
+</I>&gt;<i> #30 0xb7e6a4fb in start_thread () from /lib/tls/i686/cmov/libpthread.so.0
+</I>&gt;<i> #31 0xb7282e5e in clone () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i>
+</I>&gt;<i> Thread 1 (Thread 0xb6c8a6c0 (LWP 10993)):
+</I>&gt;<i> #0  0xb7fc6410 in __kernel_vsyscall ()
+</I>&gt;<i> #1  0xb72414fb in waitpid () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i> #2  0xb71e4643 in ?? () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i> #3  0xb71e4a02 in system () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i> #4  0xb7e72d7d in system () from /lib/tls/i686/cmov/libpthread.so.0
+</I>&gt;<i> #5  0x0819a8d0 in sigHandler (sig=6) at core/yade.cpp:58
+</I>&gt;<i> #6  &lt;signal handler called&gt;
+</I>&gt;<i> #7  0xb7fc6410 in __kernel_vsyscall ()
+</I>&gt;<i> #8  0xb71d7085 in raise () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i> #9  0xb71d8a01 in abort () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i> #10 0xb71d010e in __assert_fail () from /lib/tls/i686/cmov/libc.so.6
+</I>&gt;<i> #11 0xb5855f1f in SimulationController::loadSimulationFromFileName
+</I>&gt;<i> (this=0x859d4b0, fileName=@0xbfa45d24, center=true,
+</I>&gt;<i> useTimeStepperIfPresent=true) at gui/qt3/SimulationController.cpp:104
+</I>&gt;<i> #12 0xb58614d3 in YadeQtMainWindow::loadSimulation (this=0x83064c0,
+</I>&gt;<i> file=@0xbfa45d24) at gui/qt3/YadeQtMainWindow.cpp:90
+</I>&gt;<i> #13 0xb581415f in QtFileGenerator::timerEvent (this=0xb1a091f8) at
+</I>&gt;<i> gui/qt3/QtFileGenerator.cpp:240
+</I>&gt;<i> #14 0xb7915568 in QObject::event () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #15 0xb794dd65 in QWidget::event () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #16 0xb78abc36 in QApplication::internalNotify () from
+</I>&gt;<i> /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #17 0xb78ae564 in QApplication::notify () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #18 0xb783c28d in QApplication::sendEvent () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #19 0xb789eb19 in QEventLoop::activateTimers () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #20 0xb785164b in QEventLoop::processEvents () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #21 0xb78c6f90 in QEventLoop::enterLoop () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #22 0xb78c6c8e in QEventLoop::exec () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #23 0xb78ad7df in QApplication::exec () from /usr/lib/libqt-mt.so.3
+</I>&gt;<i> #24 0xb5844d33 in QtGUI::run (this=0x82d38d8, argc=1, argv=0xbfa46894) at
+</I>&gt;<i> gui/qt3/QtGUI.cpp:72
+</I>&gt;<i> #25 0x0819a2eb in main (argc=1, argv=0xbfa46894) at core/yade.cpp:255
+</I>&gt;<i> #0  0xb7fc6410 in __kernel_vsyscall ()
+</I>&gt;<i> Aborted
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">ubuntu at ubuntu</A>:/build-unknown/core$
+</I>&gt;<i>
+</I>&gt;<i> Regards, Daryl
+</I>&gt;<i>
+</I>&gt;<i> On Mon, Jul 21, 2008 at 4:28 PM, V&#225;clav S(milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Daryl Begaye napsal(a):
+</I>&gt;&gt;<i> &gt; Ok, so I'm very close to finishing the Live Yade CD/DVD but there
+</I>&gt;&gt;<i> &gt; seems to be an issue between bzr and python, and it seems that the svn
+</I>&gt;&gt;<i> &gt; checkouts don't work for me.
+</I>&gt;&gt;<i> &gt; Heres the error I get when using *bzr branch lp:yade*
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; bzr: ERROR: socket.error: (110, 'Connection timed out')
+</I>&gt;&gt;<i> Your network doesn't probably allow this traffic; since I think that
+</I>&gt;&gt;<i> branching runs over plain http by default: are you behind a http proxy?
+</I>&gt;&gt;<i> If so, have a look at <A HREF="http://bazaar-vcs.org/ConfiguringBzr">http://bazaar-vcs.org/ConfiguringBzr</A> (set
+</I>&gt;&gt;<i> http_proxy env variable or set http_proxy in config file to make it
+</I>&gt;&gt;<i> permanent). Does wget work for you on some arbitrary file?
+</I>&gt;&gt;<i> &gt;  is there an alternative way to download the snapshots of yade?
+</I>&gt;&gt;<i> There are weekly snapshots here: <A HREF="http://geo.hmg.inpg.fr/~smilauer/yade/&lt;http://geo.hmg.inpg.fr/%7Esmilauer/yade/">http://geo.hmg.inpg.fr/~smilauer/yade/&lt;http://geo.hmg.inpg.fr/%7Esmilauer/yade/</A>&gt;
+</I>&gt;&gt;<i> (it is debian source repository; you can use it with deb-src in
+</I>&gt;&gt;<i> /etc/apt/sources.list or just download tarballs with sources). You could
+</I>&gt;&gt;<i> event use the source package for the whole building process:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> add deb-src <A HREF="http://geo.hmg.inpg.fr/~smilauer/yade/&lt;http://geo.hmg.inpg.fr/%7Esmilauer/yade/">http://geo.hmg.inpg.fr/~smilauer/yade/&lt;http://geo.hmg.inpg.fr/%7Esmilauer/yade/</A>&gt;to
+</I>&gt;&gt;<i> /etc/apt/sources.list, then &quot;apt-get source yade-svn1431&quot;, &quot;cd
+</I>&gt;&gt;<i> yade-svn143_1&quot;, &quot;fakeroot-tcp debian/rules binary&quot; and you should end up
+</I>&gt;&gt;<i> with 3 packages (optimized, debugging and headers).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Regards, Vaclav
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Daryl Begaye
+</I>&gt;<i> Din&#233; College
+</I>&gt;<i> <A HREF="http://www.dinecollege.edu">http://www.dinecollege.edu</A>
+</I>&gt;<i> Major(s): Computer Science and Fine Arts
+</I>&gt;<i>
+</I>
+
+
+-- 
+Daryl Begaye
+Din&#233; College
+<A HREF="http://www.dinecollege.edu">http://www.dinecollege.edu</A>
+Major(s): Computer Science and Fine Arts
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080725/7dc0023b/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080725/7dc0023b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000388.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+	<LI>Next message: <A HREF="000402.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#389">[ date ]</a>
+              <a href="thread.html#389">[ thread ]</a>
+              <a href="subject.html#389">[ subject ]</a>
+              <a href="author.html#389">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

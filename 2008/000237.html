@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] About adding a surcharge (either box or force)	during simulation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20adding%20a%20surcharge%20%28either%20box%20or%20force%29%0A%09during%20simulation&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A0918512B%40kstud7.utk.tennessee.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000233.html">
+   <LINK REL="Next"  HREF="000240.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] About adding a surcharge (either box or force)	during simulation</H1>
+    <B>Chen, Feng</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20adding%20a%20surcharge%20%28either%20box%20or%20force%29%0A%09during%20simulation&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A0918512B%40kstud7.utk.tennessee.edu%3E"
+       TITLE="[Yade-users] About adding a surcharge (either box or force)	during simulation">fchen3 at utk.edu
+       </A><BR>
+    <I>Sat May 17 21:06:00 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000233.html">[Yade-users] About adding a surcharge (either box or force) during simulation
+</A></li>
+        <LI>Next message: <A HREF="000240.html">[Yade-users] About adding a surcharge (either box or force)	during simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#237">[ date ]</a>
+              <a href="thread.html#237">[ thread ]</a>
+              <a href="subject.html#237">[ subject ]</a>
+              <a href="author.html#237">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, Vaclav,
+ 
+Sorry, I didn't know that, I thought the threads are just identified by their title:-|.
+Thanks for your reply, since I need to do a lot of &quot;dynamic&quot; things like add or remove an object during the simulation, always writing a new engine and adjust those parameters might be very inefficient.
+do you know how can I start the python interface for YADE, is there any sample code already in the package? It looks a very efficient way of doing &quot;dynamic&quot; operations.
+
+________________________________
+
+From: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-bounces at lists.berlios.de</A> on behalf of V&#225;clav S(milauer
+Sent: Fri 5/16/2008 11:29 AM
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+Subject: Re: [Yade-users] About adding a surcharge (either box or force) during simulation
+
+
+
+Feng, please can you NOT reply to mails on the list if you change
+subject? That makes threading broken; please write new message to
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A> from scratch. Thanks :-)
+&gt;<i> I have an assembly of particles which needs to consolidate first, then
+</I>&gt;<i> I need to apply a surcharge on top of them. I thought of two ways:
+</I>&gt;<i> (1) apply a box on top of the assembly. But my question is how to add
+</I>&gt;<i> a box (dynamic = true) after a certain steps, for example, first
+</I>&gt;<i> iterate 5k steps then activate the top box?
+</I>&gt;<i> (2) Apply a force on top of the load, adding another &quot;Engine&quot;, count
+</I>&gt;<i> the iteration number &quot;Niter&quot;, after &quot;Niter&quot;, add the load on top of
+</I>&gt;<i> the particle assembly.
+</I>In any case you will have to write engine that will check iteration
+number and if the condition is met, do some action. in (1), it would
+create the box body, add ForceEngine to engines and subscribe the box to
+the engine. (2) seems quite complicated, since loading the particle
+assembly without the wall, you have to say which elements are on the
+boundary, if I understand what you mean in (2).
+
+---
+
+In Python you could do it like this:
+
+[create simulation]
+o=Omega()
+o.run(5000) # run 5000 iterations
+boxId=o.bodies.append(yade.utils.box([cx,cy,cz],[extx,exty,extz],density=...,...))
+# create box, add it to bodies, save body id
+# put ForceEngine after the 5th engine (for example)
+o.engines=o.engines[:5]+DeusExMachina(&quot;ForceEngine&quot;,{'force'=[0,0,-100],'subscribedBodies':[boxId]})+o.engines[5:]
+o.run() #continue simulation
+
+But currently there is no 3d view in PythonUI, which is a considerable
+problem :-|. You could overcome this by calling yade.utils.runInQtGui()
+one the engine is added (instead of o.run()). That saves simulation to
+file and loads it in the GUI.
+
+Regards, Vaclav
+_______________________________________________
+Yade-users mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080517/3b0c579f/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080517/3b0c579f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000233.html">[Yade-users] About adding a surcharge (either box or force) during simulation
+</A></li>
+	<LI>Next message: <A HREF="000240.html">[Yade-users] About adding a surcharge (either box or force)	during simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#237">[ date ]</a>
+              <a href="thread.html#237">[ thread ]</a>
+              <a href="subject.html#237">[ subject ]</a>
+              <a href="author.html#237">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

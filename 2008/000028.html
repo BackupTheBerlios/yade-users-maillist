@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] changing transient contacts to persistent cohesive contacts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20changing%20transient%20contacts%20to%20persistent%20cohesive%0A%20contacts&In-Reply-To=%3C478BA589.3010905%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000025.html">
+   <LINK REL="Next"  HREF="000029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] changing transient contacts to persistent cohesive contacts</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20changing%20transient%20contacts%20to%20persistent%20cohesive%0A%20contacts&In-Reply-To=%3C478BA589.3010905%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] changing transient contacts to persistent cohesive contacts">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Mon Jan 14 19:10:17 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000025.html">[Yade-users] changing transient contacts to persistent cohesive contacts
+</A></li>
+        <LI>Next message: <A HREF="000029.html">[Yade-users] changing transient contacts to persistent cohesive contacts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+
+&gt;<i> Hmmm, can you have transient contacts with cohesion (traction)?
+</I>Yes. You must use the DistantPersistentSAPCollider. The only difference 
+with PersistentSAPCollider is :
+
+-in PersistentSAPCollider, if overlap&lt;0, then interaction-&gt;isReal=false 
+and interaction is removed
+
+-in DistantPersistentSAPCollider, if (overlap&lt;0 &amp;&amp; 
+interaction-&gt;isReal==false) then the interaction is removed
+
+This modified collider must be used with 
+InteractingSphere2InteractingSphere4DistantSpheresContactGeometry (I 
+know you love long names!).
+
+In 
+InteractingSphere2InteractingSphere4DistantSpheresContactGeometry.hpp, 
+you can see this comment :
+
+&quot;////This engine is designed to work with the 
+DistantPersistentSAPCollider, the go method does not return
+///false when an interaction exists - even if there is no overlap.&quot;/
+
+So, the value of interaction-&gt;isReal is no longer defined based on 
+geometrical properties. Instead of that, it has to be defined in the 
+contact law, so that isReal==false ONLY IF the interaction is broken AND 
+there is no overlap (see CohesiveFrictionalContactLaw).
+
+Example usage in CohesiveTriaxialTest preprocessor.
+
+
+&gt;<i>  How
+</I>&gt;<i> would I do uniaxial traction test without persistent links? Or uniaxial
+</I>&gt;<i> compression without confinement?
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I think all you need is an interaction law that will set isReal=false 
+when contact is broken in traction. I am not sure that my 
+CohesiveFrictionalContactLaw is good for you, so perhaps you have to 
+write your own contact law (very similar to existing ones in fact, same 
+equations but has to set isReal=false after failure).
+
+IMHO, persistent links could be completely removed from Yade.
+
+Bruno
+
+
+
+
+&gt;<i> Vaclav
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000025.html">[Yade-users] changing transient contacts to persistent cohesive contacts
+</A></li>
+	<LI>Next message: <A HREF="000029.html">[Yade-users] changing transient contacts to persistent cohesive contacts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

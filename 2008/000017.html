@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] &quot;Primary view&quot; window empty
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20%22Primary%20view%22%20window%20empty&In-Reply-To=%3C47864E02.7090504%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000016.html">
+   <LINK REL="Next"  HREF="000018.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] &quot;Primary view&quot; window empty</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20%22Primary%20view%22%20window%20empty&In-Reply-To=%3C47864E02.7090504%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] &quot;Primary view&quot; window empty">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Thu Jan 10 17:55:30 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000016.html">[Yade-users] Triaxial Test
+</A></li>
+        <LI>Next message: <A HREF="000018.html">[Yade-users] Triaxial Test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>    Hello everybody. I afford me to begin 2008 as 2007 finished, with my 
+&quot;graphical problems&quot;. To make a point about it (it makes indeed a month 
+that I didn't write you about it...)  I remind that, after ubuntu 
+updates, for me nothing was drawn in the &quot;Primary view&quot; window, because 
+of a problem with GLX. As suggested by some of you, the instruction 
+/glxgears/ didn't in fact work. Thanks to my office neighbour, I have 
+now changed of graphical driver and now /glxgears/ works (with frame 
+rate of more or less 1800 FPS ) (I also reinstalled qglviewer and 
+recompiled yade).
+    But for Yade it is worse : now yade crashes after the window with 
+&quot;Generation&quot; and &quot;Save time&quot;, when I use a preprocessor, or it crashes 
+also as soon as I click on File - New Simulation. Here is written what 
+appears in the terminal :
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">jerome at c1solimara-l</A>:~/YADE/bin$ ./yade-0.11.1
+Constructing ClassFactory  (if multiple times - check '-rdynamic' flag!).
+Constructing SerializableSingleton  (if multiple times - check 
+'-rdynamic' flag!).
+INFO  core/Omega.cpp:32 Omega: Constructing Omega  (if multiple times - 
+check '-rdynamic' flag!).
+INFO  core/yade.cpp:177 main: Loading configuration file: 
+/home/jerome/.yade-0.11.1/preferences.xml
+INFO  core/yade.cpp:181 main: Loading plugins...
+WARNING: cannot open file used for capillary law, in TriaxalTestWater
+INFO  core/yade.cpp:183 main: Plugins loaded.
+X Error: BadDevice, invalid or uninitialized input device 171
+  Major opcode:  149
+  Minor opcode:  3
+  Resource id:  0x0
+Failed to open device
+X Error: BadDevice, invalid or uninitialized input device 171
+  Major opcode:  149
+  Minor opcode:  3
+  Resource id:  0x0
+Failed to open device
+INFO  gui/qt3/YadeQtMainWindow.cpp:48 YadeQtMainWindow: Loading 
+configuration file: /home/jerome/.yade-0.11.1/QtGUIPreferences.xml.
+Attribute is not defined : outputFileName
+Attribute is not defined : serializationDynlib
+Attribute is not defined : outputFileName
+Attribute is not defined : serializationDynlib
+Attribute is not defined : outputFileName
+Attribute is not defined : serializationDynlib
+loading configuration file: /home/jerome/.yade-0.11.1/OpenGLRendererPref.xml
+Omega::instance().getSimulationFileName()=../data/scene.xml
+SIGSEGV/SIGABRT handler called; gdb batch file is 
+`/home/jerome/.yade-0.11.1/gdb_crash_batch-pid16283'
+GNU gdb 6.6-debian
+Copyright (C) 2006 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain 
+conditions.
+Type &quot;show copying&quot; to see the conditions.
+There is absolutely no warranty for GDB.  Type &quot;show warranty&quot; for details.
+This GDB was configured as &quot;i486-linux-gnu&quot;.
+Using host libthread_db library &quot;/lib/tls/i686/cmov/libthread_db.so.1&quot;.
+[Thread debugging using libthread_db enabled]
+[New Thread -1236879648 (LWP 16283)]
+0xffffe410 in __kernel_vsyscall ()
+No symbol &quot;info&quot; in current context.
+
+Thread 1 (Thread -1236879648 (LWP 16283)):
+#0  0xffffe410 in __kernel_vsyscall ()
+#1  0xb72b16db in waitpid () from /lib/tls/i686/cmov/libc.so.6
+#2  0xb7256b8b in ?? () from /lib/tls/i686/cmov/libc.so.6
+#3  0xb7256f62 in system () from /lib/tls/i686/cmov/libc.so.6
+#4  0xb7dea5dd in system () from /lib/tls/i686/cmov/libpthread.so.0
+#5  0x0810813a in sigHandler (sig=11) at core/yade.cpp:52
+#6  &lt;signal handler called&gt;
+#7  SimulationController::closeGLViewEvent (this=0xa4ec388, 
+id=-1076864096) at /usr/share/qt3/include/qwidget.h:848
+#8  0xb5c7ae24 in QtGeneratedSimulationController::qt_invoke 
+(this=0xa4ec388, _id=53, _o=0xbfd05b08)
+    at 
+/home/jerome/build-0.11.1/gui/qt3/moc_QtGeneratedSimulationController.cc:154
+#9  0xb78a5893 in QObject::activate_signal () from /usr/lib/libqt-mt.so.3
+#10 0xb78a61aa in QObject::activate_signal () from /usr/lib/libqt-mt.so.3
+#11 0xb5cb77d0 in GLViewer::closeSignal (this=0x8251088, t0=-1076864096) 
+at /home/jerome/build-0.11.1/gui/qt3/moc_GLViewer.cc:85
+#12 0xb74fc7f2 in QGLViewer::postDraw () from /usr/lib/libqglviewer.so.2
+#13 0xb5c312d8 in GLViewer::postDraw (this=0x8251088) at 
+gui/qt3/GLViewer.cpp:261
+#14 0xb74f82ab in QGLViewer::paintGL () from /usr/lib/libqglviewer.so.2
+#15 0xb7b3297f in QGLWidget::glDraw () from /usr/lib/libqt-mt.so.3
+#16 0xb7b31b7a in QGLWidget::updateGL () from /usr/lib/libqt-mt.so.3
+#17 0xb74f8a4b in QGLViewer::displayMessage () from 
+/usr/lib/libqglviewer.so.2
+#18 0xb5c32520 in GLViewer::centerScene (this=0x8251088) at 
+gui/qt3/GLViewer.cpp:126
+#19 0xb5c9cb12 in SimulationController::pbCenterSceneClicked 
+(this=0xa4ec388) at gui/qt3/SimulationController.cpp:369
+#20 0xb5c9d75d in SimulationController::loadSimulationFromFileName 
+(this=0xa4ec388, fileName=@0xbfd05eb4, center=true)
+    at gui/qt3/SimulationController.cpp:223
+#21 0xb5ca17ec in SimulationController (this=0xa4ec388, 
+parent=0x8215080) at gui/qt3/SimulationController.cpp:97
+#22 0xb5cac0d4 in YadeQtMainWindow::fileNewSimulation (this=0x81d7320) 
+at gui/qt3/YadeQtMainWindow.cpp:144
+#23 0xb5c4a995 in QtFileGenerator::timerEvent (this=0x821fc80) at 
+gui/qt3/QtFileGenerator.cpp:233
+#24 0xb78a4f16 in QObject::event () from /usr/lib/libqt-mt.so.3
+#25 0xb78dc5b3 in QWidget::event () from /usr/lib/libqt-mt.so.3
+#26 0xb783caf0 in QApplication::internalNotify () from 
+/usr/lib/libqt-mt.so.3
+#27 0xb783f4ba in QApplication::notify () from /usr/lib/libqt-mt.so.3
+#28 0xb77cf209 in QApplication::sendEvent () from /usr/lib/libqt-mt.so.3
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+#29 0xb782f53b in QEventLoop::activateTimers () from /usr/lib/libqt-mt.so.3
+#30 0xb77e3d49 in QEventLoop::processEvents () from /usr/lib/libqt-mt.so.3
+#31 0xb78571ce in QEventLoop::enterLoop () from /usr/lib/libqt-mt.so.3
+#32 0xb7856fde in QEventLoop::exec () from /usr/lib/libqt-mt.so.3
+#33 0xb783e699 in QApplication::exec () from /usr/lib/libqt-mt.so.3
+#34 0xb5c57252 in QtGUI::run (this=0x819cd10, argc=1, argv=0xbfd06794) 
+at gui/qt3/QtGUI.cpp:61
+#35 0x081093a6 in main (argc=1, argv=0xbfd06794) at core/yade.cpp:193
+#0  0xffffe410 in __kernel_vsyscall ()
+(gdb)
+(gdb)                                                                  
+
+Does anyone see anything ? Thanks a lot.
+
+Jerome Duriez
+
+Chen, Feng a &#233;crit :
+&gt;<i> Hi,
+</I>&gt;<i>  
+</I>&gt;<i> Another guess, it might be that your update of Ubuntu has corrupted 
+</I>&gt;<i> your 3D video driver, therefore your OpenGL will not work, not say 
+</I>&gt;<i> other 3D functions, since either Nvidia or ATI will requre some kernel 
+</I>&gt;<i> devel or other very sticky thing to compile, especially, when you 
+</I>&gt;<i> update the kernel. So you might try re-install the 3D graphic driver 
+</I>&gt;<i> before re-install qglviewer, then re-compile YADE. If you cannot run 
+</I>&gt;<i> glxgears, as Vaclav said, that's probably the case.
+</I>&gt;<i> PS: I have one laptop with Fedora Core 4, I am still with Yade 0.10.0, 
+</I>&gt;<i> I dare not upgrade:-)
+</I>&gt;<i> Feng Chen
+</I>&gt;<i> Graduate Student 
+</I>&gt;<i> Department of Civil and Environmental Engineering
+</I>&gt;<i> 223 Perkins Hall
+</I>&gt;<i> University of Tennessee, Knoxville, 37996
+</I>&gt;<i> <A HREF="http://fchen3.googlepages.com/home">http://fchen3.googlepages.com/home</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> *From:* <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-bounces at lists.berlios.de</A> on behalf of V&#225;clav S(milauer
+</I>&gt;<i> *Sent:* Fri 12/14/2007 5:26 AM
+</I>&gt;<i> *To:* <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> *Subject:* Re: [Yade-users] &quot;Primary view&quot; window empty
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; Hello. I made it but it didn't solve the problem. In fact it seems to
+</I>&gt;<i> &gt; be due to a problem with &quot;GLX&quot; which cares of 3d (that's what my
+</I>&gt;<i> &gt; office neighbour said to me ) :
+</I>&gt;<i> &gt; Xlib:  extension &quot;GLX&quot; missing on display &quot;:0.0&quot;. ( is written in the
+</I>&gt;<i> &gt; shell of Yade)
+</I>&gt;<i> &gt; For the moment this &quot;GLX&quot; doesn't still work...
+</I>&gt;<i> Generally, if GLX is missing, the server will fall back to software
+</I>&gt;<i> rendering (which is slow by several orders of magnitude - no kidding).
+</I>&gt;<i> Can you run glxgears from the terminal? Let it run and it will tell you
+</I>&gt;<i> what is the frame rate after a while - if that is less than a few
+</I>&gt;<i> hundereds, then your acceleration doesn't work. But in that case you
+</I>&gt;<i> would see at least something in the primary view. You can also post
+</I>&gt;<i> output of xdpyinfo to investigate this.
+</I>&gt;<i>
+</I>&gt;<i> But my first bet would be what Feng suggested: recompile qglviewer,
+</I>&gt;<i> probably new mesa version with different API was installed.
+</I>&gt;<i>
+</I>&gt;<i> Regards, Vaclav
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080110/d725fec9/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080110/d725fec9/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000016.html">[Yade-users] Triaxial Test
+</A></li>
+	<LI>Next message: <A HREF="000018.html">[Yade-users] Triaxial Test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#17">[ date ]</a>
+              <a href="thread.html#17">[ thread ]</a>
+              <a href="subject.html#17">[ subject ]</a>
+              <a href="author.html#17">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

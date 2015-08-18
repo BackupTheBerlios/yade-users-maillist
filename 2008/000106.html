@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Simulation with 100,000 sphere (Bruno Chareyre)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Simulation%20with%20100%2C000%20sphere%20%28Bruno%20Chareyre%29&In-Reply-To=%3C45213f870802290729q73144cdcvc1d7d71e07b26d75%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000105.html">
+   <LINK REL="Next"  HREF="000107.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Simulation with 100,000 sphere (Bruno Chareyre)</H1>
+    <B>kan</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Simulation%20with%20100%2C000%20sphere%20%28Bruno%20Chareyre%29&In-Reply-To=%3C45213f870802290729q73144cdcvc1d7d71e07b26d75%40mail.gmail.com%3E"
+       TITLE="[Yade-users] Simulation with 100,000 sphere (Bruno Chareyre)">nicessgg at gmail.com
+       </A><BR>
+    <I>Fri Feb 29 16:29:32 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000105.html">[Yade-users] Problems with save/load
+</A></li>
+        <LI>Next message: <A HREF="000107.html">[Yade-users] Particle Size and Shape
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 2/26/08, <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A> &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Send Yade-users mailing list submissions to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Yade-users digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>   1. Re: Simulation with 100,000 sphere (Bruno Chareyre)
+</I>&gt;<i>   2. Re: Simulation with 100,000 sphere (Janek Kozicki)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Mon, 25 Feb 2008 19:33:09 +0100
+</I>&gt;<i> From: Bruno Chareyre &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">bruno.chareyre at hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] Simulation with 100,000 sphere
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">47C309E5.2040201 at hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=windows-1252; format=flowed
+</I>&gt;<i>
+</I>&gt;<i> Kan, could you install callgring /vallgrind/kcachegrind and run this
+</I>&gt;<i> command :
+</I>&gt;<i>
+</I>&gt;<i> valgrind --tool=callgrind ./yade-svn1258 -n -- -f
+</I>&gt;<i> /home/bruno/YADE/data/scene.xml -v 1000 -p -m 2
+</I>&gt;<i>
+</I>&gt;<i> with scene.xml = your 100k spheres simulation. It will make only two
+</I>&gt;<i> iterations then stop, and you will get a nice file in /bin that you can
+</I>&gt;<i> open with kcachegrind. It will show which function takes all this time.
+</I>&gt;<i>
+</I>&gt;<i> And yes, I suspect physicalActionContainer too.
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>&gt;<i> p.s. saving/loading in binary format would be faster probably.
+</I>
+
+Thanks, Bruno,
+
+I am sorry for the later reply.
+I have to write my own code for my project, that is why I always asked you
+nice guys some details in DEM or YADE.
+Of course I also read the code of YADE, but it is a big project with many a
+good design, but it is complex for me, that
+is to say some times I can not understand, :(.
+
+
+Thank you guys again.
+
+Kan.
+
+V?clav ?milauer a ?crit :
+&gt;<i> &gt;&gt; I also need to do large scale simulation which may need to do around
+</I>&gt;<i> &gt;&gt; 500,000 for field engineering case. but instead of using YADE I have
+</I>&gt;<i> &gt;&gt; to develop my own code to do this, :(.
+</I>&gt;<i> &gt;&gt; In my opinion, the CPU computing time is the most important issue in
+</I>&gt;<i> &gt;&gt; DEM, while the memory is determined by the total particle number, and
+</I>&gt;<i> &gt;&gt; you data-structure design, 2GB can do a lot for a 2D case, for 3D case
+</I>&gt;<i> &gt;&gt; you may need more memory. but the momory requirements will not change
+</I>&gt;<i> &gt;&gt; much when your total particle number is defined.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt; Since Bruno just began hunting bottlenecks, Yade could be useful even
+</I>&gt;<i> &gt; for 5e5 - in the current state, one iteration would take about 5 seconds
+</I>&gt;<i> &gt; (by extrapolation).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; hi, Vaclav,
+</I>&gt;<i> &gt;&gt; is it possible that the 5 mins used for packing or sample preparation
+</I>&gt;<i> &gt;&gt; to fill the container? I just guess, for my case, it takes some time
+</I>&gt;<i> &gt;&gt; for this step and then enter the cycling.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt; No, I was loading that file from .xml and it took that time after
+</I>&gt;<i> &gt; starting the simulation that had been already loaded. I think Janek
+</I>&gt;<i> &gt; (ping Janek ;-) ) could comment on this, the PhysicalAction containers
+</I>&gt;<i> &gt; can take a lot of time to initialize.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Vaclav
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Yade-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> _______________
+</I>&gt;<i> Chareyre Bruno
+</I>&gt;<i> Maitre de conference
+</I>&gt;<i>
+</I>&gt;<i> Institut National Polytechnique de Grenoble
+</I>&gt;<i> Laboratoire 3S (Soils Solids Structures) - bureau E145
+</I>&gt;<i> BP 53 - 38041, Grenoble cedex 9 - France
+</I>&gt;<i> T?l : 33 4 56 52 86 21
+</I>&gt;<i> Fax : 33 4 76 82 70 43
+</I>&gt;<i> ________________
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Mon, 25 Feb 2008 20:43:19 +0100
+</I>&gt;<i> From: Janek Kozicki &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">janek_listy at wp.pl</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] Simulation with 100,000 sphere
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">20080225204319.2cff2beb at absurd</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=ISO-8859-2
+</I>&gt;<i>
+</I>&gt;<i> V?clav ?milauer said:     (by the date of Mon, 25 Feb 2008 10:30:00 +0100)
+</I>&gt;<i>
+</I>&gt;<i> &gt; No, I was loading that file from .xml and it took that time after
+</I>&gt;<i> &gt; starting the simulation that had been already loaded. I think Janek
+</I>&gt;<i> &gt; (ping Janek ;-) ) could comment on this, the PhysicalAction containers
+</I>&gt;<i> &gt; can take a lot of time to initialize.
+</I>&gt;<i>
+</I>&gt;<i> well, loading xml is slow (binary is faster). Filling PhysicalAction
+</I>&gt;<i> can be slow too - but currently it's Bruno who currently knows the
+</I>&gt;<i> best. He is now doing some heavy profiling, I must read carefully his
+</I>&gt;<i> results.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Janek Kozicki                                                         |
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Yade-users Digest, Vol 20, Issue 16
+</I>&gt;<i> ******************************************
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080229/92e61907/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080229/92e61907/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000105.html">[Yade-users] Problems with save/load
+</A></li>
+	<LI>Next message: <A HREF="000107.html">[Yade-users] Particle Size and Shape
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Trouble with installation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Trouble%20with%20installation&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09185175%40kstud7.utk.tennessee.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000386.html">
+   <LINK REL="Next"  HREF="000390.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Trouble with installation</H1>
+    <B>Chen, Feng</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Trouble%20with%20installation&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A09185175%40kstud7.utk.tennessee.edu%3E"
+       TITLE="[Yade-users] Trouble with installation">fchen3 at utk.edu
+       </A><BR>
+    <I>Thu Jul 24 18:23:45 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000386.html">[Yade-users] Trouble with installation
+</A></li>
+        <LI>Next message: <A HREF="000390.html">[Yade-users] Help on installing YADE-0.11.1 in Ubuntu 8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#387">[ date ]</a>
+              <a href="thread.html#387">[ thread ]</a>
+              <a href="subject.html#387">[ subject ]</a>
+              <a href="author.html#387">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The Ubuntu scons has an incompatible version number with the scons script provided in the yade package (homepage), if you do not want to use svn, download a local copy of scons (0.97 version, so in your yade source dir there should be a folder named scons-local), put it in the yade source directory, then following the README file:
+
+Then modify the build/install instructions for your package to instruct your users to execute SCons as follows (if you installed this package in your top-level directory):
+        $ python scons.py
+Or (if, for example, you installed this package in a subdirectory named &quot;scons&quot;):
+        $ python scons/scons.py
+
+For example, the command 
+&quot;scons PREFIX=/home/jpvassal/YADE optimize=1&quot;
+should be replaced with
+&quot;python scons-local/scons.py PREFIX=/home/jpvassal/YADE optimize=1&quot;
+just replace the &quot;scons&quot; name with &quot;python scons-local/scons.py&quot;
+
+However it is not a good way, could someone update the <A HREF="http://download.berlios.de/yade/yade-0.11.1.tar.gz">http://download.berlios.de/yade/yade-0.11.1.tar.gz</A> file on the homepage?
+
+BTW, if you are using Intel or ATI video card for Ubuntu Hardy heron, disable Compiz by - right click on the desktop, select &quot;Change Desktop Background&quot;, click &quot;Visual Effects&quot;, click the &quot;none&quot; option. Otherwise all OpenGL apps will mess up~~~
+
+
+-----Original Message-----
+From: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-bounces at lists.berlios.de</A> on behalf of <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">jpvassal at mail.insa-lyon.fr</A>
+Sent: Thu 7/24/2008 8:40 AM
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+Subject: [Yade-users] Trouble with installation
+ 
+Sorry, i'm a beginner under linux.
+I tried to follow instructions on the site to instal on ubuntu heron. But
+when i try to type 
+
+scons PREFIX=/home/jpvassal/YADE optimize=1
+
+The answer i had was the following one :
+
+scons: Reading SConscript files ...
+ValueError: invalid literal for int() with base 10: '0d20071203':
+  File &quot;/home/jpvassal/yade-0.11.1/SConstruct&quot;, line 28:
+    sconsVersion=sum([int(SCons.__version__.split('.')[ord[0]])*ord[1] for
+ord in [(0,10000),(1,100),(2,1)][:len(SCons.__version__.split('.'))] ])
+
+Can you help me???
+
+
+--------------------------------------------------------------------
+mail2web - V&#233;rifiez votre courrier &#233;lectronique depuis le web sur
+<A HREF="http://mail2web.com/">http://mail2web.com/</A> .
+
+
+_______________________________________________
+Yade-users mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080724/87bb28a4/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080724/87bb28a4/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000386.html">[Yade-users] Trouble with installation
+</A></li>
+	<LI>Next message: <A HREF="000390.html">[Yade-users] Help on installing YADE-0.11.1 in Ubuntu 8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#387">[ date ]</a>
+              <a href="thread.html#387">[ thread ]</a>
+              <a href="subject.html#387">[ subject ]</a>
+              <a href="author.html#387">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

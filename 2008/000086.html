@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] About RotationEngine ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20RotationEngine%20%3F&In-Reply-To=%3C20080212232647.4445efa3%40szpak%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000084.html">
+   <LINK REL="Next"  HREF="000088.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] About RotationEngine ?</H1>
+    <B>Janek Kozicki</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20RotationEngine%20%3F&In-Reply-To=%3C20080212232647.4445efa3%40szpak%3E"
+       TITLE="[Yade-users] About RotationEngine ?">janek_listy at wp.pl
+       </A><BR>
+    <I>Tue Feb 12 23:26:47 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000084.html">[Yade-users] About RotationEngine ?
+</A></li>
+        <LI>Next message: <A HREF="000088.html">[Yade-users] About RotationEngine ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#86">[ date ]</a>
+              <a href="thread.html#86">[ thread ]</a>
+              <a href="subject.html#86">[ subject ]</a>
+              <a href="author.html#86">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jerome Duriez said:     (by the date of Tue, 12 Feb 2008 16:55:13 +0100)
+
+&gt;<i> Hello everybody. I am focusing about the &quot;RotationEngine&quot; (in 
+</I>&gt;<i> pkg/common/Engine/DeusExMachina) and trying to understand well what it 
+</I>&gt;<i> does, so I have for instance one simple question :
+</I>&gt;<i> 
+</I>&gt;<i> - which is the purpose of the line 
+</I>&gt;<i> &quot;/rb-&gt;se3.orientation.ToAxisAngle(ax,an);/&quot; ? I think I understand what 
+</I>&gt;<i> it does : it affects to the 3-real vector &quot;/ax/&quot; and the real &quot;/an&quot;/ 
+</I>
+It does not affect ax and an. The se3.orientation is built from
+axis,angle. This command calculates 3D orientation (rotation) from
+two arguments - the axis of rotation, and the angle of rotation
+around this axis.
+
+&gt;<i> (both declared few lines above) respectively the axis and angle of the 
+</I>&gt;<i> rotation corresponding to the quaternion &quot;/orientation/&quot;.
+</I>&gt;<i> But why ?
+</I>&gt;<i> These &quot;/an/&quot; and &quot;/ax/&quot; seem indeed never to be used after that...
+</I>
+So axis, angle are not used after that, because we don't need them
+anymore - we are using se3.orientation built from them.
+
+To understand this better have a look at page 145 of
+
+  <A HREF="http://janek.kozicki.pl/phdthesis/kozicki_2007_PhD.pdf">http://janek.kozicki.pl/phdthesis/kozicki_2007_PhD.pdf</A>
+
+best regards
+-- 
+Janek Kozicki                                                         |
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000084.html">[Yade-users] About RotationEngine ?
+</A></li>
+	<LI>Next message: <A HREF="000088.html">[Yade-users] About RotationEngine ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#86">[ date ]</a>
+              <a href="thread.html#86">[ thread ]</a>
+              <a href="subject.html#86">[ subject ]</a>
+              <a href="author.html#86">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

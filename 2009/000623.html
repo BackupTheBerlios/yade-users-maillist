@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Be%20carefull%20with%20%22normalize%22&In-Reply-To=%3C498FEAFA.1000308%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000610.html">
+   <LINK REL="Next"  HREF="000609.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Be%20carefull%20with%20%22normalize%22&In-Reply-To=%3C498FEAFA.1000308%40univ-nantes.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Mon Feb  9 09:36:10 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000610.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+        <LI>Next message: <A HREF="000609.html">[deprecated list] [Yade-users] compiling problem - cannot find	lminiWm3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+V&#225;clav S a &#233;crit :
+&gt;&gt;<i> Well... there is no reason to avoid division by zero, and even less
+</I>&gt;&gt;<i> reasons to return a null vector instead of (1,0,0) or something like
+</I>&gt;&gt;<i> this.
+</I>&gt;&gt;<i> If a division by zero makes the program crash, so should do the
+</I>&gt;&gt;<i> normalization of a null vector. But this is still not the problem here
+</I>&gt;&gt;<i> : vectors are not null at all, they are just &quot;something small&quot; with
+</I>&gt;&gt;<i> respect to what the developper of wm3 considered &quot;small&quot;, arbitrarily.
+</I>&gt;&gt;<i> In my understanding of number representations (someone will correct me
+</I>&gt;&gt;<i> perhaps), there is no less precision when computing the norm of
+</I>&gt;&gt;<i> (2e-20, 1e-20, 0) compared to the norm of (2e+20, 1e+20, 0). That is
+</I>&gt;&gt;<i> why this tolerance makes no sense.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Think to it as a matter of units, like in previous Janek mail. If one
+</I>&gt;&gt;<i> wants to define the simulation with lengths in gigakilometers, and get
+</I>&gt;&gt;<i> coordinates in the range 10e-30 - 10e-32, no &quot;tolerance&quot; should
+</I>&gt;&gt;<i> prevent it.
+</I>&gt;<i> That is true. On the other hand, you want to balance the inherent
+</I>&gt;<i> numerical imprecision from limited number of binary positions for the
+</I>&gt;<i> number representation. The proper way is to define a &quot;characteristic
+</I>&gt;<i> length&quot; for your simulation, by which you always scale some _relative_
+</I>&gt;<i> tolerance. (Obviously adds some multiplications, but not much.)
+</I>&gt;<i> 
+</I>&gt;<i> Wm3 was conceived for graphics and games, therefore it can rightfully
+</I>&gt;<i> suppose that 1e-8 (or 1e-20, which is value I changed it to about half
+</I>&gt;<i> year ago) is probably close enough to zero.
+</I>&gt;<i> 
+</I>&gt;<i> If we just remove any tolerance checks, we would get a few infinities,
+</I>&gt;<i> but that shouldn't hurt. In some cases, however, this is not desirable,
+</I>&gt;<i> like computing Quaternion from (0,0,1) to (0,0,-1), IIRC.
+</I>&gt;<i> 
+</I>&gt;<i> Vaclav
+</I>&gt;<i> 
+</I>
+Well, I understand that at the present time, for the DEM, if we use 
+particles with a size not too small (for instance 1, 0.1, 0.01, 0.001) 
+there should not be problem.
+
+
+
+&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i> 
+</I>
+-- 
+Luc Sibille
+
+Universit&#233; de Nantes - Laboratoire GeM UMR CNRS
+
+IUT de Saint Nazaire
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex, France
+
+Tel: +33 (0)2 40 17 81 78
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000610.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+	<LI>Next message: <A HREF="000609.html">[deprecated list] [Yade-users] compiling problem - cannot find	lminiWm3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#623">[ date ]</a>
+              <a href="thread.html#623">[ thread ]</a>
+              <a href="subject.html#623">[ subject ]</a>
+              <a href="author.html#623">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

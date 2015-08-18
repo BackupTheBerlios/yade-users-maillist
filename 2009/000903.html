@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] all yade users,	please introduce yourself!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C4A571A75.8050500%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000895.html">
+   <LINK REL="Next"  HREF="000905.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] all yade users,	please introduce yourself!</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20all%20yade%20users%2C%0A%09please%20introduce%20yourself%21&In-Reply-To=%3C4A571A75.8050500%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] all yade users,	please introduce yourself!">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Fri Jul 10 12:39:49 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000895.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+        <LI>Next message: <A HREF="000905.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#903">[ date ]</a>
+              <a href="thread.html#903">[ thread ]</a>
+              <a href="subject.html#903">[ subject ]</a>
+              <a href="author.html#903">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;&gt;<i>
+</I>&gt;&gt;<i> We will experiment, thank you for the tip. I'm not so sure a lot of 
+</I>&gt;&gt;<i> algebra libraries with parallel features are available.
+</I>&gt;<i> There is PLENTY! At least those oofem uses are 
+</I>&gt;<i> <A HREF="http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview">http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview</A> and
+</I>
+Hehe, I know there are plenty, but Metis is a preconditionner, not a 
+solver, and in fact taucs is using Metis. ;-)
+I compiled taucs and linked it with the last version of metis. And yes, 
+it works well, but metis is not the fastest preconditionning method for 
+our matrices (in single thread at least).
+Taucs is actually linking with some of the libraries you see everywhere 
+in algebra web pages (blas, lapack, metis, atlas).
+
+&gt;<i> <A HREF="http://www.mcs.anl.gov/petsc/petsc-2/,">http://www.mcs.anl.gov/petsc/petsc-2/,</A> which are damn good as far as I 
+</I>&gt;<i> know (see also 
+</I>&gt;<i> <A HREF="http://www.mcs.anl.gov/petsc/petsc-2/miscellaneous/external.html">http://www.mcs.anl.gov/petsc/petsc-2/miscellaneous/external.html</A>).
+</I>We can't use fem/fvolumes and such codes out of the box because we are 
+assembling our won matrice in a non-traditional way.
+If we use such programms, it is only by calling low level functions, 
+which in many cases means using taucs...
+
+I saw one interesting thing in miscellaneous/external, though :
+
+<A HREF="http://www.cs.utexas.edu/users/plapack/">http://www.cs.utexas.edu/users/plapack/</A>
+
+taucs is based on lapack, but I don't think it uses plapack. plapack 
+will be something to consider perhaps.
+Thanks.
+
+
+
+Bruno
+
+
+
+&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Oh, BTW, is there agreement on having useShear by default and
+</I>&gt;&gt;&gt;<i> progressively remove prevNormal from various InteractionPhysics 
+</I>&gt;&gt;&gt;<i> classes?
+</I>&gt;&gt;<i> I'd prefer to keep the traditional (Cundall) incremental form for 
+</I>&gt;&gt;<i> now. The equations are simpler, especially in 3D, so it is easier to 
+</I>&gt;&gt;<i> understand what happens and implement different laws. I will change 
+</I>&gt;&gt;<i> my mind one day perhaps, but for now I feel like the incremental form 
+</I>&gt;&gt;<i> is good enough for dry friction. :)
+</I>&gt;<i> Ah, nay, there is still misunderstanding here. Read 
+</I>&gt;<i> SpheresContactGeometry::updateShear and compare it to 
+</I>&gt;<i> updateShearForce. It is the _same_ incremental formulation, but it 
+</I>&gt;<i> increments shear _displacement_ (rather than _force_), which is, I 
+</I>&gt;<i> think, what most constitutive laws need (even if they are non-linear) 
+</I>&gt;<i> and therefore can use. I would like to have that incremental formulas 
+</I>&gt;<i> at one place only. (The non-incremental algo is in Dem3Dof* classes 
+</I>&gt;<i> and I am quite happy with it.)
+</I>&gt;<i>
+</I>Oh ok. So, no problem.
+Bruno
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000895.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+	<LI>Next message: <A HREF="000905.html">[deprecated list] [Yade-users] all yade users,	please introduce yourself!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#903">[ date ]</a>
+              <a href="thread.html#903">[ thread ]</a>
+              <a href="subject.html#903">[ subject ]</a>
+              <a href="author.html#903">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

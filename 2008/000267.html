@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Problem of installition on kubuntu8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problem%20of%20installition%20on%20kubuntu8.04&In-Reply-To=%3C484416CB.2060206%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000266.html">
+   <LINK REL="Next"  HREF="000268.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Problem of installition on kubuntu8.04</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problem%20of%20installition%20on%20kubuntu8.04&In-Reply-To=%3C484416CB.2060206%40arcig.cz%3E"
+       TITLE="[Yade-users] Problem of installition on kubuntu8.04">eudoxos at arcig.cz
+       </A><BR>
+    <I>Mon Jun  2 17:50:35 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000266.html">[Yade-users] Problem of installition on kubuntu8.04
+</A></li>
+        <LI>Next message: <A HREF="000268.html">[Yade-users] Libraries problems with a Cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#267">[ date ]</a>
+              <a href="thread.html#267">[ thread ]</a>
+              <a href="subject.html#267">[ subject ]</a>
+              <a href="author.html#267">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>What yade version do you use, 0.11.1? The sconsVersion should be
+numeric-comparable version of scons, 9700 for 0.97.00 and so on. So you
+can try setting it to 9699 or 9700 and one of them will work (probably
+9699): 0.97 introduced different argument number for the
+FormatOptionHelpText function and there is conditional handling that.
+
+Hope it works.
+
+You may prefer to use SVN version (trunk).
+
+Vaclav
+&gt;<i>     Fewer months ago I installed yade on ubuntu 7.10
+</I>&gt;<i> successfully. However when I turn to kubuntu8.04 ,I
+</I>&gt;<i> recieved the following error message during
+</I>&gt;<i> installition:
+</I>&gt;<i>
+</I>&gt;<i> scons: Reading SConscript files ...
+</I>&gt;<i> ValueError: invalid literal for int() with base 10:
+</I>&gt;<i> '0d20071203':
+</I>&gt;<i>   File
+</I>&gt;<i> &quot;/home/beautykiller/Desktop/yade-0.11.1/SConstruct&quot;,
+</I>&gt;<i> line 28:
+</I>&gt;<i>    
+</I>&gt;<i> sconsVersion=sum([int(SCons.__version__.split('.')[ord[0]])*ord[1]
+</I>&gt;<i> for ord in
+</I>&gt;<i> [(0,10000),(1,100),(2,1)][:len(SCons.__version__.split('.'))]
+</I>&gt;<i> ])
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     I install kubuntu7.10 and update to 8.04.Does it
+</I>&gt;<i> matter with the error?
+</I>&gt;<i>     I've searched the mail-list for the error and
+</I>&gt;<i> found the someone asked long before . I follow the
+</I>&gt;<i> answer but the error stand still. 
+</I>&gt;<i>     I know little about python and have no idea what
+</I>&gt;<i> the statement(line 28) stand for. Is the scons version
+</I>&gt;<i> wrong? or the file sconstruct too old for newer
+</I>&gt;<i> kubuntu?
+</I>&gt;<i>     I tried to replace line 28 with
+</I>&gt;<i> &quot;sconsVersion=20071203&quot; , I recieved another error
+</I>&gt;<i> message. I can't remember what it exactly is. It
+</I>&gt;<i> sounds there is a error in line 100(or 101) :the
+</I>&gt;<i> function needs 5 parameters but recieve 6 actully.
+</I>&gt;<i> Thanks for any help!
+</I>&gt;<i> 												Zhang Lin
+</I>&gt;<i> 												08.6.2
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>       ___________________________________________________________ 
+</I>&gt;<i>  &#38597;&#34382;&#37038;&#31665;&#65292;&#24744;&#30340;&#32456;&#29983;&#37038;&#31665;&#65281; 
+</I>&gt;<i> <A HREF="http://cn.mail.yahoo.com/">http://cn.mail.yahoo.com/</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000266.html">[Yade-users] Problem of installition on kubuntu8.04
+</A></li>
+	<LI>Next message: <A HREF="000268.html">[Yade-users] Libraries problems with a Cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#267">[ date ]</a>
+              <a href="thread.html#267">[ thread ]</a>
+              <a href="subject.html#267">[ subject ]</a>
+              <a href="author.html#267">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

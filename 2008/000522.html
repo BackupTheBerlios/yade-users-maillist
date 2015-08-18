@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Relative Density
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Relative%20Density&In-Reply-To=%3C4911A905.4080303%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000523.html">
+   <LINK REL="Next"  HREF="000524.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Relative Density</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Relative%20Density&In-Reply-To=%3C4911A905.4080303%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Relative Density">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Nov  5 15:09:09 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000523.html">[deprecated list] [Yade-users] Relative Density
+</A></li>
+        <LI>Next message: <A HREF="000524.html">[deprecated list] [Yade-users] problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#522">[ date ]</a>
+              <a href="thread.html#522">[ thread ]</a>
+              <a href="subject.html#522">[ subject ]</a>
+              <a href="author.html#522">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>  
+</I>&gt;<i> My Question:
+</I>&gt;<i> &gt;&gt;By radius expansion method particle radius increased until to desire 
+</I>&gt;<i> mean pressure ...where Minimum density state obtained.
+</I>&gt;<i>
+</I>I'm sorry, I don't understand this question.
+
+
+&gt;<i> &gt;&gt;What about the REFD(Radius Expansion Friction Decrease) that was 
+</I>&gt;<i> implemented for Maximum density?In REFD friction reaches to zero 
+</I>&gt;<i> maintaining the desired mean pressure.When particle generated with 
+</I>&gt;<i> high porosity and when REFD implemented---what are the difference?For 
+</I>&gt;<i> more specific I want to know REFD and its Implementation.
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+REFD :
+
+contact_friction = friction_initial;
+while (porosity &gt; porosity0)
+{
+       contact_friction *= 0.99999; //or anything lower but close to 1
+       keep stress constant;
+       run a few cycles;
+}
+contact_friction = friction_final;// recommended at that point : 
+contact_friction &lt; friction_final, or the sample will be unstable.
+
+This method can give you many different density values, depending on 
+friction_initial and porosity0.
+
+Bruno
+
+
+
+
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000523.html">[deprecated list] [Yade-users] Relative Density
+</A></li>
+	<LI>Next message: <A HREF="000524.html">[deprecated list] [Yade-users] problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#522">[ date ]</a>
+              <a href="thread.html#522">[ thread ]</a>
+              <a href="subject.html#522">[ subject ]</a>
+              <a href="author.html#522">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

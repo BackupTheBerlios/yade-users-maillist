@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Triaxial statetransition and	code submission
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Triaxial%20statetransition%20and%0A%09code%20submission&In-Reply-To=%3C4991B14F.1070106%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000629.html">
+   <LINK REL="Next"  HREF="000631.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Triaxial statetransition and	code submission</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Triaxial%20statetransition%20and%0A%09code%20submission&In-Reply-To=%3C4991B14F.1070106%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Triaxial statetransition and	code submission">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Tue Feb 10 17:54:39 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000629.html">[deprecated list] [Yade-users] Triaxial statetransition and	code submission
+</A></li>
+        <LI>Next message: <A HREF="000631.html">[deprecated list] [Yade-users] Triaxial statetransition and	code submission
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#630">[ date ]</a>
+              <a href="thread.html#630">[ thread ]</a>
+              <a href="subject.html#630">[ subject ]</a>
+              <a href="author.html#630">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I modified 2 or 3 lines in TriaxialCompressionEngine in order to 
+</I>&gt;<i> update the friction angle from compactionFrictionDeg to FrictionDeg 
+</I>&gt;<i> when the state transition is performed manually (by editing the .xml 
+</I>&gt;<i> file) from Iso_compaction to Triax_loading. (but I am not sure to 
+</I>&gt;<i> respect the idea of the person who written this part of the code)
+</I>&gt;<i>
+</I>It makes sense. I will review your changes when you will have them 
+committed.
+
+
+&gt;<i> In addition, during the state transition, I would like to update the 
+</I>&gt;<i> tangent of friction angle for all interaction and not only &quot;real&quot; 
+</I>&gt;<i> interaction
+</I>Why?!
+By design, interactions which are not &quot;real&quot; have really no reason to be 
+considered. See them as if they don't even exist. They will be seen as 
+&quot;new&quot; interactions if, by any chance, they become real again. So, they 
+will be re-initialized anyway, and your updated values will be 
+overwritten before they can be actually used.
+Did you try it already? I suspect it would lead to some i-&gt;friction = x 
+with i the null pointer, then Yade crash.
+&gt;<i> (from a discussion between Jerome and Bruno I understood that the 
+</I>&gt;<i> transition (isReal = 0 and isNew = 0) =&gt; (isReal = 1 and isNew = 0) 
+</I>&gt;<i> will not happen, but I would prefer to have several &quot;protections&quot; than 
+</I>&gt;<i> only one).
+</I>&gt;<i>
+</I>Sticking with the current design rule is the best way to avoid problems 
+if you ask me. If this transition from (0,0) to (1,0) could occure, it 
+would be a major bug, and a correct value of friction would not help a 
+lot (think about the tangential displacement, which would be totally 
+wrong : current_position - position_when_the_contact_was_lost).
+
+&gt;<i> My question: I may want to submit code modifications in opposition 
+</I>&gt;<i> with previous developments. Thus, what is the philosophy? submit 
+</I>&gt;<i> directly these modifications to svn, or via a yade developer who will 
+</I>&gt;<i> filter the modifications?
+</I>&gt;<i>
+</I>Personnaly, I'd prefer people to at least point it out when they modify 
+some code that I'm developping/using (Triaxial and related classes). 
+Exactly like you just did. The commit itself can (should) be done by the 
+one who modified the code (you).
+
+To summarize :
+1/ For changing friction after manual editing - or any other change 
+consistent with current philosophy : let you commit your change.
+2/ For accessing unreal values, it is really not consistent with the 
+current contact logic. If you really want this behaviour, or anything 
+else in opposition with previous logic, it is better to create your own 
+separate class.
+
+An important point when you modify an existing class : your changes must 
+keep the default behaviour unchanged (might sound obvious).
+One usual way for this is :
+
+class C {
+
++ bool newFeatureActivation;
+}
+
+in the constructor : newFeatureActivation = false, and then define the 
+modified behaviour in a if (newFeatureActivation) { ... }.
+
+This precaution is not needed for your friction update though, as it is 
+already doing nothing by default.
+
+Bruno
+
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000629.html">[deprecated list] [Yade-users] Triaxial statetransition and	code submission
+</A></li>
+	<LI>Next message: <A HREF="000631.html">[deprecated list] [Yade-users] Triaxial statetransition and	code submission
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#630">[ date ]</a>
+              <a href="thread.html#630">[ thread ]</a>
+              <a href="subject.html#630">[ subject ]</a>
+              <a href="author.html#630">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

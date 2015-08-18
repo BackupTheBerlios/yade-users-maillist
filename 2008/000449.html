@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Successive slightly different simulations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48C7765D.4000905%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000447.html">
+   <LINK REL="Next"  HREF="000448.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Successive slightly different simulations</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48C7765D.4000905%40univ-nantes.fr%3E"
+       TITLE="[Yade-users] Successive slightly different simulations">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Wed Sep 10 09:25:17 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000447.html">[Yade-users] Successive slightly different simulations
+</A></li>
+        <LI>Next message: <A HREF="000448.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+  Why &quot;especially Luc Sibille&quot; ? I'm not sure to be able to help you. In 
+addition I am not sure to understand your problem very well.
+
+  When I simulated stress probes with SDEC, maybe I performed something 
+similar to your problem. But it was with SDEC!
+
+The general idea was the following one:
+- first I created a .txt file: in each row there was a parameter saved 
+(for instance, the direction in the stress space of the stress loading)
+- Then I included the whole code SDEC in a big loop, like that SDEC 
+started and stopped automatically, as many times as wanted.
+- Finally each time there was an increment in the big loop defined 
+above, the parameter in the row &quot;i&quot; (corresponding to the increment &quot;i&quot; 
+of the big loop) of the .txt file was read. The input parameters of SDEC 
+were computed with respect to the parameter read.
+
+To do that I used a kind of general engine roughly defined as below:
+
+X axis control:  stress/strain
+X stress increment imposed (if stress chosen): 12596
+X strain increment imposed (if strain chosen): 0.25
+
+Y axis control:  stress/strain
+Y stress increment imposed (if stress chosen): 14157
+Y strain increment imposed (if strain chosen): 0.14
+
+Z axis control:  stress/strain
+Z stress increment imposed (if stress chosen): 175545
+Z strain increment imposed (if strain chosen): 0.75
+
+By this way, for a total stress control for instance, and a parameter 
+giving the stress loading direction, the X, Y, and Z stress increments 
+were adjusted for each increment of the big loop.
+
+  All that was with SDEC, I don't know at all what would be the solution 
+with Yade, but I am sure that it can be much more efficient.
+
+   I hope it helps.
+
+    best
+
+    Luc
+
+Jerome Duriez a &#233;crit :
+&gt;<i> Hello everybody (and especially Luc Sibille ?). The title of my mail is 
+</I>&gt;<i> surely not very precise so I will try to be clear :
+</I>&gt;<i> I want to make succesively different calculations over a sample. That is 
+</I>&gt;<i> to say : considering a sample in a given state (a .xml save...) I want 
+</I>&gt;<i> to disturb it in a given way (for example compress it), save 
+</I>&gt;<i> informations related to this compression, and then go back to the 
+</I>&gt;<i> original state (re-load the .xml) and disturb it in an other way (for 
+</I>&gt;<i> example : shear it) and again save some things related to this shear...
+</I>&gt;<i> Because I want to execute more calculations than one load and one shear, 
+</I>&gt;<i> I'm seeking a way to do this automatically. I think that this is 
+</I>&gt;<i> impossible with classic engines for example (anyway I don't see how to 
+</I>&gt;<i> do this by this way). I imagine for example that in the .xml save could 
+</I>&gt;<i> appear an Engine, with a given parameter, which will care to disturb the 
+</I>&gt;<i> sample in a direction depending on this parameter but the keypoint would 
+</I>&gt;<i> be for me to load this simulation many times with always a different 
+</I>&gt;<i> value for the parameter of the Engine.
+</I>&gt;<i> Does someone have an idea ? Could python scripts (which I don't know at 
+</I>&gt;<i> all but it will maybe be the time) help for that ?
+</I>&gt;<i> Thanks
+</I>&gt;<i> 
+</I>&gt;<i> Jerome
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> 
+</I>
+-- 
+Luc Sibille, Universit&#233; de Nantes - Laboratoire GeM, ma&#238;tre de conf&#233;rences
+
+Adresse/address:
+IUT de Saint Nazaire - D&#233;partement de G&#233;nie-Civil
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex   France
+
+Tel: +33 2 40 17 81 78     Fax: +33 2 40 17 81 60
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000447.html">[Yade-users] Successive slightly different simulations
+</A></li>
+	<LI>Next message: <A HREF="000448.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#449">[ date ]</a>
+              <a href="thread.html#449">[ thread ]</a>
+              <a href="subject.html#449">[ subject ]</a>
+              <a href="author.html#449">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

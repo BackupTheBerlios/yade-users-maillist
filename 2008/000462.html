@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Bedding angle,Triaxial Test
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Bedding%20angle%2CTriaxial%20Test&In-Reply-To=%3C48CF723B.5060709%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000461.html">
+   <LINK REL="Next"  HREF="000463.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Bedding angle,Triaxial Test</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Bedding%20angle%2CTriaxial%20Test&In-Reply-To=%3C48CF723B.5060709%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Bedding angle,Triaxial Test">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Tue Sep 16 10:45:47 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000461.html">[Yade-users] Bedding angle,Triaxial Test
+</A></li>
+        <LI>Next message: <A HREF="000463.html">[Yade-users] error on compiling yade-0.12rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#462">[ date ]</a>
+              <a href="thread.html#462">[ thread ]</a>
+              <a href="subject.html#462">[ subject ]</a>
+              <a href="author.html#462">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Mohammad,
+
+For the moment, the stress-strain control will not work on a rotated box.
+But is there really a reason to rotate the box, can't you just rotate 
+gravity instead?
+If you have no gravity, there are even less reasons to rotate things, as 
+the physical problem would be exactly the same (it is easier to rotate 
+your screen a little ;)).
+Another way is to generate a triaxial sample in xyz axis, then fix the 
+boundaries positions and rotate everything (spheres+walls) when 
+reloading the sample.
+
+Bruno
+
+
+mohammad islam a &#233;crit :
+&gt;<i> Hi All,
+</I>&gt;<i> I want to generate particle in a box having specified base angle.At 
+</I>&gt;<i> present particles are generated randomly.I want all particle 
+</I>&gt;<i> arrangement will be in certain rotation or bedding angle will be in 
+</I>&gt;<i> specified rotation.To specify certain rotation to particle seems to me 
+</I>&gt;<i> a little difficult but if the rotation of box is possible to certain 
+</I>&gt;<i> angle(without changing the loading direction) or stress that is 
+</I>&gt;<i> applied(changing the loading direction and keeping constant the box 
+</I>&gt;<i> with particle), if possible to apply at a specified angle it will 
+</I>&gt;<i> solve my purpose.
+</I>&gt;<i>  
+</I>&gt;<i> Any idea will be appreciable.
+</I>&gt;<i>  
+</I>&gt;<i> Regards,
+</I>&gt;<i> Mohammad Nurul Islam
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000461.html">[Yade-users] Bedding angle,Triaxial Test
+</A></li>
+	<LI>Next message: <A HREF="000463.html">[Yade-users] error on compiling yade-0.12rc1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#462">[ date ]</a>
+              <a href="thread.html#462">[ thread ]</a>
+              <a href="subject.html#462">[ subject ]</a>
+              <a href="author.html#462">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

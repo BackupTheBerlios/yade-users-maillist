@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always null...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Dt%20by%20GlobalStifnessTimeStepper%20version%201311%0A%20always%20null...&In-Reply-To=%3C48045BA3.1060300%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000179.html">
+   <LINK REL="Next"  HREF="000182.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always null...</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Dt%20by%20GlobalStifnessTimeStepper%20version%201311%0A%20always%20null...&In-Reply-To=%3C48045BA3.1060300%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always null...">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Tue Apr 15 09:39:15 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000179.html">[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always null...
+</A></li>
+        <LI>Next message: <A HREF="000182.html">[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always null...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#180">[ date ]</a>
+              <a href="thread.html#180">[ thread ]</a>
+              <a href="subject.html#180">[ subject ]</a>
+              <a href="author.html#180">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>My defaultDt was equal to 0.001... And even if it is indeed written in 
+the .hpp that defaultDt is also max value, I don't see anywhere in the 
+source I have why it would be the case.
+
+V&#225;clav S a &#233;crit :
+&gt;<i> You need to set the GlobalStiffnessTimeStepper::defaultDt to something
+</I>&gt;<i> else than 0. It is max value for dt as well: therefore you get always zero.
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hello everybody. I begin to try to use values of time step calculated
+</I>&gt;&gt;<i> by &quot;GlobalStiffnessTimeStepper&quot;. But my problem is that it is always
+</I>&gt;&gt;<i> null, as the followings lines which are displayed on the terminal show
+</I>&gt;&gt;<i> it :
+</I>&gt;&gt;<i> &quot;INFO 
+</I>&gt;&gt;<i> pkg/dem/Engine/StandAloneEngine/GlobalStiffnessTimeStepper.cpp:187
+</I>&gt;&gt;<i> computeTimeStep: computed timestep 0, appplied.
+</I>&gt;&gt;<i> INFO 
+</I>&gt;&gt;<i> pkg/dem/Engine/StandAloneEngine/GlobalStiffnessTimeStepper.cpp:187
+</I>&gt;&gt;<i> computeTimeStep: computed timestep 9.72989e-06, BUT timestep is 0.
+</I>&gt;&gt;<i> INFO 
+</I>&gt;&gt;<i> pkg/dem/Engine/StandAloneEngine/GlobalStiffnessTimeStepper.cpp:187
+</I>&gt;&gt;<i> computeTimeStep: computed timestep 9.72989e-06, BUT timestep is 0.
+</I>&gt;&gt;<i> INFO 
+</I>&gt;&gt;<i> pkg/dem/Engine/StandAloneEngine/GlobalStiffnessTimeStepper.cpp:187
+</I>&gt;&gt;<i> computeTimeStep: computed timestep 9.72989e-06, BUT timestep is 0.
+</I>&gt;&gt;<i> INFO 
+</I>&gt;&gt;<i> pkg/dem/Engine/StandAloneEngine/GlobalStiffnessTimeStepper.cpp:187
+</I>&gt;&gt;<i> computeTimeStep: computed timestep 9.72989e-06, BUT timestep is 0.&quot;
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080415/7f296c05/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080415/7f296c05/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000179.html">[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always null...
+</A></li>
+	<LI>Next message: <A HREF="000182.html">[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always null...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#180">[ date ]</a>
+              <a href="thread.html#180">[ thread ]</a>
+              <a href="subject.html#180">[ subject ]</a>
+              <a href="author.html#180">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

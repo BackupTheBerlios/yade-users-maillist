@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to reset a body's velocity?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20reset%20a%20body%27s%20velocity%3F&In-Reply-To=%3C48491C4E.3060306%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000304.html">
+   <LINK REL="Next"  HREF="000263.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to reset a body's velocity?</H1>
+    <B>Lionel Favier</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20reset%20a%20body%27s%20velocity%3F&In-Reply-To=%3C48491C4E.3060306%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] How to reset a body's velocity?">lfavier at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Fri Jun  6 13:15:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000304.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+        <LI>Next message: <A HREF="000263.html">[Yade-users] Yade-users Digest, Vol 23, Issue 4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>sega a &#233;crit :
+&gt;<i> Hi!
+</I>&gt;<i> I need to reset a body's velocity to zero when this body is reloaded into a simulation.
+</I>&gt;<i> Now can I do it?
+</I>&gt;<i> As me seems, a velocity of body is sets _only_ by LeapFrogPositionIntegrator or NewtonsDampedLaw.
+</I>&gt;<i> Both have a firsts vector but different parents... 
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Hi Sega,
+
+If you need to do that during the simulation with a body which has a 
+current velocity, acceleration .. Maybe you could add these lines in 
+&quot;LeapFrogPositionIntegrator&quot; (additions in italics)
+
+    Real dt = Omega::instance().getTimeStep();
+
+    /ParticleParameters * p = YADE_CAST&lt;ParticleParameters*&gt;(b.get());/
+
+/    if (p-&gt;vel_nulle)
+    {
+        p-&gt;acceleration = Vector3r(0,0,0);
+        prevVelocities[id] = Vector3r(0,0,0):
+    }/
+
+    if (!firsts[id])
+        p-&gt;velocity = prevVelocities[id]+((Real)0.5)*dt*p-&gt;acceleration;
+
+You have also to declare the parameter /vel_nulle/ as a boolean in 
+&quot;ParticleParameter&quot;
+
+finally you can initialise your velocity by adding a line, for example 
+in &quot;VelocityRecorder.cpp&quot; (additions in italics)
+
+    for(  ; bi!=biEnd ; ++bi )
+    {
+        shared_ptr&lt;Body&gt; body = *bi;
+        if( body-&gt;isDynamic )
+        {
+            size+=1.0;
+            ParticleParameters* pp = 
+YADE_CAST&lt;ParticleParameters*&gt;(body-&gt;physicalParameters.get());
+
+           /pp-&gt;vel_nulle = true;/
+
+            x+=pp-&gt;velocity[0];
+            y+=pp-&gt;velocity[1];
+            z+=pp-&gt;velocity[2];
+        }
+    }
+
+Normally it works, I just don't know if that is really fits YADE 
+philosophy, maybe the YADE's big boss could comment.
+
+good luck
+
+Lionel
+
+//
+
+-- 
+Lionel FAVIER
+Doctorant
+Laboratoire Sols Solides Structures, Risques (3S-R)
+Equipe Risques et Vuln&#233;rabilit&#233; (RV)
+
+Domaine Universitaire - BP 53
+38041 Grenoble Cedex 9
+France
+
+T&#233;l: +33 (0)4 56 52 86 36
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lionel.favier at hmg.inpg.fr</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000304.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+	<LI>Next message: <A HREF="000263.html">[Yade-users] Yade-users Digest, Vol 23, Issue 4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

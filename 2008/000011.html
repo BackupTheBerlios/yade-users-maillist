@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] YADE Documentation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20YADE%20Documentation&In-Reply-To=%3C4784DAB2.2040505%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000010.html">
+   <LINK REL="Next"  HREF="000012.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] YADE Documentation</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20YADE%20Documentation&In-Reply-To=%3C4784DAB2.2040505%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] YADE Documentation">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Jan  9 15:31:14 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000010.html">[Yade-users] YADE Documentation
+</A></li>
+        <LI>Next message: <A HREF="000012.html">[Yade-users] generating spheres during simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In :
+
+GenerateCloud(sphere_list, lowerCorner, upperCorner, 
+numberOfGrains, 0.3, 0.75);
+
+0.3 is in fact the deviation from mean radius (so minRadius =(1-0.3)*meanRadius and maxRadius=(1+0.3)*meanRadius in the case of a uniform ditribution - the mean radius is computed based on the size of the box and the initial porosity), and 0.75 is the initial porosity (always very high at the beginning since you initially generate a &quot;cloud&quot; with no contacts and then compact it to a dense assembly).
+
+The function GenerateCloud(...) is defined at the end of TriaxialTest.cpp.
+
+Bruno
+
+
+
+
+Bruno Chareyre a &#233;crit :
+&gt;<i> Hi Jos&#233;,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> For instance i would like to know how do i see the stress strain 
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Stresses, strains are printed in a text file during computation (default 
+</I>&gt;<i> name &quot;WallStresses&quot;, you can define a different name in the interface).
+</I>&gt;<i>   
+</I>&gt;&gt;<i> behaviour after a triaxial test and how do i edit the triaxial test in 
+</I>&gt;&gt;<i> order do create an aglomerate with my chosen sizes of balls.
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> The generation of balls is made after line 271  of TriaxialTest.cpp :
+</I>&gt;<i>
+</I>&gt;<i> vector&lt;BasicSphere&gt; sphere_list;
+</I>&gt;<i> message=GenerateCloud(sphere_list, lowerCorner, upperCorner, 
+</I>&gt;<i> numberOfGrains, 0.3, 0.75);
+</I>&gt;<i> vector&lt;BasicSphere&gt;::iterator it = sphere_list.begin();
+</I>&gt;<i>     vector&lt;BasicSphere&gt;::iterator it_end = sphere_list.end();
+</I>&gt;<i>            
+</I>&gt;<i>     for (;it!=it_end; ++it)
+</I>&gt;<i>     {
+</I>&gt;<i>         cerr &lt;&lt; &quot;sphere (&quot; &lt;&lt; it-&gt;first &lt;&lt; &quot; &quot; &lt;&lt; it-&gt;second &lt;&lt; endl;
+</I>&gt;<i>         createSphere(body,it-&gt;first,it-&gt;second,false,true);
+</I>&gt;<i>         rootBody-&gt;bodies-&gt;insert(body);
+</I>&gt;<i>     }
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> This result in a uniform ditribution between min and max radius (I just 
+</I>&gt;<i> realized that min/max radii are hardcoded here, they should be included 
+</I>&gt;<i> in the interface to be modified without the need of recompiling).
+</I>&gt;<i> For the moment you will have to modify those lines and
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> And as Mr/ /Smilauer said: &quot;//Before you start to read Bruno's comments 
+</I>&gt;&gt;<i> on triax, make sure you understand how Yade works: every iteration is 
+</I>&gt;&gt;<i> loop over &quot;engines&quot; that operate on bodies in different ways.&quot;
+</I>&gt;&gt;<i> In order to study that, is there any documentation that explains that or 
+</I>&gt;&gt;<i> do I have to look at the code?
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> There is something written I think. You should checkout the SVN 
+</I>&gt;<i> repository and look for a &quot;doc&quot; directory (it is a very old version, but 
+</I>&gt;<i> basic concepts should be there).
+</I>&gt;<i>
+</I>&gt;<i> Also, I'm sending you a journal paper (unpublished yet) in a separate email.
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Thank you very much and sorry for the inconvenience.
+</I>&gt;&gt;<i> Best regards.
+</I>&gt;&gt;<i> Jos&#233; Pedro Cunha
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 00
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000010.html">[Yade-users] YADE Documentation
+</A></li>
+	<LI>Next message: <A HREF="000012.html">[Yade-users] generating spheres during simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

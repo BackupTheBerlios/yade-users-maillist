@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Problem with SVN 1440
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problem%20with%20SVN%201440&In-Reply-To=%3C4890B1F8.80608%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000404.html">
+   <LINK REL="Next"  HREF="000406.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Problem with SVN 1440</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Problem%20with%20SVN%201440&In-Reply-To=%3C4890B1F8.80608%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Problem with SVN 1440">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Jul 30 20:24:56 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000404.html">[Yade-users] Problem with SVN 1440
+</A></li>
+        <LI>Next message: <A HREF="000406.html">[Yade-users] Problem with SVN 1440
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#405">[ date ]</a>
+              <a href="thread.html#405">[ thread ]</a>
+              <a href="subject.html#405">[ subject ]</a>
+              <a href="author.html#405">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It may be due to a bug that appeared recently : interactions will be 
+like &quot;disabled&quot; if you mix two different types of containers for 
+persistent and transient interactions (resp. 
+InteractionHashMap/InteractionVecSet).
+Previously, TriaxialTest was mixing the two types, and it was working 
+fine, but now it does not.
+After r1447, TriaxialTest uses only one type of container - in principle 
+:<i> InteractionVecSet.
+</I>So, you can upgrade your SVN version, or just edit the Triaxial.xml and 
+replace by hand &quot;HashMap&quot; by &quot;VecSet&quot;, it should load and run correctly 
+again.
+If it doesn't fix the problem please let us now.
+
+Bruno
+
+Balestrini Guillermo a &#233;crit :
+&gt;<i> Hello to all.
+</I>&gt;<i>
+</I>&gt;<i> I am working with YaDe-svn 1440. I have problems for run the example the TriaxialTest, because I cannot obtain that the walls interactuen or compress the spheres.
+</I>&gt;<i>
+</I>&gt;<i> I want to know if they know algun problem or it is necessary to to activate algun special parameter in order that this happens.
+</I>&gt;<i>
+</I>&gt;<i> Simultaneously, in the output file of stress, the stress S11, S22, S33 are always 0.
+</I>&gt;<i>
+</I>&gt;<i> I am interested in knowing, in that it forms you define the &quot;porosity&quot;
+</I>&gt;<i>
+</I>&gt;<i> I am waiting for the answer.
+</I>&gt;<i>
+</I>&gt;<i> Thank to all.
+</I>&gt;<i>
+</I>&gt;<i> Balestrini, Guillermo.
+</I>&gt;<i> Argentine.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>       ____________________________________________________________________________________
+</I>&gt;<i> &#161;Busc&#225; desde tu celular!
+</I>&gt;<i>
+</I>&gt;<i> Yahoo! oneSEARCH ahora est&#225; en Claro
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://ar.mobile.yahoo.com/onesearch">http://ar.mobile.yahoo.com/onesearch</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000404.html">[Yade-users] Problem with SVN 1440
+</A></li>
+	<LI>Next message: <A HREF="000406.html">[Yade-users] Problem with SVN 1440
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#405">[ date ]</a>
+              <a href="thread.html#405">[ thread ]</a>
+              <a href="subject.html#405">[ subject ]</a>
+              <a href="author.html#405">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

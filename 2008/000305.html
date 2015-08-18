@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] recorder problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20recorder%20problems&In-Reply-To=%3C20080611061740.p9x4xi9340wwcwkw%40cubmail.cc.columbia.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000301.html">
+   <LINK REL="Next"  HREF="000306.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] recorder problems</H1>
+    <B>Benjamin Fragneaud</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20recorder%20problems&In-Reply-To=%3C20080611061740.p9x4xi9340wwcwkw%40cubmail.cc.columbia.edu%3E"
+       TITLE="[Yade-users] recorder problems">bf2204 at columbia.edu
+       </A><BR>
+    <I>Wed Jun 11 12:17:40 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000301.html">[Yade-users] recorder problems
+</A></li>
+        <LI>Next message: <A HREF="000306.html">[Yade-users] recorder problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#305">[ date ]</a>
+              <a href="thread.html#305">[ thread ]</a>
+              <a href="subject.html#305">[ subject ]</a>
+              <a href="author.html#305">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Lionel,
+This problem occurs also with Yade&#180;s default preprocessor, for  
+expample with cohesiveTriaxialTest. In this preprocessor file, there  
+is two types of recorders:
+
+- AveragePositionRecorder, ForceRecorder, VelocityRecorder -&gt; doesn&#180;t  
+work (empty recorded files)
+
+Code used:
+
+void CohesiveTriaxialTest::createActors(shared_ptr&lt;MetaBody&gt;&amp; rootBody)
+00557 {
+00558 // recording average positions
+00559         averagePositionRecorder =  
+shared_ptr&lt;AveragePositionRecorder&gt;(new AveragePositionRecorder);
+00560         averagePositionRecorder -&gt; outputFile           =  
+positionRecordFile;
+00561         averagePositionRecorder -&gt; interval             =  
+recordIntervalIter;
+00562 // recording forces
+00563         forcerec = shared_ptr&lt;ForceRecorder&gt;(new ForceRecorder);
+00564         forcerec -&gt; outputFile  = forceRecordFile;
+00565         forcerec -&gt; interval    = recordIntervalIter;
+00566 // recording velocities
+00567         velocityRecorder = shared_ptr&lt;VelocityRecorder&gt;(new  
+VelocityRecorder);
+00568         velocityRecorder-&gt; outputFile   = velocityRecordFile;
+00569         velocityRecorder-&gt; interval     = recordIntervalIter;
+00570
+
+- TriaxialTestRecorder -&gt; works
+
+The main preprocessor is available in  
+pkg/dem/PreProcessor/CohesiveTriaxialTest.cpp; it is also attached to  
+this mail.
+
+Since my preprocessor is just on test, I preferred to use as an  
+example which is supposed to work properly, and that I'm using as an  
+example in order to understand the structure of the recorder egines.
+
+Let me know if some more information is required.
+Thanks again your help and time,
+
+Ben
+
+
+Lionel Favier &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lfavier at geo.hmg.inpg.fr</A>&gt; ha escrito:
+
+&gt;<i> Benjamin Fragneaud a &#233;crit :
+</I>&gt;&gt;<i> Hi everybody,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I&#180;d like to know if anybody already had problems with some recorders
+</I>&gt;&gt;<i> like ForceRecorder engine, VelocityRecorder engine etc... this engines
+</I>&gt;&gt;<i> seem to be constructed on the same basis. By using yade prepocessor
+</I>&gt;&gt;<i> examples, I found out that this recorders create a document, but this
+</I>&gt;&gt;<i> document remain empty (no data). The only recorders wich are working
+</I>&gt;&gt;<i> properly are the stressWallRecorder as well as the snaprecorder, which
+</I>&gt;&gt;<i> both belong to the triaxialTestEngine.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I&#180;m not an expert in C++ programmation, I just started to deal with
+</I>&gt;&gt;<i> this stuff one month ago, so I beleive that I must do something wrong.
+</I>&gt;&gt;<i> Yade is actually  running (one of the last svn subversion) on kubuntu
+</I>&gt;&gt;<i> 8.04 hardy and all the yade components appear to run perfectly on this
+</I>&gt;&gt;<i> platform.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks a lot for your help,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ben
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> Hello Ben,
+</I>&gt;<i>
+</I>&gt;<i> I think you should add an enclosure of your Preprocessor example,
+</I>&gt;<i> because a lot of various worries could happen ...
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Lionel FAVIER
+</I>&gt;<i> Doctorant
+</I>&gt;<i> Laboratoire Sols Solides Structures, Risques (3S-R)
+</I>&gt;<i> Equipe Risques et Vuln&#233;rabilit&#233; (RV)
+</I>&gt;<i>
+</I>&gt;<i> Domaine Universitaire - BP 53
+</I>&gt;<i> 38041 Grenoble Cedex 9
+</I>&gt;<i> France
+</I>&gt;<i>
+</I>&gt;<i> T&#233;l: +33 (0)4 56 52 86 36
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lionel.favier at hmg.inpg.fr</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: CohesiveTriaxialTest.cpp
+Type: text/x-pascal
+Size: 31000 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080611/324705a4/attachment.p">https://lists.berlios.de/pipermail/yade-users/attachments/20080611/324705a4/attachment.p</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000301.html">[Yade-users] recorder problems
+</A></li>
+	<LI>Next message: <A HREF="000306.html">[Yade-users] recorder problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#305">[ date ]</a>
+              <a href="thread.html#305">[ thread ]</a>
+              <a href="subject.html#305">[ subject ]</a>
+              <a href="author.html#305">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

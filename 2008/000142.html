@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Yade-users Digest, Vol 21, Issue 14
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Yade-users%20Digest%2C%20Vol%2021%2C%20Issue%2014&In-Reply-To=%3C65523.24024.qm%40web46008.mail.sp1.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000141.html">
+   <LINK REL="Next"  HREF="000143.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Yade-users Digest, Vol 21, Issue 14</H1>
+    <B>Shahed Rana</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Yade-users%20Digest%2C%20Vol%2021%2C%20Issue%2014&In-Reply-To=%3C65523.24024.qm%40web46008.mail.sp1.yahoo.com%3E"
+       TITLE="[Yade-users] Yade-users Digest, Vol 21, Issue 14">shahin_cer at yahoo.com
+       </A><BR>
+    <I>Mon Mar 31 10:44:14 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000141.html">[Yade-users] YADE on Debian4
+</A></li>
+        <LI>Next message: <A HREF="000143.html">[Yade-users] Yade-users Digest, Vol 21, Issue 14
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I am still facing problem with QGLViewer. Actually I have  upgraded Kubuntu 7.04 to  7.10 Then to get solution I have also tried with Debian ...  from mailing list  i have seen  some  one  also  faced  the  same  problem...
+I have tried as follows-- using this link as reference--
+
+<A HREF="http://beta.arcig.cz/~eudoxos/phd/index.cgi/YaDe/DebianSnapshotInstallHowto">http://beta.arcig.cz/~eudoxos/phd/index.cgi/YaDe/DebianSnapshotInstallHowto</A> 
+
+1. add the following line at the end of your /etc/apt/sources.list (run sudo gedit /etc/apt/sources.list): 
+
+deb-src <A HREF="http://geo.hmg.inpg.fr/~smilauer/yade">http://geo.hmg.inpg.fr/~smilauer/yade</A> ./
+&gt;<i>I have added as follows--
+</I>system&gt;administration&gt;Synaptic&gt;Setting&gt;Repositories&gt;Third Party Software... I have added.
+
+2.  sudo apt-get update 
+ sudo apt-get build-dep wildmagic lib3dviewer yade-svn1145 
+ 
+&gt;<i>I have used svn as 1274 (<A HREF="http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubunt">http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubunt</A>)
+</I>and found error message as---
+ Unable to find a source package for yade-svn1274
+
+I think the svn number is here problem
+
+Alternate way I have also tried and found problem in qgl viewer as---
+
+
+Checking for qt-mt in /usr/share/qt3... yes
+Checking for QGLViewer(1) in C++ library QGLViewer... no
+Checking for QGLViewer(1) in C++ library 3dviewer... no
+
+I am doing some where mistake it is sure, but cannot trace.Can anybody help to get rid ?
+
+Regards,
+Rana
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A> wrote: Send Yade-users mailing list submissions to
+ <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+
+To subscribe or unsubscribe via the World Wide Web, visit
+ <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+or, via email, send a message with subject or body 'help' to
+ <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+
+You can reach the person managing the list at
+ <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>
+
+When replying, please edit your Subject line so it is more specific
+than &quot;Re: Contents of Yade-users digest...&quot;
+
+
+Today's Topics:
+
+   1. YADE on Debian4 (Shahed Rana)
+   2. Re: YADE on Debian4 (Janek Kozicki)
+   3. Re: YADE on Debian4 (milauer )
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Thu, 27 Mar 2008 20:19:19 -0700 (PDT)
+From: Shahed Rana 
+Subject: [Yade-users] YADE on Debian4
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">530748.34684.qm at web46007.mail.sp1.yahoo.com</A>&gt;
+Content-Type: text/plain; charset=iso-8859-1
+
+Hi,
+TO install YADE on Debian facing problem with
+QGLViewer.
+As reference I have followed-
+
+<A HREF="http://yade.wikia.com/wiki/New:Porting_QGLViewer_to_kubuntu">http://yade.wikia.com/wiki/New:Porting_QGLViewer_to_kubuntu</A>
+
+When I am adding-
+deb-src <A HREF="http://blabluga.hell.pl/QGLViewer/sid">http://blabluga.hell.pl/QGLViewer/sid</A> .
+
+having message not found.Any idea to solve the
+problem?
+
+Regards,
+Rana
+
+
+      ____________________________________________________________________________________
+Looking for last minute shopping deals?  
+Find them fast with Yahoo! Search.  <A HREF="http://tools.search.yahoo.com/newsearch/category.php?category=shopping">http://tools.search.yahoo.com/newsearch/category.php?category=shopping</A>
+
+
+
+------------------------------
+
+Message: 2
+Date: Fri, 28 Mar 2008 07:17:40 +0100
+From: Janek Kozicki 
+Subject: Re: [Yade-users] YADE on Debian4
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">20080328071740.09e047ab at absurd</A>&gt;
+Content-Type: text/plain; charset=US-ASCII
+
+Shahed Rana said:     (by the date of Thu, 27 Mar 2008 20:19:19 -0700 (PDT))
+
+
+
+&gt;<i> having message not found.Any idea to solve the
+</I>&gt;<i> problem?
+</I>
+aah, the wiki is out of date. qglviewer was already added to debian lenny, just look:
+
+<A HREF="http://packages.debian.org/search?suite=default&amp;section=all&amp;arch=any&amp;searchon=names&amp;keywords=qglviewer">http://packages.debian.org/search?suite=default&amp;section=all&amp;arch=any&amp;searchon=names&amp;keywords=qglviewer</A>
+
+if you are on debian lenny you can simply install it with 
+  apt install libqglviewer-dev libqglviewer2
+
+if you are on debian etch, you can backport from lenny using instructions on:
+  <A HREF="http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu">http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu</A>
+
+-- 
+Janek Kozicki                                                         |
+
+
+------------------------------
+
+Message: 3
+Date: Fri, 28 Mar 2008 08:23:00 +0100
+From: V?clav S(milauer 
+Subject: Re: [Yade-users] YADE on Debian4
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">47EC9CD4.70507 at arcig.cz</A>&gt;
+Content-Type: text/plain; charset=ISO-8859-1
+
+
+&gt;<i> aah, the wiki is out of date. qglviewer was already added to debian lenny, just look:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://packages.debian.org/search?suite=default&amp;section=all&amp;arch=any&amp;searchon=names&amp;keywords=qglviewer">http://packages.debian.org/search?suite=default&amp;section=all&amp;arch=any&amp;searchon=names&amp;keywords=qglviewer</A>
+</I>&gt;<i>
+</I>&gt;<i> if you are on debian lenny you can simply install it with 
+</I>&gt;<i>   apt install libqglviewer-dev libqglviewer2
+</I>&gt;<i>
+</I>&gt;<i> if you are on debian etch, you can backport from lenny using instructions on:
+</I>&gt;<i>   <A HREF="http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu">http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu</A>
+</I>&gt;<i>   
+</I>If you use SVN trunk (yes, you can, it doesn't crash), qglviewer was
+integrated into our tree and our build-system a few weeks ago: then you
+don't need to install it at all. Those porting problems were just too
+big a pain.
+
+I added instructions here:
+<A HREF="http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu#From_current_.28.3E.3D1274.29_Subversion">http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu#From_current_.28.3E.3D1274.29_Subversion</A>
+
+
+Vaclav
+
+
+------------------------------
+
+_______________________________________________
+Yade-users mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+
+
+End of Yade-users Digest, Vol 21, Issue 14
+******************************************
+
+
+       
+---------------------------------
+Like movies? Here's a limited-time offer: Blockbuster Total Access for one month at no cost.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080331/7ab57bd7/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080331/7ab57bd7/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000141.html">[Yade-users] YADE on Debian4
+</A></li>
+	<LI>Next message: <A HREF="000143.html">[Yade-users] Yade-users Digest, Vol 21, Issue 14
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

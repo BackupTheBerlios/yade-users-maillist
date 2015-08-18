@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Contact Model and Contact Stiffness
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Contact%20Model%20and%20Contact%20Stiffness&In-Reply-To=%3C510417.58824.qm%40web33503.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000495.html">
+   <LINK REL="Next"  HREF="000504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Contact Model and Contact Stiffness</H1>
+    <B>mohammad islam</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Contact%20Model%20and%20Contact%20Stiffness&In-Reply-To=%3C510417.58824.qm%40web33503.mail.mud.yahoo.com%3E"
+       TITLE="[deprecated list] [Yade-users] Contact Model and Contact Stiffness">nislamce at yahoo.com
+       </A><BR>
+    <I>Fri Oct 17 14:44:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000495.html">[deprecated list] [Yade-users] Characteristics of the program
+</A></li>
+        <LI>Next message: <A HREF="000504.html">[deprecated list] [Yade-users] Contact Model and Contact	Stiffness
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#503">[ date ]</a>
+              <a href="thread.html#503">[ thread ]</a>
+              <a href="subject.html#503">[ subject ]</a>
+              <a href="author.html#503">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&#160;Dear All,
+I am losing myself a little to understand the contact model and contact stiffness used in YADE.Is it Linear Contact Model at present? I am trying to explain my question more details as follows,first explanation then my question.
+&#160;
+Reference:
+&#160;
+01) Belheine.N et.al &quot;Numerical simulation of drained triaxial test using 3D discrete element modeling&quot;Computers and Geotechnics,2008
+&#160;
+Kn=(kn(A)*kn(B))/(kn(A)+kn(B)))/r&#160;&#160; page number 03 (Article in press)
+&#160;
+02) Kozicki.J et.al.&quot;A new open-source software developed for numerical simulations using discrete modeling methods&quot;
+&#160;
+kn=r*(Kn(A)*Kn(B))/(Kn(A)+Kn(B)))&#160; page number 04
+&#160;
+03) PFC3D,Theory and Background,Page Number 2-2,Article 2.1.1
+&#160;
+Kn=(kn(A)*kn(B))/(kn(A)+kn(B)))
+&#160;
+kn, normal secant stiffness=Kn,normal tangent stiffness
+&#160;
+&gt;&gt;<i>My question: what is the significance of &quot;r&quot; average radius,what are the difference among reference 01,02,03.
+</I>&#160;
+Now inside of YADE (12.rc1)
+&#160;
+04) pkg&gt;dem&gt;engine&gt;engineunit&gt;SimpleElasticRelationships.cpp
+&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; //Real Eab&#160;&#160;&#160;&#160;&#160; = 2*Ea*Eb/(Ea+Eb);
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; //Real Vab&#160;&#160;&#160;&#160;&#160; = 2*Va*Vb/(Va+Vb);&#160;
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Real Dinit&#160;&#160;&#160;&#160;&#160; = Da+Db;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; //Real Sinit&#160;&#160;&#160; = Mathr::PI * std::pow( std::min(Da,Db) , 2);
+
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; Real Kn = 2*Ea*Da*Eb*Db/(Ea*Da+Eb*Db);//harmonic average of two stiffnesses&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Real Ks = 2*Ea*Da*Va*Eb*Db*Vb/(Ea*Da*Va+Eb*Db*Va);//harmonic average of two stiffnesses with ks=V*kn for each sphere
+
+05)pkg&gt;dem&gt;engine&gt;standaloneengine&gt;GlobalStiffnessTimestepper.cpp
+&#160;
+&#160; //&#160;&#160;&#160;&#160;Real alpha&#160;&#160;&#160;&#160;&#160; = sdecContactModel-&gt;alpha;
+&#160;//&#160;&#160;&#160;&#160; Real beta&#160;&#160;&#160;&#160;&#160;&#160; = sdecContactModel-&gt;beta;
+//&#160;&#160;&#160;&#160;&#160; Real gamma&#160;&#160;&#160;&#160;&#160; = sdecContactModel-&gt;gamma;
+//&#160;
+ //&#160;&#160;&#160;&#160;&#160; Real Kn&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; = abs((Eab*Sinit/Dinit)*( (1+alpha)/(beta*(1+Vab) + gamma*(1-alpha*Dab) ) ));
+//&#160;&#160;&#160;&#160;&#160; Real Ks&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; = abs(Kn*(1-alpha*Vab)/(1+Vab));
+&#160;
+06&gt;pkg&gt;dem&gt;engine&gt;engineunit&gt;MacroMicroElasticRelationships.cpp
+&#160;
+&#160;
+&gt;&gt;<i>In 04 and 05 the equation is different,can anybody explain a little the difference and significance of 04 and 05.
+</I>&#160;
+Thanks in advance.
+&#160;
+Regards,
+Mohammad Nurul Islam
+&#160;
+&#160;
+&#160;
+
+__________________________________________________
+Do You Yahoo!?
+Tired of spam?  Yahoo! Mail has the best spam protection around 
+<A HREF="http://mail.yahoo.com">http://mail.yahoo.com</A> 
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20081017/f93be2bc/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20081017/f93be2bc/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000495.html">[deprecated list] [Yade-users] Characteristics of the program
+</A></li>
+	<LI>Next message: <A HREF="000504.html">[deprecated list] [Yade-users] Contact Model and Contact	Stiffness
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#503">[ date ]</a>
+              <a href="thread.html#503">[ thread ]</a>
+              <a href="subject.html#503">[ subject ]</a>
+              <a href="author.html#503">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

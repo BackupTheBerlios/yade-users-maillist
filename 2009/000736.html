@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Timer works, but no motion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Timer%20works%2C%20but%20no%20motion&In-Reply-To=%3C930069bf0905140144w2a3e5ca8sa28b0faf99f68456%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000743.html">
+   <LINK REL="Next"  HREF="000737.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Timer works, but no motion</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Timer%20works%2C%20but%20no%20motion&In-Reply-To=%3C930069bf0905140144w2a3e5ca8sa28b0faf99f68456%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] Timer works, but no motion">gladky.anton at gmail.com
+       </A><BR>
+    <I>Thu May 14 10:44:08 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000743.html">[deprecated list] [Yade-users] Timer works, but no motion
+</A></li>
+        <LI>Next message: <A HREF="000737.html">[deprecated list] [Yade-users] Can boxes interact ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#736">[ date ]</a>
+              <a href="thread.html#736">[ thread ]</a>
+              <a href="subject.html#736">[ subject ]</a>
+              <a href="author.html#736">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you, V&#225;clav, for the quick help!
+
+A several weeks ago I wrote about choosing the software for my tasks
+simulation.
+So it seems, I will use YADE for that. As less till the end of this year.
+Then we'll analyze result and make final decision.
+I hope I will be able to understand how YADE works and will try to develop
+YADE project as well.
+
+Best Regards / Mit freundlichen Gr&#252;&#223;en /  &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+2009/5/14 V&#225;clav &#352;milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+
+&gt;<i> (sorry for the accidental private mail)
+</I>&gt;<i>
+</I>&gt;<i> &gt; Especially, when I generate &quot;Rotating cube&quot; example, it happens
+</I>&gt;<i> &gt; often.
+</I>&gt;<i> &gt; What can it be?
+</I>&gt;<i>
+</I>&gt;<i> Change the simestep by hand to something like 1e-2. I will put it to the
+</I>&gt;<i> code also.
+</I>&gt;<i>
+</I>&gt;<i> RotatingBox crashed here and I had to remove lines
+</I>&gt;<i>
+</I>&gt;<i> rootBody-&gt;transientInteractions=shared_ptr&lt;InteractionContainer&gt;(new
+</I>&gt;<i> InteractionVecSet);
+</I>&gt;<i> rootBody-&gt;bodies=shared_ptr&lt;BodyContainer&gt;(new BodyRedirectionVector);
+</I>&gt;<i>
+</I>&gt;<i> from RotatingBox::generate() to fix it. I will commit this shortly.
+</I>&gt;<i>
+</I>&gt;<i> Vaclav
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090514/baa3f04f/attachment-0001.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090514/baa3f04f/attachment-0001.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000743.html">[deprecated list] [Yade-users] Timer works, but no motion
+</A></li>
+	<LI>Next message: <A HREF="000737.html">[deprecated list] [Yade-users] Can boxes interact ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#736">[ date ]</a>
+              <a href="thread.html#736">[ thread ]</a>
+              <a href="subject.html#736">[ subject ]</a>
+              <a href="author.html#736">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

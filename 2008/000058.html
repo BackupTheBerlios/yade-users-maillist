@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] simulation definition
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20definition&In-Reply-To=%3C39894.172.20.10.60.1201792494.squirrel%40webmail.univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000053.html">
+   <LINK REL="Next"  HREF="000059.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] simulation definition</H1>
+    <B>Luc SIBILLE</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20simulation%20definition&In-Reply-To=%3C39894.172.20.10.60.1201792494.squirrel%40webmail.univ-nantes.fr%3E"
+       TITLE="[Yade-users] simulation definition">Luc.Sibille at univ-nantes.fr
+       </A><BR>
+    <I>Thu Jan 31 16:14:54 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000053.html">[Yade-users] YADE documentation
+</A></li>
+        <LI>Next message: <A HREF="000059.html">[Yade-users] simulation definition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+ First, I am discovering Yade, so I think I will have a lot of questions...
+
+By looking the structure of the file called scene.xml (created, for
+instance, by the generator TriaxialTest), I understand that in the same
+file are defined  the media (the bodies, here spheres) with the
+geometrical and physical (or mechanical) properties and the simulation
+that we want to perform (with is specific parameters).
+
+My problem is the following one: a given simulation is linked here to a
+given media, so can we do different simulations from a unique given media
+? I give an example here after based on a triaxial test:
+
+I perform an isotropic compression, after I stop the simulation and save
+the result. I don't go further because I want to do different things with
+this consolidated granular assembly.
+Then I want to do a compression and an extension both from the state of
+the media after the isotropic compression. So I perform a first simulation
+(the compression) by using the consolidated granular assembly (the result
+saved), then I perform a second simulation (the extension) by using the
+consolidated granular assembly (always the same result saved).
+I imagine that I cannot do that with Yade since the kind of simulation is
+saved in the scene.xml file and reused (here the simulation &quot;isotropic
+compression&quot; is saved and reused whereas I want to perform a &quot;compression&quot;
+or an &quot;extension&quot;).
+
+Am I right ? What would be the different steps (in few words) to perform
+the simulations described above?
+
+  Best,
+
+   Luc
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000053.html">[Yade-users] YADE documentation
+</A></li>
+	<LI>Next message: <A HREF="000059.html">[Yade-users] simulation definition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

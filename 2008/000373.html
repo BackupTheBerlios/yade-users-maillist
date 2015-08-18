@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] libboost-dev issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20libboost-dev%20issue&In-Reply-To=%3C225efd590807100924s38098e4fse44a29ae42396d72%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000351.html">
+   <LINK REL="Next"  HREF="000374.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] libboost-dev issue</H1>
+    <B>Daryl Begaye</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20libboost-dev%20issue&In-Reply-To=%3C225efd590807100924s38098e4fse44a29ae42396d72%40mail.gmail.com%3E"
+       TITLE="[Yade-users] libboost-dev issue">dcbegaye at gmail.com
+       </A><BR>
+    <I>Thu Jul 10 18:24:27 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000351.html">[Yade-users] libboost-dev issue
+</A></li>
+        <LI>Next message: <A HREF="000374.html">[Yade-users] libboost-dev issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#373">[ date ]</a>
+              <a href="thread.html#373">[ thread ]</a>
+              <a href="subject.html#373">[ subject ]</a>
+              <a href="author.html#373">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I switched over to Kubuntu and download yade via bzr, upon compiling i
+received the following message in build-bzr2120
+
+scons: Configure: Checking for sqlite3_close(0L) in C++ library sqlite3...
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_9.cpp &lt;-
+  |
+  |
+  |#include &quot;sqlite3.h&quot;
+  |
+  |int
+  |main() {
+  |  sqlite3_close(0L);
+  |return 0;
+  |}
+  |
+distcc g++ -o /home/hobbes/build-bzr2120/.sconf_temp/conftest_9.o -c
+-I/usr/include/wm3 -I/home/hobbes/build-bzr2120/include/yade-bzr212
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_9.cpp
+distcc[31544] (dcc_get_hostlist) Warning: no hostlist is set; can't
+distribute work
+distcc[31544] (dcc_build_somewhere) Warning: failed to distribute, running
+locally instead
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_9.cpp:3:21: error:
+sqlite3.h: No such file or directory
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_9.cpp: In function 'int
+main()':
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_9.cpp:7: error:
+'sqlite3_close' was not declared in this scope
+distcc[31544] ERROR: compile
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_9.cpp on localhost failed
+scons: Configure: no
+
+scons: Configure: Checking for Wm3::Math&lt;double&gt;::PI in C++ library
+Wm3Foundation...
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp &lt;-
+  |
+  |
+  |#include &quot;Wm3Math.h&quot;
+  |
+  |int
+  |main() {
+  |  Wm3::Math&lt;double&gt;::PI;
+  |return 0;
+  |}
+  |
+distcc g++ -o /home/hobbes/build-bzr2120/.sconf_temp/conftest_10.o -c
+-I/usr/include/wm3 -I/home/hobbes/build-bzr2120/include/yade-bzr212
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp
+distcc[31549] (dcc_get_hostlist) Warning: no hostlist is set; can't
+distribute work
+distcc[31549] (dcc_build_somewhere) Warning: failed to distribute, running
+locally instead
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp:3:21: error:
+Wm3Math.h: No such file or directory
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp: In function 'int
+main()':
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp:7: error: 'Wm3' has
+not been declared
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp:7: error: expected
+primary-expression before 'double'
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp:7: error: expected
+`;' before 'double'
+distcc[31549] ERROR: compile
+/home/hobbes/build-bzr2120/.sconf_temp/conftest_10.cpp on localhost failed
+scons: Configure: no
+
+It appears the headers for sqlite3.h and Wm3Math.h aren't being found or
+weren't installed.
+
+Regards,
+Daryl
+
+On Wed, Jun 18, 2008 at 10:26 AM, Daryl Begaye &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">dcbegaye at gmail.com</A>&gt; wrote:
+
+&gt;<i> sad news my friend but,
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">begaye at swt110</A>:~$ bzr branch lp:yade
+</I>&gt;<i> bzr: ERROR: Not a branch: /home/begaye/lp:yade/
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">begaye at swt110</A>:~$ bzr checkout
+</I>&gt;<i> <A HREF="https://code.launchpad.net/%7Evcs-imports/yade/trunk">https://code.launchpad.net/%7Evcs-imports/yade/trunk</A>
+</I>&gt;<i> bzr: ERROR: Connection error: Error retrieving
+</I>&gt;<i> <A HREF="https://code.launchpad.net/%7Evcs-imports/yade/trunk/.bzr/branch-format:">https://code.launchpad.net/%7Evcs-imports/yade/trunk/.bzr/branch-format:</A>
+</I>&gt;<i> &lt;urlopen error (110, 'Connection timed out')&gt; &lt;urlopen error (110,
+</I>&gt;<i> 'Connection timed out')&gt;
+</I>&gt;<i>
+</I>&gt;<i> maybe I'll try lenny.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Tue, Jun 17, 2008 at 3:57 PM, V&#225;clav S(milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Daryl Begaye napsal(a):
+</I>&gt;&gt;<i> &gt; through command line, would it be entered the same way as svn?
+</I>&gt;&gt;<i> &gt; bzr checkout <A HREF="https://code.launchpad.net/~vcs-imports/yade/trunk&lt;https://code.launchpad.net/%7Evcs-imports/yade/trunk">https://code.launchpad.net/~vcs-imports/yade/trunk&lt;https://code.launchpad.net/%7Evcs-imports/yade/trunk</A>&gt;
+</I>&gt;&gt;<i> &gt; &lt;<A HREF="https://code.launchpad.net/%7Evcs-imports/yade/trunk">https://code.launchpad.net/%7Evcs-imports/yade/trunk</A>&gt;
+</I>&gt;&gt;<i> Yes, or use shorter form &quot;bzr branch lp:yade&quot; as the page at
+</I>&gt;&gt;<i> launchpad.net says. It will take a while since you will get some it with
+</I>&gt;&gt;<i> history about 200 revisions back. (There are some differences between
+</I>&gt;&gt;<i> checkout and branch, but they are probably not important now:
+</I>&gt;&gt;<i> <A HREF="http://bazaar-vcs.org/CheckoutTutorial">http://bazaar-vcs.org/CheckoutTutorial</A>).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Daryl Begaye
+</I>&gt;<i> Din&#233; College
+</I>&gt;<i> <A HREF="http://www.dinecollege.edu">http://www.dinecollege.edu</A>
+</I>&gt;<i> Major(s): Computer Science and Fine Arts
+</I>&gt;<i>
+</I>
+
+
+-- 
+Daryl Begaye
+Din&#233; College
+<A HREF="http://www.dinecollege.edu">http://www.dinecollege.edu</A>
+Major(s): Computer Science and Fine Arts
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080710/ecc9bc83/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080710/ecc9bc83/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000351.html">[Yade-users] libboost-dev issue
+</A></li>
+	<LI>Next message: <A HREF="000374.html">[Yade-users] libboost-dev issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#373">[ date ]</a>
+              <a href="thread.html#373">[ thread ]</a>
+              <a href="subject.html#373">[ subject ]</a>
+              <a href="author.html#373">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

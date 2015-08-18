@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] libboost-dev issue
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20libboost-dev%20issue&In-Reply-To=%3C225efd590806171021v1fe95310l3e1ebc6bbd37fd34%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000339.html">
+   <LINK REL="Next"  HREF="000341.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] libboost-dev issue</H1>
+    <B>Daryl Begaye</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20libboost-dev%20issue&In-Reply-To=%3C225efd590806171021v1fe95310l3e1ebc6bbd37fd34%40mail.gmail.com%3E"
+       TITLE="[Yade-users] libboost-dev issue">dcbegaye at gmail.com
+       </A><BR>
+    <I>Tue Jun 17 19:21:45 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000339.html">[Yade-users] libboost-dev issue
+</A></li>
+        <LI>Next message: <A HREF="000341.html">[Yade-users] libboost-dev issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#340">[ date ]</a>
+              <a href="thread.html#340">[ thread ]</a>
+              <a href="subject.html#340">[ subject ]</a>
+              <a href="author.html#340">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>let me start over from the beginning,
+
+   1. I followed the installation instructions for debian/ubuntu, to make
+   sure all the required packages were up to date by using aptitude.
+   2. Then I switched over to &quot;Installation details&quot; and followed those
+   instructions, by adding &quot;deb-src .....&quot; to my &quot;sources.list&quot;
+   3. I then used &quot;apt-get source yade-svn1365&quot;
+   4. Then I ran &quot;apt-get build-dep yade-svn1365&quot; in which got this message
+   in return.
+
+
+   - Build-Depends dependency for yade-svn1365 cannot be satisfied because
+   no available versions of package libboost-dev can satisfy version
+   requirements
+
+so build-dep is not happy with libboost-dev, where can I download it to
+satisfy it?
+
+On Tue, Jun 17, 2008 at 10:12 AM, V&#225;clav S(milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt; wrote:
+
+&gt;<i>
+</I>&gt;<i> &gt; ok I downloaded 1.34 and copied over the files into my
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; /usr/include/boost/
+</I>&gt;<i> foreach.hpp would've been enough (!; you may get crashes if you have
+</I>&gt;<i> different headers from the ABI that libs were built with). Yes, it
+</I>&gt;<i> should be /usr/include/boost/foreach.hpp (it is just this file that you
+</I>&gt;<i> needed).
+</I>&gt;<i>
+</I>&gt;<i> You can attach ../build-[yourversion]/config.log if unsure.
+</I>&gt;<i>
+</I>&gt;<i> Vaclav
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Daryl Begaye
+Din&#233; College
+<A HREF="http://www.dinecollege.edu">http://www.dinecollege.edu</A>
+Major(s): Computer Science and Fine Arts
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080617/a507a3f4/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080617/a507a3f4/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000339.html">[Yade-users] libboost-dev issue
+</A></li>
+	<LI>Next message: <A HREF="000341.html">[Yade-users] libboost-dev issue
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#340">[ date ]</a>
+              <a href="thread.html#340">[ thread ]</a>
+              <a href="subject.html#340">[ subject ]</a>
+              <a href="author.html#340">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

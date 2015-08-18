@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Successive slightly different simulations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D7BE76.4010009%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000471.html">
+   <LINK REL="Next"  HREF="000473.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Successive slightly different simulations</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D7BE76.4010009%40arcig.cz%3E"
+       TITLE="[Yade-users] Successive slightly different simulations">eudoxos at arcig.cz
+       </A><BR>
+    <I>Mon Sep 22 17:49:10 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000471.html">[Yade-users] Successive slightly different simulations
+</A></li>
+        <LI>Next message: <A HREF="000473.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#472">[ date ]</a>
+              <a href="thread.html#472">[ thread ]</a>
+              <a href="subject.html#472">[ subject ]</a>
+              <a href="author.html#472">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">jerome at c1solimara-l</A>:~/YADE/bin$ ./yade-trunk script.py
+</I>&gt;<i> Constructing ClassFactory  (if multiple times - check '-rdynamic' flag!).
+</I>&gt;<i> Constructing SerializableSingleton  (if multiple times - check
+</I>&gt;<i> '-rdynamic' flag!).
+</I>&gt;<i> INFO  core/Omega.cpp:33 Omega: Constructing Omega  (if multiple times
+</I>&gt;<i> - check '-rdynamic' flag!).
+</I>&gt;<i> INFO  core/yade.cpp:225 main: Loading configuration file:
+</I>&gt;<i> /home/jerome/.yade-trunk/preferences.xml
+</I>&gt;<i> INFO  core/yade.cpp:227 main: Loading plugins...
+</I>&gt;<i> *WARN  extra/Brefcom.hpp:175 BrefcomMakeContact:
+</I>&gt;<i> calibratedEpsFracture=0.000407227 &lt; epsCrackOnset=0.0001, Gf=500,
+</I>&gt;<i> E=3e+10, expBending=4
+</I>&gt;<i> *
+</I>This is harmless (and doesn't appear now)... I am not sure whether, at
+the ancient version you have, was python console already integrated with
+the qt3 ui; make sure you compiled with python support (try running
+&quot;yade-trunk -N PythonUI&quot;, you should get to plain yade console). I would
+strongly suggest upping your trunk, if you have all your code
+(DirectShearCis?) in the tree, it will compile and should work just fine.
+
+Vaclav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000471.html">[Yade-users] Successive slightly different simulations
+</A></li>
+	<LI>Next message: <A HREF="000473.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#472">[ date ]</a>
+              <a href="thread.html#472">[ thread ]</a>
+              <a href="subject.html#472">[ subject ]</a>
+              <a href="author.html#472">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

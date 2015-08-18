@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to get the micro-force from the macro-stress
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20get%20the%20micro-force%20from%20the%20macro-stress&In-Reply-To=%3C4795A765.9040403%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000036.html">
+   <LINK REL="Next"  HREF="000038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to get the micro-force from the macro-stress</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20get%20the%20micro-force%20from%20the%20macro-stress&In-Reply-To=%3C4795A765.9040403%40arcig.cz%3E"
+       TITLE="[Yade-users] How to get the micro-force from the macro-stress">eudoxos at arcig.cz
+       </A><BR>
+    <I>Tue Jan 22 09:20:53 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000036.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+        <LI>Next message: <A HREF="000038.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> so, how to indentify which particle should be calculated and update
+</I>&gt;<i> first , and which should be later?
+</I>&gt;<i> (because it is a dynamic process, so just use the order of  ID  is
+</I>&gt;<i> not  a way to solve this)
+</I>The trick is that you have constant positions during the whole timestep,
+you calculate forces from all contacts (order doesn't matter, elements
+don't move during calculation) and then, before next timestep begins,
+there is LeapFrogPositionIntegrator, that calculates displacements based
+on velocity, inertia, applied forces, ... and moves elements to the new
+position. Obviously, your timestep must be small enough so that you get
+convergence.
+
+HTH, Vaclav
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000036.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+	<LI>Next message: <A HREF="000038.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

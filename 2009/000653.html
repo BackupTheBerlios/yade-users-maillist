@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] [Yade-dev] moment calculation	and rotational speed	problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BYade-dev%5D%20moment%20calculation%0A%09and%20rotational%20speed%09problem&In-Reply-To=%3C49AC16AB.7050502%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000652.html">
+   <LINK REL="Next"  HREF="000654.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] [Yade-dev] moment calculation	and rotational speed	problem</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BYade-dev%5D%20moment%20calculation%0A%09and%20rotational%20speed%09problem&In-Reply-To=%3C49AC16AB.7050502%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] [Yade-dev] moment calculation	and rotational speed	problem">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Mon Mar  2 18:26:03 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000652.html">[deprecated list] [Yade-users] SimpleViscoelasticRelationship and Sphere viscoelastic contact law
+</A></li>
+        <LI>Next message: <A HREF="000654.html">[deprecated list] [Yade-users] Problem with dispatcher and	simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> , [...] particle radius is 1e-3 m, one particle is static, another one 
+</I>&gt;<i> is 20m/s [...]
+</I>&gt;<i> rotational_speed= rotational_speed + rotational_acceleration * dt = 0 
+</I>&gt;<i> + (5e9)*(1e-6)= 5e3 rad/sec !!!!!! WRONG!!!!
+</I>
+Why wrong? If I take the translational velocity divided by the radius, 
+it gives 20/1e-3 = 2e4 rad/s, the same order of magnitude as 5e3 rad /s. 
+So I'd say it is consistent (imagine the mobile particle has to roll on 
+the other one with this initial velocity, a fraction of the initial 
+momentum is converted into rotational momentum, that is why 5e3 is lower 
+than 2e4).
+
+Bruno
+
+
+&gt;<i>
+</I>&gt;<i>     _______________
+</I>&gt;<i>     Chareyre Bruno
+</I>&gt;<i>     Maitre de conference
+</I>&gt;<i>
+</I>&gt;<i>     Grenoble INP
+</I>&gt;<i>     Laboratoire 3SR - bureau E145
+</I>&gt;<i>     BP 53 - 38041, Grenoble cedex 9 - France
+</I>&gt;<i>     T&#233;l : 33 4 56 52 86 21
+</I>&gt;<i>     Fax : 33 4 76 82 70 43
+</I>&gt;<i>     ________________
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Mailing list: <A HREF="https://launchpad.net/~yade-dev">https://launchpad.net/~yade-dev</A>
+</I>&gt;<i>     &lt;<A HREF="https://launchpad.net/%7Eyade-dev">https://launchpad.net/%7Eyade-dev</A>&gt;
+</I>&gt;<i>     Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-dev at lists.launchpad.net</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-dev at lists.launchpad.net</A>&gt;
+</I>&gt;<i>     Unsubscribe : <A HREF="https://launchpad.net/~yade-dev">https://launchpad.net/~yade-dev</A>
+</I>&gt;<i>     &lt;<A HREF="https://launchpad.net/%7Eyade-dev">https://launchpad.net/%7Eyade-dev</A>&gt;
+</I>&gt;<i>     More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000652.html">[deprecated list] [Yade-users] SimpleViscoelasticRelationship and Sphere viscoelastic contact law
+</A></li>
+	<LI>Next message: <A HREF="000654.html">[deprecated list] [Yade-users] Problem with dispatcher and	simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] CohesiveFrictionalLaw
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20CohesiveFrictionalLaw&In-Reply-To=%3C49BA7A4C.1020805%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000664.html">
+   <LINK REL="Next"  HREF="000666.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] CohesiveFrictionalLaw</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20CohesiveFrictionalLaw&In-Reply-To=%3C49BA7A4C.1020805%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] CohesiveFrictionalLaw">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Fri Mar 13 16:22:52 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000664.html">[deprecated list] [Yade-users] pregenerated sphere packings
+</A></li>
+        <LI>Next message: <A HREF="000666.html">[deprecated list] [Yade-users] Exclude something from compilation ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#663">[ date ]</a>
+              <a href="thread.html#663">[ thread ]</a>
+              <a href="subject.html#663">[ subject ]</a>
+              <a href="author.html#663">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>
+</I>&gt;<i> Could somebody tell me if the CohesiveFrictionalLaw is ready to use? And is there any validation as well as benchmark for that contact law? It looks in the development stage for me but it can be very useful to simulate some cohesive materials such as clays.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>It should work.
+This law is relatively general. You have to tune it to choose between 
+fragile or perfectly plastic behaviour (the first would be better for 
+rocks, the second seems more realistic for soft soils), and also decide 
+if contacts created during the deformation will be cohesive or not.
+It can include bending/torsional effects too, but those components will 
+be only elastic for now. It is no big deal to add a plasticity  threshold.
+If you need a cohesive law, I recommend using this law as a basis and 
+adapt it to your specific needs instead of starting a new class.
+
+Bruno
+
+
+
+
+
+&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Kien Dang
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000664.html">[deprecated list] [Yade-users] pregenerated sphere packings
+</A></li>
+	<LI>Next message: <A HREF="000666.html">[deprecated list] [Yade-users] Exclude something from compilation ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#663">[ date ]</a>
+              <a href="thread.html#663">[ thread ]</a>
+              <a href="subject.html#663">[ subject ]</a>
+              <a href="author.html#663">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

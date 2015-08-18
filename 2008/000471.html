@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Successive slightly different simulations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D7A545.60808%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000470.html">
+   <LINK REL="Next"  HREF="000472.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Successive slightly different simulations</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48D7A545.60808%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Successive slightly different simulations">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Mon Sep 22 16:01:41 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000470.html">[Yade-users] Successive slightly different simulations
+</A></li>
+        <LI>Next message: <A HREF="000472.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> You have to link Brefcom with GlobalStiffness (in
+</I>&gt;<i> extra/SConstruct: LIBS=...) and recompile. Do a &quot;svn update&quot; if you can,
+</I>&gt;<i> that's the safest way to run up-to-date code, this doens't happen in
+</I>&gt;<i> trunk since, as I just checked, Brefcom links against Shop, which in
+</I>&gt;<i> turns links agains GlobalStiffness.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I've made it : I added'GlobalStifness' which indeed didn't appear in 
+this line before:
+env.SharedLibrary('Brefcom',['Brefcom.cpp'],CXXFLAGS=env['CXXFLAGS']+brefcomInclude,
+                                
+LIBS=env['LIBS']+['Shop','InteractingSphere2InteractingSphere4DistantSpheresContactGeometry'*,'GlobalStiffness'*]),
+(NB : In my version &quot;Shop&quot; doesn't link to GlobalStiffness)
+But this doesn't solve the problem. I've always the GUI which appears 
+alone, but the warnings are now different :
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">jerome at c1solimara-l</A>:~/YADE/bin$ ./yade-trunk script.py
+Constructing ClassFactory  (if multiple times - check '-rdynamic' flag!).
+Constructing SerializableSingleton  (if multiple times - check 
+'-rdynamic' flag!).
+INFO  core/Omega.cpp:33 Omega: Constructing Omega  (if multiple times - 
+check '-rdynamic' flag!).
+INFO  core/yade.cpp:225 main: Loading configuration file: 
+/home/jerome/.yade-trunk/preferences.xml
+INFO  core/yade.cpp:227 main: Loading plugins...
+*WARN  extra/Brefcom.hpp:175 BrefcomMakeContact: 
+calibratedEpsFracture=0.000407227 &lt; epsCrackOnset=0.0001, Gf=500, 
+E=3e+10, expBending=4
+*WARNING: cannot open file used for capillary law, in TriaxalTestWater
+INFO  core/yade.cpp:227 main: Plugins loaded.
+INFO  gui/qt3/YadeQtMainWindow.cpp:48 YadeQtMainWindow: Loading 
+configuration file: /home/jerome/.yade-trunk/QtGUIPreferences.xml.
+
+Thanks
+
+PS : I gave a quick look to this &quot;Brefcom&quot; I didn't know. It seems to 
+deal with contacts but I didn't see where (from which source file) it 
+could appear in my simulations... Could this Brefcom nevertheless be a 
+problem for me ?
+PPS : I would prefer, by laziness I confess, not to update if possible...
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080922/5a0b275d/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080922/5a0b275d/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000470.html">[Yade-users] Successive slightly different simulations
+</A></li>
+	<LI>Next message: <A HREF="000472.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

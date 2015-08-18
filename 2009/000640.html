@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] New version and old scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20New%20version%20and%20old%20scripts&In-Reply-To=%3C20090225180931.18452.89261.launchpad%40gandwana.canonical.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000639.html">
+   <LINK REL="Next"  HREF="000649.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] New version and old scripts</H1>
+    <B>MarcoDottor</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20New%20version%20and%20old%20scripts&In-Reply-To=%3C20090225180931.18452.89261.launchpad%40gandwana.canonical.com%3E"
+       TITLE="[deprecated list] [Yade-users] New version and old scripts">marcodottor at libero.it
+       </A><BR>
+    <I>Wed Feb 25 19:09:31 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000639.html">[deprecated list] [Yade-users] 1689 compilation errors
+</A></li>
+        <LI>Next message: <A HREF="000649.html">[deprecated list] [Yade-users] New version and old scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#640">[ date ]</a>
+              <a href="thread.html#640">[ thread ]</a>
+              <a href="subject.html#640">[ subject ]</a>
+              <a href="author.html#640">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello, I'm trying to run my old script on 1691 version, I get this
+error:
+
+FATAL: This build of yade uses nex BexContainer instead of
+PhysicalActionContainer.
+FATAL: However, your simulation still uses PhysicalActionContainer.
+FATAL: Update your code, see backtrace (if in debug build) to find where
+the old container is used.
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Deprecated PhysicalActionContainer is not supported in this
+build!
+SIGSEGV/SIGABRT handler called; gdb batch file is `/home/marco/.yade-
+svn1691/gdb_crash_batch-pid7332'
+
+I understand that the new container is used, but how can I use it?
+What is the wrong part and what I have to change in order to use Bex,
+OpenMPI and all the other improvements.
+Thank you very much for your fundamental help
+
+My script is:
+
+#!/usr/local/bin/yade-trunk -x
+# -*- encoding=utf-8 -*-
+
+from yade import utils
+from math import *
+from numpy import arange
+import random
+
+## Paametri fisici geometrie importate
+Young = 15e3
+Poisson = 0.3
+
+#Parametri cilindro
+rCyl=0.0401   ##Raggio superiore tronco cono
+rCyl2=0.0401  ##Raggio inferiore tronco cono
+
+hCyl=0.0202  ##altezza base inferiore cono
+hCyl2=0.005 ##altezza base superiore cono
+
+nPoly=28 ##Poligoni di cui &#232; composto il contenitore
+
+h1=-0.010
+h2=0.032
+
+
+hBox=hCyl/8
+
+
+phiStep=2*pi/nPoly
+
+#tolleranza contatti
+#toll = 0.005
+
+## Omega
+o=Omega()
+
+## Importa geometria testa
+head =
+utils.import_stl_geometry('TestaPiattaSim.stl',young=Young,poisson=Poisson,frictionAngle=radians(15),
+color=[0,1,0],wire=True)
+
+## Importa geometria elica
+#auger =
+utils.import_stl_geometry('auger.stl',young=Young,poisson=Poisson)
+
+for n in range(nPoly):
+
+        phi1,phi2=n*phiStep,(n+1)*phiStep
+
+        def pt(angle,radius,z):
+
+                return radius*sin(angle),radius*cos(angle),z
+
+a,b,c,d=pt(phi1,rCyl,hCyl2),pt(phi2,rCyl,hCyl2),pt(phi1,rCyl2,hCyl),pt(phi2,rCyl2,hCyl)
+        e,f=pt(phi1,rCyl,h1),pt(phi2,rCyl,h1)
+        g,h=pt(phi1,rCyl2,h2),pt(phi2,rCyl2,h2)
+
+        o.bodies.append([
+
+                #utils.facet([a,b,c], color=[0.5,0.5,0.5]),
+
+                #utils.facet([b,c,d], color=[0.5,0.5,0.5]),
+                utils.facet([a,b,e], color=[0.5,0.5,0.5]),
+                utils.facet([b,e,f], color=[0.5,0.5,0.5]),
+                #utils.facet([c,d,g], color=[0.5,0.5,0.5]),
+                #utils.facet([d,g,h], color=[0.5,0.5,0.5]),
+])
+
+for b in o.bodies: b['isDynamic']=False
+
+box =
+utils.box([0,0,hCyl2+hBox/2],[rCyl,rCyl,hBox/2],density=10000,frictionAngle=radians(15),wire=True,
+color=[0,0,1])
+
+boxId=o.bodies.append(box)
+
+#o.bodies[boxId].phys['velocity']=[0,0,-10]
+
+#for b in o.bodies: b['isDynamic']=False
+
+rSphere=0.0005
+Col=2
+Color=0.8
+divisioni=0
+red=0
+green=0
+blue=0
+Bande=5
+LarghezzaBande=rCyl2/Bande
+nSphere=0
+
+
+for z in arange(rSphere,Col*2*rSphere,2*rSphere):
+        red=0.2
+        green=0.2
+        blue=0.2
+
+        for r in arange(2.2*rSphere,rCyl2-1*rSphere,2*rSphere):
+                divisioni=2*pi*r/(rSphere*2)
+
+                for n in arange(1,divisioni,1):
+
+                        if r&gt;LarghezzaBande and r&lt;LarghezzaBande*2:
+                                red=1
+                                green=0
+                                blue=0
+
+                        if r&gt;LarghezzaBande*2 and r&lt;LarghezzaBande*3:
+                                red=1
+                                green=0.9
+                                blue=0
+
+                        if r&gt;LarghezzaBande*3 and r&lt;LarghezzaBande*4:
+                                red=0.1
+                                green=1
+                                blue=0.1
+
+                        if r&gt;LarghezzaBande*4 and r&lt;LarghezzaBande*5:
+                                red=0
+                                green=0
+                                blue=1
+                        theta=2*pi/divisioni*n
+                        nSphere=nSphere+1
+
+
+o.bodies.append(utils.sphere([r*sin(theta),r*cos(theta),hCyl2-z],rSphere*(1-.2*(random.random())),young=Young,poisson=Poisson,density=3500,color=[red,green,blue]))
+
+print &quot;Number of spheres: %d&quot; % nSphere
+
+## Timestep
+o.dt=utils.PWaveTimeStep()
+
+## Initializers
+o.initializers=[
+        ## Create and reset to zero container of all PhysicalActions
+that will be used
+        StandAloneEngine('PhysicalActionContainerInitializer'),
+        ## Create bounding boxes. They are needed to zoom the 3d view
+properly before we start the simulation.
+MetaEngine('BoundingVolumeMetaEngine',[EngineUnit('InteractingSphere2AABB'),EngineUnit('InteractingFacet2AABB'),EngineUnit('InteractingBox2AABB'),EngineUnit('MetaInteractingGeometry2AABB')])
+]
+## Engines
+o.engines=[
+
+        ## Resets forces and momenta the act on bodies
+        #StandAloneEngine('TimeStepper'),
+
+        ## Resets forces and momenta the act on bodies
+        StandAloneEngine('PhysicalActionContainerReseter'),
+
+        ## Associates bounding volume to each body.
+        MetaEngine('BoundingVolumeMetaEngine',[
+                EngineUnit('InteractingSphere2AABB'),
+                EngineUnit('InteractingFacet2AABB'),
+                EngineUnit('InteractingBox2AABB'),
+                EngineUnit('MetaInteractingGeometry2AABB')
+        ]),
+        ## Using bounding boxes find possible body collisions.
+        ##StandAloneEngine('SpatialQuickSortCollider'),
+        StandAloneEngine('SAPCollider'),
+        ## Create geometry information about each potential collision.
+        MetaEngine('InteractionGeometryMetaEngine',[
+EngineUnit('InteractingSphere2InteractingSphere4SpheresContactGeometry'),
+EngineUnit('InteractingFacet2InteractingSphere4SpheresContactGeometry'),
+EngineUnit('InteractingBox2InteractingSphere4SpheresContactGeometry')
+        ]),
+        ## Crea informazioni fisiche sui contatti.
+MetaEngine('InteractionPhysicsMetaEngine',[EngineUnit('MacroMicroElasticRelationships')]),
+        ## &quot;Solver&quot; of the contact
+        StandAloneEngine('ElasticContactLaw'),
+
+        ## Applica gravit&#224;
+        DeusExMachina('GravityEngine',{'gravity':[0,0,9.810]}),
+        ## Applica traslazione alla base
+#DeusExMachina('DisplacementToForceEngine',{'subscribedBodies':[boxId],'displacement':0,
+'translationAxis':[0,0,1], 'targetForce':[0,0,-0.3],
+'targetForceMask':[0,0,-0.2] }),
+
+        ## Applica forza alla base
+        DeusExMachina('ForceEngine',{'subscribedBodies':[boxId],
+'force':[0,0,-2.2]}),
+DeusExMachina('FixedOrientationEngine',{'subscribedBodies':[boxId]}),
+
+DeusExMachina('FixedPositionEngine',{'subscribedBodies':[boxId],'mask':[0.000001,0.000001,0]}),
+
+        ## Sostituisce i motori di applicazione forze ai corpi,
+smorzamento ed integrazione temporale
+        DeusExMachina('NewtonsDampedLaw',{'damping':0.05}),
+
+        ## Applica rotazione alla testa 1 giro/min = 0,1047 rad/s
+        DeusExMachina('RotationEngine',{'subscribedBodies':head,
+'rotationAxis':[0,0,1],'rotateAroundZero':True,'angularVelocity':0.2094}),
+
+StandAloneEngine('SQLiteRecorder',{'recorders':['se3','rgb'],'dbFile':'/home/marco/replays/TestaPiatta.sqlite','virtPeriod':0.04})
+
+]
+
+## Salva la scena da simulare
+o.save('/tmp/a.xml');
+-- 
+This message was sent from Launchpad by the user
+MarcoDottor (<A HREF="https://launchpad.net/~marcodottor">https://launchpad.net/~marcodottor</A>)
+using the &quot;Contact this team&quot; link on the yade-users team page.
+For more information see
+<A HREF="https://help.launchpad.net/YourAccount/ContactingPeople">https://help.launchpad.net/YourAccount/ContactingPeople</A>
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000639.html">[deprecated list] [Yade-users] 1689 compilation errors
+</A></li>
+	<LI>Next message: <A HREF="000649.html">[deprecated list] [Yade-users] New version and old scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#640">[ date ]</a>
+              <a href="thread.html#640">[ thread ]</a>
+              <a href="subject.html#640">[ subject ]</a>
+              <a href="author.html#640">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

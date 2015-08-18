@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Simulation model
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Simulation%20model&In-Reply-To=%3C1245243787.10788.3.camel%40flux%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000767.html">
+   <LINK REL="Next"  HREF="000811.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Simulation model</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Simulation%20model&In-Reply-To=%3C1245243787.10788.3.camel%40flux%3E"
+       TITLE="[deprecated list] [Yade-users] Simulation model">eudoxos at arcig.cz
+       </A><BR>
+    <I>Wed Jun 17 15:03:07 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000767.html">[deprecated list] [Yade-users] question about clump?
+</A></li>
+        <LI>Next message: <A HREF="000811.html">[deprecated list] [Yade-users] Modifying the geometry of the wall?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#774">[ date ]</a>
+              <a href="thread.html#774">[ thread ]</a>
+              <a href="subject.html#774">[ subject ]</a>
+              <a href="author.html#774">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Seems OK here:
+
+In [4]: yade.pack.inSphere((2,0,0),1).aabb()
+Out[4]: ((1.0, -1.0, -1.0), (3.0, 1.0, 1.0))
+
+In [6]: yade.pack.inAlignedBox((0,0,0),(2,2,2)).aabb()
+Out[6]: ((0.0, 0.0, 0.0), (2.0, 2.0, 2.0))
+
+(PS you can post to yade-dev instead of yade-users for this kind of
+things, perhaps?)
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000767.html">[deprecated list] [Yade-users] question about clump?
+</A></li>
+	<LI>Next message: <A HREF="000811.html">[deprecated list] [Yade-users] Modifying the geometry of the wall?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#774">[ date ]</a>
+              <a href="thread.html#774">[ thread ]</a>
+              <a href="subject.html#774">[ subject ]</a>
+              <a href="author.html#774">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

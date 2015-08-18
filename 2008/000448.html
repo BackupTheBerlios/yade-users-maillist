@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Successive slightly different simulations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48C77D7E.20408%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000449.html">
+   <LINK REL="Next"  HREF="000450.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Successive slightly different simulations</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Successive%20slightly%20different%20simulations&In-Reply-To=%3C48C77D7E.20408%40arcig.cz%3E"
+       TITLE="[Yade-users] Successive slightly different simulations">eudoxos at arcig.cz
+       </A><BR>
+    <I>Wed Sep 10 09:55:42 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000449.html">[Yade-users] Successive slightly different simulations
+</A></li>
+        <LI>Next message: <A HREF="000450.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#448">[ date ]</a>
+              <a href="thread.html#448">[ thread ]</a>
+              <a href="subject.html#448">[ subject ]</a>
+              <a href="author.html#448">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> Does someone have an idea ? Could python scripts (which I don't know at 
+</I>&gt;<i> all but it will maybe be the time) help for that ?
+</I>Hi, yes, you can use python for just this.
+
+I will give you an example of using different loading speeds (you can
+chage to suit your needs). Label the engine you of which parameters you
+will modify (Engine::label) e.g. 'jeromeEngine' (not necessary, but
+makes it easiest to find the engine).
+
+o=Omega()
+# create the simulation here, save it
+# ...
+# o.save('/the/original/setup.xml.bz2')
+#
+# or do nothing it it is already created and saved
+
+# loop over different loading modes
+for mode in ['mode1','mode2','mode3']:
+    # load the original state
+    o.load('/the/original/setup.xml.bz2')
+    # get the engine you want to modify
+    je=o.labeledEngine('jeromeEngine)
+    # change engine parameters depending on the loading mode
+    if mode=='mode1':
+       je['strainRate']=10
+       je['maxStrain']=1e-6
+    elif mode=='mode2':
+       je['strainRate']=20
+       je['maxStrain']=1e-5
+    elif mode=='mode3':
+       je['strainRate']=30
+    # run 1000 iterations and wait (True) until they are done
+    # you could use different criterion of when to stop, but this one is
+the simplest since it is known beforehand
+    o.run(1000,True);
+    # print/save the results you need here
+    # for example, an internal variable of your engine
+    print je['averageStress'],je['sigmaZ']
+    # or force actiong on body #50
+    print o.actions.f(50)
+   
+Save the script as something.py and run with yade-trunk something.py.
+Get back with questions, Janek already suggested creating a section of
+python code snippets on the wiki, but this hasn't started yet.
+
+Vaclav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000449.html">[Yade-users] Successive slightly different simulations
+</A></li>
+	<LI>Next message: <A HREF="000450.html">[Yade-users] Successive slightly different simulations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#448">[ date ]</a>
+              <a href="thread.html#448">[ thread ]</a>
+              <a href="subject.html#448">[ subject ]</a>
+              <a href="author.html#448">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

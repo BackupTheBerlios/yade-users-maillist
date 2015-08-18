@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Information for those run YADE's OpenGL window with	compiz fusion
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Information%20for%20those%20run%20YADE%27s%20OpenGL%20window%20with%0A%09compiz%20fusion&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A0918517E%40kstud7.utk.tennessee.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000401.html">
+   <LINK REL="Next"  HREF="000404.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Information for those run YADE's OpenGL window with	compiz fusion</H1>
+    <B>Chen, Feng</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Information%20for%20those%20run%20YADE%27s%20OpenGL%20window%20with%0A%09compiz%20fusion&In-Reply-To=%3C07200ABDA779AA41BD5747E1FE9E0A0918517E%40kstud7.utk.tennessee.edu%3E"
+       TITLE="[Yade-users] Information for those run YADE's OpenGL window with	compiz fusion">fchen3 at utk.edu
+       </A><BR>
+    <I>Mon Jul 28 17:39:32 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000401.html">[Yade-users] problem with the mailing list.
+</A></li>
+        <LI>Next message: <A HREF="000404.html">[Yade-users] Problem with SVN 1440
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#400">[ date ]</a>
+              <a href="thread.html#400">[ thread ]</a>
+              <a href="subject.html#400">[ subject ]</a>
+              <a href="author.html#400">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I here provide a piece of information to those using Ubuntu Hardy Heron (gnome desktop). I have a new laptop which comes with Intel (GM965) x3100 integrated video card (It is said ATI cards has the same problem), Hardy will automatically recognize the Intel driver, however, any application using OpenGL does not work right. After searching the web I found it caused by Compiz (although I understand Compiz's argue that it is not his fault), the complete bug report is as described here:
+
+<A HREF="https://bugs.launchpad.net/ubuntu/+source/xorg-server/+bug/96991">https://bugs.launchpad.net/ubuntu/+source/xorg-server/+bug/96991</A>
+
+So if you want YADE's direct rendering to be fine, disable compiz in Ubuntu by:
+Right click on the desktop, select &quot;Change Desktop Background&quot;, click
+&quot;Visual Effects&quot;, click the &quot;none&quot; option.
+OR other equivalent command in console.
+
+Hope this information will help.
+
+Feng 
+
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080728/37741967/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080728/37741967/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000401.html">[Yade-users] problem with the mailing list.
+</A></li>
+	<LI>Next message: <A HREF="000404.html">[Yade-users] Problem with SVN 1440
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#400">[ date ]</a>
+              <a href="thread.html#400">[ thread ]</a>
+              <a href="subject.html#400">[ subject ]</a>
+              <a href="author.html#400">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

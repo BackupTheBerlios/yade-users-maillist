@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Is it necesarry for me to be familiar with C++ to build my own discrete model?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Is%20it%20necesarry%20for%20me%20to%20be%20familiar%20with%20C%2B%2B%20to%0A%20build%20my%20own%20discrete%20model%3F&In-Reply-To=%3C484CD3BA.8090903%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000285.html">
+   <LINK REL="Next"  HREF="000293.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Is it necesarry for me to be familiar with C++ to build my own discrete model?</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Is%20it%20necesarry%20for%20me%20to%20be%20familiar%20with%20C%2B%2B%20to%0A%20build%20my%20own%20discrete%20model%3F&In-Reply-To=%3C484CD3BA.8090903%40arcig.cz%3E"
+       TITLE="[Yade-users] Is it necesarry for me to be familiar with C++ to build my own discrete model?">eudoxos at arcig.cz
+       </A><BR>
+    <I>Mon Jun  9 08:54:50 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000285.html">[Yade-users] Is it necesarry for me to be familiar with C++ to build my own discrete model?
+</A></li>
+        <LI>Next message: <A HREF="000293.html">[Yade-users] system requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>  I've just tried some of the file generators of yade . I'm going to
+</I>&gt;<i> build my own discrete element model. Is it a prerequisite to be
+</I>&gt;<i> familiar with C++ in order to build my own DE model(I'm still learning
+</I>&gt;<i> C++ now)? I want to build DE with cohesive law(simulation of such as
+</I>&gt;<i> rock, concrete mass etc.). Is there any shortcut to generate .xml file
+</I>&gt;<i> for my goal. Thank you !
+</I>
+In any case, you need to have some understanding how yade itself works:
+what are engines and so on. Scene can be created in c++ or in Python (see
+<A HREF="http://yade.wikia.com/wiki/SimpleSceneTutorial">http://yade.wikia.com/wiki/SimpleSceneTutorial</A> for comparison - that is
+as simple as a scene can be: sphere falling on a box); there are still
+some issues with python but for me it works reasonably well and I don't
+write scenes in c++ since a few months at all.
+
+In general, it is better if you are familiar with c++ since many things
+are not documented and you have to read sources to find out how it works
+exactly. If you want to develop a new constitutive law, you will have to
+write it in c++.
+
+Regards, Vaclav
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000285.html">[Yade-users] Is it necesarry for me to be familiar with C++ to build my own discrete model?
+</A></li>
+	<LI>Next message: <A HREF="000293.html">[Yade-users] system requirements
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,257 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] R: Applying constant force on a wall
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20R%3A%20Applying%20constant%20force%20on%20a%20wall&In-Reply-To=%3C20090129160559.544.66057.launchpad%40palladium.canonical.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000587.html">
+   <LINK REL="Next"  HREF="000582.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] R: Applying constant force on a wall</H1>
+    <B>MarcoDottor</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20R%3A%20Applying%20constant%20force%20on%20a%20wall&In-Reply-To=%3C20090129160559.544.66057.launchpad%40palladium.canonical.com%3E"
+       TITLE="[deprecated list] [Yade-users] R: Applying constant force on a wall">marcodottor at libero.it
+       </A><BR>
+    <I>Thu Jan 29 17:05:59 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000587.html">[deprecated list] [Yade-users] Applying constant force on a wall
+</A></li>
+        <LI>Next message: <A HREF="000582.html">[deprecated list] [Yade-users] R: Applying constant force on a	wall
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#581">[ date ]</a>
+              <a href="thread.html#581">[ thread ]</a>
+              <a href="subject.html#581">[ subject ]</a>
+              <a href="author.html#581">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you for reply, my script is:
+The box fall cause of gravity but the force doesn&#8217;t act on it
+
+
+
+#!/usr/local/bin/yade-trunk -x
+# -*- encoding=utf-8 -*-
+
+from yade import utils
+from math import *
+from numpy import arange
+import random
+from yade import qt
+
+## Paametri fisici geometrie importate
+Young = 15e6
+Poisson = 0.2
+
+#Parametri cilindro
+rCyl=40   ##Raggio superiore tronco cono
+rCyl2=40  ##Raggio inferiore tronco cono
+hCyl=35   ##altezza base inferiore cono
+hCyl2=10  ##altezza base superiore cono
+nPoly=20  ##Poligoni di cui &#195;&#168; composto il contenitore
+hBox=hCyl/5
+phiStep=2*pi/nPoly
+
+#Parametri Sfere
+rSphere = 0.6
+
+#tolleranza contatti
+toll = 0.005
+
+## Omega
+o=Omega()
+
+## Importa geometria recipiente
+##bowl =
+utils.import_stl_geometry('Bowl.stl',young=Young,poisson=Poisson,
+color=[1,0,0])
+
+## Importa geometria testa
+head =
+utils.import_stl_geometry('TC3T4.stl',young=Young,poisson=Poisson,
+color=[0,1,0],wire=True)
+
+## Importa geometria elica
+#auger =
+utils.import_stl_geometry('auger.stl',young=Young,poisson=Poisson)
+
+for n in range(nPoly):
+        phi1,phi2=n*phiStep,(n+1)*phiStep
+        def pt(angle,radius,z):
+                return radius*sin(angle),radius*cos(angle),z
+a,b,c,d=pt(phi1,rCyl,hCyl2),pt(phi2,rCyl,hCyl2),pt(phi1,rCyl2,hCyl),pt(phi2,rCyl2,hCyl)
+        o.bodies.append([
+                utils.facet([a,b,c]),
+                utils.facet([b,c,d])])
+
+for b in o.bodies: b['isDynamic']=False
+
+box =
+utils.box([0,0,hCyl+hBox/2],[rCyl,rCyl,hBox/2],density=200,wire=True)
+boxId=o.bodies.append(box)
+
+#for b in o.bodies: b['isDynamic']=False
+
+## Sfere
+sphereRadius = 0.5
+nbSpheres = (30,30,3)
+for i in xrange(nbSpheres[0]):
+   for j in xrange(nbSpheres[1]):
+        for k in xrange(nbSpheres[2]):
+            x = (i*2 - nbSpheres[0])*sphereRadius*1.2
+            y = (j*2 - nbSpheres[1])*sphereRadius*1.2
+            z = 28 + (k*2 - nbSpheres[2])*sphereRadius*1.2
+o.bodies.append(utils.sphere([x,y,z],sphereRadius*(1-.3*(random.random())),young=Young,poisson=Poisson,density=2400))
+utils.randomizeColors(onlyDynamic=True)
+
+##Creazione sfere radiali
+#for z in arange(rSphere,20*rSphere,2.1*rSphere):
+#       for r in arange(2*rSphere,rCyl-1.1*rSphere,2.1*rSphere):
+#               for theta in arange(0,2*pi-rSphere/r,2.2*rSphere/r):
+#                       theta2=theta*(1+.01*(.5+random.random()))
+#
+o.bodies.append(utils.sphere([r*sin(theta2),r*cos(theta2),z],rSphere*(1-.3*(random.random())),color=[random.random(),random.random(),random.random()]))
+
+## Timestep
+o.dt=utils.PWaveTimeStep()
+
+## Initializers
+o.initializers=[
+        ## Create and reset to zero container of all PhysicalActions
+that will be used
+        StandAloneEngine('PhysicalActionContainerInitializer'),
+        ## Create bounding boxes. They are needed to zoom the 3d view
+properly before we start the simulation.
+MetaEngine('BoundingVolumeMetaEngine',[EngineUnit('InteractingSphere2AABB'),EngineUnit('InteractingFacet2AABB'),EngineUnit('InteractingBox2AABB'),EngineUnit('MetaInteractingGeometry2AABB')])
+        ]
+
+
+## Engines
+o.engines=[
+
+        ## Resets forces and momenta the act on bodies
+        StandAloneEngine('PhysicalActionContainerReseter'),
+StandAloneEngine('SnapshotEngine',{'virtPeriod':1,'fileBase':'aaa','ignoreErrors':False}),
+        ## Associates bounding volume to each body.
+        MetaEngine('BoundingVolumeMetaEngine',[
+                EngineUnit('InteractingSphere2AABB'),
+                EngineUnit('InteractingFacet2AABB'),
+                EngineUnit('InteractingBox2AABB'),
+                EngineUnit('MetaInteractingGeometry2AABB')
+        ]),
+        ## Using bounding boxes find possible body collisions.
+        ##StandAloneEngine('SpatialQuickSortCollider'),
+        StandAloneEngine('SAPCollider'),
+        ## Create geometry information about each potential collision.
+        MetaEngine('InteractionGeometryMetaEngine',[
+EngineUnit('InteractingSphere2InteractingSphere4SpheresContactGeometry'),
+EngineUnit('InteractingFacet2InteractingSphere4SpheresContactGeometry',{'shrinkFactor':toll}),
+EngineUnit('InteractingBox2InteractingSphere4SpheresContactGeometry')
+        ]),
+        ## Crea informazioni fisiche sui contatti.
+MetaEngine('InteractionPhysicsMetaEngine',[EngineUnit('MacroMicroElasticRelationships')]),
+        ## &quot;Solver&quot; of the contact
+        StandAloneEngine('ElasticContactLaw'),
+
+        ## Applica gravit&#195;
+        DeusExMachina('GravityEngine',{'gravity':[0,0,9.81]}),
+        ## Forces acting on bodies are damped to artificially increase
+energy dissipation in simulation.
+        MetaEngine('PhysicalActionDamper',[
+EngineUnit('CundallNonViscousForceDamping',{'damping':0.3}),
+EngineUnit('CundallNonViscousMomentumDamping',{'damping':0.3})
+        ]),
+
+        ## Forze e momenti definiti sui corpi. Calcolo delle
+accelerazioni con le leggi di newton
+        MetaEngine('PhysicalActionApplier',[
+                EngineUnit('NewtonsForceLaw'),
+                EngineUnit('NewtonsMomentumLaw'),
+        ]),
+        ## Acceleration results in velocity change. Integrating the
+velocity over dt, position of the body will change.
+MetaEngine('PhysicalParametersMetaEngine',[EngineUnit('LeapFrogPositionIntegrator')]),
+        ## Angular acceleration changes angular velocity, resulting in
+position and/or orientation change of the body.
+MetaEngine('PhysicalParametersMetaEngine',[EngineUnit('LeapFrogOrientationIntegrator')]),
+
+        ## Applica rotazione alla testa 1 giro/min = 0,1047 rad/s
+        DeusExMachina('RotationEngine',{'subscribedBodies':head,
+'rotationAxis':[0,0,1],'rotateAroundZero':True,'angularVelocity':0.1047}),
+
+
+
+ ## Applica rotazione e traslazione alla testa
+##DeusExMachina('SpiralEngine',{'subscribedBodies':head,'angularVelocity':0.5,'linearVelocity':2,
+'axis':[0,0,1]}),
+
+        ## Applica velocit&#195;  di traslazione alla base
+##DeusExMachina('TranslationEngine',{'subscribedBodies':[boxId],'velocity':-1,
+'translationAxis':[0,0,1]}),
+
+        ## Applica traslazione alla base
+##DeusExMachina('DisplacementEngine',{'subscribedBodies':[boxId],'displacement':-0.1,
+'translationAxis':[0,0,1], 'active':True}),
+
+        ## Applica traslazione alla base
+##DeusExMachina('DisplacementToForceEngine',{'subscribedBodies':[boxId],'displacement':-0.05,
+'translationAxis':[0,0,1], 'targetForce':[0,0,-1],
+'targetForceMask':[0,0,0] }),
+
+        ## Applica traslazione alla base
+        DeusExMachina('ForceEngine',{'subscribedBodies':[boxId],
+'force':[0,0,-10]}),
+
+        # Applica traslazione alla base
+        #DeusExMachina('UniaxialStrainer',{'subscribedBodies':[948]}),
+
+
+]
+
+## Salva la scena da simulare
+o.save('/tmp/a.xml');
+-- 
+This message was sent from Launchpad by the user
+MarcoDottor (<A HREF="https://launchpad.net/~marcodottor">https://launchpad.net/~marcodottor</A>)
+using the &quot;Contact this team&quot; link on the yade-users team page.
+For more information see
+<A HREF="https://help.launchpad.net/YourAccount/ContactingPeople">https://help.launchpad.net/YourAccount/ContactingPeople</A>
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000587.html">[deprecated list] [Yade-users] Applying constant force on a wall
+</A></li>
+	<LI>Next message: <A HREF="000582.html">[deprecated list] [Yade-users] R: Applying constant force on a	wall
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#581">[ date ]</a>
+              <a href="thread.html#581">[ thread ]</a>
+              <a href="subject.html#581">[ subject ]</a>
+              <a href="author.html#581">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

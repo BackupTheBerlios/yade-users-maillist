@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to communicate between two independent Engines
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20communicate%20between%20two%20independent%20Engines&In-Reply-To=%3C4824900B.1020709%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000221.html">
+   <LINK REL="Next"  HREF="000238.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to communicate between two independent Engines</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20communicate%20between%20two%20independent%20Engines&In-Reply-To=%3C4824900B.1020709%40arcig.cz%3E"
+       TITLE="[Yade-users] How to communicate between two independent Engines">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri May  9 19:55:23 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000221.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+        <LI>Next message: <A HREF="000238.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#222">[ date ]</a>
+              <a href="thread.html#222">[ thread ]</a>
+              <a href="subject.html#222">[ subject ]</a>
+              <a href="author.html#222">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> One more solution can be to scan the list of engines form inside one engine.
+</I>&gt;<i> You have an exemple in TriaxialStateRecorder, which record variables of 
+</I>&gt;<i> TriaxialCompressionEngine.
+</I>&gt;<i>   
+</I>The only thing to watch out is _not_ to register the engine pointer as
+attribute. The deserializer would create new instance instead of pointer
+to the already existing instance.
+&gt;<i> This first part will be executed only once :
+</I>&gt;<i>
+</I>&gt;<i> TriaxialStateRecorder.cpp, Line 69 :
+</I>&gt;<i>  
+</I>&gt;<i> if ( !triaxialCompressionEngine )                
+</I>&gt;<i>   
+</I>(&quot;only once&quot;: more precisely, after every deserialization - like if you
+interrupt, save and load again the simulation.)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000221.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+	<LI>Next message: <A HREF="000238.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#222">[ date ]</a>
+              <a href="thread.html#222">[ thread ]</a>
+              <a href="subject.html#222">[ subject ]</a>
+              <a href="author.html#222">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

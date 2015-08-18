@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Libraries problems with a Cluster
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Libraries%20problems%20with%20a%20Cluster&In-Reply-To=%3C484558AF.3020504%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000267.html">
+   <LINK REL="Next"  HREF="000269.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Libraries problems with a Cluster</H1>
+    <B>Lionel Favier</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Libraries%20problems%20with%20a%20Cluster&In-Reply-To=%3C484558AF.3020504%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Libraries problems with a Cluster">lfavier at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Tue Jun  3 16:43:59 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000267.html">[Yade-users] Problem of installition on kubuntu8.04
+</A></li>
+        <LI>Next message: <A HREF="000269.html">[Yade-users] Libraries problems with a Cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+In my laboratory, a cluster with a few nodes has been installed.  So 
+normally we could use YADE with, except that we have some problems. Two 
+versions are installed, the base version reachable by everybody and my 
+version locally installed in my part of the cluster.
+
+On the one hand, when we use the base version, after writing &quot;yade&quot;, the 
+message is the following:
+
+/Constructing ClassFactory  (if multiple times - check '-rdynamic' flag!).
+Constructing SerializableSingleton  (if multiple times - check 
+'-rdynamic' flag!).
+34 [47205864286640] INFO yade  - core/yade.cpp:122 main: Logger uses 
+basic (console) configuration since 
+`/home/3S-LAB/lfavier/.yade-0.11.1/logging.conf' was not found. DEBUG 
+messages will be ommited.
+34 [47205864286640] INFO yade  - core/yade.cpp:123 main: Look at the 
+file doc/logging.conf.sample in the source distribution as an example on 
+how to customize logging.
+35 [47205864286640] INFO yade.Omega  - core/Omega.cpp:32 Omega: 
+Constructing Omega  (if multiple times - check '-rdynamic' flag!).
+292 [47205864286640] INFO yade  - core/yade.cpp:177 main: Loading 
+configuration file: /home/3S-LAB/lfavier/.yade-0.11.1/preferences.xml
+terminate called after throwing an instance of 'FactoryCantCreate'
+  what():  ClassFactory::create - cannot create class named: 
+XMLFormatManager
+SIGSEGV/SIGABRT handler called; gdb batch file is 
+`/home/3S-LAB/lfavier/.yade-0.11.1/gdb_crash_batch-pid26041'
+GNU gdb 6.4.90-debian
+Copyright (C) 2006 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain 
+conditions.
+Type &quot;show copying&quot; to see the conditions.
+There is absolutely no warranty for GDB.  Type &quot;show warranty&quot; for details.
+This GDB was configured as &quot;x86_64-linux-gnu&quot;.
+Using host libthread_db library &quot;/lib/libthread_db.so.1&quot;.
+[Thread debugging using libthread_db enabled]
+[New Thread 47205864286640 (LWP 26041)]
+0x00002aeef6906715 in waitpid () from /lib/libc.so.6
+No symbol &quot;info&quot; in current context.
+
+Thread 1 (Thread 47205864286640 (LWP 26041)):
+#0  0x00002aeef6906715 in waitpid () from /lib/libc.so.6
+#1  0x00002aeef68af721 in strtold_l () from /lib/libc.so.6
+#2  0x00000000004c153c in sigHandler (sig=6) at core/yade.cpp:52
+#3  0x00002aeef68a4110 in killpg () from /lib/libc.so.6
+#4  0x0000000000000000 in ?? ()
+#0  0x00002aeef6906715 in waitpid () from /lib/libc.so.6
+(gdb)/
+
+On the other hand, when I use my version, which works marvelously in my 
+computer, the message is the following:
+
+/./yade-0.11.0: error while loading shared libraries: 
+libpython2.4.so.1.0: cannot open shared object file: No such file or 
+directory
+/
+
+I didn't install all the libraries, but according to our computer 
+engineer R&#233;mi (I think you can add somethings R&#233;mi...), everything has 
+been installed. So do you know where could it come from ?
+
+Regards
+
+Lionel
+
+-- 
+Lionel FAVIER
+Doctorant
+Laboratoire Sols Solides Structures, Risques (3S-R)
+Equipe Risques et Vuln&#233;rabilit&#233; (RV)
+
+Domaine Universitaire - BP 53
+38041 Grenoble Cedex 9
+France
+
+T&#233;l: +33 (0)4 56 52 86 36
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lionel.favier at hmg.inpg.fr</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000267.html">[Yade-users] Problem of installition on kubuntu8.04
+</A></li>
+	<LI>Next message: <A HREF="000269.html">[Yade-users] Libraries problems with a Cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#268">[ date ]</a>
+              <a href="thread.html#268">[ thread ]</a>
+              <a href="subject.html#268">[ subject ]</a>
+              <a href="author.html#268">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

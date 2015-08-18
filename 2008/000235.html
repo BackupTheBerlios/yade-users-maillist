@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How Can install the wildmagic311 in the Kubuntu?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20Can%20install%20the%20wildmagic311%20in%20the%20Kubuntu%3F&In-Reply-To=%3C482E7BDD.5090509%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000234.html">
+   <LINK REL="Next"  HREF="000236.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How Can install the wildmagic311 in the Kubuntu?</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20Can%20install%20the%20wildmagic311%20in%20the%20Kubuntu%3F&In-Reply-To=%3C482E7BDD.5090509%40arcig.cz%3E"
+       TITLE="[Yade-users] How Can install the wildmagic311 in the Kubuntu?">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sat May 17 08:31:57 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000234.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+        <LI>Next message: <A HREF="000236.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#235">[ date ]</a>
+              <a href="thread.html#235">[ thread ]</a>
+              <a href="subject.html#235">[ subject ]</a>
+              <a href="author.html#235">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> I have downloaded the wildmagic311 , and maked it using
+</I>&gt;<i> make CONFIG=ReleaseMemory -f makefile.lnx
+</I>&gt;<i> but I do not know whether it is installed into my system because I
+</I>&gt;<i> just read the makefile.lnx that there is only build part,
+</I>&gt;<i> not installed, how can I install it?
+</I>Try &quot;make install&quot;; perhaps there is no install target and you have to
+copy everything to /usr/local/include and /usr/local/lib (in that case,
+make sure you specify LIBPATH=/usr/local/lib and
+CPPPATH=/usr/local/include to scons)
+
+---
+
+Do you really need full wm3? Since Yade 0.11.0, reduced version of
+wildmagic is in our source tree.
+
+If you are on debian, see
+<A HREF="http://yade.wikia.com/wiki/Installation_details#Installing_the_wildmagic_3_library_on_debian">http://yade.wikia.com/wiki/Installation_details#Installing_the_wildmagic_3_library_on_debian</A>
+to get prepackaged version.
+
+Vaclav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000234.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+	<LI>Next message: <A HREF="000236.html">[Yade-users] How Can install the wildmagic311 in the Kubuntu?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#235">[ date ]</a>
+              <a href="thread.html#235">[ thread ]</a>
+              <a href="subject.html#235">[ subject ]</a>
+              <a href="author.html#235">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] interaction radius for spheres
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20interaction%20radius%20for%20spheres&In-Reply-To=%3C47E8DA9E.8000904%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000133.html">
+   <LINK REL="Next"  HREF="000135.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] interaction radius for spheres</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20interaction%20radius%20for%20spheres&In-Reply-To=%3C47E8DA9E.8000904%40univ-nantes.fr%3E"
+       TITLE="[Yade-users] interaction radius for spheres">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Tue Mar 25 11:57:34 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000133.html">[Yade-users] interaction radius for spheres
+</A></li>
+        <LI>Next message: <A HREF="000135.html">[Yade-users] interaction radius for spheres
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#134">[ date ]</a>
+              <a href="thread.html#134">[ thread ]</a>
+              <a href="subject.html#134">[ subject ]</a>
+              <a href="author.html#134">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+V&#225;clav S a &#233;crit :
+&gt;&gt;<i> Ok. It makes sense in concrete (I guess you will define an equilibrium 
+</I>&gt;&gt;<i> position with interpenetration!=0 then?), but - generally speaking, it 
+</I>&gt;&gt;<i> is not necessary to create cohesion between distant bodies in order to 
+</I>&gt;&gt;<i> simulate a cohesive material, cohesion at contacts is sufficient.
+</I>&gt;&gt;<i>   
+</I>&gt;<i> Your spheres have some microscopic young's moduli, but due to the
+</I>&gt;<i> disctribution of interactions you get macroscopic modulus that can be
+</I>&gt;<i> different; and I want to compensate that). I want to make sure that
+</I>&gt;<i> given a plane, sum of &quot;surfaces&quot; of all interactions (cylinders between
+</I>&gt;<i> spheres with the radius of the smaller sphere, right?) is equal to
+</I>&gt;<i> nominal, macroscopic surface of specimen. It depends on sphere radii
+</I>&gt;<i> discribution, for sure; perhaps it can be calculated analytically for
+</I>&gt;<i> regular arrangements. For other cases, the simulated rigidity may be
+</I>&gt;<i> artificially higher/lower. I haven't tried to quantify that yes, though.
+</I>
+
+If I understand what you mean, you want to compute analytically the 
+macroscopic young modulus as a function of the microscopic young 
+modulus. I am not sure there is currently a general way to do that for 
+random assembly, it is not easy at all. There were formula like that in 
+SDEC: the input was a macroscopic young modulus and SDEC computed 
+automatically the microscopic young modulus attributed to each 
+particles. But in reality it didn't work, the macroscopic young modulus 
+wanted was not reached.
+The formula used were based on a paper from Cambou, but the formula, I 
+think, were valid only for a given fabric corresponding to the ones 
+studied by Cambou.
+You can find more details in the PhD thesis of Sebastien Hentz who used 
+all that to simulate concrete with SDEC (in which there was a radius of 
+interaction greater than 1). In addition maybe you will find help about 
+interaction laws to use etc... in this thesis, unless you have already 
+read it.
+
+   Luc
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000133.html">[Yade-users] interaction radius for spheres
+</A></li>
+	<LI>Next message: <A HREF="000135.html">[Yade-users] interaction radius for spheres
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#134">[ date ]</a>
+              <a href="thread.html#134">[ thread ]</a>
+              <a href="subject.html#134">[ subject ]</a>
+              <a href="author.html#134">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

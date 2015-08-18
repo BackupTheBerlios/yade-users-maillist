@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Box or facet
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Box%20or%20facet&In-Reply-To=%3C930069bf0906260904l87b5374u7e3c57a575fe11b1%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000807.html">
+   <LINK REL="Next"  HREF="000821.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Box or facet</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Box%20or%20facet&In-Reply-To=%3C930069bf0906260904l87b5374u7e3c57a575fe11b1%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] Box or facet">gladky.anton at gmail.com
+       </A><BR>
+    <I>Fri Jun 26 18:04:02 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000807.html">[deprecated list] [Yade-users] Box or facet
+</A></li>
+        <LI>Next message: <A HREF="000821.html">[deprecated list] [Yade-users] Box or facet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#808">[ date ]</a>
+              <a href="thread.html#808">[ thread ]</a>
+              <a href="subject.html#808">[ subject ]</a>
+              <a href="author.html#808">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you, Jerome! Will try your supposed way.
+______________________________
+[ENG] Best Regards
+[GER] Mit freundlichen Gr&#252;&#223;en
+[RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+[UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+2009/6/26 Jerome Duriez &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">duriez at geo.hmg.inpg.fr</A>&gt;
+
+&gt;<i>  Unfortunately I know very very few python, so I do not know how to do
+</I>&gt;<i> this in this framework. With C++ instructions, (inside the code) it is like
+</I>&gt;<i> that
+</I>&gt;<i>
+</I>&gt;<i>   dynamic_cast&lt;Force*&gt;(*Metabody-*&gt;physicalActions-&gt;find(*id_facet*,actionForce-&gt;getClassIndex())
+</I>&gt;<i> . get() )-&gt;force;
+</I>&gt;<i>  (I see clearly what can be the advantages of python by writing this...)
+</I>&gt;<i>
+</I>&gt;<i>     An intermediate mean for you is (until someone can answer you more
+</I>&gt;<i> precisely) to add an Engine &quot;ForceRecorder&quot; (source in
+</I>&gt;<i> pkg/dem/Engine/StandAloneEngine/), defined with the id of the facet, to
+</I>&gt;<i> o.engines. This will store the force you want in an output file you can
+</I>&gt;<i> later analyse with the software you want.
+</I>&gt;<i>
+</I>&gt;<i> Jerome
+</I>&gt;<i>
+</I>&gt;<i>  Anton Gladky a &#233;crit :
+</I>&gt;<i>
+</I>&gt;<i> How can I get forces affected on 1 facet from spheres: I need it for plot?
+</I>&gt;<i>
+</I>&gt;<i> Thank you
+</I>&gt;<i>
+</I>&gt;<i> PS I promise, that I will place all answers to instructions or FAQ.
+</I>&gt;<i> ______________________________
+</I>&gt;<i> [ENG] Best Regards
+</I>&gt;<i> [GER] Mit freundlichen Gr&#252;&#223;en
+</I>&gt;<i> [RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+</I>&gt;<i> [UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+</I>&gt;<i>
+</I>&gt;<i> Anton Gladkyy
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2009/6/26 Anton Gladky &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">gladky.anton at gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> Amazing, but it works!
+</I>&gt;&gt;<i> Thank you!
+</I>&gt;&gt;<i> ______________________________
+</I>&gt;&gt;<i> [ENG] Best Regards
+</I>&gt;&gt;<i> [GER] Mit freundlichen Gr&#252;&#223;en
+</I>&gt;&gt;<i> [RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+</I>&gt;&gt;<i> [UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Anton Gladkyy
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  2009/6/26 V&#225;clav &#352;milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> pp={'se3':[center[0],center[1],center[2],1,0,0,0],'refSe3':[center[0],center[1],center[2],1,0,0,0],'young':young,'poisson':poisson,'frictionAngle':frictionAngle,'inertia':[0,0,0],
+</I>&gt;&gt;&gt;&gt;<i> 'velocity':[velocity[0],velocity[1],velocity[2]]}
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  You have to use TranslationEngine and subscribe facets to it. That's
+</I>&gt;&gt;&gt;<i> what I do. See e.g. scripts/test/Dem3DofGeom.py for an example. The sphere
+</I>&gt;&gt;&gt;<i> is moved that way. Facet ids are returned by O.bodies.append.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ids=O.bodies.append([utils.facet(...),utils.facet(...)])
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> print ids ## [0,1,2,3,4]
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> O.engines=[...,TranslationEngine(subscribedBodies=ids,translationAxis=[0,0,1],velocity=1),...]
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> HTH, Vaclav
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;&gt;&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;&gt;&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;&gt;&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A> &lt;<A HREF="https://launchpad.net/%7Eyade-users">https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A> &lt;<A HREF="https://launchpad.net/%7Eyade-users">https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090626/6b13d8dd/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090626/6b13d8dd/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000807.html">[deprecated list] [Yade-users] Box or facet
+</A></li>
+	<LI>Next message: <A HREF="000821.html">[deprecated list] [Yade-users] Box or facet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#808">[ date ]</a>
+              <a href="thread.html#808">[ thread ]</a>
+              <a href="subject.html#808">[ subject ]</a>
+              <a href="author.html#808">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

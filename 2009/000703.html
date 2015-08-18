@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Time Series Forcing	implementation in python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3Ce6a8acac0903251803r73dadc11ne38810bc61b61e71%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000702.html">
+   <LINK REL="Next"  HREF="000679.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Time Series Forcing	implementation in python</H1>
+    <B>Roger</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3Ce6a8acac0903251803r73dadc11ne38810bc61b61e71%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] Time Series Forcing	implementation in python">rbarnold12 at gmail.com
+       </A><BR>
+    <I>Thu Mar 26 02:03:45 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000702.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+        <LI>Next message: <A HREF="000679.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yes, I would be glad for you to add my script to the example scripts once I
+get it working.  I hope others will be able to learn from it.
+
+I realized that I do not have r1727.  I was able to download revision r1730,
+but I do not think it is working, because when I run the simulation I still
+get: &quot;'ActionContainer' object has no attribute 'addF' &quot;.  I am new to
+open-source code, as well as yade, so I am not sure if I am doing this
+correctly.
+
+Thanks,
+Roger
+
+
+2009/3/25 V&#225;clav &#352;milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+
+&gt;<i> def applyForces():
+</I>&gt;<i>
+</I>&gt;&gt;<i>    bex=BexContainer()
+</I>&gt;&gt;<i>    for b in O.bodies:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  f=3,1,2,1,4,3,5,2,1,5,4,3,7,.2,1,3,2,6,3,2,3,3,4,3,5,7,8,6,7,3,1,2,1,2,3,1,2,1,.1,.3,1,.4,2,3,4,3,3,3,3
+</I>&gt;&gt;<i> #hypothetical forces for testing
+</I>&gt;&gt;<i>        bex.addForce(b.id &lt;<A HREF="http://b.id">http://b.id</A>&gt;,f)
+</I>&gt;&gt;<i>
+</I>&gt;<i> OK, I tried.
+</I>&gt;<i>
+</I>&gt;<i> 1. bex=O.actions, I already told you.
+</I>&gt;<i> 2. bex.addF(b.id,f) is the correct thing, not addForce (my fault)
+</I>&gt;<i> 3. you are adding the whole f to the body, which is not what you want (it
+</I>&gt;<i> will not chage at all). And addF takes vector. You need something like this:
+</I>&gt;<i>
+</I>&gt;<i> f=1,2,3,4,5,6,7.... # hypothetical
+</I>&gt;<i> def applyForces():
+</I>&gt;<i>    bex=O.actions
+</I>&gt;<i>    for b in O.bodies:
+</I>&gt;<i>        ff=(0,0,f[O.iter%len(f)]) ## x,y components zero, z component is
+</I>&gt;<i> taken from f  based on iteration number wrapped to the length of f
+</I>&gt;<i>        bex.addF(b.id,ff)
+</I>&gt;<i>
+</I>&gt;<i> It adds the same force to all bodies though at each iteration, but you can
+</I>&gt;<i> change that easily. Maybe you don't want to apply that force to all bodies,
+</I>&gt;<i> but just the red ones? Then do something like
+</I>&gt;<i>
+</I>&gt;<i> redParticles=[]
+</I>&gt;<i> # generate dynamic particles function here
+</I>&gt;<i>
+</I>&gt;<i>  redParticles+=o.bodies.append(utils.sphere([xs,ys,zs],rad,dynamic=True,color=[1,0,0],young=30e9,poisson=.3,density=2111.31))
+</I>&gt;<i>        # O.bodies.append returns id of the body that you add to
+</I>&gt;<i> redParticles, which will be list of ids at the end
+</I>&gt;<i>
+</I>&gt;<i> then in applyForces:
+</I>&gt;<i>
+</I>&gt;<i>    for id in redParticles:
+</I>&gt;<i>        ff=...
+</I>&gt;<i>        bex.addF(id,ff)
+</I>&gt;<i>
+</I>&gt;<i> HTH, Vaclav
+</I>&gt;<i>
+</I>&gt;<i> PS. what you sent runs about 5x slower with the python engine. But it is
+</I>&gt;<i> good to make a prototype like that, then the idea is clear and it can be
+</I>&gt;<i> easily written in c++.
+</I>&gt;<i>
+</I>&gt;<i> PPS. Yade imports everything from math module automatically (sqrt, floor
+</I>&gt;<i> etc)
+</I>&gt;<i>
+</I>&gt;<i> PPPS. Once you script works, would it be OK to put it under examples in the
+</I>&gt;<i> source tree?
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090326/66609007/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090326/66609007/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000702.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+	<LI>Next message: <A HREF="000679.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

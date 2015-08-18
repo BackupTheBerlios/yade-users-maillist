@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Quaternion question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Quaternion%20question&In-Reply-To=%3C4A0286E9.1080004%40yandex.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000728.html">
+   <LINK REL="Next"  HREF="000732.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Quaternion question</H1>
+    <B>Sergei D.</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Quaternion%20question&In-Reply-To=%3C4A0286E9.1080004%40yandex.ru%3E"
+       TITLE="[deprecated list] [Yade-users] Quaternion question">sj2001 at yandex.ru
+       </A><BR>
+    <I>Thu May  7 08:59:53 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000728.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+        <LI>Next message: <A HREF="000732.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#729">[ date ]</a>
+              <a href="thread.html#729">[ thread ]</a>
+              <a href="subject.html#729">[ subject ]</a>
+              <a href="author.html#729">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> If want to play with Quaternions in python, I recommend very simple
+</I>&gt;<i> euclid module: <A HREF="http://partiallydisassembled.net/euclid.html">http://partiallydisassembled.net/euclid.html</A>
+</I>&gt;<i>
+</I>&gt;<i> Vaclav
+</I>&gt;<i>   
+</I>Anton, I have attached modified scene.xml, which I have get from your
+scene.xml
+with Vaclav's euclid.py (Vaclav, thanks!) and typing the follow commands
+in YADE console:
+
+from euclid import *
+O.load('scene.xml')
+
+q1 = Quaternion.new_rotate_axis(pi/6, Vector3(0,1,0)) # rotate about Y
+on pi/6 angles
+q2 = Quaternion.new_rotate_axis(pi/2, Vector3(0,0,1)) # rotate about Z
+on pi/2 angles
+
+# now, YADE's se3 is [X,Y,Z, Ax,Ay,Az, a]
+# where X,Y,Z is the body's position;
+# Ax,Ay,Az is the rotation axis,
+# a is the rotation angle.
+# So, we...
+o1 = q1.get_angle_axis() # get angle and axis for the first blue box
+(rotation about Y)
+o2 = (q2*q1).get_angle_axis() # get angle and axis for the second blue
+box (first rotation about Y, after this rotation aboud Z)
+# Then, we set the parameters,
+O.bodies[1].phys['se3'] = [0,0,0, o1[1][0], o1[1][1], o1[1][2], o1[0]]
+O.bodies[3].phys['se3'] = [0,0,0, o2[1][0], o2[1][1], o2[1][2], o2[0]]
+
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: scene.xml
+Type: text/xml
+Size: 7623 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090507/10ac111a/attachment.xml">https://lists.berlios.de/pipermail/yade-users/attachments/20090507/10ac111a/attachment.xml</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000728.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+	<LI>Next message: <A HREF="000732.html">[deprecated list] [Yade-users] Quaternion question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#729">[ date ]</a>
+              <a href="thread.html#729">[ thread ]</a>
+              <a href="subject.html#729">[ subject ]</a>
+              <a href="author.html#729">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

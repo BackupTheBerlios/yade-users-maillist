@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Error in YADE installation,Ubuntu 8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20in%20YADE%20installation%2CUbuntu%208.04&In-Reply-To=%3C886997.72939.qm%40web33506.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000431.html">
+   <LINK REL="Next"  HREF="000426.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Error in YADE installation,Ubuntu 8.04</H1>
+    <B>mohammad islam</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20in%20YADE%20installation%2CUbuntu%208.04&In-Reply-To=%3C886997.72939.qm%40web33506.mail.mud.yahoo.com%3E"
+       TITLE="[Yade-users] Error in YADE installation,Ubuntu 8.04">nislamce at yahoo.com
+       </A><BR>
+    <I>Thu Aug 28 14:25:51 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000431.html">[Yade-users] Triaxial Test
+</A></li>
+        <LI>Next message: <A HREF="000426.html">[Yade-users] Error in YADE installation,Ubuntu 8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All,
+Few days ago I have installed `&#160; yade-0.12rc1.tar.bz2` without any problem.And it is running smoothly.But today I have tried to install in another PC and having some message like ---
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">nurul at ubuntu</A>:~/yade-0.12rc1$ scons PREFIX=/home/nurul/YADE optimize=1
+scons: Reading SConscript files ...
+Scons version too old, downloading new version. All subsequent calls will be proxied to the new version transparently.
+IOError: [Errno socket error] (110, 'Connection timed out'):
+&#160; File &quot;/home/nurul/yade-0.12rc1/SConstruct&quot;, line 52:
+&#160;&#160;&#160; (filename,headers)=urllib.urlretrieve(newUrl)
+&#160; File &quot;/usr/lib/python2.5/urllib.py&quot;, line 89:
+&#160;&#160;&#160; return _urlopener.retrieve(url, filename, reporthook, data)
+&#160; File &quot;/usr/lib/python2.5/urllib.py&quot;, line 222:
+&#160;&#160;&#160; fp = self.open(url, data)
+&#160; File &quot;/usr/lib/python2.5/urllib.py&quot;, line 190:
+&#160;&#160;&#160; return getattr(self, name)(url)
+&#160; File &quot;/usr/lib/python2.5/urllib.py&quot;, line 325:
+&#160;&#160;&#160; h.endheaders()
+&#160; File &quot;/usr/lib/python2.5/httplib.py&quot;, line 860:
+&#160;&#160;&#160; self._send_output()
+&#160; File &quot;/usr/lib/python2.5/httplib.py&quot;, line 732:
+&#160;&#160;&#160; self.send(msg)
+&#160; File &quot;/usr/lib/python2.5/httplib.py&quot;, line 699:
+&#160;&#160;&#160; self.connect()
+&#160; File &quot;/usr/lib/python2.5/httplib.py&quot;, line 683:
+&#160;&#160;&#160; raise socket.error, msg
+
+I have also try to update scons and it is showing upto date.Problem is in scons ofcourse.
+
+Any idea will be appreciable.
+
+Thanking you.
+
+Regards,
+Mohammad Nurul Islam
+
+.................................  Mohammad Nurul Islam  Soil Mechanics Lab  Department of Civil and Environmental Engineering  Saitama University  Japan.  Mobile No. 080 3466 0918
+
+
+      
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080828/c8757e10/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080828/c8757e10/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000431.html">[Yade-users] Triaxial Test
+</A></li>
+	<LI>Next message: <A HREF="000426.html">[Yade-users] Error in YADE installation,Ubuntu 8.04
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

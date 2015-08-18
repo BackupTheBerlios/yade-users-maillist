@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] 2 equal starts - 2 different	results
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%202%20equal%20starts%20-%202%20different%0A%09results&In-Reply-To=%3C930069bf0907010751v3e11b720pd2fc7e9d1f794ddb%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000836.html">
+   <LINK REL="Next"  HREF="000850.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] 2 equal starts - 2 different	results</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%202%20equal%20starts%20-%202%20different%0A%09results&In-Reply-To=%3C930069bf0907010751v3e11b720pd2fc7e9d1f794ddb%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] 2 equal starts - 2 different	results">gladky.anton at gmail.com
+       </A><BR>
+    <I>Wed Jul  1 16:51:41 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000836.html">[deprecated list] [Yade-users] 2 equal starts - 2 different	results
+</A></li>
+        <LI>Next message: <A HREF="000850.html">[deprecated list] [Yade-users] 2 equal starts - 2	different	results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#837">[ date ]</a>
+              <a href="thread.html#837">[ thread ]</a>
+              <a href="subject.html#837">[ subject ]</a>
+              <a href="author.html#837">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you, Bruno.
+It returns a lot of results, some of them are:
+
+==15154== Use of uninitialised value of size 8
+==15154== Conditional jump or move depends on uninitialised value(s)
+
+etc.
+
+What should I look for?
+______________________________
+[ENG] Best Regards
+[GER] Mit freundlichen Gr&#252;&#223;en
+[RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+[UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+On Wed, Jul 1, 2009 at 4:45 PM, Bruno Chareyre
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">bruno.chareyre at hmg.inpg.fr</A>&gt;wrote:
+
+&gt;<i> &gt;&quot;Is it normal?&quot;
+</I>&gt;<i>
+</I>&gt;<i> No.
+</I>&gt;<i>
+</I>&gt;<i> &gt;&quot;Why is it so?&quot;
+</I>&gt;<i>
+</I>&gt;<i> Randomness comes with uninitialised values. Try the same thing with
+</I>&gt;<i> &quot;valgrind ./yade&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Anton Gladky a &#233;crit :
+</I>&gt;<i>
+</I>&gt;&gt;<i> I have started 1 script 2 times. With the same parameters.
+</I>&gt;&gt;<i> But when I analyse diagrams from these tests, I get different results.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Why is it so? Is it normal?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ______________________________
+</I>&gt;&gt;<i> [ENG] Best Regards
+</I>&gt;&gt;<i> [GER] Mit freundlichen Gr&#252;&#223;en
+</I>&gt;&gt;<i> [RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+</I>&gt;&gt;<i> [UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Anton Gladkyy
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> _______________
+</I>&gt;<i> Chareyre Bruno
+</I>&gt;<i> Maitre de conference
+</I>&gt;<i>
+</I>&gt;<i> Grenoble INP
+</I>&gt;<i> Laboratoire 3SR - bureau E145
+</I>&gt;<i> BP 53 - 38041, Grenoble cedex 9 - France
+</I>&gt;<i> T&#233;l : 33 4 56 52 86 21
+</I>&gt;<i> Fax : 33 4 76 82 70 43
+</I>&gt;<i> ________________
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090701/0d9f8243/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090701/0d9f8243/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000836.html">[deprecated list] [Yade-users] 2 equal starts - 2 different	results
+</A></li>
+	<LI>Next message: <A HREF="000850.html">[deprecated list] [Yade-users] 2 equal starts - 2	different	results
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#837">[ date ]</a>
+              <a href="thread.html#837">[ thread ]</a>
+              <a href="subject.html#837">[ subject ]</a>
+              <a href="author.html#837">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Yade on AIX cluster installation	problem II
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Yade%20on%20AIX%20cluster%20installation%0A%09problem%20II&In-Reply-To=%3C20090405165054.1606.44691.launchpad%40gandwana.canonical.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000688.html">
+   <LINK REL="Next"  HREF="000693.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Yade on AIX cluster installation	problem II</H1>
+    <B>MarcoDottor</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Yade%20on%20AIX%20cluster%20installation%0A%09problem%20II&In-Reply-To=%3C20090405165054.1606.44691.launchpad%40gandwana.canonical.com%3E"
+       TITLE="[deprecated list] [Yade-users] Yade on AIX cluster installation	problem II">marcodottor at libero.it
+       </A><BR>
+    <I>Sun Apr  5 18:50:54 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000688.html">[deprecated list] [Yade-users] Modification in	TriaxialStressController
+</A></li>
+        <LI>Next message: <A HREF="000693.html">[deprecated list] [Yade-users] Yade on AIX cluster installation	problem II
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#692">[ date ]</a>
+              <a href="thread.html#692">[ thread ]</a>
+              <a href="subject.html#692">[ subject ]</a>
+              <a href="author.html#692">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello
+
+After conpiling the boost 1.38 library witch updated g++ compiler and
+setting Yade like this:
+
+export QTDIR=&quot;/opt/freeware/qt&quot; QTINC=&quot;/opt/freeware/qt/include&quot; \
+ QTLIB=&quot;/opt/freeware/qt/lib&quot;
+
+scons \
+        PREFIX=/opt/yade \
+        CPPPATH=&quot;/opt/sqlite3/include /opt/boost/include/boost-1_38&quot; \
+        LIBPATH=&quot;/opt/sqlite3/lib /opt/boost/lib&quot; \
+        QTDIR=/opt/freeware/qt \
+        SHCCFLAGS=&quot;-lbz2 -lz&quot; \
+        LINKFLAGS=&quot;-lbz2 -lz&quot; \
+        SHLINKFLAGS=&quot;-lbz2 -lz&quot; \
+        CXX=&quot;g++ -lbz2 -lz -lboost_system&quot; \
+        jobs=2 \
+        version=aix \
+        variant='-power5' \
+        exclude=gui,qt3,log4cxx,snow \
+        features=python \
+        optimize=1 \
+        openmp=1 \
+;
+
+many of the initial check are passed:
+
+Checking whether c++ compiler &quot;g++ -lbz2 -lz -lboost_system&quot;
+works...yes
+Checking for pthread_exit(NULL) in C library pthread... yes
+Checking for glutGetModifiers() in C library glut... yes
+Checking for boost::posix_time::time_duration::time_duration() in C++
+library boost_date_time-mt... yes
+Checking for boost::thread::thread() in C++ library boost_thread-mt...
+yes
+Checking for boost::filesystem::path() in C++ library boost_filesystem-
+mt... yes
+Checking for boost::iostreams::file_sink(&quot;&quot;) in C++ library
+boost_iostreams-mt... yes
+Checking for boost::regex(&quot;&quot;) in C++ library boost_regex-mt... yes
+Checking for C++ header file boost/foreach.hpp... yes
+Checking for sqlite3_close(0L) in C++ library sqlite3... yes
+Checking for qt-mt in /opt/freeware/qt... no
+AttributeError: 'NoneType' object has no attribute 'split':
+  File &quot;/opt/yade/SConstruct&quot;, line 331:
+    ok=(conf.CheckPython() and conf.CheckIPython() and
+CheckLib_maybeMT(conf,'boost_python','boost/python.hpp','c++','boost::python::scope();')
+and conf.CheckCXXHeader(['Python.h','numpy/ndarrayobject.h'],'&lt;&gt;'))
+  File &quot;/opt/freeware/lib/scons-1.2.0/SCons/SConf.py&quot;, line 636:
+    ret = apply(self.test, (context,) +  args, kw)
+  File &quot;/opt/yade/SConstruct&quot;, line 255:
+context.env.Append(CPPPATH=ds.get_python_inc(),LIBS=ds.get_config_var('LIBS').split())
+Checking for Python development files...
+
+But the exclude parameter seen not to work as it wants log4cxx and gui
+libraries
+
+ListOption('features','Optional features that are turned
+on','python,log4cxx',names=['python','log4cxx','binfmt','dummy']),
+
+Compiling QT libraries is a bit difficult
+
+When copiling Yade there are a lot of warnings cause SHCCFLAGS,
+LINKFLAGS, SHLINKFLAGS, LDFLAGS are not used in the linking phase of
+compilator and so there is the need of using &quot;g++ -lz -lb2
+-lboost_system&quot;
+
+How could I proceed ?
+
+Thank you very much.
+
+Marco
+-- 
+This message was sent from Launchpad by the user
+MarcoDottor (<A HREF="https://launchpad.net/~marcodottor">https://launchpad.net/~marcodottor</A>)
+using the &quot;Contact this team&quot; link on the yade-users team page.
+For more information see
+<A HREF="https://help.launchpad.net/YourAccount/ContactingPeople">https://help.launchpad.net/YourAccount/ContactingPeople</A>
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000688.html">[deprecated list] [Yade-users] Modification in	TriaxialStressController
+</A></li>
+	<LI>Next message: <A HREF="000693.html">[deprecated list] [Yade-users] Yade on AIX cluster installation	problem II
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#692">[ date ]</a>
+              <a href="thread.html#692">[ thread ]</a>
+              <a href="subject.html#692">[ subject ]</a>
+              <a href="author.html#692">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

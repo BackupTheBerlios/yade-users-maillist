@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Attributes%20of%20CohesiveFrictionalContactInteraction%0A%20%28bug%20%3F%29&In-Reply-To=%3C487DFF1A.4010806%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000409.html">
+   <LINK REL="Next"  HREF="000383.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Attributes%20of%20CohesiveFrictionalContactInteraction%0A%20%28bug%20%3F%29&In-Reply-To=%3C487DFF1A.4010806%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Jul 16 16:00:58 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000409.html">[Yade-users] test
+</A></li>
+        <LI>Next message: <A HREF="000383.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#381">[ date ]</a>
+              <a href="thread.html#381">[ thread ]</a>
+              <a href="subject.html#381">[ subject ]</a>
+              <a href="author.html#381">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It is in revision 1431.
+
+Bruno
+
+
+Jerome Duriez a &#233;crit :
+&gt;<i> Hello everybody. I just noticed that the class 
+</I>&gt;<i> &quot;CohesiveFrictionalContactInteraction&quot; (in pkg/dem/Engine/EngineUnit/) 
+</I>&gt;<i> inherits from the &quot;_ElasticContact_Interaction&quot;, whereas in the 
+</I>&gt;<i> registerAttributes (of CohesiveFrictionalContactInteraction) what is 
+</I>&gt;<i> called first is :
+</I>&gt;<i> _SimpleElastic_Interaction::registerAttributes();
+</I>&gt;<i>
+</I>&gt;<i> It seems to me that it is quite not logic...
+</I>&gt;<i> In fact some of the attributes which belong to 
+</I>&gt;<i> CohesiveFrictionalContactInteraction through ElasticContactInteraction 
+</I>&gt;<i> (but which are not in SimpleElasticInteraction) are however registered 
+</I>&gt;<i> (like tangensofFrictionAngle for exemple), but the work is not perfectly 
+</I>&gt;<i> done : for example &quot;ks&quot; is not registered.
+</I>&gt;<i> Fortunately it seems that this doesn't affect the computations because 
+</I>&gt;<i> in the CohesiveFrictionalRelationships we have (if the interaction is 
+</I>&gt;<i> &quot;new&quot; or not) :
+</I>&gt;<i>
+</I>&gt;<i> contactPhysics-&gt;ks = contactPhysics-&gt;initialKs;
+</I>&gt;<i>
+</I>&gt;<i> In fact this case occured also for the ElasticContactInteraction, and 
+</I>&gt;<i> was corrected in revision 1315 (14/04/08). But because such commits (in 
+</I>&gt;<i> which the list of registered attributes are modified) prevent users to 
+</I>&gt;<i> reload saves, once update is done, (I take the opportunity to say that 
+</I>&gt;<i> this is a BIG disadvantage of Yade) I didn't want to take the 
+</I>&gt;<i> responsability of commiting the corrections myself.
+</I>&gt;<i>
+</I>&gt;<i> Jerome
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000409.html">[Yade-users] test
+</A></li>
+	<LI>Next message: <A HREF="000383.html">[Yade-users] svn-bzr alternative / Live CD/DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#381">[ date ]</a>
+              <a href="thread.html#381">[ thread ]</a>
+              <a href="subject.html#381">[ subject ]</a>
+              <a href="author.html#381">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

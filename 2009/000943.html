@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] How to declare the global	variable?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20How%20to%20declare%20the%20global%0A%09variable%3F&In-Reply-To=%3C930069bf0908100456m108b3573o4af50de1452af2a2%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000942.html">
+   <LINK REL="Next"  HREF="000944.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] How to declare the global	variable?</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20How%20to%20declare%20the%20global%0A%09variable%3F&In-Reply-To=%3C930069bf0908100456m108b3573o4af50de1452af2a2%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] How to declare the global	variable?">gladky.anton at gmail.com
+       </A><BR>
+    <I>Mon Aug 10 13:56:34 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000942.html">[deprecated list] [Yade-users] How to declare the global	variable?
+</A></li>
+        <LI>Next message: <A HREF="000944.html">[deprecated list] [Yade-users] Negative real time
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#943">[ date ]</a>
+              <a href="thread.html#943">[ thread ]</a>
+              <a href="subject.html#943">[ subject ]</a>
+              <a href="author.html#943">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok, thank you.
+
+I think it should work for me.
+______________________________
+[ENG] Best Regards
+[GER] Mit freundlichen Gr&#252;&#223;en
+[RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+[UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+2009/8/10 V&#225;clav &#352;milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+
+&gt;<i>
+</I>&gt;<i> &gt; I want to calculate the total number of cohesive contacts in my
+</I>&gt;<i> &gt; model.
+</I>&gt;<i> &gt; How can I declare the global variable for that?
+</I>&gt;<i>
+</I>&gt;<i> No globals, sorry. You can make a variable static in some of your
+</I>&gt;<i> classes, but it is discouraged in general (e.g. you would not be able to
+</I>&gt;<i> use O.switchWorld() consistently). You have to update that number
+</I>&gt;<i> somehow, anyways.
+</I>&gt;<i>
+</I>&gt;<i> If you need that number just once in a while, count the interactions
+</I>&gt;<i> like this:
+</I>&gt;<i>
+</I>&gt;<i> long n=0;
+</I>&gt;<i> FOREACH(const shared_ptr&lt;Interaction&gt;&amp; I, *rootBody-&gt;interaction){
+</I>&gt;<i> if(I-&gt;isReal()) n++; }
+</I>&gt;<i>
+</I>&gt;<i> In python, you can use O.interactions.countReal().
+</I>&gt;<i>
+</I>&gt;<i> HTH, Vaclav
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090810/eaf7753f/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090810/eaf7753f/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000942.html">[deprecated list] [Yade-users] How to declare the global	variable?
+</A></li>
+	<LI>Next message: <A HREF="000944.html">[deprecated list] [Yade-users] Negative real time
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#943">[ date ]</a>
+              <a href="thread.html#943">[ thread ]</a>
+              <a href="subject.html#943">[ subject ]</a>
+              <a href="author.html#943">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

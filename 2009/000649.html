@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] New version and old scripts
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20New%20version%20and%20old%20scripts&In-Reply-To=%3C49A5A9A7.1050107%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000640.html">
+   <LINK REL="Next"  HREF="000648.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] New version and old scripts</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20New%20version%20and%20old%20scripts&In-Reply-To=%3C49A5A9A7.1050107%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] New version and old scripts">eudoxos at arcig.cz
+       </A><BR>
+    <I>Wed Feb 25 21:27:19 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000640.html">[deprecated list] [Yade-users] New version and old scripts
+</A></li>
+        <LI>Next message: <A HREF="000648.html">[deprecated list] [Yade-users] User's Guide/ Documentation (new	user)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#649">[ date ]</a>
+              <a href="thread.html#649">[ thread ]</a>
+              <a href="subject.html#649">[ subject ]</a>
+              <a href="author.html#649">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>         ## Applica forza alla base
+</I>&gt;<i>         DeusExMachina('ForceEngine',{'subscribedBodies':[boxId],
+</I>&gt;<i> 'force':[0,0,-2.2]}),
+</I>&gt;<i>   
+</I>ForceEngine was not updated to use BexContainer yet, it is fixed in the
+last commit, r1692. If you still have the same problem, paste the
+backtrace, that's the easiest way to find what caused the exception to
+be thrown.
+&gt;<i> DeusExMachina('FixedOrientationEngine',{'subscribedBodies':[boxId]}),
+</I>&gt;<i>
+</I>&gt;<i> DeusExMachina('FixedPositionEngine',{'subscribedBodies':[boxId],'mask':[0.000001,0.000001,0]}),
+</I>&gt;<i>   
+</I>You can block DOFs on per-body basis using something like this:
+
+for b in boxid:
+   b.phys.blockedDOFs=['x','y','rz'] # to block x,y translations and z
+rotation
+
+It will also be  faster, I think: you will eliminate engines.
+
+HTH, Vaclav
+
+Vaclav.
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000640.html">[deprecated list] [Yade-users] New version and old scripts
+</A></li>
+	<LI>Next message: <A HREF="000648.html">[deprecated list] [Yade-users] User's Guide/ Documentation (new	user)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#649">[ date ]</a>
+              <a href="thread.html#649">[ thread ]</a>
+              <a href="subject.html#649">[ subject ]</a>
+              <a href="author.html#649">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

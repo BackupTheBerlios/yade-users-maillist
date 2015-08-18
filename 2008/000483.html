@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] How to interpret the Recourd	files	fo	CohesiveTriaxialTest?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20How%20to%20interpret%20the%20Recourd%0A%09files%09fo%09CohesiveTriaxialTest%3F&In-Reply-To=%3C48DA0524.7090200%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000481.html">
+   <LINK REL="Next"  HREF="000484.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] How to interpret the Recourd	files	fo	CohesiveTriaxialTest?</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20How%20to%20interpret%20the%20Recourd%0A%09files%09fo%09CohesiveTriaxialTest%3F&In-Reply-To=%3C48DA0524.7090200%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] How to interpret the Recourd	files	fo	CohesiveTriaxialTest?">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Sep 24 11:15:16 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000481.html">[deprecated list] [Yade-users] How to interpret the Recourd files	fo	CohesiveTriaxialTest?
+</A></li>
+        <LI>Next message: <A HREF="000484.html">[deprecated list] [Yade-users] [Fwd: Re: Problem installation	svn 1523]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#483">[ date ]</a>
+              <a href="thread.html#483">[ thread ]</a>
+              <a href="subject.html#483">[ subject ]</a>
+              <a href="author.html#483">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello
+
+force, velocity, and position files are nothing, don't even mention
+them. I thought I removed that from the code already, apparently not...
+The only meaningfull file is wallstresses, and you have columns labels
+on the first line.
+
+Bruno
+
+
+Protosssword a &#233;crit :
+&gt;<i> Hi,
+</I>&gt;<i> I have got the output files:force,velocities,positions,and
+</I>&gt;<i> wallstresses from CohesiveTriaxialTest. I don't know how to interpret
+</I>&gt;<i> these data. What the first column stands for and the next and so on?
+</I>&gt;<i> the data in force is such as:
+</I>&gt;<i> 0 0 0 0
+</I>&gt;<i> 0.02000000000000001 0 -41731.04576135544 0
+</I>&gt;<i> 0.04000000000000003 0 -36205.59539084177 0
+</I>&gt;<i> 0.05153600640826996 0 -16951.91809860951 0
+</I>&gt;<i> 0.05460801922480981 0 -29275.21141485137 0
+</I>&gt;<i> (...67 lines in all)
+</I>&gt;<i>
+</I>&gt;<i> the data in velocities is such as:
+</I>&gt;<i> 0 0 0 0
+</I>&gt;<i> 0.02000000000000001 -0.02012480408543079 -0.006953506774021571
+</I>&gt;<i> 0.03545565840243561
+</I>&gt;<i> 0.04000000000000003 0.009812239404183999 -0.03325749653873508
+</I>&gt;<i> -0.006389068345157055
+</I>&gt;<i> 0.05153600640826996 -0.01681445176973813 -0.03155042863339187
+</I>&gt;<i> 0.03476731775907708
+</I>&gt;<i> 0.05460801922480981 0.009514670302797934 -0.01953442550522703
+</I>&gt;<i> 0.01424589342218239
+</I>&gt;<i> 0.05768003204134966 -0.002853849433471838 0.01415415215763344
+</I>&gt;<i> -0.008175285967940331
+</I>&gt;<i> (...67 lines in all)
+</I>&gt;<i>
+</I>&gt;<i> the data in position is such as:
+</I>&gt;<i> 0 0.492829393965075 0.4988087934311181 0.5068665213180789
+</I>&gt;<i> 0.02000000000000001 0.493271537250969 0.4986173486737282
+</I>&gt;<i> 0.5073468265686706
+</I>&gt;<i> 0.04000000000000003 0.4934117874228577 0.4978963215050131
+</I>&gt;<i> 0.5070584457771974
+</I>&gt;<i> 0.05153600640826996 0.4934874969739558 0.4974726542326016
+</I>&gt;<i> 0.5070632777205223
+</I>&gt;<i> (...67 lines in all)
+</I>&gt;<i>
+</I>&gt;<i> xsx
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> &#29992;MSN&#26377;&#38382;&#39064;&#65311;&#23458;&#26381;&#26426;&#22120;&#20154;&#23567;&#32654;&#24110;&#20320;&#24537;&#65281; &#31435;&#21051;&#21644;&#23567;&#32654;&#32842;&#22825;&#65281;
+</I>&gt;<i> &lt;<A HREF="http://im.live.cn/xiaom/">http://im.live.cn/xiaom/</A>&gt;
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000481.html">[deprecated list] [Yade-users] How to interpret the Recourd files	fo	CohesiveTriaxialTest?
+</A></li>
+	<LI>Next message: <A HREF="000484.html">[deprecated list] [Yade-users] [Fwd: Re: Problem installation	svn 1523]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#483">[ date ]</a>
+              <a href="thread.html#483">[ thread ]</a>
+              <a href="subject.html#483">[ subject ]</a>
+              <a href="author.html#483">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

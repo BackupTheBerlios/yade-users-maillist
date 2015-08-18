@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] interaction radius for spheres
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20interaction%20radius%20for%20spheres&In-Reply-To=%3C47E3853D.9000208%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000125.html">
+   <LINK REL="Next"  HREF="000127.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] interaction radius for spheres</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20interaction%20radius%20for%20spheres&In-Reply-To=%3C47E3853D.9000208%40arcig.cz%3E"
+       TITLE="[Yade-users] interaction radius for spheres">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri Mar 21 10:51:57 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000125.html">[Yade-users] Simulations with Clumps
+</A></li>
+        <LI>Next message: <A HREF="000127.html">[Yade-users] interaction radius for spheres
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#126">[ date ]</a>
+              <a href="thread.html#126">[ thread ]</a>
+              <a href="subject.html#126">[ subject ]</a>
+              <a href="author.html#126">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I had to implement interaction radius factor for spheres that is &gt;1
+(i.e. create contact even if the spheres don't physically touch). There
+is
+InteractingSphere2InteractingSphere4SpheresContactGeometry::interactionDetectionFactor,
+but for it to work, it also needs larger AABBs so that the collider will
+request the contact to be created. For now, I added
+InteractingSphere2AABB::aabbEnlargeFactor, but I think there must be
+code for that already somewehere. Did I just miss something?
+
+Regards, V&#225;clav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000125.html">[Yade-users] Simulations with Clumps
+</A></li>
+	<LI>Next message: <A HREF="000127.html">[Yade-users] interaction radius for spheres
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#126">[ date ]</a>
+              <a href="thread.html#126">[ thread ]</a>
+              <a href="subject.html#126">[ subject ]</a>
+              <a href="author.html#126">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

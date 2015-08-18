@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Velocities of non dynamic bodies, for contact laws ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Velocities%20of%20non%20dynamic%20bodies%2C%0A%20for%20contact%20laws%20%3F&In-Reply-To=%3C48359081.5010303%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000249.html">
+   <LINK REL="Next"  HREF="000250.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Velocities of non dynamic bodies, for contact laws ?</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Velocities%20of%20non%20dynamic%20bodies%2C%0A%20for%20contact%20laws%20%3F&In-Reply-To=%3C48359081.5010303%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Velocities of non dynamic bodies, for contact laws ?">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Thu May 22 17:25:53 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000249.html">[Yade-users] Velocities of non dynamic bodies, for contact laws ?
+</A></li>
+        <LI>Next message: <A HREF="000250.html">[Yade-users] Visualization not working over network,	showing grey box
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jerome Duriez a &#233;crit :
+&gt;<i> Hello everbody. I have a question about the meaning of velocities of 
+</I>&gt;<i> &quot;non dynamic&quot; bodies. Is it computed even if it is not set by an Engine, 
+</I>&gt;<i> and if yes how ?
+</I>&gt;<i> The idea of this question is the case of non dynamic bodies which are 
+</I>&gt;<i> controlled by deus ex machina Engines, but only through their positions, 
+</I>&gt;<i> example : the walls of the triaxialTest who are controlled by the 
+</I>&gt;<i> TriaxialCompressionEngine.
+</I>&gt;<i>   
+</I>I did not define the velocity of boundaries in TriaxialEngine because I 
+knew I would not rotate boundaries and I have no friction or viscous 
+effect on boundaries. If you need tangential effects on boxes, all you 
+need is to define the velocity at the time you define the new position 
+(velocity = (newPosition-lastPosition)/timestep. As a consequence, there 
+is no need to make a difference between dynamic and not-dynamic bodies 
+in the contact laws.
+I realize I should have answer before because Sega tried to fix that a 
+different way and I'm not sure it really fixed anything.
+
+Bruno
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000249.html">[Yade-users] Velocities of non dynamic bodies, for contact laws ?
+</A></li>
+	<LI>Next message: <A HREF="000250.html">[Yade-users] Visualization not working over network,	showing grey box
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

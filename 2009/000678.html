@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Time Series Forcing	implementation in python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C49C93C65.9090005%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000701.html">
+   <LINK REL="Next"  HREF="000702.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Time Series Forcing	implementation in python</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C49C93C65.9090005%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] Time Series Forcing	implementation in python">eudoxos at arcig.cz
+       </A><BR>
+    <I>Tue Mar 24 21:02:45 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000701.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+        <LI>Next message: <A HREF="000702.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#678">[ date ]</a>
+              <a href="thread.html#678">[ thread ]</a>
+              <a href="subject.html#678">[ subject ]</a>
+              <a href="author.html#678">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> I added the periodicpythonrunner to my code, but I am not sure how to
+</I>&gt;<i> define BexContainter().  When I run the simulation, it gives the error:
+</I>&gt;<i> &quot;NameError: global name 'BexContainer' is not defined&quot;.
+</I>&gt;<i>    
+</I>Oh, my fault. You should say O.actions to get a BexContainer object, 
+which then accepts addForce etc methods. Make sure you run at least 
+r1727 where I added the addForce method.
+&gt;<i> Also, when I use the interpolatingspiralengine in my code, it gives the
+</I>&gt;<i> error: &quot;RuntimeError: ClassFactory::create - cannot create class named:
+</I>&gt;<i> InterpolatingSpiralEngine&quot;.
+</I>DeusExMachina(&quot;InterpolatingSpiralEngine&quot;) works fine here. Can you post 
+your code (whole script preferrably).
+&gt;<i> Additionally, with the interpolating spiral
+</I>&gt;<i> engine, I am not sure what velocities you are referring to.  Should
+</I>&gt;<i> these instead be the same forces I apply in periodicpythonrunner?  Also,
+</I>&gt;<i> I do not know what 'thrAxRad' should be in that engine.
+</I>&gt;<i>    
+</I>Have a look at InterpolatingSpiralEngine header, in 
+pkg/common/Engine/DeusExMachina/RotationEngine.hpp, all parameters are 
+commented. thrAxRad is a leftover variable, it should be some number, 
+simply. I hope it is clearer now.
+
+Vaclav.
+
+(PS. please can you, when replying to mails, use the Reply function of 
+your mail client instead of just pasting the subject to a new message? 
+Messages are threaded not according to subject but following the 
+In-Reply-To: header which contains ID of the message you are replying to.)
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000701.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+	<LI>Next message: <A HREF="000702.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#678">[ date ]</a>
+              <a href="thread.html#678">[ thread ]</a>
+              <a href="subject.html#678">[ subject ]</a>
+              <a href="author.html#678">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

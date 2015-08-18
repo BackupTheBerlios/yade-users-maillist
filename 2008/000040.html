@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] YADE crash when spheres generated during simulation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20YADE%20crash%20when%20spheres%20generated%20during%20simulation&In-Reply-To=%3CBE1A3E6D6B8F8047B1C72C2F4F3FFC8A49AD11%40EXCHANGE2VS4.campus.mcgill.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000039.html">
+   <LINK REL="Next"  HREF="000042.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] YADE crash when spheres generated during simulation</H1>
+    <B>Kien Dang, Mr</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20YADE%20crash%20when%20spheres%20generated%20during%20simulation&In-Reply-To=%3CBE1A3E6D6B8F8047B1C72C2F4F3FFC8A49AD11%40EXCHANGE2VS4.campus.mcgill.ca%3E"
+       TITLE="[Yade-users] YADE crash when spheres generated during simulation">kien.dang at mail.mcgill.ca
+       </A><BR>
+    <I>Thu Jan 24 15:32:39 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000039.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+        <LI>Next message: <A HREF="000042.html">[Yade-users] YADE crash when spheres generated during simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi all,
+
+I am trying to generate spheres during the simulation, when the old group of shpere is stable, a new group of spheres is generated and the stability check is perfrom similarly to the function computeunbalancedforce in TRIAXIAL TEST. YADE however crash whenever the physicalAction class accessed through a pointer. The thread is begin at the operator get() in the share_ptr in boost library. I tried to figured it out in several days but all the attempts failed.
+
+The code is attached hereunder:
+
+
+Real MeanUnbalanced=0;
+	long nBodies = 0;
+        BodyContainer::iterator bi    = bodies-&gt;begin();
+        BodyContainer::iterator biEnd = bodies-&gt;end();
+        Real f;
+        for(  ; bi!=biEnd ; ++bi ) 
+	{
+        	if ((*bi)-&gt;isDynamic) 
+		{
+            CRASH HERE ---------&gt;f= (static_cast&lt;Force*&gt;   ( ncb-&gt;physicalActions-&gt;find( (*bi)-&gt;getId() , ForceClassIndex).get() )-&gt;force).Length();
+                	MeanUnbalanced += f;
+                	if (f!=0) ++nBodies;
+                }
+	}
+        if (nBodies != 0 &amp;&amp; MeanForce != 0) 
+	{
+		MeanUnbalanced = MeanUnbalanced/nBodies/MeanForce;
+	}
+        return  MeanUnbalanced;
+
+
+
+Could anyone give me some hints about the problems? If you need a whole class please let me know.
+
+Thanks in advance,
+
+Kien Dang
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000039.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+	<LI>Next message: <A HREF="000042.html">[Yade-users] YADE crash when spheres generated during simulation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#40">[ date ]</a>
+              <a href="thread.html#40">[ thread ]</a>
+              <a href="subject.html#40">[ subject ]</a>
+              <a href="author.html#40">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

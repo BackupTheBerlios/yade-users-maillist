@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] recorder problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20recorder%20problems&In-Reply-To=%3C484FC895.9080001%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000313.html">
+   <LINK REL="Next"  HREF="000311.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] recorder problems</H1>
+    <B>chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20recorder%20problems&In-Reply-To=%3C484FC895.9080001%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] recorder problems">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed Jun 11 14:44:05 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000313.html">[Yade-users] recorder problems
+</A></li>
+        <LI>Next message: <A HREF="000311.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#312">[ date ]</a>
+              <a href="thread.html#312">[ thread ]</a>
+              <a href="subject.html#312">[ subject ]</a>
+              <a href="author.html#312">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Benjamin Fragneaud wrote:
+&gt;<i> Hi Lionel,
+</I>&gt;<i> This problem occurs also with Yade&#180;s default preprocessor, for 
+</I>&gt;<i> expample with cohesiveTriaxialTest. In this preprocessor file, there 
+</I>&gt;<i> is two types of recorders:
+</I>&gt;<i>
+</I>&gt;<i> - AveragePositionRecorder, ForceRecorder, VelocityRecorder -&gt; doesn&#180;t 
+</I>&gt;<i> work (empty recorded files)
+</I>&gt;<i>
+</I>Everything related to AveragePositionRecorder, ForceRecorder, 
+VelocityRecorder, in Triaxial preprocessors is junk code.
+Some lines that should have been removed long time ago, no surprise if 
+they do nothing.
+Those recorders need a list of submited bodies, and I think this list is 
+empty in TriaxialTest.
+
+Bruno
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000313.html">[Yade-users] recorder problems
+</A></li>
+	<LI>Next message: <A HREF="000311.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#312">[ date ]</a>
+              <a href="thread.html#312">[ thread ]</a>
+              <a href="subject.html#312">[ subject ]</a>
+              <a href="author.html#312">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

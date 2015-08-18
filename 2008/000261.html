@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] create a new engine (/common/engine/DeusMachina)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20create%20a%20new%20engine%20%28/common/engine/DeusMachina%29&In-Reply-To=%3C483D6269.8040306%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000260.html">
+   <LINK REL="Next"  HREF="000262.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] create a new engine (/common/engine/DeusMachina)</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20create%20a%20new%20engine%20%28/common/engine/DeusMachina%29&In-Reply-To=%3C483D6269.8040306%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] create a new engine (/common/engine/DeusMachina)">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Wed May 28 15:47:21 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000260.html">[Yade-users] create a new engine (/common/engine/DeusMachina)
+</A></li>
+        <LI>Next message: <A HREF="000262.html">[Yade-users] create a new engine (/common/engine/DeusMachina)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Agreed. First, check that your files are really compiled (you should see 
+a newEngine.so in install dirs). If they are not, it is probably due to 
+a missing declaration in SConscript files (those files define what needs 
+to be compiled and the dependencies between classes).
+Just copy/paste/rename the GravityEngine section in dem/Sconscript (or 
+common/SConscript, not sure).
+
+IIRC, the preprocessor will not appear in the interface if one of the 
+plugin (the library corresponding to your new class) is not found. I 
+think this will happen as soon as you declare the missing class in your 
+code, it doesn't matter if you use it or not.
+Don't you get any compilation errors? warnings when you start Yade?
+
+If I understand correctly, you will need to play with distant 
+interactions (without contact), which means you could be interested by 
+the current discussion on this topic here : 
+<A HREF="http://yade.wikia.com/wiki/Sanitizing_Contact_Logic.">http://yade.wikia.com/wiki/Sanitizing_Contact_Logic.</A>
+
+Bruno
+
+
+
+Jerome Duriez a &#233;crit :
+&gt;<i> I think that's typically because you didn't modify the &#167; concerning the 
+</I>&gt;<i> preprocessor file in the &quot;Sconscript&quot;. You have also to modify it by 
+</I>&gt;<i> adding a line with the name of your new engine.
+</I>&gt;<i>
+</I>&gt;<i> Jerome
+</I>&gt;<i>
+</I>&gt;<i> Benjamin Fragneaud a &#233;crit :
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi everybody,
+</I>&gt;&gt;<i> I'm trying to create an Engine that aplly Electrostatic force to a sphere.
+</I>&gt;&gt;<i> I&#180;d like to allow displacement of bodies depending on the charge and  
+</I>&gt;&gt;<i> the electrical potential.
+</I>&gt;&gt;<i> Perhaps I should precise that I&#180;m quiet new to Yade and C++ programmation.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> To do so, I decided to inspire myself with an already written  
+</I>&gt;&gt;<i> preprocesor: &quot;funnel&quot;, which has been modified in order to generate a  
+</I>&gt;&gt;<i> random cloud of spheres in a closed box.
+</I>&gt;&gt;<i> At this step every thing is working as I want to.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> * Creation of a new stand alone Engine:
+</I>&gt;&gt;<i> As well as I did before, I used an already written engine and modified  
+</I>&gt;&gt;<i> it. But here is the problem.
+</I>&gt;&gt;<i> - I copy paste the GravityEngine.
+</I>&gt;&gt;<i> - rename it, rename the functions within and shrd_ptr,
+</I>&gt;&gt;<i> - I also rename the .hpp file
+</I>&gt;&gt;<i> - add it in the corresponding scons file
+</I>&gt;&gt;<i> It compiled well (no error) and was added to the libnewengine.so.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> In esance it should do exactly the same thing than the GravityEngine  
+</I>&gt;&gt;<i> but with a different name.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Nevertheless, when I try to use it within my new preprocessor, it  
+</I>&gt;&gt;<i> doesn&#180;t appear anymore in the preprocessor generator list (yade  
+</I>&gt;&gt;<i> graphique interface).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Moreover, If I just declare it in the list of classes used withtout  
+</I>&gt;&gt;<i> using it (like declaring something that you don&#180;t use), the  
+</I>&gt;&gt;<i> preprocessor also don&#180;t appear in the preprocessor list...
+</I>&gt;&gt;<i> Is anybody has any idea about what is wrong.
+</I>&gt;&gt;<i> Thanks for your help,
+</I>&gt;&gt;<i> Best,
+</I>&gt;&gt;<i> Ben
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000260.html">[Yade-users] create a new engine (/common/engine/DeusMachina)
+</A></li>
+	<LI>Next message: <A HREF="000262.html">[Yade-users] create a new engine (/common/engine/DeusMachina)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

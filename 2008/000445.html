@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Triaxial Test(PFC3D vs YADE)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Triaxial%20Test%28PFC3D%20vs%20YADE%29&In-Reply-To=%3C48C66F16.5090808%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000444.html">
+   <LINK REL="Next"  HREF="000446.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Triaxial Test(PFC3D vs YADE)</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Triaxial%20Test%28PFC3D%20vs%20YADE%29&In-Reply-To=%3C48C66F16.5090808%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Triaxial Test(PFC3D vs YADE)">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Tue Sep  9 14:41:58 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000444.html">[Yade-users] About run YADE on a cluster
+</A></li>
+        <LI>Next message: <A HREF="000446.html">[Yade-users] Does the Three Point Bending Test work in the latest	yade version?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm posting here the answer I typed few days ago, which for some reason 
+has been sent to the private email of Mohammad when I clicked &quot;reply to&quot; :
+
+Dear Mohammad,
+
+
+
+
+&gt;<i> (sorry, my earlier post was incomplete.extremely sorry for 
+</I>&gt;<i> inconvinience.)
+</I>&gt;<i>  
+</I>&gt;<i> Dear Bruno,
+</I>&gt;<i> At first thanks a lot for your explanation.
+</I>&gt;<i>  
+</I>&gt;<i> &lt;In TriaxialStressController.cpp, each wall is controlled independently
+</I>&gt;<i> to reach a target stress. Nothing prevent you from setting different
+</I>&gt;<i> target values for different directions (it has to be coded however,
+</I>&gt;<i> because there is one unique &quot;lateralStress&quot; in 2 directions for the
+</I>&gt;<i> moment, you need to split this variable into 3 if you want different
+</I>&gt;<i> target stresses in different directions).
+</I>&gt;<i>
+</I>&gt;<i> Bruno&gt;
+</I>&gt;<i>  
+</I>&gt;<i> &gt;As per your recommendation I have found following change..Is there 
+</I>&gt;<i> any more change than following or any recommendation
+</I>&gt;<i> &gt;Do you suggest for new preprocessor named MCSTriaxialTest.cpp and 
+</I>&gt;<i> MCSTriaxialTest.hpp (Mean Constant Stress Path),because, I found good 
+</I>&gt;<i> number of change
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>First, thank you for asking. I would give as a general rule :
+1- If you are afraid of breaking something, or if you make big changes, 
+better create a new processor.
+2- If you are confident enough, try modifying the TriaxialTest so that 
+the average user (in fact me ;)) will not see any difference.
+Something like :
+
+if (newFeatureActivated)
+{
+   do something new;
+}
+else
+{
+   do the same as before;
+}
+
+Here, given the amount of changes needed, I'd suggest solution 1 
+disregarding your potential confidence.
+I'm not even sure you need the TriaxialCompressionEngine, in your case 
+TriaxialStressController could be enough (I'm sorry I have no time to 
+think to all implementation details, you'll have to find it).
+
+I can't tell precisely if everything is correct in what you sent, but I 
+think you get the general idea.
+
+Minor remark :
+&quot;sigma1VerticalConfinement&quot; is redundant, why not just 
+sigma11/sigma22/sigma33?
+
+More important :
+You missed an important part as you apparently dealt mostly with the 
+interface and registration of the new variables, but you don't really 
+use them somewhere.
+
+In TriaxialStressController, you have this (l.224) :
+
+
+       Vector3r wallForce (0, sigma_iso*width*depth, 0);
+       if (wall_bottom_activated) controlExternalStress(wall_bottom, 
+ncb, -wallForce, p_bottom, max_vel);
+       if (wall_top_activated) controlExternalStress(wall_top, ncb, 
+wallForce, p_top, max_vel);
+
+       wallForce = Vector3r(sigma_iso*height*depth, 0, 0);
+       if (wall_left_activated) controlExternalStress(wall_left, ncb, 
+-wallForce, p_left, max_vel*width/height);
+       if (wall_right_activated) controlExternalStress(wall_right, ncb, 
+wallForce, p_right, max_vel*width/height);
+
+       wallForce = Vector3r(0, 0, sigma_iso*height*width);
+       if (wall_back_activated) controlExternalStress(wall_back, ncb, 
+-wallForce, p_back, max_vel*depth/height);
+       if (wall_front_activated) controlExternalStress(wall_front, ncb, 
+wallForce, p_front, max_vel*depth/height);
+
+As you see, the prescribed force on each wall is always computed as 
+sigma_iso*area. This is where your new stress parameters should be taken 
+into account. If i'm correct :
+
+Vector3r wallForce (0, sigma22*width*depth, 0);
+if (wall_bottom_activated) controlExternalStress(wall_bottom, ncb, 
+-wallForce, p_bottom, max_vel);
+... etc
+
+wallForce = (0, sigma11*height*depth, 0);
+
+...
+
+wallForce = Vector3r(0, 0, sigma33*height*width);
+
+
+You can do this modification in the existing class, if you make sure 
+that by default sigma11=sigma22=sigma33=sigma_iso.
+Then, you use it in a new preprocessor using non-default sigma values.
+
+Also, I guess you will want an evolution of imposed sigma11 and/or 
+sigma22 and/or sigma33 during the simulation.
+So, you will need to define this evolution somewhere. I'm not sure now 
+if you need to do that in a new class that would replace 
+TriaxialCompressionEngine in you preprocessor, or if you can just modify 
+the current engine a little bit.
+I can't help a lot here because I still don't understand what will be 
+your loading path exactly.
+
+Keep posting your suggestions here during the design process, I'll do my 
+best to advize.
+
+I hope it is clear.
+
+Bruno
+
+
+
+
+
+
+
+
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000444.html">[Yade-users] About run YADE on a cluster
+</A></li>
+	<LI>Next message: <A HREF="000446.html">[Yade-users] Does the Three Point Bending Test work in the latest	yade version?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

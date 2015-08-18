@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] [Fwd: Re: Problem installation svn 1523]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BFwd%3A%20Re%3A%20Problem%20installation%0A%20svn%201523%5D&In-Reply-To=%3C48DB97F7.7090402%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000486.html">
+   <LINK REL="Next"  HREF="000487.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] [Fwd: Re: Problem installation svn 1523]</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BFwd%3A%20Re%3A%20Problem%20installation%0A%20svn%201523%5D&In-Reply-To=%3C48DB97F7.7090402%40geo.hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] [Fwd: Re: Problem installation svn 1523]">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Thu Sep 25 15:53:59 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000486.html">[deprecated list] [Yade-users] [Fwd: Re: Problem installation svn 1523]
+</A></li>
+        <LI>Next message: <A HREF="000487.html">[deprecated list] [Yade-users] what does &quot;unb_force&quot; mean in the record file of CohesiveTriaxialTest?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#488">[ date ]</a>
+              <a href="thread.html#488">[ thread ]</a>
+              <a href="subject.html#488">[ subject ]</a>
+              <a href="author.html#488">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+&gt;&gt;&gt;<i> OMG, why are you sending 250kb log? (message limit is 40kb). Try the
+</I>&gt;&gt;&gt;<i> same thing without distcc (CXX=g++, or even better CXX=g++-4.3). Distcc
+</I>&gt;&gt;&gt;<i> runs g++ on different machines without checking they are at some
+</I>&gt;&gt;&gt;<i> particular version. That version of g++ that happens to be called by g++
+</I>&gt;&gt;&gt;<i> (the default one) will be used.
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> this is my bet also - the problem is because of distcc. You need to
+</I>&gt;&gt;<i> talk with each person that has a computer which you are using with
+</I>&gt;&gt;<i> distcc and compare your g++ versions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> simpler to not use distcc. But maybe Bruno has the same version as you?
+</I>&gt;&gt;<i> I have 4.3.1, we might help each other here.
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> To make sure, always use distcc with explicit compiler version, like
+</I>&gt;<i> CXX=&quot;distcc g++-4.3&quot;. That way you will get error if your mates don't
+</I>&gt;<i> have that version.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Yes, you were right : without distcc I have no problem. But I tried with 
+CXX='distcc g++-4.3' and I get indeed error messages because the others 
+don't have the same version, but moreover the compilation stops... The 
+solution was, with Janek, to change the settings of my distcc to call 
+the good neighbours whose I can use their PC...
+I should be now next to have the opportunity to use python... Thanks
+
+Jerome
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000486.html">[deprecated list] [Yade-users] [Fwd: Re: Problem installation svn 1523]
+</A></li>
+	<LI>Next message: <A HREF="000487.html">[deprecated list] [Yade-users] what does &quot;unb_force&quot; mean in the record file of CohesiveTriaxialTest?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#488">[ date ]</a>
+              <a href="thread.html#488">[ thread ]</a>
+              <a href="subject.html#488">[ subject ]</a>
+              <a href="author.html#488">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

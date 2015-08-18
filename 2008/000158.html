@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Error message in installing YADE in Ubuntu
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20message%20in%20installing%20YADE%20in%20Ubuntu&In-Reply-To=%3C547c7b830804062330y6c7e92f0o866f1a6beba79cfc%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000173.html">
+   <LINK REL="Next"  HREF="000159.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Error message in installing YADE in Ubuntu</H1>
+    <B>Fergyanto E Gunawan</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20message%20in%20installing%20YADE%20in%20Ubuntu&In-Reply-To=%3C547c7b830804062330y6c7e92f0o866f1a6beba79cfc%40mail.gmail.com%3E"
+       TITLE="[Yade-users] Error message in installing YADE in Ubuntu">f.e.gunawan at gmail.com
+       </A><BR>
+    <I>Mon Apr  7 08:30:20 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000173.html">[Yade-users] The critical time step?
+</A></li>
+        <LI>Next message: <A HREF="000159.html">[Yade-users] Error message in installing YADE in Ubuntu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear All,
+
+I'm trying to install YADE in my Ubuntu 8.04 however have no luck up
+to now. I followed the instructions avaiable in
+<A HREF="http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu">http://yade.wikia.com/wiki/Installation_of_yade_on_debian_or_kubuntu</A>
+
+What I have done are:
+
+1.
+sudo aptitude install scons libqt3-mt-dev qt3-dev-tools freeglut3-dev \
+libboost-date-time-dev libboost-filesystem-dev libboost-thread-dev \
+libboost-regex-dev fakeroot dpkg-dev build-essential g++ \
+liblog4cxx9-dev python-dev libboost-python-dev ipython
+
+2.
+cd /tmp;
+
+3.
+apt-get source libqglviewer; sudo apt-get build-dep libqglviewer; \
+cd libqglviewer-2.2.6-3; fakeroot debian/rules binary; \
+sudo dpkg -i ../libqglviewer*.deb
+
+4.
+wget <A HREF="http://download.berlios.de/yade/yade-0.11.1.tar.gz">http://download.berlios.de/yade/yade-0.11.1.tar.gz</A>
+tar -xvzf yade-0.11.1.tar.gz
+cd yade-0.11.1
+
+5.
+scons PREFIX=/home/gunawan/YADE optimize=1
+
+I received following error message after step 5:
+
+scons: Reading SConscript files ...
+ValueError: invalid literal for int() with base 10: '0d20071203':
+  File &quot;/home/gunawan/yade-0.11.1/SConstruct&quot;, line 28:
+    sconsVersion=sum([int(SCons.__version__.split('.')[ord[0]])*ord[1]
+for ord in [(0,10000),(1,100),(2,1)][:len(SCons.__version__.split('.'))]
+])
+
+
+I appreciate very much any help. Thank you.
+
+Regards,
+
+FeG
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000173.html">[Yade-users] The critical time step?
+</A></li>
+	<LI>Next message: <A HREF="000159.html">[Yade-users] Error message in installing YADE in Ubuntu
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

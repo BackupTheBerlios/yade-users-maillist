@@ -1,0 +1,556 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Yade-users Digest, Vol 19, Issue 15
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Yade-users%20Digest%2C%20Vol%2019%2C%20Issue%2015&In-Reply-To=%3C45213f870801242224u3c83dcf9m9979b5698b502069%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000045.html">
+   <LINK REL="Next"  HREF="000043.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Yade-users Digest, Vol 19, Issue 15</H1>
+    <B>kan</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Yade-users%20Digest%2C%20Vol%2019%2C%20Issue%2015&In-Reply-To=%3C45213f870801242224u3c83dcf9m9979b5698b502069%40mail.gmail.com%3E"
+       TITLE="[Yade-users] Yade-users Digest, Vol 19, Issue 15">nicessgg at gmail.com
+       </A><BR>
+    <I>Fri Jan 25 07:24:22 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000045.html">[Yade-users] YADE crash when spheres generated during simulation
+</A></li>
+        <LI>Next message: <A HREF="000043.html">[Yade-users] Yade-users Digest, Vol 19, Issue 15
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Vaclav, Bruno
+
+Thanks to both of you very much.
+Then how about the convertion from the stress to the force on each particle,
+where the stresses are from the boundary ?
+
+kan
+
+
+On 1/23/08, <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A> &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Send Yade-users mailing list submissions to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Yade-users digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>   1. Re: How to get the micro-force from the macro-stress (kan)
+</I>&gt;<i>   2. Re: How to get the micro-force from the macro-stress
+</I>&gt;<i>      (Bruno Chareyre)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> Date: Tue, 22 Jan 2008 23:58:21 -0600
+</I>&gt;<i> From: kan &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">nicessgg at gmail.com</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] How to get the micro-force from the
+</I>&gt;<i>        macro-stress
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID:
+</I>&gt;<i>        &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">45213f870801222158h940302xf6135f5e07117df6 at mail.gmail.com</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=&quot;utf-8&quot;
+</I>&gt;<i>
+</I>&gt;<i> Thank you, Vaclav,
+</I>&gt;<i>
+</I>&gt;<i> So the step for this is :
+</I>&gt;<i> during each timestep, the position of each particle/element keeps the
+</I>&gt;<i> same, so we can calculate the force brom the force-displacement
+</I>&gt;<i> relationship(in this case, the order does not affect the calculation since
+</I>&gt;<i> all the particle/elements do not move), after we get the forces, we use
+</I>&gt;<i> this
+</I>&gt;<i> forces to calculate the acceleration, and then the velocity(average
+</I>&gt;<i> velocity),  and then the movement/displacement in this timestep, and then
+</I>&gt;<i> update the position of each particle/element to new positions by add
+</I>&gt;<i> movement/displacement to current position. (until now, the calculation
+</I>&gt;<i> cycle
+</I>&gt;<i> of this timestep is completed)
+</I>&gt;<i> then go to next timestep by use the new positions of particles/elements as
+</I>&gt;<i> the current position to do the next calculation cycle.
+</I>&gt;<i>
+</I>&gt;<i> is my understanding right?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thanks again.
+</I>&gt;<i>
+</I>&gt;<i> Kan
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 1/22/08, <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Send Yade-users mailing list submissions to
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt; or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; You can reach the person managing the list at
+</I>&gt;<i> &gt;        <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> &gt; than &quot;Re: Contents of Yade-users digest...&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Today's Topics:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   1. How to get the micro-force from the macro-stress (kan)
+</I>&gt;<i> &gt;   2. Re: How to get the micro-force from the macro-stress
+</I>&gt;<i> &gt;      (V?clav ?milauer)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ----------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Message: 1
+</I>&gt;<i> &gt; Date: Mon, 21 Jan 2008 13:29:54 -0600
+</I>&gt;<i> &gt; From: kan &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">nicessgg at gmail.com</A>&gt;
+</I>&gt;<i> &gt; Subject: [Yade-users] How to get the micro-force from the macro-stress
+</I>&gt;<i> &gt; To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; Message-ID:
+</I>&gt;<i> &gt;        &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">45213f870801211129l171d2a5cs69da2382202961f8 at mail.gmail.com</A>&gt;
+</I>&gt;<i> &gt; Content-Type: text/plain; charset=&quot;utf-8&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi, buddies,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I have some questiones.
+</I>&gt;<i> &gt; 1. how to get the micro-force from the macro-stress?
+</I>&gt;<i> &gt; As we know,for most of current studies, the concept of stress is used to
+</I>&gt;<i> &gt; describe the stress status. but when we look into the micro level, we
+</I>&gt;<i> have
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; to convert the macro-stress to descrete force that applied at each
+</I>&gt;<i> &gt; particle,
+</I>&gt;<i> &gt; then how to do this convert?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2. what is the calculation process in each time step?
+</I>&gt;<i> &gt; The problem is that, as see the relation ship below,
+</I>&gt;<i> &gt; ___\|/____\|/___\|/________
+</I>&gt;<i> &gt; 01---02---03---04---05---06...
+</I>&gt;<i> &gt; |   \   |  /  |      |       |      | ...
+</I>&gt;<i> &gt; 11---12---13---14---15---16...
+</I>&gt;<i> &gt; |      |      |   /  |   \  |      |...
+</I>&gt;<i> &gt; 21---22---23---24---25---26...
+</I>&gt;<i> &gt; ...
+</I>&gt;<i> &gt; ...
+</I>&gt;<i> &gt; x1---x2---x3---x4---x5---x6...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; in which, the number is the ID of a particle,
+</I>&gt;<i> &gt; and &quot;--- &quot; , &quot;/&quot; ,&quot;\&quot; and  &quot;|&quot; between the numbers mean there is a
+</I>&gt;<i> contact
+</I>&gt;<i> &gt; between the particles
+</I>&gt;<i> &gt; &quot;\|/&quot; means force.
+</I>&gt;<i> &gt; assume the 01-02-03-04...is the upper bounday layer, and the force is
+</I>&gt;<i> &gt; applied as shown &quot;\|/&quot;.
+</I>&gt;<i> &gt; when the calculation begins, we need to detecte the contact and update
+</I>&gt;<i> the
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; position of each particles,
+</I>&gt;<i> &gt; now my problem comes:
+</I>&gt;<i> &gt; what is the procedure to calculation and update the particles'
+</I>&gt;<i> &gt; information,
+</I>&gt;<i> &gt; you know the force is from up layer, so the first layer
+</I>&gt;<i> (&quot;01-02-03-04...&quot;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; should be calculated, then the second layer,and then the third layer....
+</I>&gt;<i> &gt; but
+</I>&gt;<i> &gt; in DEM, the particle is independent to move, so after some time, some
+</I>&gt;<i> &gt; particles in the first layer may move to the second layer and some
+</I>&gt;<i> &gt; particles
+</I>&gt;<i> &gt; in second layer may  move to the first layer(other other layer),then how
+</I>&gt;<i> &gt; should I do in order to know which particle should be calculated and
+</I>&gt;<i> &gt; updated
+</I>&gt;<i> &gt; first and which should be done later in the same timestep?
+</I>&gt;<i> &gt; For example,
+</I>&gt;<i> &gt; 01 has contacting neighbors 02 and 11, in a same timestep, after we have
+</I>&gt;<i> &gt; calculated 01's properties( velocity, position....), we should calculate
+</I>&gt;<i> &gt; 02
+</I>&gt;<i> &gt; first, then 03(the neighbor of 02), after the layer of 01-02-03...is
+</I>&gt;<i> done,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; then we can step to calculate the 11, which is to say, in a same
+</I>&gt;<i> timestep,
+</I>&gt;<i> &gt; though 02 and 11 are both contacting neighbors of 01, we should
+</I>&gt;<i> calculate
+</I>&gt;<i> &gt; 02, and 11 later though 02 and 11 are both affected because of teh
+</I>&gt;<i> &gt; movement
+</I>&gt;<i> &gt; of 01. so, how to indentify which particle should be calculated and
+</I>&gt;<i> update
+</I>&gt;<i> &gt; first , and which should be later?
+</I>&gt;<i> &gt; (because it is a dynamic process, so just use the order of  ID  is
+</I>&gt;<i> not  a
+</I>&gt;<i> &gt; way to solve this)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hope I have described the problem 2 clearly,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Need your help, thanks so much.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Kan
+</I>&gt;<i> &gt; -------------- next part --------------
+</I>&gt;<i> &gt; An HTML attachment was scrubbed...
+</I>&gt;<i> &gt; URL:
+</I>&gt;<i> &gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080121/93495eff/attachment-0001.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080121/93495eff/attachment-0001.html</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Message: 2
+</I>&gt;<i> &gt; Date: Tue, 22 Jan 2008 09:20:53 +0100
+</I>&gt;<i> &gt; From: V?clav ?milauer &lt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+</I>&gt;<i> &gt; Subject: Re: [Yade-users] How to get the micro-force from the
+</I>&gt;<i> &gt;        macro-stress
+</I>&gt;<i> &gt; To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4795A765.9040403 at arcig.cz</A>&gt;
+</I>&gt;<i> &gt; Content-Type: text/plain; charset=UTF-8
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; so, how to indentify which particle should be calculated and update
+</I>&gt;<i> &gt; &gt; first , and which should be later?
+</I>&gt;<i> &gt; &gt; (because it is a dynamic process, so just use the order of  ID  is
+</I>&gt;<i> &gt; &gt; not  a way to solve this)
+</I>&gt;<i> &gt; The trick is that you have constant positions during the whole timestep,
+</I>&gt;<i> &gt; you calculate forces from all contacts (order doesn't matter, elements
+</I>&gt;<i> &gt; don't move during calculation) and then, before next timestep begins,
+</I>&gt;<i> &gt; there is LeapFrogPositionIntegrator, that calculates displacements based
+</I>&gt;<i> &gt; on velocity, inertia, applied forces, ... and moves elements to the new
+</I>&gt;<i> &gt; position. Obviously, your timestep must be small enough so that you get
+</I>&gt;<i> &gt; convergence.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; HTH, Vaclav
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Yade-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; End of Yade-users Digest, Vol 19, Issue 14
+</I>&gt;<i> &gt; ******************************************
+</I>&gt;<i> &gt;
+</I>&gt;<i> -------------- next part --------------
+</I>&gt;<i> An HTML attachment was scrubbed...
+</I>&gt;<i> URL:
+</I>&gt;<i> <A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080122/219e57e1/attachment-0001.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080122/219e57e1/attachment-0001.html</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Wed, 23 Jan 2008 10:29:14 +0100
+</I>&gt;<i> From: Bruno Chareyre &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">bruno.chareyre at hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Subject: Re: [Yade-users] How to get the micro-force from the
+</I>&gt;<i>        macro-stress
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> Message-ID: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">479708EA.3010204 at hmg.inpg.fr</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=UTF-8; format=flowed
+</I>&gt;<i>
+</I>&gt;<i> kan a ?crit :
+</I>&gt;<i> &gt; Thank you, Vaclav,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; So the step for this is :
+</I>&gt;<i> &gt; during each timestep, the position of each particle/element keeps the
+</I>&gt;<i> &gt; same, so we can calculate the force brom the force-displacement
+</I>&gt;<i> &gt; relationship(in this case, the order does not affect the calculation
+</I>&gt;<i> &gt; since all the particle/elements do not move), after we get the forces,
+</I>&gt;<i> &gt; we use this forces to calculate the acceleration, and then the
+</I>&gt;<i> &gt; velocity(average velocity),  and then the movement/displacement in
+</I>&gt;<i> &gt; this timestep, and then update the position of each particle/element
+</I>&gt;<i> &gt; to new positions by add movement/displacement to current position.
+</I>&gt;<i> &gt; (until now, the calculation cycle of this timestep is completed)
+</I>&gt;<i> &gt; then go to next timestep by use the new positions of
+</I>&gt;<i> &gt; particles/elements as the current position to do the next calculation
+</I>&gt;<i> &gt; cycle.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; is my understanding right?
+</I>&gt;<i>
+</I>&gt;<i> Exactly right. What you describe here is the centered second order
+</I>&gt;<i> finite diffence scheme (also called leap-frog), which is used in Yade.
+</I>&gt;<i> It is probably the most common (and most simple) scheme in DEM codes.
+</I>&gt;<i> Other schemes may be possible but are not implemented.
+</I>&gt;<i>
+</I>&gt;<i> Bruno
+</I>&gt;<i>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks again.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Kan
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; On 1/22/08, *<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i> &gt; &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt;* &lt;
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i> &gt; &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt;&gt; wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Send Yade-users mailing list submissions to
+</I>&gt;<i> &gt;            <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> &gt;            <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;     or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> &gt;            <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-request at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     You can reach the person managing the list at
+</I>&gt;<i> &gt;            <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users-owner at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> &gt;     than &quot;Re: Contents of Yade-users digest...&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Today's Topics:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;       1. How to get the micro-force from the macro-stress (kan)
+</I>&gt;<i> &gt;       2. Re: How to get the micro-force from the macro-stress
+</I>&gt;<i> &gt;          (V?clav ?milauer)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> ----------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Message: 1
+</I>&gt;<i> &gt;     Date: Mon, 21 Jan 2008 13:29:54 -0600
+</I>&gt;<i> &gt;     From: kan &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">nicessgg at gmail.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">nicessgg at gmail.com</A>&gt;&gt;
+</I>&gt;<i> &gt;     Subject: [Yade-users] How to get the micro-force from the
+</I>&gt;<i> &gt;     macro-stress
+</I>&gt;<i> &gt;     To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;     Message-ID:
+</I>&gt;<i> &gt;            &lt;
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">45213f870801211129l171d2a5cs69da2382202961f8 at mail.gmail.com</A>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">45213f870801211129l171d2a5cs69da2382202961f8 at mail.gmail.com</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;     Content-Type: text/plain; charset=&quot;utf-8&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Hi, buddies,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     I have some questiones.
+</I>&gt;<i> &gt;     1. how to get the micro-force from the macro-stress?
+</I>&gt;<i> &gt;     As we know,for most of current studies, the concept of stress is
+</I>&gt;<i> &gt;     used to
+</I>&gt;<i> &gt;     describe the stress status. but when we look into the micro level,
+</I>&gt;<i> &gt;     we have
+</I>&gt;<i> &gt;     to convert the macro-stress to descrete force that applied at each
+</I>&gt;<i> &gt;     particle,
+</I>&gt;<i> &gt;     then how to do this convert?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     2. what is the calculation process in each time step?
+</I>&gt;<i> &gt;     The problem is that, as see the relation ship below,
+</I>&gt;<i> &gt;     ___\|/____\|/___\|/________
+</I>&gt;<i> &gt;     01---02---03---04---05---06...
+</I>&gt;<i> &gt;     |   \   |  /  |      |       |      | ...
+</I>&gt;<i> &gt;     11---12---13---14---15---16...
+</I>&gt;<i> &gt;     |      |      |   /  |   \  |      |...
+</I>&gt;<i> &gt;     21---22---23---24---25---26...
+</I>&gt;<i> &gt;     ...
+</I>&gt;<i> &gt;     ...
+</I>&gt;<i> &gt;     x1---x2---x3---x4---x5---x6...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     in which, the number is the ID of a particle,
+</I>&gt;<i> &gt;     and &quot;--- &quot; , &quot;/&quot; ,&quot;\&quot; and  &quot;|&quot; between the numbers mean there is a
+</I>&gt;<i> &gt;     contact
+</I>&gt;<i> &gt;     between the particles
+</I>&gt;<i> &gt;     &quot;\|/&quot; means force.
+</I>&gt;<i> &gt;     assume the 01-02-03-04...is the upper bounday layer, and the force
+</I>&gt;<i> is
+</I>&gt;<i> &gt;     applied as shown &quot;\|/&quot;.
+</I>&gt;<i> &gt;     when the calculation begins, we need to detecte the contact and
+</I>&gt;<i> &gt;     update the
+</I>&gt;<i> &gt;     position of each particles,
+</I>&gt;<i> &gt;     now my problem comes:
+</I>&gt;<i> &gt;     what is the procedure to calculation and update the particles'
+</I>&gt;<i> &gt;     information,
+</I>&gt;<i> &gt;     you know the force is from up layer, so the first layer
+</I>&gt;<i> &gt;     (&quot;01-02-03-04...&quot;)
+</I>&gt;<i> &gt;     should be calculated, then the second layer,and then the third
+</I>&gt;<i> &gt;     layer.... but
+</I>&gt;<i> &gt;     in DEM, the particle is independent to move, so after some time,
+</I>&gt;<i> some
+</I>&gt;<i> &gt;     particles in the first layer may move to the second layer and some
+</I>&gt;<i> &gt;     particles
+</I>&gt;<i> &gt;     in second layer may  move to the first layer(other other
+</I>&gt;<i> &gt;     layer),then how
+</I>&gt;<i> &gt;     should I do in order to know which particle should be calculated
+</I>&gt;<i> &gt;     and updated
+</I>&gt;<i> &gt;     first and which should be done later in the same timestep?
+</I>&gt;<i> &gt;     For example,
+</I>&gt;<i> &gt;     01 has contacting neighbors 02 and 11, in a same timestep, after
+</I>&gt;<i> &gt;     we have
+</I>&gt;<i> &gt;     calculated 01's properties( velocity, position....), we should
+</I>&gt;<i> &gt;     calculate 02
+</I>&gt;<i> &gt;     first, then 03(the neighbor of 02), after the layer of
+</I>&gt;<i> &gt;     01-02-03...is done,
+</I>&gt;<i> &gt;     then we can step to calculate the 11, which is to say, in a same
+</I>&gt;<i> &gt;     timestep,
+</I>&gt;<i> &gt;     though 02 and 11 are both contacting neighbors of 01, we should
+</I>&gt;<i> &gt;     calculate
+</I>&gt;<i> &gt;     02, and 11 later though 02 and 11 are both affected because of teh
+</I>&gt;<i> &gt;     movement
+</I>&gt;<i> &gt;     of 01. so, how to indentify which particle should be calculated
+</I>&gt;<i> &gt;     and update
+</I>&gt;<i> &gt;     first , and which should be later?
+</I>&gt;<i> &gt;     (because it is a dynamic process, so just use the order of  ID  is
+</I>&gt;<i> &gt;     not  a
+</I>&gt;<i> &gt;     way to solve this)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Hope I have described the problem 2 clearly,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Need your help, thanks so much.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Kan
+</I>&gt;<i> &gt;     -------------- next part --------------
+</I>&gt;<i> &gt;     An HTML attachment was scrubbed...
+</I>&gt;<i> &gt;     URL:
+</I>&gt;<i> &gt;
+</I>&gt;<i> <A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080121/93495eff/attachment-0001.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080121/93495eff/attachment-0001.html</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     ------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Message: 2
+</I>&gt;<i> &gt;     Date: Tue, 22 Jan 2008 09:20:53 +0100
+</I>&gt;<i> &gt;     From: V?clav ?milauer &lt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;&gt;
+</I>&gt;<i> &gt;     Subject: Re: [Yade-users] How to get the micro-force from the
+</I>&gt;<i> &gt;            macro-stress
+</I>&gt;<i> &gt;     To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;     Message-ID: &lt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4795A765.9040403 at arcig.cz</A>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">4795A765.9040403 at arcig.cz</A>&gt;&gt;
+</I>&gt;<i> &gt;     Content-Type: text/plain; charset=UTF-8
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     &gt; so, how to indentify which particle should be calculated and
+</I>&gt;<i> update
+</I>&gt;<i> &gt;     &gt; first , and which should be later?
+</I>&gt;<i> &gt;     &gt; (because it is a dynamic process, so just use the order of  ID  is
+</I>&gt;<i> &gt;     &gt; not  a way to solve this)
+</I>&gt;<i> &gt;     The trick is that you have constant positions during the whole
+</I>&gt;<i> &gt;     timestep,
+</I>&gt;<i> &gt;     you calculate forces from all contacts (order doesn't matter,
+</I>&gt;<i> elements
+</I>&gt;<i> &gt;     don't move during calculation) and then, before next timestep
+</I>&gt;<i> begins,
+</I>&gt;<i> &gt;     there is LeapFrogPositionIntegrator, that calculates displacements
+</I>&gt;<i> &gt;     based
+</I>&gt;<i> &gt;     on velocity, inertia, applied forces, ... and moves elements to
+</I>&gt;<i> &gt;     the new
+</I>&gt;<i> &gt;     position. Obviously, your timestep must be small enough so that
+</I>&gt;<i> &gt;     you get
+</I>&gt;<i> &gt;     convergence.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     HTH, Vaclav
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     ------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     _______________________________________________
+</I>&gt;<i> &gt;     Yade-users mailing list
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;     &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     End of Yade-users Digest, Vol 19, Issue 14
+</I>&gt;<i> &gt;     ******************************************
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Yade-users mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> _______________
+</I>&gt;<i> Chareyre Bruno
+</I>&gt;<i> Maitre de conference
+</I>&gt;<i>
+</I>&gt;<i> Institut National Polytechnique de Grenoble
+</I>&gt;<i> Laboratoire 3S (Soils Solids Structures) - bureau E145
+</I>&gt;<i> BP 53 - 38041, Grenoble cedex 9 - France
+</I>&gt;<i> T?l : 33 4 56 52 86 21
+</I>&gt;<i> Fax : 33 4 76 82 70 43
+</I>&gt;<i> ________________
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Yade-users Digest, Vol 19, Issue 15
+</I>&gt;<i> ******************************************
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080125/1e376166/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080125/1e376166/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000045.html">[Yade-users] YADE crash when spheres generated during simulation
+</A></li>
+	<LI>Next message: <A HREF="000043.html">[Yade-users] Yade-users Digest, Vol 19, Issue 15
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

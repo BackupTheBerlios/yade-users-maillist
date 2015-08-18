@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to communicate between two independent Engines
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20communicate%20between%20two%20independent%20Engines&In-Reply-To=%3C48215449.40609%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000214.html">
+   <LINK REL="Next"  HREF="000220.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to communicate between two independent Engines</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20communicate%20between%20two%20independent%20Engines&In-Reply-To=%3C48215449.40609%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] How to communicate between two independent Engines">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Wed May  7 09:03:37 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000214.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+        <LI>Next message: <A HREF="000220.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#215">[ date ]</a>
+              <a href="thread.html#215">[ thread ]</a>
+              <a href="subject.html#215">[ subject ]</a>
+              <a href="author.html#215">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello. It is indeed possible. The simplest is maybe to declare and
+define in your Engine DampingAdjustement a pointer towards an Engine
+ConvergenceEstimator, with something like that :
+/shared_ptr&lt;ConvergenceEstimator&gt; convergenceEstimator =
+shared_ptr&lt;ConvergenceEstimator&gt; (new ConvergenceEstimator);/
+
+(don't forget to include the good files and to modify the Sconscript !)
+and then you can use your method of this Engine in your
+DampingAdjustement, with the line you wrote :
+/
+convergenceEstimator-&gt;getCCValue()
+/
+But you will surely have to modify a bit your definition of &quot;getCCValue&quot;
+function of the ConvergenceEstimator : she will need to have as a
+parameter the Metabody of the simulation : so you would have to declare
+this function with something like
+/Real ConvergenceEstimator::getCCValue//(Body * body)
+/
+and then call it from the DampingAdjustement in fact with :
+/convergenceEstimator-&gt;getCCValue(body)
+/(this body here is the one which was passed to the applyCondition of
+DampingAdjustement)/
+/
+
+If you have it in your version of Yade you could give a look to
+&quot;TriaxialStateRecorder&quot; (in pkg/dem/Engine/DeusExMachina/) : this Engine
+uses like you (and records) the value of the UnbalancedForce computed by
+the other Engine &quot;TriaxialStressController&quot;. In this case it is a bit
+more complicated than what I said to you, because the
+TriaxialStateRecorder cares to find in the list of Engines present in
+the simulation the one which is a TriaxialStressController instead of
+creating a new one, like I adviced.
+
+Hoping having been enough clear...
+
+Jerome
+
+Chen, Feng a &#233;crit:
+&gt;<i> Hi, all:
+</I>&gt;<i> I am recently having such kind of problem, I have two costomized
+</I>&gt;<i> engines, one is called &quot;ConvergenceEstimator&quot;, which is used to
+</I>&gt;<i> evaluate some maximumUnBalanceForce over the contactForce ratio (this
+</I>&gt;<i> will return a CCValue to evaluate whether the whole particle system is
+</I>&gt;<i> close to equilibrium), then Ihave another engine
+</I>&gt;<i> &quot;DampingAdjustment&quot;designed to change the initialsimulation parameter,
+</I>&gt;<i> in my case, the damping coefficient, for example, from 0.3 to 0.4.
+</I>&gt;<i> I have one piece of code in the preprocessor (similar to
+</I>&gt;<i> SDECSpheresPlane)which looks like this:
+</I>&gt;<i> ///--------------------
+</I>&gt;<i> ...
+</I>&gt;<i> rootBody-&gt;engines.push_back(ConvergenceEstimator);
+</I>&gt;<i> rootBody-&gt;engines.push_back(DampingAdjustment);
+</I>&gt;<i> ///--------------------
+</I>&gt;<i> This means my DampingAdjustment Engine needs the return values of the
+</I>&gt;<i> previous engine, I need to have something in DampingAdjustment like(I
+</I>&gt;<i> think should be in DampingAdjustment::applyCondition(Body* body)):
+</I>&gt;<i> if (convergenceEstimator-&gt;getCCVaue() &lt;=eps)
+</I>&gt;<i> dampingCoefficient = 0.3;
+</I>&gt;<i> else
+</I>&gt;<i> dampingCoefficient =0.5;
+</I>&gt;<i> I think this is purely a programming problem, how to access the
+</I>&gt;<i> ConvergenceEstimator which is the other engine?
+</I>&gt;<i> I hope I have made my problem clear. Thank you very much!
+</I>&gt;<i> Feng Chen
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080507/3c1c0cfd/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080507/3c1c0cfd/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000214.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+	<LI>Next message: <A HREF="000220.html">[Yade-users] How to communicate between two independent Engines
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#215">[ date ]</a>
+              <a href="thread.html#215">[ thread ]</a>
+              <a href="subject.html#215">[ subject ]</a>
+              <a href="author.html#215">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

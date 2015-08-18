@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to reset a body's velocity?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20reset%20a%20body%27s%20velocity%3F&In-Reply-To=%3C484AA3CE.4000202%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000281.html">
+   <LINK REL="Next"  HREF="000283.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to reset a body's velocity?</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20reset%20a%20body%27s%20velocity%3F&In-Reply-To=%3C484AA3CE.4000202%40arcig.cz%3E"
+       TITLE="[Yade-users] How to reset a body's velocity?">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sat Jun  7 17:05:50 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000281.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+        <LI>Next message: <A HREF="000283.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;&gt;<i> I don't really understand the problem. Can't you just set p-&gt;velocity = 
+</I>&gt;&gt;<i> 0 somwhere in the code
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> No, because a integrator will set back the old value.
+</I>&gt;<i> Currently, the veloctiy can not be changed outside integrator.
+</I>&gt;<i>   
+</I>You could make the vector&lt;Vector3r&gt;
+LeapFrogPositionIntegrator::prevVelocities public, then you could change
+it from anywhere: reset prevVelocities for particles in question and set
+velocity of the particle itself to zero as well.
+
+How and where do you load these particles? If you load/save simulation,
+prevVelocities will be empty and the problem doesn't arise.
+
+Vaclav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000281.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+	<LI>Next message: <A HREF="000283.html">[Yade-users] How to reset a body's velocity?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

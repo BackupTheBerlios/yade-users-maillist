@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Time Series Forcing	implementation in python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C49CC6D30.8090108%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000705.html">
+   <LINK REL="Next"  HREF="000706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Time Series Forcing	implementation in python</H1>
+    <B>V&#225;clav &#352;milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Time%20Series%20Forcing%0A%09implementation%20in%20python&In-Reply-To=%3C49CC6D30.8090108%40arcig.cz%3E"
+       TITLE="[deprecated list] [Yade-users] Time Series Forcing	implementation in python">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri Mar 27 07:07:44 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000705.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+        <LI>Next message: <A HREF="000706.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#681">[ date ]</a>
+              <a href="thread.html#681">[ thread ]</a>
+              <a href="subject.html#681">[ subject ]</a>
+              <a href="author.html#681">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> I would also like to read my times series of forces from a file. Is 
+</I>&gt;<i> there a python function that will accomplish. In the script examples I 
+</I>&gt;<i> saw multi.py that is supposed to read some values from a file, but it 
+</I>&gt;<i> didn't read from the file when I ran the simulation. I was wondering 
+</I>&gt;<i> how to use this function (or another one) properly to obtain forces 
+</I>&gt;<i> from file.
+</I>Do it just like you would in python:
+
+forces,times=[],[]
+for line in 
+file('your.text.file.with.2.numbers.per.line.separated.by.whitespace')
+     if len(line.split())&lt;2: continue # skip empty lines
+     f,t=[float(s) for s in line.split()]
+     forces.append(f)
+     times.append(t)
+
+def applyForce():
+     # find index of the time we are at or just after now in the series
+     # this is quite suboptimal, since it traverses the array every time
+     i=0;
+     while times[i]&lt;O.time: i+=1
+     # and use force at that index
+     f=force[i]
+
+V.
+
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000705.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+	<LI>Next message: <A HREF="000706.html">[deprecated list] [Yade-users] Time Series Forcing	implementation in python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#681">[ date ]</a>
+              <a href="thread.html#681">[ thread ]</a>
+              <a href="subject.html#681">[ subject ]</a>
+              <a href="author.html#681">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Simulation model
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Simulation%20model&In-Reply-To=%3C930069bf0905220640g3d91aa71o541619e474cffb26%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000750.html">
+   <LINK REL="Next"  HREF="000752.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Simulation model</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Simulation%20model&In-Reply-To=%3C930069bf0905220640g3d91aa71o541619e474cffb26%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] Simulation model">gladky.anton at gmail.com
+       </A><BR>
+    <I>Fri May 22 15:40:21 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000750.html">[deprecated list] [Yade-users] Simulation model
+</A></li>
+        <LI>Next message: <A HREF="000752.html">[deprecated list] [Yade-users] Simulation model
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#751">[ date ]</a>
+              <a href="thread.html#751">[ thread ]</a>
+              <a href="subject.html#751">[ subject ]</a>
+              <a href="author.html#751">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you, Vaclav
+
+I think I will solve my task by your supposed way.
+
+In attachment there is the diff-file. I'v added 1 function. Hope it will be
+useful.
+I would like also to ask to inspect the code. Is it suitable, or corrections
+are needed?
+How often do you usually commit the code?
+
+Thank you
+
+Best Regards / Mit freundlichen Gr&#252;&#223;en / &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080; / &#1047;
+&#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+2009/5/22 V&#225;clav &#352;milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+
+&gt;<i>
+</I>&gt;<i> &gt; I have a physical schema, which is here <A HREF="http://geom.com.ua/schema.png">http://geom.com.ua/schema.png</A>
+</I>&gt;<i> &gt; (200Kb)
+</I>&gt;<i> &gt; This is the peaces of mining rocks, which needs to be destructed.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I would like to know your opinion according implementation this schema
+</I>&gt;<i> &gt; in YADE.
+</I>&gt;<i> &gt; Is it a good idea to use the lattice model, placing in the middle of
+</I>&gt;<i> &gt; nodes spheres?
+</I>&gt;<i>
+</I>&gt;<i> I would just use DEM spheres for everything (IMHO what distinguishes
+</I>&gt;<i> lattice models from DEM is that they have not collision detection for
+</I>&gt;<i> nodes and most the time also no inertia within nodes).
+</I>&gt;<i>
+</I>&gt;<i> You will have 2 different constitutive laws, one between spheres within
+</I>&gt;<i> one cluster, which will be cohesive, and another one (or the same one
+</I>&gt;<i> with a bool isCohesive or something like that) for the interactions of
+</I>&gt;<i> spheres from 2 different clusters.
+</I>&gt;<i>
+</I>&gt;<i> HTH, Vaclav
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090522/204ad984/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090522/204ad984/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: diff
+Type: application/octet-stream
+Size: 3155 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090522/204ad984/attachment.obj">https://lists.berlios.de/pipermail/yade-users/attachments/20090522/204ad984/attachment.obj</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000750.html">[deprecated list] [Yade-users] Simulation model
+</A></li>
+	<LI>Next message: <A HREF="000752.html">[deprecated list] [Yade-users] Simulation model
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#751">[ date ]</a>
+              <a href="thread.html#751">[ thread ]</a>
+              <a href="subject.html#751">[ subject ]</a>
+              <a href="author.html#751">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

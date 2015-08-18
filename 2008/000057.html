@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] svn protocol
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20svn%20protocol&In-Reply-To=%3C47A18360.3030705%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000056.html">
+   <LINK REL="Next"  HREF="000053.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] svn protocol</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20svn%20protocol&In-Reply-To=%3C47A18360.3030705%40univ-nantes.fr%3E"
+       TITLE="[Yade-users] svn protocol">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Thu Jan 31 09:14:24 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000056.html">[Yade-users] svn protocol
+</A></li>
+        <LI>Next message: <A HREF="000053.html">[Yade-users] YADE documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#57">[ date ]</a>
+              <a href="thread.html#57">[ thread ]</a>
+              <a href="subject.html#57">[ subject ]</a>
+              <a href="author.html#57">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The file /etc/network/interfaces is well configured.
+
+svn checkout <A HREF="http://svn.berlios.de/svnroot/repos/yade/trunk">http://svn.berlios.de/svnroot/repos/yade/trunk</A>
+doesn't work (I think because the port 80 is locked)
+
+But:
+svn checkout <A HREF="https://svn.berlios.de/svnroot/repos/yade/trunk">https://svn.berlios.de/svnroot/repos/yade/trunk</A>
+works with svn, of course, and kdesvn!
+(first, I didn't try this address because I thought that a login and a 
+password were requested as detailed here 
+<A HREF="http://developer.berlios.de/svn/?group_id=2432">http://developer.berlios.de/svn/?group_id=2432</A>)
+
+  Many thanks
+
+Janek Kozicki a &#233;crit :
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I remember that Luc Scholtes had the same problem. It turned out that
+</I>&gt;<i> his network was badly configured. He was accessing web pages through
+</I>&gt;<i> proxy, but the gateway was not defined. 
+</I>&gt;<i> 
+</I>&gt;<i> See into file /etc/network/interfaces if there is a gateway defined.
+</I>&gt;<i> Ask your admin what is your gateway and check if correct IP is
+</I>&gt;<i> written there. He can verify other values in that file also.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Also, there is a daily snapshot of SVN that you could download:
+</I>&gt;<i> 
+</I>&gt;<i>   <A HREF="http://download.berlios.de/svndumps/yade-repos.gz">http://download.berlios.de/svndumps/yade-repos.gz</A>
+</I>&gt;<i> 
+</I>&gt;<i> but it's not the same as SVN checkout, unfortunately. It is whole SVN
+</I>&gt;<i> repository, the same as stored on the berlios server. You can
+</I>&gt;<i> checkout from it and commit to it. So if you started to use it, you
+</I>&gt;<i> will have a clone of what is on berlios server.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Better if you check your network configuration, instead of using that
+</I>&gt;<i> local copy.
+</I>&gt;<i> 
+</I>
+-- 
+Luc Sibille, Universit&#233; de Nantes - Laboratoire GeM, ma&#238;tre de conf&#233;rence
+
+Adresse/address:
+IUT de Saint Nazaire - D&#233;partement de G&#233;nie-Civil
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex   France
+
+Tel: +33 2 40 17 81 78     Fax: +33 2 40 17 81 60
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000056.html">[Yade-users] svn protocol
+</A></li>
+	<LI>Next message: <A HREF="000053.html">[Yade-users] YADE documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#57">[ date ]</a>
+              <a href="thread.html#57">[ thread ]</a>
+              <a href="subject.html#57">[ subject ]</a>
+              <a href="author.html#57">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

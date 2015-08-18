@@ -1,0 +1,264 @@
+From bogus@does.not.exist.com  Wed Mar 14 16:42:25 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 15:42:25 -0000
+Subject: No subject
+Message-ID: <mailman.0.1331739746.15522.yade-users@lists.berlios.de>
+
+documentation.
+http://yade.berlios.de/doxygen/html/index.html
+
+>>My question is, if I want to study more about YADE
+like --- individual items...default DT,
+StabilityCriterion so on..(as follows...), is there
+any reference(Triaxial Test.hpp and Triaxial
+Test.cpp... to understand the explanation of the code
+)?
+
+>Private Attributes
+(Twp://yade.berlios.de/doxygen/html/index.html)
+   string   AnimationSnapshotsBaseName
+   bool   autoCompressionActivation
+   shared_ptr< AveragePositionRecorder >  
+averagePositionRecorder
+   bool   bigBall
+   Real   bigBallDensity
+   Real   bigBallDropHeight
+   Real   bigBallDropTimeSeconds
+   Real   bigBallFrictDeg
+   Real   bigBallPoissonRatio-----
+
+>> I have checked --- /yade-0.11.1/doc/UserManual ...
+and also about the previous mail on YADE
+Documentation...but I want to know more about Triaxial
+Test as well as YADE
+
+Any idea or suggestion will be apprecialbe.
+
+Regards,
+Nurul Islam (Rana)
+
+
+      ____________________________________________________________________________________
+Be a better friend, newshound, and 
+know-it-all with Yahoo! Mobile.  Try it now.  http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ 
+
+
+
+
+From bogus@does.not.exist.com  Wed Mar 14 16:42:25 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 15:42:25 -0000
+Subject: No subject
+Message-ID: <mailman.1.1331739746.15522.yade-users@lists.berlios.de>
+
+critical_time_step=2*sqrt(mass/k),
+
+my questions are:
+1. is the mass the particle mass?
+2. k here is kn or ks or some other value else?
+3. I need to calculate all the critical_time_step for each particle, and
+then use the mininum one, right?
+
+and I hear that in the past, the critical_time_step need to calculated at
+each timestep, then why and how?
+if I do it at the beginning and get the mininum critical_time_step, and then
+keep it as the critical time step for the overall simulation, will it work?
+
+Thanks for your help.
+
+Kan.
+
+------=_Part_2474_4249574.1207323641065
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+<div>Hey, guys,</div>
+<div>&nbsp;</div>
+<div>I have a problem to get the critical timestep, could you please give me hand?</div>
+<div>if I need to calculate the critical time step for each time steps, how can I calculate it?</div>
+<div>From papers, I found that equation is:</div>
+<div>critical_time_step=2*sqrt(mass/k), </div>
+<div>&nbsp;</div>
+<div>my questions are:</div>
+<div>1. is the mass the particle mass?</div>
+<div>2. k here is kn or ks or some other value else?</div>
+<div>3. I need to calculate all the critical_time_step for each particle, and then use the mininum one, right?</div>
+<div>&nbsp;</div>
+<div>and I hear that in the past, the critical_time_step need to calculated at each timestep, then why and how?</div>
+<div>if I do it at the beginning and get the mininum critical_time_step, and then keep it as the critical time step for the overall simulation, will it work?</div>
+<div>&nbsp;</div>
+<div>Thanks for your help.</div>
+<div>&nbsp;</div>
+<div>Kan.</div>
+
+------=_Part_2474_4249574.1207323641065--
+
+
+From bogus@does.not.exist.com  Wed Mar 14 16:42:25 2012
+From: bogus@does.not.exist.com ()
+Date: Wed, 14 Mar 2012 15:42:25 -0000
+Subject: No subject
+Message-ID: <mailman.2.1331739747.15522.yade-users@lists.berlios.de>
+
+setting.
+=20
+Feng Chen
+Graduate Student=20
+Department of Civil and Environmental Engineering
+223 Perkins Hall
+University of Tennessee, Knoxville, 37996
+http://fchen3.googlepages.com/home
+
+________________________________
+
+From: yade-users-bounces at lists.berlios.de on behalf of Protosssword
+Sent: Tue 5/13/2008 7:46 AM
+To: yade
+Subject: [Yade-users] I can't install yade on Slackware.Help!
+
+
+I have slackware(version 12.0) properly installed on my  Vmware. I want =
+to use yade in it.=20
+I've installed boost 1.35.0(I built it from source) and there are =
+/usr/local/include/boost directory in which there are a lot of .hpp =
+files and /usr/local/lib directory in which there are a lot of .so =
+files.
+There are already qt3 bundled with Slackware, So I've just installed =
+qt3-mt components. I unpacked the deb package libqt3-mt-dev.deb and used =
+installpkg to install it.
+I've successfully installed freeglut3.
+make and g++ are bundled with Slackware distribution.
+scons build system is installed successfully and it looks working quite =
+well.
+
+I run the command in ~/yade-0.11.1:
+scons PREFIX=3D/home/username/YADE optimize=3D1
+
+a nd
+then failed.=20
+the error output is the attachment of this mail.
+
+I hope you can help me!
+Thank you!
+
+
+                                                                         =
+                                                                         =
+                                  =20
+          &nb sp;       Shengxu Xia (hhu University in P.R.China)
+
+________________________________
+
+Windows Live Writer,??????????,????????? ????! =
+<http://get.live.cn/product/writer.html> =20
+
+------_=_NextPart_001_01C8B4FF.2A9CD06C
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<HTML dir=3Dltr><HEAD>=0A=
+<META http-equiv=3DContent-Type content=3D"text/html; charset=3Dunicode">=0A=
+<STYLE>=0A=
+.hmmessage P=0A=
+{=0A=
+margin:0px;=0A=
+padding:0px=0A=
+}=0A=
+body.hmmessage=0A=
+{=0A=
+FONT-SIZE: 9pt;=0A=
+FONT-FAMILY:Tahoma=0A=
+}=0A=
+</STYLE>=0A=
+=0A=
+<META content=3D"MSHTML 6.00.2900.3243" name=3DGENERATOR></HEAD>=0A=
+<BODY class=3Dhmmessage>=0A=
+<DIV id=3DidOWAReplyText95078 dir=3Dltr>=0A=
+<DIV dir=3Dltr><FONT face=3DArial color=3D#000000 size=3D2>A potential =
+problem for you:</FONT></DIV>=0A=
+<DIV dir=3Dltr><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>=0A=
+<DIV dir=3Dltr><FONT face=3DArial size=3D2>When you are using the =
+VMWare, I think it is difficult to install the 3D video driver and =
+therefore your 3D graphics simulation will be very slow based on =
+software acceleration.</FONT></DIV>=0A=
+<DIV dir=3Dltr>&nbsp;</DIV>=0A=
+<DIV dir=3Dltr><FONT face=3DArial size=3D2>From the error file, it might =
+be something wrong with your boost path setting.</FONT></DIV>=0A=
+<DIV dir=3Dltr><FONT face=3DArial color=3D#000000 =
+size=3D2></FONT>&nbsp;</DIV></DIV>=0A=
+<DIV id=3DidSignature86939 dir=3Dltr><PRE>Feng Chen=0A=
+Graduate Student =0A=
+Department of Civil and Environmental Engineering=0A=
+223 Perkins Hall=0A=
+University of Tennessee, Knoxville, 37996=0A=
+http://fchen3.googlepages.com/home</PRE></DIV>=0A=
+<DIV dir=3Dltr><BR>=0A=
+<HR tabIndex=3D-1>=0A=
+<FONT face=3DTahoma size=3D2><B>From:</B> =
+yade-users-bounces at lists.berlios.de on behalf of =
+Protosssword<BR><B>Sent:</B> Tue 5/13/2008 7:46 AM<BR><B>To:</B> =
+yade<BR><B>Subject:</B> [Yade-users] I can't install yade on =
+Slackware.Help!<BR></FONT><BR></DIV>=0A=
+<DIV>=0A=
+<STYLE>.hmmessage P{margin:0px;padding:0px}body.hmmessage{FONT-SIZE: =
+9pt;FONT-FAMILY:Tahoma}</STYLE>=0A=
+=0A=
+<STYLE>.hmmessage P{margin:0px;padding:0px}body.hmmessage{FONT-SIZE: =
+9pt;FONT-FAMILY:Tahoma}</STYLE>=0A=
+<FONT size=3D4>I have <SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic">slackware</SPAN>(version 12.0) properly installed on my&nbsp; =
+<SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: italic">Vmware</SPAN>. I =
+want to use <SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic">yade</SPAN> in it. <BR>I've installed boost 1.35.0(I built it =
+from source) and there are <SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic">/usr/local/include/boost</SPAN> directory in which there are a =
+lot of <SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: italic">.hpp</SPAN> =
+files and <SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic">/usr/local/lib</SPAN> directory in which there are a lot of =
+<SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: italic">.so</SPAN> =
+files.<BR>There are already qt3 bundled with <SPAN>Slackware</SPAN>, So =
+I've just installed qt3-mt components. I unpacked the deb package <SPAN =
+style=3D"FONT-WEIGHT: bold; FONT-STYLE: italic">libqt3-mt-dev.deb</SPAN> =
+and used installpkg to install it.<BR>I've successfully installed <SPAN =
+style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic">freeglut3</SPAN>.<BR><SPAN style=3D"FONT-WEIGHT: bold; =
+FONT-STYLE: italic">make</SPAN> and <SPAN style=3D"FONT-WEIGHT: bold; =
+FONT-STYLE: italic">g++</SPAN> are bundled with <SPAN =
+style=3D"FONT-WEIGHT: bold; FONT-STYLE: italic">Slackware</SPAN> =
+distribution.<BR><SPAN style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic">scons build system</SPAN> is installed successfully and it looks =
+working quite well.<BR><BR>I run the command in <SPAN =
+style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic">~/yade-0.11.1</SPAN>:<BR><SPAN style=3D"FONT-WEIGHT: bold; =
+FONT-STYLE: italic">scons PREFIX=3D/home/username/YADE =
+optimize=3D1</SPAN><BR style=3D"FONT-WEIGHT: bold; FONT-STYLE: =
+italic"><BR>a nd<BR>then failed. <BR>the error output is the attachment =
+of this mail.<BR><BR>I hope you can help me!<BR>Thank =
+you!</FONT><BR><BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <BR>&nbsp;&nbsp; &nbsp;&nbsp; =
+&nbsp;&nbsp; &nbsp;&amp;nb sp; &nbsp;&nbsp; &nbsp;&nbsp; Shengxu Xia =
+(hhu University in P.R.China)<BR>=0A=
+<HR>=0A=
+Windows Live =
+Writer&#65292;&#25903;&#25345;&#31163;&#32447;&#25776;&#20889;&#21338;&#2=
+3458;&#20869;&#23481;&#65292;&#38543;&#26102;&#38543;&#22320;&#24819;&#20=
+889;&#23601;&#20889;&#12290; <A =
+href=3D"http://get.live.cn/product/writer.html" =
+target=3D_new>&#31435;&#21363;&#20351;&#29992;&#65281;</A> =
+</DIV></BODY></HTML>
+------_=_NextPart_001_01C8B4FF.2A9CD06C--
+
+

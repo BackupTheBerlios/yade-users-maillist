@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] YADE documentation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20YADE%20documentation&In-Reply-To=%3C477F5D83.6050300%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000002.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] YADE documentation</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20YADE%20documentation&In-Reply-To=%3C477F5D83.6050300%40arcig.cz%3E"
+       TITLE="[Yade-users] YADE documentation">eudoxos at arcig.cz
+       </A><BR>
+    <I>Sat Jan  5 11:35:47 CET 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000002.html">[Yade-users] YADE documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Mr Smilauer: i am starting to use Yade for my PhD research on
+</I>&gt;<i> modelling railway ballast for high-speed trains and as you pointed in
+</I>&gt;<i> your article, the first dificulty i find is the lack of documentation.
+</I>&gt;<i> You mentioned two-half functional articles that i can&#180;t find as the
+</I>&gt;<i> links provided are no longer available. Could you please point out or
+</I>&gt;<i> send me any documentation you know to that is usefull to using this
+</I>&gt;<i> software? I am currently most interested in performing triaxial tests.
+</I>&gt;<i> Best regards.
+</I>&gt;<i> Jos&#233; Pedro Cunha
+</I>Hi Pedro, (you better ask on yade mailing list
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.berlios.de</A>, where you will get response for many more
+people than just me; moving discussion there.)
+
+It hasn't changed much since time I wrote about lack of docs, but Janek
+starts his 2-year postdoc in Grenoble now and he will (I hope) produce
+some documentation.
+
+For triaxial tests specifically, it is Bruno who wrote the triaxial test
+classes and recently he commited nice documentation on that to current
+SVN trunk (in pkg/dem/PreProcessor/TriaxialTest.hpp). I am modifying
+TriaxialCompressionEngine now to make it a finite automaton, since I
+will use it, too; but that is probably different story. Before you start
+to read Bruno's comments on triax, make sure you understand how Yade
+works: every iteration is loop over &quot;engines&quot; that operate on bodies in
+different ways.
+
+Regards, Vaclav
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000002.html">[Yade-users] YADE documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

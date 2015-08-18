@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] [Yade-dev] recent changes	in	TriaxialCompressionEngine
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BYade-dev%5D%20recent%20changes%0A%09in%09TriaxialCompressionEngine&In-Reply-To=%3C380-2200810329225937879%40M2W030.mail2web.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000519.html">
+   <LINK REL="Next"  HREF="000523.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] [Yade-dev] recent changes	in	TriaxialCompressionEngine</H1>
+    <B>jerier at geo.hmg.inpg.fr</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20%5BYade-dev%5D%20recent%20changes%0A%09in%09TriaxialCompressionEngine&In-Reply-To=%3C380-2200810329225937879%40M2W030.mail2web.com%3E"
+       TITLE="[deprecated list] [Yade-users] [Yade-dev] recent changes	in	TriaxialCompressionEngine">jerier at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Wed Oct 29 23:59:37 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000519.html">[deprecated list] [Yade-users] problem with SDEClinkedSpheres
+</A></li>
+        <LI>Next message: <A HREF="000523.html">[deprecated list] [Yade-users] Relative Density
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#521">[ date ]</a>
+              <a href="thread.html#521">[ thread ]</a>
+              <a href="subject.html#521">[ subject ]</a>
+              <a href="author.html#521">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+ Ok i under take to correct and add comments in the
+TriaxialCompressionEngine files as soon as tomorrow with a new commit. Of
+course, i will do a svn up before my modifications, after i verify YADE
+correctly built.  
+
+&gt;<i>Changing inputFile to TriaxialGenerator is certainly bad idea 
+</I>
+ Question for Triaxialtest users: Can i keep my inputparameters (for
+example:isotropiccompression, translationspeed, fixedporosity) in the
+generator file to realize directly the isotropic compaction by moving the
+walls until a fixed porosity value ?
+
+Thank you
+JF
+
+
+Original Message:
+-----------------
+From: V&#225;clav S(milauer <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>
+Date: Wed, 29 Oct 2008 22:33:50 +0100
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-dev at lists.launchpad.net</A>
+Subject: Re: [Yade-dev] recent changes in TriaxialCompressionEngine
+
+
+(make sure you reply to the list, not to me directly)
+&gt;<i>   Sure, there is a problem for the other state in a
+</I>&gt;<i> TriaxialCompressionEngine.cpp, the condition &amp;&amp; wishedporosity &lt; 1 is
+</I>&gt;<i> wrong. I was too happy to realize my first commit.
+</I>&gt;<i> I am sorry for the generated problems. I think the best thing to do is to
+</I>&gt;<i> replace the files : triaxialcompressionengine, triaxialtest,
+</I>&gt;<i> triaxialstaterecorder, elasticcontactinteraction by the same files just
+</I>&gt;<i> before my commit. I am conscious, it is not the wonder solution.
+</I>&gt;<i>   
+</I>No problem with the code commited, I think that we can keep it, because
+it can certainly be useful, it will be ironed our progressively. Unless
+you really want to revert your changes, which should be quite easy --
+svn has all the history.
+&gt;<i> Concerning: STATE_DIE_COMPRESSION is a new state in the triaxail
+</I>simulation
+&gt;<i> in order to realize a compaction by the wall displacement until a porosity
+</I>&gt;<i> controlled (parameter : wishedPorosity) by the user.
+</I>&gt;<i> The code calculates the porosity in a cube (parameter:
+</I>calculatedporosity),
+&gt;<i> when the wishedPorosity equal to calculatedporosity =&gt; the simulation is
+</I>&gt;<i> stopped.
+</I>&gt;<i>
+</I>&gt;<i> To resume, it is an isotropic compaction until a fixed porosity value.
+</I>&gt;<i>   
+</I>Nice explanation. Now just copy&amp;paste that to
+TriaxialCompressionEngine.hpp, to the big comment before &quot;class
+TriaxialCompressionEngine :-)
+
+A+, Vaclav
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-dev">https://launchpad.net/~yade-dev</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-dev at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-dev">https://launchpad.net/~yade-dev</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+
+--------------------------------------------------------------------
+mail2web - Check your email from the web at
+<A HREF="http://link.mail2web.com/mail2web">http://link.mail2web.com/mail2web</A>
+
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000519.html">[deprecated list] [Yade-users] problem with SDEClinkedSpheres
+</A></li>
+	<LI>Next message: <A HREF="000523.html">[deprecated list] [Yade-users] Relative Density
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#521">[ date ]</a>
+              <a href="thread.html#521">[ thread ]</a>
+              <a href="subject.html#521">[ subject ]</a>
+              <a href="author.html#521">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

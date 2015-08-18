@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Attributes of CohesiveFrictionalContactInteraction	(bug ?)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Attributes%20of%20CohesiveFrictionalContactInteraction%0A%09%28bug%20%3F%29&In-Reply-To=%3C487DE835.4040008%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000378.html">
+   <LINK REL="Next"  HREF="000380.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Attributes of CohesiveFrictionalContactInteraction	(bug ?)</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Attributes%20of%20CohesiveFrictionalContactInteraction%0A%09%28bug%20%3F%29&In-Reply-To=%3C487DE835.4040008%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Attributes of CohesiveFrictionalContactInteraction	(bug ?)">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Wed Jul 16 14:23:17 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000378.html">[Yade-users] offscreen rendering
+</A></li>
+        <LI>Next message: <A HREF="000380.html">[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#379">[ date ]</a>
+              <a href="thread.html#379">[ thread ]</a>
+              <a href="subject.html#379">[ subject ]</a>
+              <a href="author.html#379">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello everybody. I just noticed that the class 
+&quot;CohesiveFrictionalContactInteraction&quot; (in pkg/dem/Engine/EngineUnit/) 
+inherits from the &quot;_ElasticContact_Interaction&quot;, whereas in the 
+registerAttributes (of CohesiveFrictionalContactInteraction) what is 
+called first is :
+_SimpleElastic_Interaction::registerAttributes();
+
+It seems to me that it is quite not logic...
+In fact some of the attributes which belong to 
+CohesiveFrictionalContactInteraction through ElasticContactInteraction 
+(but which are not in SimpleElasticInteraction) are however registered 
+(like tangensofFrictionAngle for exemple), but the work is not perfectly 
+done : for example &quot;ks&quot; is not registered.
+Fortunately it seems that this doesn't affect the computations because 
+in the CohesiveFrictionalRelationships we have (if the interaction is 
+&quot;new&quot; or not) :
+
+contactPhysics-&gt;ks = contactPhysics-&gt;initialKs;
+
+In fact this case occured also for the ElasticContactInteraction, and 
+was corrected in revision 1315 (14/04/08). But because such commits (in 
+which the list of registered attributes are modified) prevent users to 
+reload saves, once update is done, (I take the opportunity to say that 
+this is a BIG disadvantage of Yade) I didn't want to take the 
+responsability of commiting the corrections myself.
+
+Jerome
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000378.html">[Yade-users] offscreen rendering
+</A></li>
+	<LI>Next message: <A HREF="000380.html">[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#379">[ date ]</a>
+              <a href="thread.html#379">[ thread ]</a>
+              <a href="subject.html#379">[ subject ]</a>
+              <a href="author.html#379">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

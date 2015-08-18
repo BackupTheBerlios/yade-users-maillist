@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] svn commit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20svn%20commit&In-Reply-To=%3CCFB6DDA3-7A0D-4865-A0AE-AC4E969491E0%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000748.html">
+   <LINK REL="Next"  HREF="000756.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] svn commit</H1>
+    <B>Vincent Richefeu</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20svn%20commit&In-Reply-To=%3CCFB6DDA3-7A0D-4865-A0AE-AC4E969491E0%40geo.hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] svn commit">richefeu at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Wed May 20 09:51:27 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000748.html">[deprecated list] [Yade-users] svn commit
+</A></li>
+        <LI>Next message: <A HREF="000756.html">[deprecated list] [Yade-users]   svn commit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#764">[ date ]</a>
+              <a href="thread.html#764">[ thread ]</a>
+              <a href="subject.html#764">[ subject ]</a>
+              <a href="author.html#764">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> But I think it would be good to have exact rules on style. Code  
+</I>&gt;<i> must be in order. Maybe, it is good to create some rules for new  
+</I>&gt;<i> added code?
+</I>
+Vaclav is right. The questions, which concern only the personal taste  
+and do not affect the accuracy or clarity of the code, have no place  
+in a standard programming. There is no difference in readability  
+between:
+
+void myFunction() { // ... }
+
+and
+
+void myFunction()
+{
+   // ...
+}
+
+Nevertheless, this task (indentation, position of brackets...) can be  
+done automatically (for example with bcpp). So it is not important.
+
+I think that the critical point is the naming convention. This  
+convention, without being too prescriptive, should exist (in fact  
+there are several in Yade!). In practice, each programmer is  
+responsible for his choice. For example: _if (face[i].belongBoundary) 
+_ and _if (bound[i] == 1)_ are quite similar but the second needs  
+explanation while the first is self-documented. Finally, the most  
+important is the design...
+
+Vincent
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000748.html">[deprecated list] [Yade-users] svn commit
+</A></li>
+	<LI>Next message: <A HREF="000756.html">[deprecated list] [Yade-users]   svn commit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#764">[ date ]</a>
+              <a href="thread.html#764">[ thread ]</a>
+              <a href="subject.html#764">[ subject ]</a>
+              <a href="author.html#764">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] FilterEngine
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20FilterEngine&In-Reply-To=%3C200902021738.15786.sj2001%40yandex.ru%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000601.html">
+   <LINK REL="Next"  HREF="000644.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] FilterEngine</H1>
+    <B>sega</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20FilterEngine&In-Reply-To=%3C200902021738.15786.sj2001%40yandex.ru%3E"
+       TITLE="[deprecated list] [Yade-users] FilterEngine">sj2001 at yandex.ru
+       </A><BR>
+    <I>Mon Feb  2 15:39:54 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000601.html">[deprecated list] [Yade-users] &quot;primary view&quot; transparent window
+</A></li>
+        <LI>Next message: <A HREF="000644.html">[deprecated list] building error : cannot find lminiWm3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#643">[ date ]</a>
+              <a href="thread.html#643">[ thread ]</a>
+              <a href="subject.html#643">[ subject ]</a>
+              <a href="author.html#643">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>FilterEngine and ColorizedVelocityFilter is my answer on question about how to assign a color to bodies velocity when doing postprocess simulation results. In order to get a worked filters save simulation results (for example, with SQLiteRecorder),
+after which load its with SimulationPlayer and add to engines list the desired filters (now it may be ColorizedVelocityFilter or ColorizedLayerFilter or you own). For example from python console do:
+
+o=Omega()
+colorized_velocity = DeusExMachina('ColorizedVelocityFilter',{'autoScale':False,'minValue':0,'maxValue':1})
+o.engines = o.engines +[colorized_velocity]
+
+After this, click on refresh button in the SimulationPlayer filters tab and check &quot;Allow filtration&quot;. After this filters will be recognized among another engines to a filter list and  will be setup FilterEngine::isFiltrationAllowed=true. Now after loading each frame will be doing: for each filter in the filter list do filter-&gt;action() if filter-&gt;isActivated(), how it is occurs for engines during simulation. To activate/deactivate certain filter setup isFilterActivated key, for example
+
+colorized_velocity['isFilterActivated']=False
+
+ColorizedVelocityFilter calculate mean velocity of a body on last time interval and assign a color with this body from the color scale.
+ColorizedLayerEngine assign a desired color with bodies, who lies in certain layer.
+
+-- 
+Best regards, Sergei D.
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000601.html">[deprecated list] [Yade-users] &quot;primary view&quot; transparent window
+</A></li>
+	<LI>Next message: <A HREF="000644.html">[deprecated list] building error : cannot find lminiWm3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#643">[ date ]</a>
+              <a href="thread.html#643">[ thread ]</a>
+              <a href="subject.html#643">[ subject ]</a>
+              <a href="author.html#643">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

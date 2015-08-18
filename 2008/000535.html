@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Strain compution in	Triaxialstresscontroller
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Strain%20compution%20in%0A%09Triaxialstresscontroller&In-Reply-To=%3C492C2E27.1050305%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000533.html">
+   <LINK REL="Next"  HREF="000534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Strain compution in	Triaxialstresscontroller</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Strain%20compution%20in%0A%09Triaxialstresscontroller&In-Reply-To=%3C492C2E27.1050305%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Strain compution in	Triaxialstresscontroller">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Tue Nov 25 17:56:07 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000533.html">[deprecated list] [Yade-users] Strain compution in	Triaxialstresscontroller
+</A></li>
+        <LI>Next message: <A HREF="000534.html">[deprecated list] [Yade-users] Strain compution in	Triaxialstresscontroller
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#535">[ date ]</a>
+              <a href="thread.html#535">[ thread ]</a>
+              <a href="subject.html#535">[ subject ]</a>
+              <a href="author.html#535">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ah... I should have read Luc's post before sending my own reply...
+
+Thanks.
+
+Bruno
+
+
+
+Luc Sibille a &#233;crit :
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i>   There is several definitions of strain, see for instance the page
+</I>&gt;<i> about strain computation in Wikipedia:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://en.wikipedia.org/wiki/Deformation_(mechanics">http://en.wikipedia.org/wiki/Deformation_(mechanics</A>)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> If I'am right (but please verify to be sure):
+</I>&gt;<i>
+</I>&gt;<i> ** Log means ln (natural logarithm),
+</I>&gt;<i>
+</I>&gt;<i> ** The way to compute strains in Yade is valid for large strains (or
+</I>&gt;<i> large transformations), whereas the definition
+</I>&gt;<i> epsilon=(length-length0)/length0 is valid under the hypothesis of small
+</I>&gt;<i> strains.
+</I>&gt;<i>
+</I>&gt;<i> ** compare the results given by ln(length/length0) and
+</I>&gt;<i> (length-length0)/length0, it is quasi the same for strains lower than
+</I>&gt;<i> 20% to 30%, when strains become too much important
+</I>&gt;<i> (length-length0)/length0 is no longer valid.
+</I>&gt;<i>
+</I>&gt;<i>   Best
+</I>&gt;<i>
+</I>&gt;<i>   Luc
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &#24352;&#26519; a &#233;crit :
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi everyone
+</I>&gt;&gt;<i> These days I'm a little puzzled with the strain compution in 
+</I>&gt;&gt;<i> TriaxialstressController.cpp ,just as follows:
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> strain[0] = Mathr::Log(width0/width);//Eq(1)
+</I>&gt;&gt;<i> strain[1] = Mathr::Log(height0/height);//Eq(2)
+</I>&gt;&gt;<i> strain[2] = Mathr::Log(depth0/depth);//Eq(3)
+</I>&gt;&gt;<i> volumetricStrain=strain[0]+strain[1]+strain[2];//Eq(4)
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> IIRC,Log means not log10 but ln as usual .Is it right?
+</I>&gt;&gt;<i> Eq(1 to 3) is different from the common compution of strain like:
+</I>&gt;&gt;<i> epsilon=(length-length0)/length0
+</I>&gt;&gt;<i> and, in PFC3D manuals(V3.0)-&gt;users' guide-&gt;problem solving with pfc3d 
+</I>&gt;&gt;<i> Page 47, I found another Eq for strain compution:
+</I>&gt;&gt;<i> epsilon=(L-L0)/((L0+L)/2)
+</I>&gt;&gt;<i> Are the 3 methods all right? They're designed for different fields?
+</I>&gt;&gt;<i>  
+</I>&gt;&gt;<i> Thanks for any suggestion.
+</I>&gt;&gt;<i> Regards.
+</I>&gt;&gt;<i> Zhang Lin
+</I>&gt;&gt;<i> &#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">xtss_0002 at yahoo.com.cn</A>
+</I>&gt;&gt;<i> &#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;&#12288;2008-11-25
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000533.html">[deprecated list] [Yade-users] Strain compution in	Triaxialstresscontroller
+</A></li>
+	<LI>Next message: <A HREF="000534.html">[deprecated list] [Yade-users] Strain compution in	Triaxialstresscontroller
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#535">[ date ]</a>
+              <a href="thread.html#535">[ thread ]</a>
+              <a href="subject.html#535">[ subject ]</a>
+              <a href="author.html#535">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

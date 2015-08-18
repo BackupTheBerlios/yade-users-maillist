@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Problem with dispatcher and	simulation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Problem%20with%20dispatcher%20and%0A%09simulation&In-Reply-To=%3C20090306003116.1080.31699.launchpad%40potassium.ubuntu.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000653.html">
+   <LINK REL="Next"  HREF="000659.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Problem with dispatcher and	simulation</H1>
+    <B>MarcoDottor</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Problem%20with%20dispatcher%20and%0A%09simulation&In-Reply-To=%3C20090306003116.1080.31699.launchpad%40potassium.ubuntu.com%3E"
+       TITLE="[deprecated list] [Yade-users] Problem with dispatcher and	simulation">marcodottor at libero.it
+       </A><BR>
+    <I>Fri Mar  6 01:31:16 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000653.html">[deprecated list] [Yade-users] [Yade-dev] moment calculation	and rotational speed	problem
+</A></li>
+        <LI>Next message: <A HREF="000659.html">[deprecated list] [Yade-users] pregenerated sphere packings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#654">[ date ]</a>
+              <a href="thread.html#654">[ thread ]</a>
+              <a href="subject.html#654">[ subject ]</a>
+              <a href="author.html#654">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello, I'm trying to use the interactionDispatcher but i have this
+warning:
+
+Traceback (most recent call last):
+  File &quot;/home/marco/YADE5/lib/yade-svn1691/gui/PythonUI_rc.py&quot;, line 43,
+in &lt;module&gt;
+    try: execfile(runtime.script)
+  File &quot;SIMmmPIVISC2.py&quot;, line 182, in &lt;module&gt;
+    [EngineUnit('Spheres_Viscoelastic_SimpleViscoelasticContactLaw'),],
+ArgumentError: Python argument types in
+    InteractionDispatchers.__init__(InteractionDispatchers, list, list,
+list, list, list, list)
+did not match C++ signature:
+    __init__(_object*, boost::python::list, boost::python::list,
+boost::python::list)
+    __init__(_object*)
+    __init__(_object*, std::string)
+    __init__(_object*, std::string, boost::python::dict)
+
+
+I have problem also cause speres compenetrate and pass the stl imported
+facets.
+Could you give me some advice?
+How can I modify my script to use openMPI?
+
+Thank you so much
+
+Marco
+
+
+My script is:
+
+#!/usr/local/bin/yade-trunk -x
+# -*- encoding=utf-8 -*-
+
+from yade import utils
+from math import *
+from numpy import arange
+import random
+
+## Omega
+o=Omega()
+
+#Parametri cilindro
+rCyl=0.0401   ##Raggio superiore tronco cono
+rCyl2=0.0401  ##Raggio inferiore tronco cono
+hCyl=0.0202  ##altezza base inferiore cono
+hCyl2=0.0205 ##altezza base superiore cono
+nPoly=28 ##Poligoni di cui &#195;&#168; composto il contenitore
+h1=0.010
+h2=0.032
+
+hBox=hCyl/8
+phiStep=2*pi/nPoly
+
+## PhysicalParameters
+Density=3000
+frictionAngle=radians(30)
+#sphereRadius=0.05
+tc = 0.001
+en = 0.3
+es = 0.2
+
+## Import wall's geometry
+p=utils.getViscoelasticFromSpheresInteraction(10e3,tc,en,es)
+head =
+utils.import_stl_geometry('TestaPiattaSim2.stl',frictionAngle=frictionAngle,physParamsClass=&quot;SimpleViscoelasticBodyParameters&quot;,physParamsAttr={'kn':0.0001*p['kn'],'cn':0.0001*p['cn'],'ks':0.0001*p['ks'],'cs':0.0001*p['cs']})
+
+print &quot;kn: %f&quot; % p['kn']
+print &quot;ks: %f&quot; % p['ks']
+print &quot;cn: %f&quot; % p['cn']
+print &quot;cs: %f&quot; % p['cs']
+
+for n in range(nPoly):
+        phi1,phi2=n*phiStep,(n+1)*phiStep
+        def pt(angle,radius,z):
+                return radius*sin(angle),radius*cos(angle),z
+a,b,c,d=pt(phi1,rCyl,hCyl2),pt(phi2,rCyl,hCyl2),pt(phi1,rCyl2,hCyl),pt(phi2,rCyl2,hCyl)
+        e,f=pt(phi1,rCyl,h1),pt(phi2,rCyl,h1)
+        g,h=pt(phi1,rCyl2,h2),pt(phi2,rCyl2,h2)
+        p=utils.getViscoelasticFromSpheresInteraction(10e3,tc,en,es)
+        o.bodies.append([
+                utils.facet([a,b,e],frictionAngle=frictionAngle,
+color=[0.5,0.5,0.5],physParamsClass=&quot;SimpleViscoelasticBodyParameters&quot;,physParamsAttr={'kn':0.0001*p['kn'],'cn':0.0001*p['cn'],'ks':0.0001*p['ks'],'cs':0.0001*p['cs']}),
+                utils.facet([b,e,f],frictionAngle=frictionAngle,
+color=[0.5,0.5,0.5],physParamsClass=&quot;SimpleViscoelasticBodyParameters&quot;,physParamsAttr={'kn':0.0001*p['kn'],'cn':0.0001*p['cn'],'ks':0.0001*p['ks'],'cs':0.0001*p['cs']}),
+])
+
+for b in o.bodies: b['isDynamic']=False
+
+print &quot;kn: %f&quot; % p['kn']
+print &quot;ks: %f&quot; % p['ks']
+print &quot;cn: %f&quot; % p['cn']
+print &quot;cs: %f&quot; %p['cs']
+
+box =
+utils.box([0,0,hCyl2+hBox/2],[rCyl,rCyl,hBox/2],density=10000,wire=True,
+color=[0,0,1],frictionAngle=frictionAngle,physParamsClass=&quot;SimpleViscoelasticBodyParameters&quot;)
+
+b=utils.getViscoelasticFromSpheresInteraction(box.phys['mass'],tc,en,es)
+box.phys['kn'],box.phys['cn'],box.phys['ks'],box.phys['cs']=0.0001*b['kn'],0.0001*b['cn'],0.0001*b['ks'],0.0001*b['cs']
+
+boxId=o.bodies.append(box)
+
+box.phys.blockedDOFs=['x','y','rz','ry','rx']
+#for c in o.bodies: c['isDynamic']=False
+
+print &quot;kn: %f&quot; % p['kn']
+print &quot;ks: %f&quot; % p['ks']
+print &quot;cn: %f&quot; % p['cn']
+print &quot;cs: %f&quot; % p['cs']
+
+## Spheres
+rSphere=0.0005
+Col=3
+Color=0.8
+divisioni=0
+red=0
+green=0
+blue=0
+Bande=5
+LarghezzaBande=rCyl2/Bande
+nSphere=0
+
+for z in arange(rSphere,Col*1.9*rSphere,1.9*rSphere):
+        red=0.7
+        green=0.2
+        blue=0.7
+
+        for r in arange(2.2*rSphere,rCyl2-1*rSphere,2*rSphere):
+                divisioni=2*pi*r/(rSphere*2)
+
+                for n in arange(1,divisioni,1):
+
+                        if r&gt;LarghezzaBande and r&lt;LarghezzaBande*2:
+                                red=1
+                                green=0
+                                blue=0
+
+                        if r&gt;LarghezzaBande*2 and r&lt;LarghezzaBande*3:
+                                red=1
+                                green=0.9
+                                blue=0
+
+                        if r&gt;LarghezzaBande*3 and r&lt;LarghezzaBande*4:
+                                red=0.1
+                                green=1
+                                blue=0.1
+
+                        if r&gt;LarghezzaBande*4 and r&lt;LarghezzaBande*5:
+                                red=0
+                                green=0
+                                blue=1
+                        theta=2*pi/divisioni*n
+                        nSphere=nSphere+1
+s=utils.sphere([r*sin(theta),r*cos(theta),hCyl2-z],rSphere*(1-.2*(random.random())),density=Density,frictionAngle=frictionAngle,color=[red,green,blue],physParamsClass=&quot;SimpleViscoelasticBodyParameters&quot;)
+p=utils.getViscoelasticFromSpheresInteraction(s.phys['mass'],tc,en,es)
+s.phys['kn'],s.phys['cn'],s.phys['ks'],s.phys['cs']=5*p['kn'],5*p['cn'],5*p['ks'],5*p['cs']
+                        o.bodies.append(s)
+
+print &quot;Number of spheres: %d&quot; % nSphere
+print &quot;kn: %f&quot; % p['kn']
+print &quot;ks: %f&quot; % p['ks']
+print &quot;cn: %f&quot; % p['cn']
+print &quot;cs: %f&quot; % p['cs']
+
+## Timestep
+o.dt=0.00008
+
+## Initializers
+o.initializers=[
+        ## Create and reset to zero container of all PhysicalActions
+that will be used
+        StandAloneEngine('PhysicalActionContainerInitializer'),
+        ## Create bounding boxes. They are needed to zoom the 3d view
+properly before we start the simulation.
+MetaEngine('BoundingVolumeMetaEngine',[EngineUnit('InteractingSphere2AABB'),EngineUnit('InteractingFacet2AABB'),EngineUnit('InteractingBox2AABB'),EngineUnit('MetaInteractingGeometry2AABB')])
+        ]
+
+## Engines
+o.engines=[
+
+        ## Resets forces and momenta the act on bodies
+        StandAloneEngine('PhysicalActionContainerReseter'),
+
+        InteractionDispatchers(
+[EngineUnit('InteractingSphere2InteractingSphere4SpheresContactGeometry'),],
+[EngineUnit('InteractingSphere2InteractingSphere4SpheresContactGeometry'),],
+[EngineUnit('InteractingFacet2InteractingSphere4SpheresContactGeometry'),],
+[EngineUnit('InteractingBox2InteractingSphere4SpheresContactGeometry'),],
+                [EngineUnit('SimpleViscoelasticRelationships'),],
+[EngineUnit('Spheres_Viscoelastic_SimpleViscoelasticContactLaw'),],
+        ),
+
+        ## Associates bounding volume to each body.
+        MetaEngine('BoundingVolumeMetaEngine',[
+                EngineUnit('InteractingSphere2AABB'),
+                EngineUnit('InteractingFacet2AABB'),
+                EngineUnit('InteractingBox2AABB'),
+                EngineUnit('MetaInteractingGeometry2AABB')
+        ]),
+        ## Using bounding boxes find possible body collisions.
+        #StandAloneEngine('SpatialQuickSortCollider'),
+        StandAloneEngine('PersistentSAPCollider'),
+        ## Create geometry information about each potential collision.
+        #MetaEngine('InteractionGeometryMetaEngine',[
+        #
+EngineUnit('InteractingSphere2InteractingSphere4SpheresContactGeometry'),
+        #
+EngineUnit('InteractingFacet2InteractingSphere4SpheresContactGeometry'),
+        #
+EngineUnit('InteractingBox2InteractingSphere4SpheresContactGeometry')
+        #]),
+        ## Create physical information about the interaction.
+#MetaEngine('InteractionPhysicsMetaEngine',[EngineUnit('SimpleViscoelasticRelationships')]),
+        ## Constitutive law
+#MetaEngine('ConstitutiveLawDispatcher',[EngineUnit('Spheres_Viscoelastic_SimpleViscoelasticContactLaw')]),
+        ## Apply gravity
+
+        DeusExMachina('GravityEngine',{'gravity':[0,0,9.81]}),
+
+        ## Applica forza alla base
+        DeusExMachina('ForceEngine',{'subscribedBodies':[boxId],
+'force':[0,0,-0.5],'label':'forcer'}),
+        ## Cundall damping must been disabled!
+        DeusExMachina('NewtonsDampedLaw',{'damping':0}),
+        ## Apply kinematics to walls
+DeusExMachina('RotationEngine',{'subscribedBodies':head,'rotationAxis':[0,0,1],'rotateAroundZero':True,'angularVelocity':0.1047}),
+
+StandAloneEngine('PeriodicPythonRunner',{'iterPeriod':250,'nDo':20,'command':'setForce()'}),
+#StandAloneEngine('PeriodicPythonRunner',{'iterPeriod':5000,'nDo':120,'command':'setForce1()'}),
+#StandAloneEngine('PeriodicPythonRunner',{'iterPeriod':5001,'nDo':120,'command':'setForce2()'}),
+
+#StandAloneEngine('ForceRecorder',{'startId':boxId-1,'endId':boxId,'outputFile':'forceTC2.dat','interval':100}),
+StandAloneEngine('SQLiteRecorder',{'recorders':['se3','rgb'],'dbFile':'/home/marco/replays/TestaPiatta.sqlite','virtPeriod':0.04})
+
+]
+
+def setForce():
+        fz=forcer[&quot;force&quot;][2]
+        forcer[&quot;force&quot;]=[0,0,-0.5+fz]
+        #if fz==9.5:
+        #       forcer[&quot;force&quot;]=[0,0,10]
+        pz=forcer[&quot;force&quot;][2]
+        print &quot;Carico assiale N: %f&quot; % pz
+
+def setForce1():
+        fz=forcer[&quot;force&quot;][2]
+        forcer[&quot;force&quot;]=[0,0,+1+fz]
+        pz=forcer[&quot;force&quot;][2]
+        print &quot;Carico assiale percussione N: %f&quot; % pz
+
+def setForce2():
+        fz=forcer[&quot;force&quot;][2]
+        forcer[&quot;force&quot;]=[0,0,-1+fz]
+        pz=forcer[&quot;force&quot;][2]
+        print &quot;Carico assiale percussione N: %f&quot; % pz
+
+o.saveTmp('init');
+
+o.stopAtIter=400000
+-- 
+This message was sent from Launchpad by the user
+MarcoDottor (<A HREF="https://launchpad.net/~marcodottor">https://launchpad.net/~marcodottor</A>)
+using the &quot;Contact this team&quot; link on the yade-users team page.
+For more information see
+<A HREF="https://help.launchpad.net/YourAccount/ContactingPeople">https://help.launchpad.net/YourAccount/ContactingPeople</A>
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000653.html">[deprecated list] [Yade-users] [Yade-dev] moment calculation	and rotational speed	problem
+</A></li>
+	<LI>Next message: <A HREF="000659.html">[deprecated list] [Yade-users] pregenerated sphere packings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#654">[ date ]</a>
+              <a href="thread.html#654">[ thread ]</a>
+              <a href="subject.html#654">[ subject ]</a>
+              <a href="author.html#654">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

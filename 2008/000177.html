@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Error Message After Launching YADE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20Message%20After%20Launching%20YADE&In-Reply-To=%3C47FF16F1.8000307%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000176.html">
+   <LINK REL="Next"  HREF="000178.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Error Message After Launching YADE</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Error%20Message%20After%20Launching%20YADE&In-Reply-To=%3C47FF16F1.8000307%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Error Message After Launching YADE">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Fri Apr 11 09:44:49 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000176.html">[Yade-users] Error Message After Launching YADE
+</A></li>
+        <LI>Next message: <A HREF="000178.html">[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always	null...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#177">[ date ]</a>
+              <a href="thread.html#177">[ thread ]</a>
+              <a href="subject.html#177">[ subject ]</a>
+              <a href="author.html#177">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello.
+&gt;<i> After launching YADE&gt;Preprocessor&gt;Filegenerator&gt;...having error 
+</I>&gt;<i> message in terminal like---
+</I>&gt;<i> YadeQtMainWindow: Loading configuration file: 
+</I>&gt;<i> /home/shompa/.yade-0.11.1/QtGUIPreferences.xml.
+</I>&gt;<i> Attribute is not defined : outputFileName
+</I>&gt;<i> Attribute is not defined : serializationDynlib
+</I>&gt;<i> Attribute is not defined : outputFileName
+</I>&gt;<i> Attribute is not defined : serializationDynlib
+</I>So, first, this is not a real error message, in the sense that I had 
+also become it, and it never prevent my calculations to run well (when 
+they didn't that was not due to this !)
+
+&gt;<i> Suppose I want to generate 9 partilce...for this I have to prepare my 
+</I>&gt;<i> input file?
+</I>&gt;<i> But as per reference 
+</I>&gt;<i> (<A HREF="http://yade.wikia.com/wiki/First_steps">http://yade.wikia.com/wiki/First_steps</A>)....Filegenerators are used to 
+</I>&gt;<i> generate an input file for yade to simulate something.
+</I>&gt;<i>
+</I>&gt;<i> What is the function and significance of &quot;import File 
+</I>&gt;<i> Name&quot;../data/small.sdec.xyz?
+</I>Then, about &quot;import File Name&quot;. The idea is that it is a text file 
+containing all the informations about the sample you want generate : on 
+each line the X,Y and Z coordinates of the center on a sphere, and its 
+radius. This informations are read by Yade, stored in a list called 
+generally something like &quot;sphere_list&quot; (type &quot;vector&lt;BasicSphere&gt;&quot;), and 
+this list is used after to generate really the sample (create the 
+bodies). So if you want to generate 9 particle, you have to create your 
+own text file with 9 such lines (it's normal you have no 
+&quot;small.sdec.xyz&quot; file)
+
+To finish, it should depend on the version of Yade you have, but maybe 
+this importFileName is in fact not used (look at the sources to know it) 
+:<i> an other method called &quot;GenerateCloud&quot; can be used to create this 
+</I>&quot;sphere_list&quot;. You have to give to this function the corners of a volume 
+to be &quot;filled&quot; with a given number of spheres (with a given porosity 
+assumed to be high), and a given &quot;radius standard deviation&quot; (the radii 
+are statistically distributed around a calculated &quot;mean value&quot;). But 
+there are default parameters in the Preprocessor normally.
+
+Jerome
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080411/61a0186a/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080411/61a0186a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000176.html">[Yade-users] Error Message After Launching YADE
+</A></li>
+	<LI>Next message: <A HREF="000178.html">[Yade-users] Dt by GlobalStifnessTimeStepper version 1311 always	null...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#177">[ date ]</a>
+              <a href="thread.html#177">[ thread ]</a>
+              <a href="subject.html#177">[ subject ]</a>
+              <a href="author.html#177">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

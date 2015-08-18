@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Yade crashes from vertical facets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Yade%20crashes%20from%20vertical%20facets&In-Reply-To=%3C930069bf0906250105u3c87d274ufb80273f315d5c74%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000783.html">
+   <LINK REL="Next"  HREF="000790.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Yade crashes from vertical facets</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Yade%20crashes%20from%20vertical%20facets&In-Reply-To=%3C930069bf0906250105u3c87d274ufb80273f315d5c74%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] Yade crashes from vertical facets">gladky.anton at gmail.com
+       </A><BR>
+    <I>Thu Jun 25 10:05:43 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000783.html">[deprecated list] [Yade-users] Yade crashes from vertical facets
+</A></li>
+        <LI>Next message: <A HREF="000790.html">[deprecated list] [Yade-users] Yade crashes from vertical facets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#784">[ date ]</a>
+              <a href="thread.html#784">[ thread ]</a>
+              <a href="subject.html#784">[ subject ]</a>
+              <a href="author.html#784">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>If I wait a little bit more I get  messages included to attach file.
+______________________________
+[ENG] Best Regards
+[GER] Mit freundlichen Gr&#252;&#223;en
+[RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+[UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+2009/6/25 Anton Gladky &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">gladky.anton at gmail.com</A>&gt;
+
+&gt;<i> Hi, all!
+</I>&gt;<i>
+</I>&gt;<i> I have that YADE crashes because of 1 string in my script.
+</I>&gt;<i>
+</I>&gt;<i> CODE:
+</I>&gt;<i> #_______________________________________________________________________
+</I>&gt;<i> a = 62
+</I>&gt;<i> b = 40
+</I>&gt;<i> h = 33
+</I>&gt;<i> boxThick = 3
+</I>&gt;<i> boxCoef = 5
+</I>&gt;<i> a = 0.001*a
+</I>&gt;<i> b = 0.001*b
+</I>&gt;<i> h = 0.001*h
+</I>&gt;<i>
+</I>&gt;<i> #Side 1
+</I>&gt;<i>
+</I>&gt;<i> O.bodies.append(utils.facet([(a/2*boxCoef,b/2*boxCoef,0),(a/2*boxCoef,-b/2*boxCoef,0),(a/2*boxCoef,-b/2*boxCoef,boxThick*boxCoef)],dynamic=False,color=[0.98,0.984,0.576]))
+</I>&gt;<i> #_______________________________________________________________________
+</I>&gt;<i>
+</I>&gt;<i> The process crashes after last string.
+</I>&gt;<i> But when I change:
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> O.bodies.append(utils.facet([(a/2*boxCoef,b/2*boxCoef,0),(a/2*boxCoef,-b/2*boxCoef,0)..........................
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> to
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> O.bodies.append(utils.facet([(a/2*boxCoef,b/2*boxCoef,0),(a/2*boxCoef-0.000001,-b/2*boxCoef,0)
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>&gt;<i> it works perfect. Maybe there is the division on zero somewhere?
+</I>&gt;<i>
+</I>&gt;<i> ______________________________
+</I>&gt;<i> [ENG] Best Regards
+</I>&gt;<i> [GER] Mit freundlichen Gr&#252;&#223;en
+</I>&gt;<i> [RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+</I>&gt;<i> [UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+</I>&gt;<i>
+</I>&gt;<i> Anton Gladkyy
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090625/96f7e3d8/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090625/96f7e3d8/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: yade_crash.tgz
+Type: application/x-gzip
+Size: 2556 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090625/96f7e3d8/attachment.bin">https://lists.berlios.de/pipermail/yade-users/attachments/20090625/96f7e3d8/attachment.bin</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000783.html">[deprecated list] [Yade-users] Yade crashes from vertical facets
+</A></li>
+	<LI>Next message: <A HREF="000790.html">[deprecated list] [Yade-users] Yade crashes from vertical facets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#784">[ date ]</a>
+              <a href="thread.html#784">[ thread ]</a>
+              <a href="subject.html#784">[ subject ]</a>
+              <a href="author.html#784">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

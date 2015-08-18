@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Attributes%20of%20CohesiveFrictionalContactInteraction%0A%20%28bug%20%3F%29&In-Reply-To=%3C487E01E9.6070302%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000380.html">
+   <LINK REL="Next"  HREF="000409.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Attributes%20of%20CohesiveFrictionalContactInteraction%0A%20%28bug%20%3F%29&In-Reply-To=%3C487E01E9.6070302%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Wed Jul 16 16:12:57 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000380.html">[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+</A></li>
+        <LI>Next message: <A HREF="000409.html">[Yade-users] test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#382">[ date ]</a>
+              <a href="thread.html#382">[ thread ]</a>
+              <a href="subject.html#382">[ subject ]</a>
+              <a href="author.html#382">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bruno Chareyre a &#233;crit :
+&gt;<i> Jerome Duriez a &#233;crit :
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hello everybody. I just noticed that the class 
+</I>&gt;&gt;<i> &quot;CohesiveFrictionalContactInteraction&quot; (in pkg/dem/Engine/EngineUnit/) 
+</I>&gt;&gt;<i> inherits from the &quot;_ElasticContact_Interaction&quot;, whereas in the 
+</I>&gt;&gt;<i> registerAttributes (of CohesiveFrictionalContactInteraction) what is 
+</I>&gt;&gt;<i> called first is :
+</I>&gt;&gt;<i> _SimpleElastic_Interaction::registerAttributes();
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It seems to me that it is quite not logic...
+</I>&gt;&gt;<i> In fact some of the attributes which belong to 
+</I>&gt;&gt;<i> CohesiveFrictionalContactInteraction through ElasticContactInteraction 
+</I>&gt;&gt;<i> (but which are not in SimpleElasticInteraction) are however registered 
+</I>&gt;&gt;<i> (like tangensofFrictionAngle for exemple), but the work is not perfectly 
+</I>&gt;&gt;<i> done : for example &quot;ks&quot; is not registered.
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Thank you for the remark. I added &quot;ks&quot; in registered parameters. It 
+</I>&gt;<i> should be enough to fix the problem, shouldn't it?
+</I>&gt;<i> There is no real reason to consider this a bug. Registering 
+</I>&gt;<i> ElasticContactIntercations would need extra disk space for variables 
+</I>&gt;<i> like &quot;equilibriumDistance&quot;, which are in fact useless in the current 
+</I>&gt;<i> cohesive-frictional law.
+</I>&gt;<i>   
+</I>Ok, that's in fact a detail, but so why making 
+CohesiveFrictionalContactInteraction inherit from 
+ElasticContactInteraction if not all its arguments are used ? To not 
+define again an other class which would be &quot;intermediate&quot; between 
+SimpleElasticInteraction and ElasticContactInteraction ? (this could be 
+a reason, indeed)
+Thank your for your response (and for the commit...)
+
+Jerome
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000380.html">[Yade-users] Attributes of CohesiveFrictionalContactInteraction (bug ?)
+</A></li>
+	<LI>Next message: <A HREF="000409.html">[Yade-users] test
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#382">[ date ]</a>
+              <a href="thread.html#382">[ thread ]</a>
+              <a href="subject.html#382">[ subject ]</a>
+              <a href="author.html#382">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

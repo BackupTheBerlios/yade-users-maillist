@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] status : 36608 (FAILED) in	yade-multi
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20status%20%3A%2036608%20%28FAILED%29%20in%0A%09yade-multi&In-Reply-To=%3C930069bf0907310055j5c9aa0c1s7850727fb3227519%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000926.html">
+   <LINK REL="Next"  HREF="000928.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] status : 36608 (FAILED) in	yade-multi</H1>
+    <B>Anton Gladky</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20status%20%3A%2036608%20%28FAILED%29%20in%0A%09yade-multi&In-Reply-To=%3C930069bf0907310055j5c9aa0c1s7850727fb3227519%40mail.gmail.com%3E"
+       TITLE="[deprecated list] [Yade-users] status : 36608 (FAILED) in	yade-multi">gladky.anton at gmail.com
+       </A><BR>
+    <I>Fri Jul 31 09:55:47 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000926.html">[deprecated list] [Yade-users] status : 36608 (FAILED) in	yade-multi
+</A></li>
+        <LI>Next message: <A HREF="000928.html">[deprecated list] [Yade-users] status : 36608 (FAILED) in	yade-multi
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It works normally, I get normal results.
+I just dont know what that string means.
+
+During simulation, I use Omega::instance().stopSimulationLoop();
+Can it be the reason?
+
+
+Python TCP server listening on localhost:9001, auth cookie is `cyaeus'
+/usr/lib/python2.6/dist-packages/pytz/__init__.py:32: UserWarning: Module
+pylab was already imported from /usr/lib/python2.6/dist-packages/pylab.py,
+but /usr/lib/python2.6/dist-packages is being added to sys.path
+  from pkg_resources import resource_stream
+/usr/lib/python2.6/dist-packages/pytz/__init__.py:32: UserWarning: Module
+matplotlib was already imported from
+/usr/lib/python2.6/dist-packages/matplotlib/__init__.py, but
+/usr/lib/python2.6/dist-packages is being added to sys.path
+  from pkg_resources import resource_stream
+Running script press-cyl_plate-plate.py
+9
+Finished, bye.
+terminating...
+Terminated
+
+=================== JOB SUMMARY ================
+id      : grainSize_09
+status  : 36608 (FAILED)
+duration: 00:04:00
+command : PARAM_TABLE=press-cyl_plate-plate_multy.py:2  nice -n 10
+./../bin/yade-current -N PythonUI -- -n -x press-cyl_plate-plate.py &gt;
+press-cyl_plate-plate.grainSize_09.log 2&gt;&amp;1
+started : Fri Jul 31 09:29:54 2009
+finished: Fri Jul 31 09:33:54 2009
+
+
+
+______________________________
+[ENG] Best Regards
+[GER] Mit freundlichen Gr&#252;&#223;en
+[RUS] &#1057; &#1085;&#1072;&#1080;&#1083;&#1091;&#1095;&#1096;&#1080;&#1084;&#1080; &#1087;&#1086;&#1078;&#1077;&#1083;&#1072;&#1085;&#1080;&#1103;&#1084;&#1080;
+[UKR] &#1047; &#1085;&#1072;&#1081;&#1082;&#1088;&#1072;&#1097;&#1080;&#1084;&#1080; &#1087;&#1086;&#1073;&#1072;&#1078;&#1072;&#1085;&#1085;&#1103;&#1084;&#1080;
+
+Anton Gladkyy
+
+
+2009/7/31 V&#225;clav &#352;milauer &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">eudoxos at arcig.cz</A>&gt;
+
+&gt;<i>
+</I>&gt;<i> &gt; I use very useful for me yade-multi.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; But in log-file I get
+</I>&gt;<i> &gt; status  : 36608 (FAILED)
+</I>&gt;<i>
+</I>&gt;<i> The process didn't exit cleanly -- probably a crash or abort. What does
+</I>&gt;<i> the log say at the end? Unfortunately, we get SEGV at the end from
+</I>&gt;<i> log4cxx (probably), and there is no way to tell what caused the crash
+</I>&gt;<i> just from the exit status.
+</I>&gt;<i>
+</I>&gt;<i> BTW, when yade-multi is running, try <A HREF="http://localhost:9080">http://localhost:9080</A>
+</I>&gt;<i>
+</I>&gt;<i> V.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users">https://launchpad.net/~yade-users&lt;https://launchpad.net/%7Eyade-users</A>&gt;
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20090731/0054c7bb/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20090731/0054c7bb/attachment.html</A>&gt;
+-------------- next part --------------
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000926.html">[deprecated list] [Yade-users] status : 36608 (FAILED) in	yade-multi
+</A></li>
+	<LI>Next message: <A HREF="000928.html">[deprecated list] [Yade-users] status : 36608 (FAILED) in	yade-multi
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

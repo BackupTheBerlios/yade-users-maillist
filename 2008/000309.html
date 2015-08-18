@@ -1,0 +1,281 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] recorder problems
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20recorder%20problems&In-Reply-To=%3C484FE098.1000206%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000310.html">
+   <LINK REL="Next"  HREF="000313.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] recorder problems</H1>
+    <B>Lionel Favier</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20recorder%20problems&In-Reply-To=%3C484FE098.1000206%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] recorder problems">lfavier at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Wed Jun 11 16:26:32 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000310.html">[Yade-users] recorder problems
+</A></li>
+        <LI>Next message: <A HREF="000313.html">[Yade-users] recorder problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#309">[ date ]</a>
+              <a href="thread.html#309">[ thread ]</a>
+              <a href="subject.html#309">[ subject ]</a>
+              <a href="author.html#309">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Benjamin Fragneaud a &#233;crit :
+&gt;<i> Benjamin Fragneaud wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Thanks Jerome,
+</I>&gt;&gt;<i> I try it right now and let you know if I have other issues concerning 
+</I>&gt;&gt;<i> this problem. Sorry for this kind of details, I'm just starting with C++ 
+</I>&gt;&gt;<i> and debugging is always obvious.
+</I>&gt;&gt;<i> Thanks again,
+</I>&gt;&gt;<i> Ben
+</I>&gt;&gt;<i> P.D: yes I read the getting started, that's an excellent first step for 
+</I>&gt;&gt;<i> beginners.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Jerome Duriez wrote:
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>     Hello. The problem is that the lines you wrote in the mail allow 
+</I>&gt;&gt;&gt;<i> only to define the Engines which will record all that you want. That's 
+</I>&gt;&gt;&gt;<i> neccessary to define them but not at all enough !
+</I>&gt;&gt;&gt;<i>     Once they are correctly defined you have to make so that these 
+</I>&gt;&gt;&gt;<i> Engines will indeed be executed when they have to. To make simple that 
+</I>&gt;&gt;&gt;<i> is done in the lines occuring at the end of the createActors function
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>     //rootBody-&gt;engines.push_back(averagePositionRecorder);
+</I>&gt;&gt;&gt;<i>     //rootBody-&gt;engines.push_back(velocityRecorder);
+</I>&gt;&gt;&gt;<i>     //rootBody-&gt;engines.push_back(forcerec);
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> And as you see they are commented...!! whereas the line about the 
+</I>&gt;&gt;&gt;<i> triaxialtest recorder :
+</I>&gt;&gt;&gt;<i> rootBody-&gt;engines.push_back(triaxialStateRecorder);
+</I>&gt;&gt;&gt;<i> (above) is not commented...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> In fact these lines allow to access to the list of the Engines of the 
+</I>&gt;&gt;&gt;<i> simulation will we be executed every time step (this list is the 
+</I>&gt;&gt;&gt;<i> variable &quot;engines&quot; of the &quot;rootBody&quot; object, which you have to consider 
+</I>&gt;&gt;&gt;<i> as the whole simulation). And so you have to put in this list (with the 
+</I>&gt;&gt;&gt;<i> C++ function &quot;push_back&quot;) the engines you want to be executed.
+</I>&gt;&gt;&gt;<i> Did you read my small &quot;Getting started&quot; ? ;-) 
+</I>&gt;&gt;&gt;<i> Good luck
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Jerome
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Benjamin Fragneaud a &#233;crit :
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> Hi Lionel,
+</I>&gt;&gt;&gt;&gt;<i> This problem occurs also with Yade&#180;s default preprocessor, for 
+</I>&gt;&gt;&gt;&gt;<i> expample with cohesiveTriaxialTest. In this preprocessor file, there 
+</I>&gt;&gt;&gt;&gt;<i> is two types of recorders:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> - AveragePositionRecorder, ForceRecorder, VelocityRecorder -&gt; doesn&#180;t 
+</I>&gt;&gt;&gt;&gt;<i> work (empty recorded files)
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Code used:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> void CohesiveTriaxialTest::createActors(shared_ptr&lt;MetaBody&gt;&amp; rootBody)
+</I>&gt;&gt;&gt;&gt;<i> 00557 {
+</I>&gt;&gt;&gt;&gt;<i> 00558 // recording average positions
+</I>&gt;&gt;&gt;&gt;<i> 00559         averagePositionRecorder = 
+</I>&gt;&gt;&gt;&gt;<i> shared_ptr&lt;AveragePositionRecorder&gt;(new AveragePositionRecorder);
+</I>&gt;&gt;&gt;&gt;<i> 00560         averagePositionRecorder -&gt; outputFile           = 
+</I>&gt;&gt;&gt;&gt;<i> positionRecordFile;
+</I>&gt;&gt;&gt;&gt;<i> 00561         averagePositionRecorder -&gt; interval             = 
+</I>&gt;&gt;&gt;&gt;<i> recordIntervalIter;
+</I>&gt;&gt;&gt;&gt;<i> 00562 // recording forces
+</I>&gt;&gt;&gt;&gt;<i> 00563         forcerec = shared_ptr&lt;ForceRecorder&gt;(new ForceRecorder);
+</I>&gt;&gt;&gt;&gt;<i> 00564         forcerec -&gt; outputFile  = forceRecordFile;
+</I>&gt;&gt;&gt;&gt;<i> 00565         forcerec -&gt; interval    = recordIntervalIter;
+</I>&gt;&gt;&gt;&gt;<i> 00566 // recording velocities
+</I>&gt;&gt;&gt;&gt;<i> 00567         velocityRecorder = shared_ptr&lt;VelocityRecorder&gt;(new 
+</I>&gt;&gt;&gt;&gt;<i> VelocityRecorder);
+</I>&gt;&gt;&gt;&gt;<i> 00568         velocityRecorder-&gt; outputFile   = velocityRecordFile;
+</I>&gt;&gt;&gt;&gt;<i> 00569         velocityRecorder-&gt; interval     = recordIntervalIter;
+</I>&gt;&gt;&gt;&gt;<i> 00570
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> - TriaxialTestRecorder -&gt; works
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> The main preprocessor is available in 
+</I>&gt;&gt;&gt;&gt;<i> pkg/dem/PreProcessor/CohesiveTriaxialTest.cpp; it is also attached to 
+</I>&gt;&gt;&gt;&gt;<i> this mail.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Since my preprocessor is just on test, I preferred to use as an 
+</I>&gt;&gt;&gt;&gt;<i> example which is supposed to work properly, and that I'm using as an 
+</I>&gt;&gt;&gt;&gt;<i> example in order to understand the structure of the recorder egines.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Let me know if some more information is required.
+</I>&gt;&gt;&gt;&gt;<i> Thanks again your help and time,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Ben
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Lionel Favier &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lfavier at geo.hmg.inpg.fr</A>&gt; ha escrito:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i> Benjamin Fragneaud a &#233;crit :
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Hi everybody,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> I&#180;d like to know if anybody already had problems with some recorders
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> like ForceRecorder engine, VelocityRecorder engine etc... this engines
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> seem to be constructed on the same basis. By using yade prepocessor
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> examples, I found out that this recorders create a document, but this
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> document remain empty (no data). The only recorders wich are working
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> properly are the stressWallRecorder as well as the snaprecorder, which
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> both belong to the triaxialTestEngine.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> I&#180;m not an expert in C++ programmation, I just started to deal with
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> this stuff one month ago, so I beleive that I must do something wrong.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Yade is actually  running (one of the last svn subversion) on kubuntu
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> 8.04 hardy and all the yade components appear to run perfectly on this
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> platform.
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Thanks a lot for your help,
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Ben
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>             
+</I>&gt;&gt;&gt;&gt;&gt;<i> Hello Ben,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> I think you should add an enclosure of your Preprocessor example,
+</I>&gt;&gt;&gt;&gt;&gt;<i> because a lot of various worries could happen ...
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> -- 
+</I>&gt;&gt;&gt;&gt;&gt;<i> Lionel FAVIER
+</I>&gt;&gt;&gt;&gt;&gt;<i> Doctorant
+</I>&gt;&gt;&gt;&gt;&gt;<i> Laboratoire Sols Solides Structures, Risques (3S-R)
+</I>&gt;&gt;&gt;&gt;&gt;<i> Equipe Risques et Vuln&#233;rabilit&#233; (RV)
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Domaine Universitaire - BP 53
+</I>&gt;&gt;&gt;&gt;&gt;<i> 38041 Grenoble Cedex 9
+</I>&gt;&gt;&gt;&gt;&gt;<i> France
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> T&#233;l: +33 (0)4 56 52 86 36
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lionel.favier at hmg.inpg.fr</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;&gt;&gt;<i>           
+</I>&gt;&gt;&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Yade-users mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Hi,
+</I>&gt;<i> I got to the lab, and checked it again. With the CohesiveTriaxialTest, 
+</I>&gt;<i> once the engines are setup the be run at each loop: uncommented
+</I>&gt;<i>
+</I>&gt;<i> rootBody-&gt;engines.push_back(engine_corresponding_to_the_one_I_want_to_use); the file are created when at the first step (generate step),but when I stop the model they remain empty.
+</I>&gt;<i> Any idea?
+</I>&gt;<i> Thanks, 
+</I>&gt;<i>
+</I>&gt;<i> Ben 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>If you push the &quot;stop&quot; button during a simulation, the code is going to 
+reset every informations in your txt files, corresponding to &quot;forces&quot;, 
+&quot;positions&quot; and &quot;velocities&quot;. Actually the code considers that you're 
+going to make another computation, so he creates others &quot;forces&quot; .. 
+files, but empty because you're in the first step.
+If you want to keep your informations, you can push the pause button, 
+afterwards you remove your files from the temporary folder (../bin).
+
+Good luck
+
+Lionel
+
+-- 
+Lionel FAVIER
+Doctorant
+Laboratoire Sols Solides Structures, Risques (3S-R)
+Equipe Risques et Vuln&#233;rabilit&#233; (RV)
+
+Domaine Universitaire - BP 53
+38041 Grenoble Cedex 9
+France
+
+T&#233;l: +33 (0)4 56 52 86 36
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">lionel.favier at hmg.inpg.fr</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000310.html">[Yade-users] recorder problems
+</A></li>
+	<LI>Next message: <A HREF="000313.html">[Yade-users] recorder problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#309">[ date ]</a>
+              <a href="thread.html#309">[ thread ]</a>
+              <a href="subject.html#309">[ subject ]</a>
+              <a href="author.html#309">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

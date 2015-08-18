@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Capillary law files
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Capillary%20law%20files&In-Reply-To=%3C480869C7.9080306%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000202.html">
+   <LINK REL="Next"  HREF="000205.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Capillary law files</H1>
+    <B>luc.scholtes</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Capillary%20law%20files&In-Reply-To=%3C480869C7.9080306%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] Capillary law files">scholtes at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Fri Apr 18 11:28:39 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000202.html">[Yade-users] Capillary law files
+</A></li>
+        <LI>Next message: <A HREF="000205.html">[Yade-users] Capillary law files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Perfect Sailing wrote:
+
+&gt;<i>Hi,everyone.
+</I>&gt;<i>In the  TriaxialTestWater.cpp there is a comment &quot;this
+</I>&gt;<i>test will not work without data file for capillary
+</I>&gt;<i>law&quot;,and in CapillaryCohesiveLaw.cpp it's said the
+</I>&gt;<i>import files in the &quot;../data&quot;,whose filename like
+</I>&gt;<i>M(r=...) .However i can't find the files in yade
+</I>&gt;<i>dirctionary.
+</I>&gt;<i>Is there any papers about the capillary law in yade? I
+</I>&gt;<i>don't know the parameters V,F,delta1 and delta2 stand
+</I>&gt;<i>for what and how the capillary were computed in
+</I>&gt;<i>CapillaryCohesiveLaw.cpp.
+</I>&gt;<i>Thank you!
+</I>&gt;<i>                                            zhanglin
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Hi Zhanglin
+
+In fact, capillary files (M(r=...)) are not yet implemented in Yade directory because  I am actually working on capillary effects modelling for my PhD thesis (currently, I can send them to whom is interested). 
+
+The capillary law is based on a resolution scheme of the Laplace Young equation which defines capillary water liquid bridges between 2 spherical bodies. You can see paragraph 2 from &quot;Influence of liquid bridges on the mechanical behaviour of polydisperse granular materials&quot; by Fabien Souli&#233;, International Journal for Numerical and Analytical Methods in Geomechanics 2006, (30): 213-228 for the resolution scheme. Instead of F. Souli&#233;, I did not tried to find an analytical form for the capillary force: the force F, volume of water V and half-filling angles delta1 and delta2 for each grain-pair of radii R1 and R2 are computed from the capillary files, depending on the defined capillary pressure (the unique additionnal input parameter in the interface) and the R2/R1 ratio (denoted r in M(r=...)).
+
+Few more description of my work can be found in the Annual report of the Discrete Element Group from our lab : <A HREF="http://geo.hmg.inpg.fr/frederic/Discrete_Element_Group_FVD.html">http://geo.hmg.inpg.fr/frederic/Discrete_Element_Group_FVD.html</A>
+
+I hope this will be enough to clarify the CapillaryCohesiveLaw computations. If not, I will be pleased to teach you more. 
+
+Regards
+
+    Luc
+
+-- 
+________________________________________________________________________________________________________________________
+
+Luc SCHOLTES - Ph.D. student 
+INstitut Polytechnique de Grenoble
+
+Laboratoire 3S-R (Soils, Solids, Structures, Risks)
+Domaine Universitaire - BP 53 - 38041 GRENOBLE cedex 9 - FRANCE
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">luc.scholtes at hmg.inpg.fr</A>
+tel: +33 (0)4.56.52.86.36
+_______________________________________________________________________________________________________________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000202.html">[Yade-users] Capillary law files
+</A></li>
+	<LI>Next message: <A HREF="000205.html">[Yade-users] Capillary law files
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

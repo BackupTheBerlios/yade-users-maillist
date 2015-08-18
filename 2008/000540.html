@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] dissipating all energy in a	packing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20dissipating%20all%20energy%20in%20a%0A%09packing&In-Reply-To=%3C49512BBE.8040500%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000538.html">
+   <LINK REL="Next"  HREF="000545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] dissipating all energy in a	packing</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20dissipating%20all%20energy%20in%20a%0A%09packing&In-Reply-To=%3C49512BBE.8040500%40hmg.inpg.fr%3E"
+       TITLE="[deprecated list] [Yade-users] dissipating all energy in a	packing">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Tue Dec 23 19:19:42 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000538.html">[deprecated list] [Yade-users] dissipating all energy in a	packing
+</A></li>
+        <LI>Next message: <A HREF="000545.html">[deprecated list] [Yade-users] dissipating all energy in a	packing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#540">[ date ]</a>
+              <a href="thread.html#540">[ thread ]</a>
+              <a href="subject.html#540">[ subject ]</a>
+              <a href="author.html#540">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> 2. I could try to make cundall's damping to always diminish the force
+</I>&gt;<i> iff the coefficient is &lt;0 (.e.g damping==-.3 would mean to always reduce
+</I>&gt;<i> the force to &#215;.7), what do you think?
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>This is a very interesting problem, but honestly I thought to this hard 
+(and I tried many different dampings on 1D oscillators) and couldn't 
+find any good idea. I always end with the basic Cundall's damping being 
+the most efficient and versatile damping.
+I'm still open to suggestions though.
+
+Note that these 2-steps oscillations are sensitive to the time 
+increment, so it is just one more aspect of numerical instability with 
+inapropriate timesteps (and in fact, I think Cundall's damping is so 
+that if the undamped scheme is stable, the damped scheme will be stable 
+too, I have no instant-proof of that though). The only question is : can 
+damping revert the velocity to a greater opposite value in one (or even 
+two) step? In principle it can not.
+
+If I understand the idea above correctly, you would multiply all forces 
+by 0.7 whatever the direction relative to velocity?
+Well, in one sense, it would just mean a change in timescale (slowing 
+down all motions by a factor of 0.7...).
+The problem is it would damp no energy at all.
+In terms of stability, it would have exactly the same effect as 
+decreasing the time increment.
+
+What value are you using for damping?
+In order to decrease kinetic energy even more (you need to normalise 
+kinetic energy with elastic energy btw, or you can't tell if the value 
+is &quot;high&quot; or &quot;small&quot;, why do you say it's not small enough?), I would 
+set it to something around 0.1, and I would try reducing the timestep by 
+a factor of ~0.8.
+
+It is useless to increase the damping to higher values in most cases. 
+The PFC default : 0.7, is some of the worst idea they had if you ask me.
+
+Higher (than the optimal value) damping means slower convergence to 
+equilibrium when &quot;convergence&quot; implies some rearangements in the packing 
+(instead of just damped oscillations in a completely elastic problem). 
+When you are close to equilibrium, you always have this last grain that 
+will move a little, then trigger a local instability that will spread to 
+all the sample, which leads to small changes in each particle's 
+equilibrium state. This is the sort of events that can be a lot slower 
+with a large damping.
+
+Bruno
+
+
+
+&gt;<i> Regards, Vaclav
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+</I>&gt;<i> Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+</I>&gt;<i> More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Grenoble INP
+Laboratoire 3SR - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000538.html">[deprecated list] [Yade-users] dissipating all energy in a	packing
+</A></li>
+	<LI>Next message: <A HREF="000545.html">[deprecated list] [Yade-users] dissipating all energy in a	packing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#540">[ date ]</a>
+              <a href="thread.html#540">[ thread ]</a>
+              <a href="subject.html#540">[ subject ]</a>
+              <a href="author.html#540">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

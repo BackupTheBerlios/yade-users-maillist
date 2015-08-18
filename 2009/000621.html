@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Python%20scripting%20for%20create%0A%20links%2C%20change%20player%20config%20and%20model%20scale%20question&In-Reply-To=%3C498FE60E.6020909%40univ-nantes.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000620.html">
+   <LINK REL="Next"  HREF="000618.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question</H1>
+    <B>Luc Sibille</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Python%20scripting%20for%20create%0A%20links%2C%20change%20player%20config%20and%20model%20scale%20question&In-Reply-To=%3C498FE60E.6020909%40univ-nantes.fr%3E"
+       TITLE="[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question">luc.sibille at univ-nantes.fr
+       </A><BR>
+    <I>Mon Feb  9 09:15:10 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000620.html">[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+</A></li>
+        <LI>Next message: <A HREF="000618.html">[deprecated list] [Yade-users] error in compiling latest svn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#621">[ date ]</a>
+              <a href="thread.html#621">[ thread ]</a>
+              <a href="subject.html#621">[ subject ]</a>
+              <a href="author.html#621">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+MarcoDottor a &#233;crit :
+&gt;<i> Hello
+</I>&gt;<i> 
+</I>&gt;<i>         I have a lot of questions for you:
+</I>&gt;<i> 
+</I>&gt;<i> The thesis I'm working on is about improving the design of the debris
+</I>&gt;<i> transport of a driller,the better way to simulate this in my opinion is
+</I>&gt;<i> with DEM where i can see the particle dynamics.
+</I>&gt;<i> 
+</I>&gt;<i> I set up a simulation and the first question is:
+</I>&gt;<i> 
+</I>&gt;<i> The mean radius of the debris is about 0.0004 m, in this case the
+</I>&gt;<i> critical timestep is 10^-6 and with many particles it takes too much
+</I>&gt;<i> time to have a one or two minutes simulation, in Your opinion could I
+</I>&gt;<i> use a scaled model to have a bigger radius ad a bigger timestep, how
+</I>&gt;<i> should I modify set up parameters like Gravity, should I leave 9.81
+</I>&gt;<i> cause the mass is auto calculated from dimensions?
+</I>
+As Bruno said, there is probably no direct response about the 
+possibility to use a scaled model for your problem of debris transport.
+In my opinion, simulate one or two minutes of real time with DEM is quit 
+a lot (1 min with a timestep of 1e-6 s means 60 million of iterations, 
+with 10000 particles is a lot!). But, there are solutions. For instance 
+the problem is the same in soil-mechanics when we simulate laboratory 
+tests. The duration of a real test can be several minutes, or a few 
+hours.... But we can show, from a numerical point a view, that in 
+specific conditions we can numerically accelerate the simulation of the 
+laboratory test in order to simulate only few seconds of real time.
+
+Good luck!
+
+  Luc
+
+&gt;<i> Of course all the force in action would be very much larger loosing the
+</I>&gt;<i> adherence to reality and some potential useful informations, from the
+</I>&gt;<i> point of view of particle motion, this scaling would change the final
+</I>&gt;<i> result, in the sense that i would like to see how particles moves to
+</I>&gt;<i> improve design.
+</I>&gt;<i> 
+</I>&gt;<i> I read a lot of posts of the mailing list but I have not found anything
+</I>&gt;<i> about commanding the Yade player with Python, for example i saved a
+</I>&gt;<i> simulation in SQLite, but the clipping plane make scene cut, How can I
+</I>&gt;<i> change clipping plane?
+</I>&gt;<i> 
+</I>&gt;<i> How can I set particle links with python script, there is a function
+</I>&gt;<i> that at a certain level of force breack the links?
+</I>&gt;<i> 
+</I>&gt;<i> Thank you very much for your time
+</I>&gt;<i> 
+</I>&gt;<i> Marco
+</I>
+-- 
+Luc Sibille
+
+Universit&#233; de Nantes - Laboratoire GeM UMR CNRS
+
+IUT de Saint Nazaire
+58, rue Michel-Ange - BP 420
+44606 Saint-Nazaire Cedex, France
+
+Tel: +33 (0)2 40 17 81 78
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000620.html">[deprecated list] [Yade-users] Python scripting for create links, change player config and model scale question
+</A></li>
+	<LI>Next message: <A HREF="000618.html">[deprecated list] [Yade-users] error in compiling latest svn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#621">[ date ]</a>
+              <a href="thread.html#621">[ thread ]</a>
+              <a href="subject.html#621">[ subject ]</a>
+              <a href="author.html#621">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

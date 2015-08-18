@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] create a new engine (/common/engine/DeusMachina)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20create%20a%20new%20engine%20%28/common/engine/DeusMachina%29&In-Reply-To=%3C20080528082147.kibqm9n6x440ss8w%40cubmail.cc.columbia.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000258.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] create a new engine (/common/engine/DeusMachina)</H1>
+    <B>Benjamin Fragneaud</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20create%20a%20new%20engine%20%28/common/engine/DeusMachina%29&In-Reply-To=%3C20080528082147.kibqm9n6x440ss8w%40cubmail.cc.columbia.edu%3E"
+       TITLE="[Yade-users] create a new engine (/common/engine/DeusMachina)">bf2204 at columbia.edu
+       </A><BR>
+    <I>Wed May 28 14:21:47 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000258.html">[Yade-users] Flags &quot;isNew&quot; and &quot;isReal&quot; of interactions / computing tan(phi)
+</A></li>
+        <LI>Next message: <A HREF="000260.html">[Yade-users] create a new engine (/common/engine/DeusMachina)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi everybody,
+I'm trying to create an Engine that aplly Electrostatic force to a sphere.
+I&#180;d like to allow displacement of bodies depending on the charge and  
+the electrical potential.
+Perhaps I should precise that I&#180;m quiet new to Yade and C++ programmation.
+
+To do so, I decided to inspire myself with an already written  
+preprocesor: &quot;funnel&quot;, which has been modified in order to generate a  
+random cloud of spheres in a closed box.
+At this step every thing is working as I want to.
+
+* Creation of a new stand alone Engine:
+As well as I did before, I used an already written engine and modified  
+it. But here is the problem.
+- I copy paste the GravityEngine.
+- rename it, rename the functions within and shrd_ptr,
+- I also rename the .hpp file
+- add it in the corresponding scons file
+It compiled well (no error) and was added to the libnewengine.so.
+
+In esance it should do exactly the same thing than the GravityEngine  
+but with a different name.
+
+Nevertheless, when I try to use it within my new preprocessor, it  
+doesn&#180;t appear anymore in the preprocessor generator list (yade  
+graphique interface).
+
+Moreover, If I just declare it in the list of classes used withtout  
+using it (like declaring something that you don&#180;t use), the  
+preprocessor also don&#180;t appear in the preprocessor list...
+Is anybody has any idea about what is wrong.
+Thanks for your help,
+Best,
+Ben
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000258.html">[Yade-users] Flags &quot;isNew&quot; and &quot;isReal&quot; of interactions / computing tan(phi)
+</A></li>
+	<LI>Next message: <A HREF="000260.html">[Yade-users] create a new engine (/common/engine/DeusMachina)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

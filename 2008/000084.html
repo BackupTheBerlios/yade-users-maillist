@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] About RotationEngine ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20RotationEngine%20%3F&In-Reply-To=%3C47B1C161.4020205%40geo.hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000083.html">
+   <LINK REL="Next"  HREF="000086.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] About RotationEngine ?</H1>
+    <B>Jerome Duriez</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20RotationEngine%20%3F&In-Reply-To=%3C47B1C161.4020205%40geo.hmg.inpg.fr%3E"
+       TITLE="[Yade-users] About RotationEngine ?">duriez at geo.hmg.inpg.fr
+       </A><BR>
+    <I>Tue Feb 12 16:55:13 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000083.html">[Yade-users] public interface change for dispatchers
+</A></li>
+        <LI>Next message: <A HREF="000086.html">[Yade-users] About RotationEngine ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello everybody. I am focusing about the &quot;RotationEngine&quot; (in 
+pkg/common/Engine/DeusExMachina) and trying to understand well what it 
+does, so I have for instance one simple question :
+
+- which is the purpose of the line 
+&quot;/rb-&gt;se3.orientation.ToAxisAngle(ax,an);/&quot; ? I think I understand what 
+it does : it affects to the 3-real vector &quot;/ax/&quot; and the real &quot;/an&quot;/ 
+(both declared few lines above) respectively the axis and angle of the 
+rotation corresponding to the quaternion &quot;/orientation/&quot;.
+But why ?
+These &quot;/an/&quot; and &quot;/ax/&quot; seem indeed never to be used after that...
+Thanks
+
+Jerome
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080212/aeef6030/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080212/aeef6030/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000083.html">[Yade-users] public interface change for dispatchers
+</A></li>
+	<LI>Next message: <A HREF="000086.html">[Yade-users] About RotationEngine ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

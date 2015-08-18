@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] How to get the micro-force from the macro-stress
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20get%20the%20micro-force%20from%20the%20macro-stress&In-Reply-To=%3C45213f870801211129l171d2a5cs69da2382202961f8%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000034.html">
+   <LINK REL="Next"  HREF="000037.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] How to get the micro-force from the macro-stress</H1>
+    <B>kan</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20How%20to%20get%20the%20micro-force%20from%20the%20macro-stress&In-Reply-To=%3C45213f870801211129l171d2a5cs69da2382202961f8%40mail.gmail.com%3E"
+       TITLE="[Yade-users] How to get the micro-force from the macro-stress">nicessgg at gmail.com
+       </A><BR>
+    <I>Mon Jan 21 20:29:54 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000034.html">[Yade-users] gnome or kde
+</A></li>
+        <LI>Next message: <A HREF="000037.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, buddies,
+
+I have some questiones.
+1. how to get the micro-force from the macro-stress?
+As we know,for most of current studies, the concept of stress is used to
+describe the stress status. but when we look into the micro level, we have
+to convert the macro-stress to descrete force that applied at each particle,
+then how to do this convert?
+
+2. what is the calculation process in each time step?
+The problem is that, as see the relation ship below,
+___\|/____\|/___\|/________
+01---02---03---04---05---06...
+|<i>   \   |  /  |      |       |      | ...
+</I>11---12---13---14---15---16...
+|<i>      |      |   /  |   \  |      |...
+</I>21---22---23---24---25---26...
+...
+...
+x1---x2---x3---x4---x5---x6...
+
+in which, the number is the ID of a particle,
+and &quot;--- &quot; , &quot;/&quot; ,&quot;\&quot; and  &quot;|&quot; between the numbers mean there is a contact
+between the particles
+&quot;\|/&quot; means force.
+assume the 01-02-03-04...is the upper bounday layer, and the force is
+applied as shown &quot;\|/&quot;.
+when the calculation begins, we need to detecte the contact and update the
+position of each particles,
+now my problem comes:
+what is the procedure to calculation and update the particles' information,
+you know the force is from up layer, so the first layer (&quot;01-02-03-04...&quot;)
+should be calculated, then the second layer,and then the third layer.... but
+in DEM, the particle is independent to move, so after some time, some
+particles in the first layer may move to the second layer and some particles
+in second layer may  move to the first layer(other other layer),then how
+should I do in order to know which particle should be calculated and updated
+first and which should be done later in the same timestep?
+For example,
+01 has contacting neighbors 02 and 11, in a same timestep, after we have
+calculated 01's properties( velocity, position....), we should calculate 02
+first, then 03(the neighbor of 02), after the layer of 01-02-03...is done,
+then we can step to calculate the 11, which is to say, in a same timestep,
+though 02 and 11 are both contacting neighbors of 01, we should calculate
+02, and 11 later though 02 and 11 are both affected because of teh movement
+of 01. so, how to indentify which particle should be calculated and update
+first , and which should be later?
+(because it is a dynamic process, so just use the order of  ID  is not  a
+way to solve this)
+
+Hope I have described the problem 2 clearly,
+
+Need your help, thanks so much.
+
+Kan
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/yade-users/attachments/20080121/93495eff/attachment.html">https://lists.berlios.de/pipermail/yade-users/attachments/20080121/93495eff/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000034.html">[Yade-users] gnome or kde
+</A></li>
+	<LI>Next message: <A HREF="000037.html">[Yade-users] How to get the micro-force from the macro-stress
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

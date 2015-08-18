@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] Libraries problems with a Cluster /	folder	.yade-trunk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Libraries%20problems%20with%20a%20Cluster%20/%0A%09folder%09.yade-trunk&In-Reply-To=%3C48496E55.40404%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000278.html">
+   <LINK REL="Next"  HREF="000287.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] Libraries problems with a Cluster /	folder	.yade-trunk</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20Libraries%20problems%20with%20a%20Cluster%20/%0A%09folder%09.yade-trunk&In-Reply-To=%3C48496E55.40404%40arcig.cz%3E"
+       TITLE="[Yade-users] Libraries problems with a Cluster /	folder	.yade-trunk">eudoxos at arcig.cz
+       </A><BR>
+    <I>Fri Jun  6 19:05:25 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000278.html">[Yade-users] Libraries problems with a Cluster / folder	.yade-trunk
+</A></li>
+        <LI>Next message: <A HREF="000287.html">[Yade-users] Libraries problems with a Cluster	/	folder	.yade-trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#279">[ date ]</a>
+              <a href="thread.html#279">[ thread ]</a>
+              <a href="subject.html#279">[ subject ]</a>
+              <a href="author.html#279">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Hello, me too : I copied my sources on my part of this cluster, 
+</I>&gt;<i> recompiled but encountered this problem also _but_ with 
+</I>&gt;<i> libpython2.5.so.1.0 :
+</I>&gt;<i> /./YADE/bin/yade-trunk: error while loading shared libraries: 
+</I>&gt;<i> libpython2.5.so.1.0: cannot open shared object file: No such file or 
+</I>&gt;<i> directory/
+</I>&gt;<i>   
+</I>This is linking problem that is done by ld.so when yade is launched,
+before yade itself starts. It is not unitl then that preferences.xml
+come into play, not before. You can try &quot;ldd /./YADE/bin/yade-trunk&quot; (or
+whatever your executable file is), it will show you what files it looks for.
+
+For the cluster, you can attach list of packages, output of clean build
+of yade and config log, and a few other things:
+
+ldd yade-executable &gt; yade.ldd.txt
+dpkg -l | cat &gt; dpkg-l.txt
+build-your_version/config.log
+scons pretty=0 &gt; buildlog.txt
+/etc/issue
+uname -a
+/etc/apt/sources.list
+
+Or you can give me remote access to the machine (I can connect via
+geo.hmg.inpg.fr, firewall should not be a problem).
+
+&gt;<i> I have it on my local session in a hidden folder named 
+</I>&gt;<i> &quot;.yade-trunk&quot; and I discovered in fact that I have this &quot;.yade-trunk&quot; 
+</I>&gt;<i> only on my local session and not on my part of the cluster.
+</I>It is created when yade is run for the first time. It contains files lik
+preferences.xml (is automatically created as well), logging.conf,
+OpenGLRendererPref.xml, emergency-saved simulations to recover and so on.
+&gt;<i>   Could this explain these problems of libraries ?
+</I>&gt;<i>   
+</I>No.
+
+Regards, V&#225;clav
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000278.html">[Yade-users] Libraries problems with a Cluster / folder	.yade-trunk
+</A></li>
+	<LI>Next message: <A HREF="000287.html">[Yade-users] Libraries problems with a Cluster	/	folder	.yade-trunk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#279">[ date ]</a>
+              <a href="thread.html#279">[ thread ]</a>
+              <a href="subject.html#279">[ subject ]</a>
+              <a href="author.html#279">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

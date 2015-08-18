@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] About Triaxial Test
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20Triaxial%20Test&In-Reply-To=%3C48077F53.3060802%40hmg.inpg.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000194.html">
+   <LINK REL="Next"  HREF="000189.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] About Triaxial Test</H1>
+    <B>Bruno Chareyre</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%20About%20Triaxial%20Test&In-Reply-To=%3C48077F53.3060802%40hmg.inpg.fr%3E"
+       TITLE="[Yade-users] About Triaxial Test">bruno.chareyre at hmg.inpg.fr
+       </A><BR>
+    <I>Thu Apr 17 18:48:19 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000194.html">[Yade-users] About Triaxial Test
+</A></li>
+        <LI>Next message: <A HREF="000189.html">[Yade-users] new user problem with generating new preprocesor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Shahed Rana a &#233;crit :
+&gt;<i> Hi All,
+</I>&gt;<i> I have some question on Triaxial Test.
+</I>&gt;<i> &gt;In my earlier mail I wanted to know about different particle size...
+</I>&gt;<i> For the different particle size: have a look at TriaxialTest, it generates spheres at random of diameter .5 and 1.5 IIRC. V&#225;clav can any body explain little more .5 and 1.5 IIRC?  &gt;From Triaxial Test.cpp---mean radius,minrad,and max rad explored,with the co-operation of Jerome. min_rad=(1-0.3)*mean_rad
+</I>So, it generates spheres between 0.7 and 1.3 (not 0.5, 1.5).
+&gt;<i> max_rad=(1+0.3)*mean_rad
+</I>
+and the initial mean size of particles (can change later with internal 
+compaction) is :
+&gt;<i> mean_rad=((xyz(1-porosity)/(pi*n*(4/3))^(1/3)
+</I>&gt;<i>
+</I>&gt;<i> But.. 00087 string GenerateCloud(vector&lt;BasicSphere&gt;&amp; sphere_list, Vector3r lowerCorner, Vector3r upperCorner, long number, Real rad_std_dev, Real porosity) 00272 message &lt;<A HREF="http://yade.berlios.de/doxygen/html/dc/dba/classFileGenerator.html#9f2e268de52c62d9bbdc7c8b0eaa48e9">http://yade.berlios.de/doxygen/html/dc/dba/classFileGenerator.html#9f2e268de52c62d9bbdc7c8b0eaa48e9</A>&gt;=GenerateCloud(sphere_list, lowerCorner &lt;<A HREF="http://yade.berlios.de/doxygen/html/da/d15/classTriaxialTest.html#96f70126f235ee9a33a2ff264c9c8e84">http://yade.berlios.de/doxygen/html/da/d15/classTriaxialTest.html#96f70126f235ee9a33a2ff264c9c8e84</A>&gt;, upperCorner &lt;<A HREF="http://yade.berlios.de/doxygen/html/da/d15/classTriaxialTest.html#792aed3852b6b1136583f644009d1481">http://yade.berlios.de/doxygen/html/da/d15/classTriaxialTest.html#792aed3852b6b1136583f644009d1481</A>&gt;, numberOfGrains &lt;<A HREF="http://yade.berlios.de/doxygen/html/da/d15/classTriaxialTest.html#c91bc9c756934fc8060788a6a1cdd360">http://yade.berlios.de/doxygen/html/da/d15/classTriaxialTest.html#c91bc9c756934fc8060788a6a1cdd360</A>&gt;, 0.3, 0.75);  It means rad_std_dev=0.3,My question why 0.3 and how this value computed?  &gt;Last.from the File generator window&gt;Triaxial Test Parameter&gt; 
+</I>0.3 is not computed, its just 0.3. If you prefer 0.5 you can modify 
+this. What should be done in fact is to add a registered parameter that 
+could be changed by users.
+
+
+&gt;<i>  1.what is the significance of damping force and damping moment?of course in dem they have significance effect. But from which part of YADE, I can make look to know about these..like to chose the value..default given 0.2. 
+</I>Just to be sure : you know that you can use ctags from inside kdevelop 
+to find where a variable is defined? Look into classes with damping in 
+their names, damping is used in them.
+
+&gt;<i>  2.sigma_iso = 50000..is it isotropic pressure?
+</I>Yes, it is the pressure that TriaxialStressController will try to 
+maintain on each &quot;activated&quot; boundary.
+So... it is not always isotropic as less than 6 boudaries may be 
+activated at the same time.
+
+&gt;<i> .
+</I>&gt;<i> .
+</I>&gt;<i> Is there any more reference to which I can look?
+</I>&gt;<i>
+</I>For questions like this, unfortunately not.
+You can ask here when you have precise questions on the meaning of some 
+parameters.
+However, if you feel like commenting the code here and there in the 
+meantime, you can always send me commented files and I'll commit them on 
+the SVN server.
+
+Bruno
+
+
+
+&gt;<i> Regards, Rana
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> Be a better friend, newshound, and know-it-all with Yahoo! Mobile. Try 
+</I>&gt;<i> it now. 
+</I>&gt;<i> &lt;<A HREF="http://us.rd.yahoo.com/evt=51733/*http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ%20">http://us.rd.yahoo.com/evt=51733/*http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ%20</A>&gt; 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> Be a better friend, newshound, and know-it-all with Yahoo! Mobile. Try 
+</I>&gt;<i> it now. 
+</I>&gt;<i> &lt;<A HREF="http://us.rd.yahoo.com/evt=51733/*http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ%20">http://us.rd.yahoo.com/evt=51733/*http://mobile.yahoo.com/;_ylt=Ahu06i62sR8HDtDypao8Wcj9tAcJ%20</A>&gt; 
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+-- 
+ 
+_______________
+Chareyre Bruno
+Maitre de conference
+
+Institut National Polytechnique de Grenoble
+Laboratoire 3S (Soils Solids Structures) - bureau E145
+BP 53 - 38041, Grenoble cedex 9 - France
+T&#233;l : 33 4 56 52 86 21
+Fax : 33 4 76 82 70 43
+________________
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000194.html">[Yade-users] About Triaxial Test
+</A></li>
+	<LI>Next message: <A HREF="000189.html">[Yade-users] new user problem with generating new preprocesor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

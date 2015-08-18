@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2008/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%0A%20%3D%3Fgb2312%3Fb%3Fu9i4tKO6IFJlOiAgUHJvYmxlbSBvZiBpbnN0YWxs%3F%3D%0A%20%3D%3Fgb2312%3Fb%3FaXRpb24gb24ga3VidW50dTguMDQ%3D%3F%3D&In-Reply-To=%3C4857E202.5020207%40arcig.cz%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000336.html">
+   <LINK REL="Next"  HREF="000331.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04</H1>
+    <B>V&#225;clav S(milauer</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5BYade-users%5D%0A%20%3D%3Fgb2312%3Fb%3Fu9i4tKO6IFJlOiAgUHJvYmxlbSBvZiBpbnN0YWxs%3F%3D%0A%20%3D%3Fgb2312%3Fb%3FaXRpb24gb24ga3VidW50dTguMDQ%3D%3F%3D&In-Reply-To=%3C4857E202.5020207%40arcig.cz%3E"
+       TITLE="[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04">eudoxos at arcig.cz
+       </A><BR>
+    <I>Tue Jun 17 18:10:42 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000336.html">[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04
+</A></li>
+        <LI>Next message: <A HREF="000331.html">[Yade-users] sheep:/usr/bin/svnserver is not eXectubale for users
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#338">[ date ]</a>
+              <a href="thread.html#338">[ thread ]</a>
+              <a href="subject.html#338">[ subject ]</a>
+              <a href="author.html#338">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I just installed g++-4.3 (by accident) and had to fix that. It is in the
+last commit (1392). You may need to pass -fpermissive to g++ so that it
+doesn't error out on warnings (not sure, didn't try).
+
+Just a note for _everybody on the list_:
+
+I have about 80% (!!!) speedup (from 12.5iter/sec to 20/sec) with
+g++-4.3 and heavy optimizations:
+
+scons profile=gcc4.3-opt optimize=1 debug=0 gprof=0 version=trunk
+variant=-gcc4.3vector-opt CXX=g++-4.3 CXXFLAGS=&quot;-ftree-vectorize
+-fpermissive -march=core2&quot; pretty=0
+
+compared to scons profile=opt with g++-4.2 (never tried that one with
+vectorization, since it used to crash).
+
+Regards, Vaclav
+
+&gt;<i> I add &quot;deb <A HREF="http://ftp.de.debian.org/debian">http://ftp.de.debian.org/debian</A> etch main&quot; 
+</I>&gt;<i> into sourcelist and apt-get update, then install
+</I>&gt;<i> libboost-* 1.34.1-11 replaced the 1.34.1,now all the
+</I>&gt;<i> &quot;checking for...&quot; are &quot;yes&quot;.however I face another
+</I>&gt;<i> problem.
+</I>&gt;<i> Both 1387 and 1390 were downloaded through svn, and
+</I>&gt;<i> neither can be compiled.
+</I>&gt;<i> This is the output after &quot;scons
+</I>&gt;<i> PREFIX=/home/beautykiller/YADE optimize=1&quot;.
+</I>&gt;<i> ------------------------------------------------------
+</I>&gt;<i> scons: Reading SConscript files ...
+</I>&gt;<i> scons: Reading SConscript files ...
+</I>&gt;<i> @@@ Using profile default (scons.profile-default) @@@
+</I>&gt;<i> Yade version is `svn1390', installed files will be
+</I>&gt;<i> suffixed with `-svn1390'.
+</I>&gt;<i> All intermediary files will be in
+</I>&gt;<i> `/home/beautykiller/build-svn1390'.
+</I>&gt;<i> Checking whether c++ compiler &quot;g++&quot; works...(cached)
+</I>&gt;<i> yes
+</I>&gt;<i> Checking for pthread_exit(NULL) in C library
+</I>&gt;<i> pthread... (cached) yes
+</I>&gt;<i> Checking for glutGetModifiers() in C library glut...
+</I>&gt;<i> (cached) yes
+</I>&gt;<i> Checking for
+</I>&gt;<i> boost::posix_time::time_duration::time_duration() in
+</I>&gt;<i> C++ library boost_date_time-mt... (cached) yes
+</I>&gt;<i> Checking for boost::thread::thread() in C++ library
+</I>&gt;<i> boost_thread-mt... (cached) yes
+</I>&gt;<i> Checking for boost::filesystem::path() in C++ library
+</I>&gt;<i> boost_filesystem-mt... (cached) yes
+</I>&gt;<i> Checking for boost::iostreams::file_sink(&quot;&quot;) in C++
+</I>&gt;<i> library boost_iostreams-mt... (cached) yes
+</I>&gt;<i> Checking for C++ header file boost/foreach.hpp...
+</I>&gt;<i> (cached) yes
+</I>&gt;<i> Checking for qt-mt in /usr/share/qt3... (cached) yes
+</I>&gt;<i> Checking for log4cxx::Logger::getLogger(&quot;&quot;) in C++
+</I>&gt;<i> library log4cxx... (cached) yes
+</I>&gt;<i> Checking for Python development files... (cached) yes
+</I>&gt;<i> Checking for boost::python::scope() in C++ library
+</I>&gt;<i> boost_python-mt... (cached) yes
+</I>&gt;<i> scons: done reading SConscript files.
+</I>&gt;<i> scons: Building targets ...
+</I>&gt;<i> C core/Body.cpp
+</I>&gt;<i> C core/BodyContainer.cpp
+</I>&gt;<i> C core/BoundingVolume.cpp
+</I>&gt;<i> C core/DeusExMachina.cpp
+</I>&gt;<i> In file included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/ClassFactory.hpp:27,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/Factorable.hpp:14,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:24,
+</I>&gt;<i>                  from core/BodyContainer.hpp:16,
+</I>&gt;<i>                  from core/BodyContainer.cpp:11:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/DynLibManager.hpp:54:
+</I>&gt;<i> error: multiple parameters named 'libName'
+</I>&gt;<i> In file included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:26,
+</I>&gt;<i>                  from core/BodyContainer.hpp:16,
+</I>&gt;<i>                  from core/BodyContainer.cpp:11:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Archive.hpp:275:
+</I>&gt;<i> error: declaration of
+</I>&gt;<i> 'std::map&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor,
+</I>&gt;<i> std::less&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor&gt; &gt; &gt; Archive::map'
+</I>&gt;<i> /usr/include/c++/4.3/bits/stl_map.h:92: error: changes
+</I>&gt;<i> meaning of 'map' from 'class
+</I>&gt;<i> std::map&lt;SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt;,
+</I>&gt;<i> std::less&lt;SerializableTypes::Type&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const
+</I>&gt;<i> SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt; &gt; &gt;
+</I>&gt;<i>   
+</I>&gt;&gt;<i> '
+</I>&gt;&gt;<i>     
+</I>&gt;<i> In file included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/ClassFactory.hpp:27,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/Factorable.hpp:14,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:24,
+</I>&gt;<i>                  from core/GeometricalModel.hpp:15,
+</I>&gt;<i>                  from core/Body.hpp:16,
+</I>&gt;<i>                  from core/Body.cpp:11:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/DynLibManager.hpp:54:
+</I>&gt;<i> error: multiple parameters named 'libName'
+</I>&gt;<i> In file included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:26,
+</I>&gt;<i>                  from core/GeometricalModel.hpp:15,
+</I>&gt;<i>                  from core/Body.hpp:16,
+</I>&gt;<i>                  from core/Body.cpp:11:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Archive.hpp:275:
+</I>&gt;<i> error: declaration of
+</I>&gt;<i> 'std::map&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor,
+</I>&gt;<i> std::less&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor&gt; &gt; &gt; Archive::map'
+</I>&gt;<i> /usr/include/c++/4.3/bits/stl_map.h:92: error: changes
+</I>&gt;<i> meaning of 'map' from 'class
+</I>&gt;<i> std::map&lt;SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt;,
+</I>&gt;<i> std::less&lt;SerializableTypes::Type&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const
+</I>&gt;<i> SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt; &gt; &gt;
+</I>&gt;<i>   
+</I>&gt;&gt;<i> '
+</I>&gt;&gt;<i>     
+</I>&gt;<i> In file included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/ClassFactory.hpp:27,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/Factorable.hpp:14,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:24,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/core/Engine.hpp:14,
+</I>&gt;<i>                  from core/DeusExMachina.hpp:14,
+</I>&gt;<i>                  from core/DeusExMachina.cpp:9:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/DynLibManager.hpp:54:
+</I>&gt;<i> error: multiple parameters named 'libName'
+</I>&gt;<i> In file included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/ClassFactory.hpp:27,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/Factorable.hpp:14,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:24,
+</I>&gt;<i>                  from core/BoundingVolume.hpp:16,
+</I>&gt;<i>                  from core/BoundingVolume.cpp:9:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-factory/DynLibManager.hpp:54:
+</I>&gt;<i> error: multiple parameters named 'libName'In file
+</I>&gt;<i> included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:26,
+</I>&gt;<i>                  from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/core/Engine.hpp:14,
+</I>&gt;<i>                  from core/DeusExMachina.hpp:14,
+</I>&gt;<i>                  from core/DeusExMachina.cpp:9:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Archive.hpp:275:
+</I>&gt;<i> error: declaration of
+</I>&gt;<i> 'std::map&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor,
+</I>&gt;<i> std::less&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor&gt; &gt; &gt; Archive::map'
+</I>&gt;<i> /usr/include/c++/4.3/bits/stl_map.h:92: error: changes
+</I>&gt;<i> meaning of 'map' from 'class
+</I>&gt;<i> std::map&lt;SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt;,
+</I>&gt;<i> std::less&lt;SerializableTypes::Type&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const
+</I>&gt;<i> SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt; &gt; &gt;
+</I>&gt;<i>   
+</I>&gt;&gt;<i> '
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> In file included from
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Serializable.hpp:26,
+</I>&gt;<i>                  from core/BoundingVolume.hpp:16,
+</I>&gt;<i>                  from core/BoundingVolume.cpp:9:
+</I>&gt;<i> /home/beautykiller/build-svn1390/include/yade-svn1390/yade/lib-serialization/Archive.hpp:275:
+</I>&gt;<i> error: declaration of
+</I>&gt;<i> 'std::map&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor,
+</I>&gt;<i> std::less&lt;std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const std::basic_string&lt;char,
+</I>&gt;<i> std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;,
+</I>&gt;<i> Archive::SerializableDescriptor&gt; &gt; &gt; Archive::map'
+</I>&gt;<i> /usr/include/c++/4.3/bits/stl_map.h:92: error: changes
+</I>&gt;<i> meaning of 'map' from 'class
+</I>&gt;<i> std::map&lt;SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt;,
+</I>&gt;<i> std::less&lt;SerializableTypes::Type&gt;,
+</I>&gt;<i> std::allocator&lt;std::pair&lt;const
+</I>&gt;<i> SerializableTypes::Type, std::pair&lt;void
+</I>&gt;<i> (*)(std::ostream&amp;, Archive&amp;, int), void
+</I>&gt;<i> (*)(std::istream&amp;, Archive&amp;, const std::string&amp;)&gt; &gt; &gt;
+</I>&gt;<i>   
+</I>&gt;&gt;<i> '
+</I>&gt;&gt;<i>     
+</I>&gt;<i> scons: ***
+</I>&gt;<i> [/home/beautykiller/build-svn1390/core/BodyContainer.o]
+</I>&gt;<i> Error 1
+</I>&gt;<i> scons: ***
+</I>&gt;<i> [/home/beautykiller/build-svn1390/core/BoundingVolume.o]
+</I>&gt;<i> Error 1
+</I>&gt;<i> scons: ***
+</I>&gt;<i> [/home/beautykiller/build-svn1390/core/Body.o] Error 1
+</I>&gt;<i> scons: ***
+</I>&gt;<i> [/home/beautykiller/build-svn1390/core/DeusExMachina.o]
+</I>&gt;<i> Error 1
+</I>&gt;<i> scons: building terminated because of errors.
+</I>&gt;<i> --------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Why it happen? Is it another bug or something
+</I>&gt;<i> incompatible with my kubuntu? Mine is
+</I>&gt;<i> kubuntu8.04kde4,which is said unstable.What can I do
+</I>&gt;<i> now? Back to the stable kde3.5?will it better?
+</I>&gt;<i> thanks!
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>       ___________________________________________________________ 
+</I>&gt;<i>  &#38597;&#34382;&#37038;&#31665;&#65292;&#24744;&#30340;&#32456;&#29983;&#37038;&#31665;&#65281; 
+</I>&gt;<i> <A HREF="http://cn.mail.yahoo.com/">http://cn.mail.yahoo.com/</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Yade-users mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">Yade-users at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">https://lists.berlios.de/mailman/listinfo/yade-users</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000336.html">[Yade-users] &#22238;&#22797;&#65306; Re:  Problem of installition on kubuntu8.04
+</A></li>
+	<LI>Next message: <A HREF="000331.html">[Yade-users] sheep:/usr/bin/svnserver is not eXectubale for users
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#338">[ date ]</a>
+              <a href="thread.html#338">[ thread ]</a>
+              <a href="subject.html#338">[ subject ]</a>
+              <a href="author.html#338">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>

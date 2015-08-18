@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/yade-users/2009/index.html" >
+   <LINK REL="made" HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Be%20carefull%20with%20%22normalize%22&In-Reply-To=%3C20090204182814.252a7d38%40szpak%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000606.html">
+   <LINK REL="Next"  HREF="000608.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;</H1>
+    <B>Janek Kozicki</B> 
+    <A HREF="mailto:yade-users%40lists.berlios.de?Subject=Re%3A%20%5Bdeprecated%20list%5D%20%5BYade-users%5D%20Be%20carefull%20with%20%22normalize%22&In-Reply-To=%3C20090204182814.252a7d38%40szpak%3E"
+       TITLE="[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;">janek_listy at wp.pl
+       </A><BR>
+    <I>Wed Feb  4 18:28:14 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000606.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+        <LI>Next message: <A HREF="000608.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#607">[ date ]</a>
+              <a href="thread.html#607">[ thread ]</a>
+              <a href="subject.html#607">[ subject ]</a>
+              <a href="author.html#607">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Luc Sibille said:     (by the date of Wed, 04 Feb 2009 18:09:01 +0100)
+
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i>   Is the &quot;normalize&quot; function from wm3 used currently in Yade? I mean 
+</I>&gt;<i> not in specific packages your are developing at the present time but in 
+</I>&gt;<i> some basic and usual computation made in Yade.
+</I>&gt;<i> I think for instance to the computation of the normal vector defining 
+</I>&gt;<i> the intergranular contact plane (for the DEM), or something else. If yes 
+</I>&gt;<i> it could a real problem...
+</I>&gt;<i> 
+</I>&gt;<i> Bruno have you got an idea of the default value of the &quot;tolerance&quot; 
+</I>&gt;<i> value?  The reason for this check could be to avoid a division by zero 
+</I>&gt;<i> or &quot;something&quot; to close to zero.
+</I>
+see: 
+
+lib/miniWm3/Wm3Vector3.inl line 301
+
+lib/miniWm3/Wm3Math.cpp line 29:
+
+  template&lt;&gt; const double Math&lt;double&gt;::ZERO_TOLERANCE = 1e-20;
+
+
+In my snow grains simulation I'm dealing with really small triangles,
+because the base unit is meter. And the snow grain average diameter is
+0.001m and the size of triangles that form a polyhedron representing
+the whole grain is about 0.000001m (but smaller are possible).
+
+I was calculating normals for those triangles (it's necessary for
+collision detection between polyhedrons), and suddenly some triangles
+were disappearing. Finally I've found the reason - the length of
+cross product was less than 1e-20, for example: 1.221342351454256e-21
+(we have 16 digits of precision with double).
+
+This function Normalize() is used everywhere in yade. But I don't know where :)
+We could try 'grep Normalize ./* -R' to see where it is used.
+For example I don't see it in ElasticContactLaw.
+
+If someone is making simulations with spheres smaller than... I don't
+know, maybe 0.00001m then maybe he has a problem...
+
+-- 
+Janek Kozicki                                                         |
+
+_______________________________________________
+Mailing list: <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+Post to     : <A HREF="https://lists.berlios.de/mailman/listinfo/yade-users">yade-users at lists.launchpad.net</A>
+Unsubscribe : <A HREF="https://launchpad.net/~yade-users">https://launchpad.net/~yade-users</A>
+More help   : <A HREF="https://help.launchpad.net/ListHelp">https://help.launchpad.net/ListHelp</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000606.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+	<LI>Next message: <A HREF="000608.html">[deprecated list] [Yade-users] Be carefull with &quot;normalize&quot;
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#607">[ date ]</a>
+              <a href="thread.html#607">[ thread ]</a>
+              <a href="subject.html#607">[ subject ]</a>
+              <a href="author.html#607">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/yade-users">More information about the yade-users
+mailing list</a><br>
+</body></html>
